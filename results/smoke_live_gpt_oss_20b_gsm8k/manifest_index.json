@@ -1,0 +1,42 @@
+{
+  "manifest_smoke_live_gpt_oss_20b_gsm8k.json": {
+    "client": {
+      "type": "MultiEndpointClient"
+    },
+    "component_template_hashes": {
+      "BARE": {
+        "base": "39c51dee47fc",
+        "submission": "8c80436087cc"
+      },
+      "T": {
+        "T:t1": "575ee6e6653f",
+        "base": "39c51dee47fc",
+        "submission": "8c80436087cc"
+      }
+    },
+    "created_utc": "2026-07-23T18:52:42+00:00",
+    "exp_config_sha256": "a22fd87c3ff5a6f0119e7dafda52f6cfc3e9f17e5a7011a004e67ffec43a1632",
+    "exp_id": "smoke_live_gpt_oss_20b_gsm8k",
+    "extra": {
+      "run_id": "1029480"
+    },
+    "git": {
+      "dirty": false,
+      "sha": "unknown"
+    },
+    "model": {
+      "family": "gpt-oss",
+      "model_id": "gpt_oss_20b"
+    },
+    "node": "jpbo-051-45.jupiter.internal",
+    "sampling": {
+      "max_new_tokens_step": 256,
+      "seeds": [
+        0,
+        1
+      ],
+      "temperature": 0.1,
+      "top_p": 0.9
+    }
+  }
+}
