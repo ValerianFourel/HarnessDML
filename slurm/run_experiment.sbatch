@@ -1,10 +1,15 @@
 #!/bin/bash
 # One model on one full booster node; one OR several benchmarks run
-# sequentially against the same servers (comma-separate BENCH):
+# sequentially against the same servers (comma- or plus-separate BENCH):
 #
-#   sbatch --export=ALL,EXP=configs/experiments/pilot.yaml,MODEL_ID=gpt_oss_20b,BENCH=gsm8k \
-#     slurm/run_experiment.sbatch
-#   sbatch --export=ALL,EXP=...,MODEL_ID=gpt_oss_20b,BENCH=hotpotqa,musique,gsm8k,math ...
+#   EXP=configs/experiments/pilot.yaml MODEL_ID=gpt_oss_20b BENCH=gsm8k \
+#     sbatch slurm/run_experiment.sbatch
+#   EXP=... MODEL_ID=gpt_oss_20b BENCH=hotpotqa,musique,gsm8k,math sbatch ...
+#
+# Set the variables as an env prefix (sbatch propagates the submission env by
+# default). NEVER pass a comma list through --export=...,BENCH=a,b,c —
+# --export splits on commas and silently truncates BENCH to its first entry
+# (pilot job 1029741). With --export, use the + separator: BENCH=a+b+c.
 #
 # One MODEL_ID per job — a node serves exactly one model (4 replicas or TP=4).
 # Rollouts stream to $SCRATCH (never git); aggregate afterwards on a login
@@ -30,7 +35,7 @@ source "$SCRATCH/harnesslab/serving_${SLURM_JOB_ID}.env"
 trap 'pkill -P $$ || true' EXIT   # stop the vLLM servers when the job ends
 
 EXP_BASE=$(basename "$EXP" .yaml)
-for B in ${BENCH//,/ }; do
+for B in ${BENCH//[+,]/ }; do
   EXP_ID="${EXP_BASE}_${MODEL_ID}_${B}"
   OUT="$SCRATCH/harnesslab/$EXP_BASE/rollouts_${MODEL_ID}_${B}"
   srun --ntasks=1 --overlap python -m harnesslab.cli run \

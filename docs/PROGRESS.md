@@ -99,8 +99,20 @@ pilot"):
    schema check — committed smoke results stay valid; don't re-aggregate
    the old store; pilot stores are fresh.
 
-Next: `bash scripts/hpc/submit_pilot.sh` (2 nodes, gpt-oss-120b/20b × all
-four bands) → difficulty gate + throughput constants.
+## Phase 4 — pilot (in progress)
+
+Submitted 1029740 (120b) + 1029741 (20b). **Incident:** the submit script
+passed `--export=ALL,...,BENCH=hotpotqa,musique,gsm8k,math` — `--export`
+splits on commas, so Slurm truncated `BENCH` to `hotpotqa` and treated the
+other three benchmarks as unrelated variable names. 1029741 COMPLETED in
+4:10 with hotpotqa only — but that slice is fully green (160/160,
+api_errors=0, first pilot data in hand). Fix: submit via env prefix
+(`EXP=… MODEL_ID=… BENCH=… sbatch …`; sbatch propagates the submission env
+by default); sbatch template additionally accepts `+` as a separator for
+--export users. Remainder jobs (musique,gsm8k,math × both models) submitted
+as separate jobs — per-slice stores make that safe.
+
+Then: difficulty gate + throughput constants from the 8 slices.
 
 ## Next
 
