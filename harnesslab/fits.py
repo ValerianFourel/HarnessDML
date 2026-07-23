@@ -10,16 +10,16 @@ from __future__ import annotations
 GPU_GB = 96.0
 NODE_GPUS = 4
 OVERHEAD = 1.35
-BYTES_PER_PARAM = 2.0  # BF16
+BYTES_PER_PARAM = {"bf16": 2.0, "fp8": 1.0}  # fp8: DeepSeek-style native weights
 USABLE = 0.9
 
 
-def required_gb(params_b_total: float) -> float:
-    return params_b_total * BYTES_PER_PARAM * OVERHEAD
+def required_gb(params_b_total: float, dtype: str = "bf16") -> float:
+    return params_b_total * BYTES_PER_PARAM[dtype] * OVERHEAD
 
 
-def serving_mode_for(params_b_total: float) -> str:
-    need = required_gb(params_b_total)
+def serving_mode_for(params_b_total: float, dtype: str = "bf16") -> str:
+    need = required_gb(params_b_total, dtype)
     if need <= GPU_GB * USABLE:
         return "one_gpu"
     if need <= GPU_GB * NODE_GPUS * USABLE:
@@ -32,7 +32,8 @@ def check_registry(registry: dict[str, dict]) -> list[dict]:
     rows = []
     for model_id, entry in registry.items():
         params = entry.get("params_b_total")
-        computed = serving_mode_for(float(params)) if params else None
+        dtype = entry.get("dtype", "bf16")
+        computed = serving_mode_for(float(params), dtype) if params else None
         rows.append({
             "model_id": model_id,
             "tier": entry["tier"],

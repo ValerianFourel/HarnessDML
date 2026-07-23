@@ -1,82 +1,84 @@
-# HarnessLab model registry (§6) — frontier-first.
+# HarnessLab model registry (§6) — RESOLVED against the HF hub 2026-07-23
+# (metadata queries; params from safetensors totals). All listed non-gated
+# entries verified to exist and be downloadable without access requests.
 #
-# revision: null until pinned by scripts/hpc/prefetch_models.sh (Phase 3),
-#   which writes resolved commit SHAs back into this file.
-# verify: true ⇒ exact hf_id/params/license must be resolved on the JUPITER
-#   login node BEFORE download; if gated or absent, substitute within-family
-#   and record the substitution here — never silently.
-# serving_mode intent (fits-check confirms: params × dtype vs 4 × 96 GB GH200
-#   per node): one_gpu | one_node_tp4 | multi_node.
-#   EVERY job occupies a full node (4 GPUs) regardless of mode:
-#     one_gpu      = model fits on one GPU -> 4 independent replicas per node
-#                    (one per GPU, ports 8001-8004, client round-robins)
+# revision: null until pinned by scripts/hpc/prefetch_models.py, which writes
+#   SHAs to configs/model_revisions.lock.yaml (merged by load_registry).
+# dtype: weight storage — bf16 (default) or fp8 (native FP8, 1 byte/param);
+#   fits-check uses it.
+# serving_mode (fits-check enforced: params × dtype × 1.35 overhead vs
+#   0.9 × 96 GB / 0.9 × 384 GB). EVERY job occupies a full 4-GPU node:
+#     one_gpu      = model fits one GPU -> 4 independent replicas per node
+#                    (ports 8001-8004, client round-robins)
 #     one_node_tp4 = model needs the node -> 1 server, --tensor-parallel-size 4
-#   "one_gpu" describes the model's footprint, never a 1-GPU allocation..
+#   "one_gpu" describes the model's footprint, never a 1-GPU allocation.
 #
-# Rationale (preserve): Claw-roster alignment enables the composition check of
-# our component effects against their bundled-harness gaps on identical
-# backbones. Capability moderation comes from within-generation G-vs-F pairs
-# (cross-generation confounds capability with post-training vintage). Tier B
-# validates the re-implemented instrument on CCI's validated cell before
-# trusting Tier-F divergences. Tier S is out of MVP scope (enabled: false).
+# Resolution log (deviations from the spec's §6 table — never silent):
+#   - GLM-5.x is 753B total (all variants) -> physically multi-node; moved to
+#     Tier S. The Claw GLM anchor is NOT available in the MVP.
+#   - DeepSeek-V4-Flash (158B) fits one node only via native FP8 -> dtype: fp8.
+#   - No open "Mistral Medium 3.5"/"Small 4" exists; largest open instruct is
+#     Mistral-Small-3.2-24B (F slot); smallest is Ministral-3-3B (G slot).
+#   - "Seed 2.0-mini" does not exist on the hub; nearest family instruct is
+#     Seed-OSS-36B (needs TP4, not a weak pole) -> parked disabled.
+#   - Qwen3.6 has no small variant (27B/35B only); the G pole uses Qwen3.5-9B
+#     -> cross-vintage caveat applies to that within-family pair.
+#   - Gemma-4 gives a clean within-generation pair (26B-A4B vs E4B), both
+#     exercising the no-system-role prepended fallback.
+#
+# Rationale (preserve): Claw-roster alignment enables composition checks of
+# component effects vs bundled-harness gaps on identical backbones (now via
+# DeepSeek/Qwen/gpt-oss only). Capability moderation comes from
+# within-generation G-vs-F pairs. Tier B validates the re-implemented
+# instrument on CCI's validated cell before trusting Tier-F divergences.
 
 models:
   # ── Tier F (frontier open weights, MVP grid) ──────────────────────────────
-  glm_5_1:
-    hf_id: zai-org/GLM-5.1            # (verify) latest GLM-5.x
-    revision: null
-    verify: true
-    family: glm
-    tier: F
-    serving_mode: one_node_tp4
-    params_b_total: null
-    params_b_active: null
-    license_note: resolve on login node
-    note: Claw claw-sweep anchor
-  qwen_3_6_flash:
-    hf_id: Qwen/Qwen3.6-Flash         # (verify) or largest Qwen fitting 1 node
-    revision: null
-    verify: true
-    family: qwen
-    tier: F
-    serving_mode: one_node_tp4        # may relax to one_gpu after fits-check
-    params_b_total: null
-    params_b_active: null
-    license_note: resolve on login node
-    note: Claw anchor
   deepseek_v4_flash:
-    hf_id: deepseek-ai/DeepSeek-V4-Flash   # (verify)
+    hf_id: deepseek-ai/DeepSeek-V4-Flash
     revision: null
-    verify: true
+    verify: false
     family: deepseek
     tier: F
     serving_mode: one_node_tp4
-    params_b_total: null
+    dtype: fp8
+    params_b_total: 158.1
     params_b_active: null
-    license_note: resolve on login node
-    note: Claw model-sweep backbone
+    license_note: open (MIT-style DeepSeek license); ungated
+    note: Claw model-sweep backbone; native-FP8 weights (fits node only as FP8)
+  qwen_3_6_27b:
+    hf_id: Qwen/Qwen3.6-27B
+    revision: null
+    verify: false
+    family: qwen
+    tier: F
+    serving_mode: one_gpu
+    params_b_total: 27.8
+    params_b_active: 27.8
+    license_note: Apache-2.0; ungated
+    note: Claw anchor; largest Qwen fitting one GPU (35B-A3B is 97GB w/ overhead — borderline, skipped)
   llama_4_scout:
     hf_id: meta-llama/Llama-4-Scout-17B-16E-Instruct
     revision: null
     verify: false
     family: llama
     tier: F
-    serving_mode: one_node_tp4        # BF16, TP=4
+    serving_mode: one_node_tp4
     params_b_total: 109
     params_b_active: 17
-    license_note: Llama 4 community license (gated — request access early)
+    license_note: Llama 4 community license — GATED, request hub access early
     note: current open Llama
-  mistral_medium_3_5:
-    hf_id: mistralai/Mistral-Medium-3.5    # (verify) or Small 4 — largest fitting 1 node
+  mistral_small_3_2_24b:
+    hf_id: mistralai/Mistral-Small-3.2-24B-Instruct-2506
     revision: null
-    verify: true
+    verify: false
     family: mistral
     tier: F
-    serving_mode: one_node_tp4
-    params_b_total: null
-    params_b_active: null
-    license_note: resolve on login node
-    note: current open Mistral
+    serving_mode: one_gpu
+    params_b_total: 24.0
+    params_b_active: 24.0
+    license_note: Apache-2.0; ungated
+    note: largest current open Mistral instruct (no open Medium exists)
   gpt_oss_120b:
     hf_id: openai/gpt-oss-120b
     revision: null
@@ -86,33 +88,22 @@ models:
     serving_mode: one_node_tp4
     params_b_total: 117
     params_b_active: 5.1
-    license_note: Apache-2.0
-    note: distinct post-training lineage
-  gemma_latest:
-    hf_id: google/gemma-3-27b-it      # (verify) latest Gemma at run time
+    license_note: Apache-2.0; ungated
+    note: distinct post-training lineage; PREFETCHED
+  gemma_4_26b_a4b:
+    hf_id: google/gemma-4-26B-A4B-it
     revision: null
-    verify: true
+    verify: false
     family: gemma
-    tier: F                            # optional F/G slot
+    tier: F
     serving_mode: one_gpu
-    params_b_total: 27
-    params_b_active: 27
-    license_note: Gemma license (gated)
-    note: optional; exercises the no-system-role prepended fallback
+    params_b_total: 26.5
+    params_b_active: 4
+    license_note: Gemma license; ungated
+    note: exercises no-system-role prepended fallback; F half of the gemma pair
     optional: true
 
   # ── Tier G (weak pole + within-family gradient pairs) ─────────────────────
-  seed_2_0_mini:
-    hf_id: ByteDance-Seed/Seed-2.0-mini    # (verify)
-    revision: null
-    verify: true
-    family: seed
-    tier: G
-    serving_mode: one_gpu
-    params_b_total: null
-    params_b_active: null
-    license_note: resolve on login node
-    note: weak pole
   gpt_oss_20b:
     hf_id: openai/gpt-oss-20b
     revision: null
@@ -122,30 +113,55 @@ models:
     serving_mode: one_gpu
     params_b_total: 21
     params_b_active: 3.6
-    license_note: Apache-2.0
-    note: within-family gradient pair with gpt_oss_120b
-  qwen_small:
-    hf_id: Qwen/Qwen3.6-4B             # (verify) smallest current Qwen instruct
+    license_note: Apache-2.0; ungated
+    note: within-family gradient pair with gpt_oss_120b; PREFETCHED
+  qwen_3_5_9b:
+    hf_id: Qwen/Qwen3.5-9B
     revision: null
-    verify: true
+    verify: false
     family: qwen
     tier: G
     serving_mode: one_gpu
-    params_b_total: null
-    params_b_active: null
-    license_note: resolve on login node
-    note: within-family gradient pair with qwen_3_6_flash
-  mistral_small_min:
-    hf_id: mistralai/Ministral-8B-Instruct   # (verify) smallest current Mistral
+    params_b_total: 9
+    params_b_active: 9
+    license_note: Apache-2.0; ungated
+    note: G pole for qwen — CROSS-VINTAGE pair (3.5 vs 3.6), caveat in DATASHEET
+  ministral_3_3b:
+    hf_id: mistralai/Ministral-3-3B-Instruct-2512
     revision: null
-    verify: true
+    verify: false
     family: mistral
     tier: G
     serving_mode: one_gpu
-    params_b_total: null
-    params_b_active: null
-    license_note: resolve on login node
-    note: within-family gradient pair with mistral_medium_3_5
+    params_b_total: 3.8
+    params_b_active: 3.8
+    license_note: Apache-2.0; ungated
+    note: weak pole; mistral gradient pair (vintage 2512 vs 2506, mild caveat)
+  gemma_4_e4b:
+    hf_id: google/gemma-4-E4B-it
+    revision: null
+    verify: false
+    family: gemma
+    tier: G
+    serving_mode: one_gpu
+    params_b_total: 8.0
+    params_b_active: 4
+    license_note: Gemma license; ungated
+    note: G half of the within-generation gemma pair; no-system-role fallback
+    optional: true
+  seed_oss_36b:
+    hf_id: ByteDance-Seed/Seed-OSS-36B-Instruct
+    revision: null
+    verify: false
+    family: seed
+    tier: G
+    serving_mode: one_node_tp4
+    params_b_total: 36.2
+    params_b_active: 36.2
+    license_note: Apache-2.0; ungated
+    note: "SUBSTITUTION RECORD: 'Seed 2.0-mini' absent from hub; nearest family
+      instruct is 36B (not a weak pole, needs TP4) — parked out of MVP"
+    enabled: false
 
   # ── Tier B (bridge arm ONLY — CCI's validated cell) ───────────────────────
   llama_3_1_8b:
@@ -157,12 +173,25 @@ models:
     serving_mode: one_gpu
     params_b_total: 8
     params_b_active: 8
-    license_note: Llama 3.1 community license (gated)
+    license_note: Llama 3.1 community license — GATED, request hub access early
     note: bridge arm only — validates the re-implemented instrument against CCI
 
   # ── Tier S (multi-node giants — OUT OF MVP SCOPE) ─────────────────────────
+  glm_5_2:
+    hf_id: zai-org/GLM-5.2
+    revision: null
+    verify: false
+    family: glm
+    tier: S
+    serving_mode: multi_node
+    params_b_total: 753.3
+    params_b_active: null
+    license_note: open; ungated
+    note: "spec assumed 1-node GLM-5.x — actual 753B is multi-node; Claw GLM
+      anchor therefore unavailable in the MVP (recorded deviation)"
+    enabled: false
   deepseek_v4_pro:
-    hf_id: deepseek-ai/DeepSeek-V4-Pro     # (verify)
+    hf_id: deepseek-ai/DeepSeek-V4-Pro
     revision: null
     verify: true
     family: deepseek
@@ -170,19 +199,7 @@ models:
     serving_mode: multi_node
     params_b_total: null
     params_b_active: null
-    license_note: resolve on login node
-    note: headline cells only, post-MVP
-    enabled: false
-  mistral_large_3:
-    hf_id: mistralai/Mistral-Large-3       # (verify)
-    revision: null
-    verify: true
-    family: mistral
-    tier: S
-    serving_mode: multi_node
-    params_b_total: null
-    params_b_active: null
-    license_note: resolve on login node
+    license_note: ungated
     note: headline cells only, post-MVP
     enabled: false
   llama_4_maverick:
@@ -198,7 +215,7 @@ models:
     note: headline cells only, post-MVP
     enabled: false
   kimi_k2_6:
-    hf_id: moonshotai/Kimi-K2.6            # (verify)
+    hf_id: moonshotai/Kimi-K2.6
     revision: null
     verify: true
     family: kimi
@@ -206,6 +223,6 @@ models:
     serving_mode: multi_node
     params_b_total: null
     params_b_active: null
-    license_note: resolve on login node
+    license_note: resolve before use
     note: headline cells only, post-MVP
     enabled: false
