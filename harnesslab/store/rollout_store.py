@@ -68,6 +68,19 @@ class RolloutStore:
             os.fsync(f.fileno())
         self._done.add(key)
 
+    def append_failure(self, record: dict) -> None:
+        """Infra failures (api_error): logged for diagnostics, NEVER marked
+        done — the rollout stays pending and re-runs on the next submission."""
+        with open(self.dir / "failures.jsonl", "a", encoding="utf-8") as f:
+            f.write(json.dumps(record, sort_keys=True) + "\n")
+
+    def n_failures_logged(self) -> int:
+        p = self.dir / "failures.jsonl"
+        if not p.exists():
+            return 0
+        with open(p, encoding="utf-8") as f:
+            return sum(1 for line in f if line.strip())
+
     def records(self) -> Iterator[dict]:
         if not self.path.exists():
             return

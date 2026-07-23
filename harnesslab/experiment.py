@@ -113,6 +113,15 @@ def _validate(spec: ExperimentSpec) -> ExperimentSpec:
     return spec
 
 
+def served_model_name(spec: ExperimentSpec, registry: dict[str, dict] | None = None) -> str:
+    """vLLM serves models under their hf_id; the registry key is ours only.
+    (Asking a vLLM server for the registry key 404s — smoke run 1025599.)"""
+    if spec.model_id == "mock":
+        return "mock"
+    reg = registry if registry is not None else load_registry()
+    return reg[spec.model_id]["hf_id"]
+
+
 def resolve_model(spec: ExperimentSpec, registry: dict[str, dict] | None = None) -> None:
     """Fill model_family/model_scale_b from the registry ('mock' is special)."""
     if spec.model_id == "mock":

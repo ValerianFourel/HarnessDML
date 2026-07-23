@@ -114,6 +114,12 @@ def _report(rows: list[dict], cells: list[dict]) -> str:
     return "\n".join(lines)
 
 
+def _failures_note(store: RolloutStore) -> str:
+    n = store.n_failures_logged()
+    return (f"\nAPI-error attempts logged (not in the panel; retried on resume): {n}\n"
+            if n else "")
+
+
 def aggregate(rollouts_dir: Path | str, results_dir: Path | str) -> dict[str, Path]:
     rollouts_dir, results_dir = Path(rollouts_dir), Path(results_dir)
     store = RolloutStore(rollouts_dir)
@@ -150,7 +156,7 @@ def aggregate(rollouts_dir: Path | str, results_dir: Path | str) -> dict[str, Pa
             index[ref] = {"MISSING": True}  # a row that can't resolve is a bug (§1.4)
     (results_dir / "manifest_index.json").write_text(json.dumps(index, indent=2, sort_keys=True))
 
-    (results_dir / "REPORT.md").write_text(_report(rows, cells))
+    (results_dir / "REPORT.md").write_text(_report(rows, cells) + _failures_note(store))
     return {
         "panel": panel_path,
         "cell_metrics": cells_path,

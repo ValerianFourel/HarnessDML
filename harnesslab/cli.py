@@ -49,7 +49,7 @@ def _cmd_run(args) -> int:
 
         load_dotenv()
         api_key = os.environ.get(args.api_key_env, "EMPTY")
-        served = args.model or spec.model_id
+        served = args.model or experiment.served_model_name(spec)
         urls = [u.strip() for u in args.base_url.split(",") if u.strip()]
         endpoints = [OpenAICompatClient(u, served, api_key) for u in urls]
         client = endpoints[0] if len(endpoints) == 1 else MultiEndpointClient(endpoints)
@@ -59,8 +59,13 @@ def _cmd_run(args) -> int:
     print(
         f"[run] {spec.exp_id}: total={summary.total} "
         f"already_done={summary.already_done} ran={summary.ran} "
-        f"manifest={summary.manifest_ref}"
+        f"api_errors={summary.api_errors} manifest={summary.manifest_ref}"
     )
+    if summary.api_errors:
+        print(f"[run] WARNING: {summary.api_errors} rollouts hit terminal API errors — "
+              "NOT persisted; fix the endpoint and resubmit (resume retries them)",
+              file=sys.stderr)
+        return 3
     return 0
 
 

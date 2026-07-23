@@ -65,6 +65,32 @@ def test_pilot_and_smoke_specs_parse():
     assert smoke.n_tasks == 5 and len(smoke.configs) == 2
 
 
+def test_served_model_name_resolves_hf_id():
+    from harnesslab.experiment import served_model_name
+
+    pilot = from_yaml("configs/experiments/pilot.yaml")
+    assert served_model_name(pilot) == "openai/gpt-oss-20b"  # never the registry key
+    mock = from_yaml("tests/fixtures/exp_mock_qa.yaml")
+    assert served_model_name(mock) == "mock"
+
+
+def test_api_errors_are_logged_not_persisted(tmp_path):
+    from harnesslab.agent.runner import run_experiment
+    from harnesslab.store import RolloutStore
+
+    spec = from_yaml("tests/fixtures/exp_mock_qa.yaml", overrides={"k_seeds": 1})
+    broken = MockClient(lambda m, s: "Answer: x", fail_times=999)
+    s1 = asyncio.run(run_experiment(spec, broken, tmp_path / "r"))
+    assert s1.total == s1.ran == s1.api_errors == 6
+    assert len(RolloutStore(tmp_path / "r")) == 0          # nothing marked done
+    assert RolloutStore(tmp_path / "r").n_failures_logged() == 6
+
+    healthy = MockClient(lambda m, s: "Answer: x")
+    s2 = asyncio.run(run_experiment(spec, healthy, tmp_path / "r"))
+    assert s2.already_done == 0 and s2.ran == 6 and s2.api_errors == 0
+    assert len(RolloutStore(tmp_path / "r")) == 6          # resume retried them all
+
+
 def test_sample_indices_deterministic_sorted():
     a = sample_indices(1000, 100, 20260723)
     assert a == sample_indices(1000, 100, 20260723)

@@ -32,6 +32,7 @@ class RunSummary:
     already_done: int
     ran: int
     manifest_ref: str
+    api_errors: int = 0  # infra failures — logged, NOT persisted, retried on resume
 
 
 def _now_iso() -> str:
@@ -177,8 +178,10 @@ async def run_experiment(
     ]
 
     sem = asyncio.Semaphore(spec.concurrency)
+    api_errors = 0
 
     async def worker(cfg: CellConfig, task_id: str, seed: int) -> None:
+        nonlocal api_errors
         async with sem:
             task = tasks[task_id]
             ts_start = _now_iso()
@@ -197,12 +200,15 @@ async def run_experiment(
                 elicit_confidence=spec.elicit_confidence,
             )
             y, em, grader_path = graders.grade_rollout(spec.benchmark, trace.answer, task)
-            store.append(
-                build_row(
-                    spec, cfg, task, seed, trace, y, em, grader_path,
-                    run_id=run_id, manifest_ref=manifest_ref, ts_start=ts_start,
-                )
+            row = build_row(
+                spec, cfg, task, seed, trace, y, em, grader_path,
+                run_id=run_id, manifest_ref=manifest_ref, ts_start=ts_start,
             )
+            if trace.finish_reason == "api_error":
+                api_errors += 1  # infra, not an outcome: keep pending, log only
+                store.append_failure(row)
+                return
+            store.append(row)
 
     await asyncio.gather(*(worker(*item) for item in pending))
     return RunSummary(
@@ -210,4 +216,5 @@ async def run_experiment(
         already_done=len(triples) - len(pending),
         ran=len(pending),
         manifest_ref=manifest_ref,
+        api_errors=api_errors,
     )
