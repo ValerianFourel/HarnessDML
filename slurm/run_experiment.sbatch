@@ -1,9 +1,12 @@
 #!/bin/bash
-# One (model, benchmark) slice of an experiment on one booster node (§7).
+# One model on one full booster node; one OR several benchmarks run
+# sequentially against the same servers (comma-separate BENCH):
 #
 #   sbatch --export=ALL,EXP=configs/experiments/pilot.yaml,MODEL_ID=gpt_oss_20b,BENCH=gsm8k \
 #     slurm/run_experiment.sbatch
+#   sbatch --export=ALL,EXP=...,MODEL_ID=gpt_oss_20b,BENCH=hotpotqa,musique,gsm8k,math ...
 #
+# One MODEL_ID per job — a node serves exactly one model (4 replicas or TP=4).
 # Rollouts stream to $SCRATCH (never git); aggregate afterwards on a login
 # node (or via slurm/aggregate.sbatch with --dependency=afterok:<jobid>).
 #
@@ -27,19 +30,19 @@ source "$SCRATCH/harnesslab/serving_${SLURM_JOB_ID}.env"
 trap 'pkill -P $$ || true' EXIT   # stop the vLLM servers when the job ends
 
 EXP_BASE=$(basename "$EXP" .yaml)
-EXP_ID="${EXP_BASE}_${MODEL_ID}_${BENCH}"
-OUT="$SCRATCH/harnesslab/$EXP_BASE/rollouts_${MODEL_ID}_${BENCH}"
-
-srun --ntasks=1 --overlap python -m harnesslab.cli run \
-  --exp "$EXP" \
-  --set exp_id="$EXP_ID" \
-  --set model_id="$MODEL_ID" \
-  --set benchmark="$BENCH" \
-  --set tasks_file="configs/tasks/${BENCH}.jsonl" \
-  --backend openai \
-  --base-url "$BASE_URLS" \
-  --out "$OUT"
-
-python -m harnesslab.cli status --rollouts "$OUT"
-echo "[sbatch] aggregate on a login node:"
-echo "  python -m harnesslab.cli aggregate --rollouts $OUT --out results/$EXP_ID"
+for B in ${BENCH//,/ }; do
+  EXP_ID="${EXP_BASE}_${MODEL_ID}_${B}"
+  OUT="$SCRATCH/harnesslab/$EXP_BASE/rollouts_${MODEL_ID}_${B}"
+  srun --ntasks=1 --overlap python -m harnesslab.cli run \
+    --exp "$EXP" \
+    --set exp_id="$EXP_ID" \
+    --set model_id="$MODEL_ID" \
+    --set benchmark="$B" \
+    --set tasks_file="configs/tasks/${B}.jsonl" \
+    --backend openai \
+    --base-url "$BASE_URLS" \
+    --out "$OUT"
+  python -m harnesslab.cli status --rollouts "$OUT"
+  echo "[sbatch] aggregate on a login node:"
+  echo "  python -m harnesslab.cli aggregate --rollouts $OUT --out results/$EXP_ID"
+done

@@ -5,8 +5,13 @@
 # verify: true ⇒ exact hf_id/params/license must be resolved on the JUPITER
 #   login node BEFORE download; if gated or absent, substitute within-family
 #   and record the substitution here — never silently.
-# serving_mode intent (fits-check in Phase 3 confirms: params × dtype vs
-#   4 × 96 GB GH200 per node): one_gpu | one_node_tp4 | multi_node.
+# serving_mode intent (fits-check confirms: params × dtype vs 4 × 96 GB GH200
+#   per node): one_gpu | one_node_tp4 | multi_node.
+#   EVERY job occupies a full node (4 GPUs) regardless of mode:
+#     one_gpu      = model fits on one GPU -> 4 independent replicas per node
+#                    (one per GPU, ports 8001-8004, client round-robins)
+#     one_node_tp4 = model needs the node -> 1 server, --tensor-parallel-size 4
+#   "one_gpu" describes the model's footprint, never a 1-GPU allocation..
 #
 # Rationale (preserve): Claw-roster alignment enables the composition check of
 # our component effects against their bundled-harness gaps on identical
