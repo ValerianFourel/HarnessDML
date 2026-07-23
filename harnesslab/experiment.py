@@ -19,7 +19,15 @@ _REGISTRY_PATH = Path(__file__).resolve().parents[1] / "configs" / "models.yaml"
 
 def load_registry(path: Path | str | None = None) -> dict[str, dict]:
     p = Path(path) if path else _REGISTRY_PATH
-    return yaml.safe_load(p.read_text())["models"]
+    models = yaml.safe_load(p.read_text())["models"]
+    # revisions pinned by prefetch land in a lock file (keeps models.yaml
+    # comments intact — the "write back SHAs" of §6/§7)
+    lock = p.parent / "model_revisions.lock.yaml"
+    if lock.exists():
+        for model_id, revision in (yaml.safe_load(lock.read_text()) or {}).items():
+            if model_id in models:
+                models[model_id]["revision"] = revision
+    return models
 
 
 @dataclass(frozen=True)
@@ -45,6 +53,7 @@ class ExperimentSpec:
     top_p: float = 0.9
     schedule_seed: int = 0
     tasks_file: str = ""
+    n_tasks: int | None = None  # first N of the committed list (pilot slices)
     concurrency: int = 4
     system_role_mode: str = "native"
     elicit_confidence: bool = True
@@ -115,8 +124,14 @@ def resolve_model(spec: ExperimentSpec, registry: dict[str, dict] | None = None)
     spec.model_scale_b = float(entry.get("params_b_total") or 0.0)
 
 
-def from_yaml(path: Path | str, registry: dict[str, dict] | None = None) -> ExperimentSpec:
+def from_yaml(
+    path: Path | str,
+    registry: dict[str, dict] | None = None,
+    overrides: dict | None = None,
+) -> ExperimentSpec:
     raw = yaml.safe_load(Path(path).read_text())
+    if overrides:
+        raw.update(overrides)
     configs = [
         CellConfig(
             components=frozenset(c.get("components", [])),

@@ -125,7 +125,10 @@ async def run_experiment(
 ) -> RunSummary:
     out_dir = Path(out_dir)
     run_id = run_id or os.environ.get("SLURM_JOB_ID") or f"local-{int(time.time())}"
-    tasks = {t["task_id"]: t for t in load_tasks(spec.tasks_file)}
+    task_list = load_tasks(spec.tasks_file)
+    if spec.n_tasks:
+        task_list = task_list[: spec.n_tasks]  # committed order — deterministic slice
+    tasks = {t["task_id"]: t for t in task_list}
     store = RolloutStore(out_dir)
 
     composed_cache = {

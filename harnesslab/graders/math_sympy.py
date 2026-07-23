@@ -20,10 +20,12 @@ _SQRT_RE = re.compile(r"\\sqrt\s*\{([^{}]+)\}")
 _TEXT_RE = re.compile(r"\\text\s*\{[^{}]*\}")
 
 
-def _strip_boxed(s: str) -> str:
+def extract_boxed(s: str) -> str | None:
+    """Innermost content of the first \\boxed{...}; None if absent.
+    Also used by scripts/build_tasks.py to pull MATH golds from solutions."""
     m = _BOXED_RE.search(s)
     if not m:
-        return s
+        return None
     start = m.end()
     depth = 1
     for i in range(start, len(s)):
@@ -31,6 +33,11 @@ def _strip_boxed(s: str) -> str:
         if depth == 0:
             return s[start:i]
     return s[start:]
+
+
+def _strip_boxed(s: str) -> str:
+    inner = extract_boxed(s)
+    return s if inner is None else inner
 
 
 def canonicalize(s: str) -> str:

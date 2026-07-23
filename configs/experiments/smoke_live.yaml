@@ -1,0 +1,16 @@
+# Phase-2 live smoke (§9): 2 configs x 5 tasks x 2 seeds end-to-end against
+# any OpenAI-compatible endpoint (Blablador with --model <served-name>, or the
+# first vLLM server on JUPITER). ~40 requests total.
+exp_id: smoke_live
+benchmark: gsm8k
+model_id: gpt_oss_20b    # registry key; override served name via --model
+tasks_file: configs/tasks/gsm8k.jsonl
+n_tasks: 5
+k_seeds: 2
+temp: 0.1
+top_p: 0.9
+schedule_seed: 1
+concurrency: 4
+configs:
+  - components: []
+  - components: [T]

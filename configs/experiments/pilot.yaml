@@ -1,0 +1,19 @@
+# Phase-4 pilot (§9): 4 headline configs x 20 tasks x 2 seeds per
+# (model, benchmark) — model_id/benchmark/exp_id injected by the sbatch
+# template via --set. Doubles as the difficulty-gate measurement (§4.4):
+# Bare- and T-config accuracy decide which band each model enters.
+exp_id: pilot            # overridden per slice
+benchmark: gsm8k         # overridden per slice
+model_id: gpt_oss_20b    # overridden per slice
+tasks_file: configs/tasks/gsm8k.jsonl   # overridden per slice
+n_tasks: 20
+k_seeds: 2
+temp: 0.1
+top_p: 0.9
+schedule_seed: 20260723
+concurrency: 16
+configs:
+  - components: []                      # BARE  (gate measurement)
+  - components: [T]                     # T     (gate measurement)
+  - components: [T, SR, R]
+  - components: [P, T, M, SR, R]        # All-In

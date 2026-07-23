@@ -17,8 +17,27 @@ from . import experiment, panel
 from .store import RolloutStore
 
 
+def _coerce(v: str):
+    for cast in (int, float):
+        try:
+            return cast(v)
+        except ValueError:
+            pass
+    return {"true": True, "false": False}.get(v.lower(), v)
+
+
+def _overrides(pairs: list[str] | None) -> dict:
+    out = {}
+    for pair in pairs or []:
+        key, _, value = pair.partition("=")
+        if not _ or not key:
+            raise SystemExit(f"--set expects key=value, got {pair!r}")
+        out[key] = _coerce(value)
+    return out
+
+
 def _cmd_run(args) -> int:
-    spec = experiment.from_yaml(args.exp)
+    spec = experiment.from_yaml(args.exp, overrides=_overrides(args.set))
     if args.backend == "mock":
         from .client import MockClient
 
@@ -26,11 +45,14 @@ def _cmd_run(args) -> int:
     else:
         from dotenv import load_dotenv
 
-        from .client import OpenAICompatClient
+        from .client import MultiEndpointClient, OpenAICompatClient
 
         load_dotenv()
         api_key = os.environ.get(args.api_key_env, "EMPTY")
-        client = OpenAICompatClient(args.base_url, args.model or spec.model_id, api_key)
+        served = args.model or spec.model_id
+        urls = [u.strip() for u in args.base_url.split(",") if u.strip()]
+        endpoints = [OpenAICompatClient(u, served, api_key) for u in urls]
+        client = endpoints[0] if len(endpoints) == 1 else MultiEndpointClient(endpoints)
     from .agent.runner import run_experiment
 
     summary = asyncio.run(run_experiment(spec, client, args.out))
@@ -56,9 +78,24 @@ def _cmd_status(args) -> int:
     return 0
 
 
+def _cmd_fits_check(args) -> int:
+    from .fits import check_registry
+
+    rows = check_registry(experiment.load_registry())
+    bad = False
+    print(f"{'model_id':22} {'tier':4} {'params_B':>9} {'declared':14} {'computed':14}")
+    for r in rows:
+        flag = "" if r["ok"] else "  << MISMATCH"
+        bad = bad or not r["ok"]
+        print(f"{r['model_id']:22} {r['tier']:4} {str(r['params_b_total'] or '?'):>9} "
+              f"{r['declared']:14} {r['computed']:14}{flag}")
+    return 1 if bad else 0
+
+
 def _cmd_budget(args) -> int:
-    spec = experiment.from_yaml(args.exp)
-    n = len(spec.configs) * args.n_tasks * spec.k_seeds
+    spec = experiment.from_yaml(args.exp, overrides=_overrides(args.set))
+    n_tasks = spec.n_tasks or args.n_tasks
+    n = len(spec.configs) * n_tasks * spec.k_seeds
     if spec.throughput_rollouts_per_node_hour is None:
         print(
             f"[budget] REFUSED: {spec.exp_id} has no pilot-throughput constant "
@@ -95,9 +132,12 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--exp", required=True)
     p.add_argument("--out", required=True, help="rollout store directory ($SCRATCH side)")
     p.add_argument("--backend", choices=("mock", "openai"), default="openai")
-    p.add_argument("--base-url", default="http://localhost:8001/v1")
+    p.add_argument("--base-url", default="http://localhost:8001/v1",
+                   help="endpoint URL; comma-separate several for round-robin (4-server nodes)")
     p.add_argument("--model", default=None, help="served model name (defaults to spec model_id)")
     p.add_argument("--api-key-env", default="BLABLADOR_API_KEY")
+    p.add_argument("--set", action="append", metavar="KEY=VALUE",
+                   help="override a spec field (repeatable), e.g. --set benchmark=gsm8k")
     p.set_defaults(fn=_cmd_run)
 
     p = sub.add_parser("aggregate", help="rollouts.jsonl -> results/<exp_id>/")
@@ -112,7 +152,11 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("budget", help="node-hour estimate (refuses without pilot constant)")
     p.add_argument("--exp", required=True)
     p.add_argument("--n-tasks", type=int, default=100)
+    p.add_argument("--set", action="append", metavar="KEY=VALUE")
     p.set_defaults(fn=_cmd_budget)
+
+    p = sub.add_parser("fits-check", help="params x dtype vs GH200 memory -> serving_mode")
+    p.set_defaults(fn=_cmd_fits_check)
 
     p = sub.add_parser("verify", help="schema-exactness + key-uniqueness of a panel")
     p.add_argument("--panel", required=True)
