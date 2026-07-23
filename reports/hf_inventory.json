@@ -1,0 +1,1654 @@
+[
+  {
+    "benchmark": "assistantbench",
+    "presumed": "assistantbench",
+    "n_files": 34,
+    "total_gb": 13.96,
+    "min_mb": 9.6,
+    "median_mb": 126.0,
+    "max_mb": 1596.9,
+    "files": [
+      {
+        "path": "assistantbench_assistantbench_browser_agent_claude37sonnet20250219_1746383806_UPLOAD.zip",
+        "size": 866840390
+      },
+      {
+        "path": "assistantbench_assistantbench_browser_agent_claude37sonnet20250219_high_1748638033_UPLOAD.zip",
+        "size": 812364610
+      },
+      {
+        "path": "assistantbench_assistantbench_browser_agent_claude37sonnet20250219_low_1748711087_UPLOAD.zip",
+        "size": 854919288
+      },
+      {
+        "path": "assistantbench_assistantbench_browser_agent_claudeopus4120250514_1754678912_UPLOAD.zip",
+        "size": 1596852215
+      },
+      {
+        "path": "assistantbench_assistantbench_browser_agent_claudeopus41_high_1755199872_UPLOAD.zip",
+        "size": 1535076201
+      },
+      {
+        "path": "assistantbench_assistantbench_browser_agent_claudesonnet4520250929_1759266550_UPLOAD.zip",
+        "size": 353759424
+      },
+      {
+        "path": "assistantbench_assistantbench_browser_agent_claudesonnet45_high_1759427714_UPLOAD.zip",
+        "size": 169237683
+      },
+      {
+        "path": "assistantbench_assistantbench_browser_agent_deepseekaideepseekr1_1748894163_UPLOAD.zip",
+        "size": 18567292
+      },
+      {
+        "path": "assistantbench_assistantbench_browser_agent_deepseekaideepseekv3_1746233269_UPLOAD.zip",
+        "size": 61296102
+      },
+      {
+        "path": "assistantbench_assistantbench_browser_agent_deepseekr1_1755121049_UPLOAD.zip",
+        "size": 82760279
+      },
+      {
+        "path": "assistantbench_assistantbench_browser_agent_gemini20flash_1746393958_UPLOAD.zip",
+        "size": 420592377
+      },
+      {
+        "path": "assistantbench_assistantbench_browser_agent_gemini20flash_1755192000_UPLOAD.zip",
+        "size": 666746413
+      },
+      {
+        "path": "assistantbench_assistantbench_browser_agent_gpt4120250414_1746225570_UPLOAD.zip",
+        "size": 465360169
+      },
+      {
+        "path": "assistantbench_assistantbench_browser_agent_gpt5_1754598271_UPLOAD.zip",
+        "size": 1061541085
+      },
+      {
+        "path": "assistantbench_assistantbench_browser_agent_gpt5_1754633901_UPLOAD.zip",
+        "size": 1110392572
+      },
+      {
+        "path": "assistantbench_assistantbench_browser_agent_o320250416_1746376643_UPLOAD.zip",
+        "size": 796138033
+      },
+      {
+        "path": "assistantbench_assistantbench_browser_agent_o320250416_1750104946_UPLOAD.zip",
+        "size": 619408354
+      },
+      {
+        "path": "assistantbench_assistantbench_browser_agent_o4mini20250416_1746227177_UPLOAD.zip",
+        "size": 725633790
+      },
+      {
+        "path": "assistantbench_assistantbench_browser_agent_o4mini20250416_high_1746297478_UPLOAD.zip",
+        "size": 762373947
+      },
+      {
+        "path": "assistantbench_assistantbench_browser_agent_o4mini20250416_low_1746374633_UPLOAD.zip",
+        "size": 626981402
+      },
+      {
+        "path": "assistantbench_hal_generalist_agent_claude37sonnet20250219_1746223066_UPLOAD.zip",
+        "size": 14136789
+      },
+      {
+        "path": "assistantbench_hal_generalist_agent_claude37sonnet20250219_high_1748661923_UPLOAD.zip",
+        "size": 15199760
+      },
+      {
+        "path": "assistantbench_hal_generalist_agent_claude37sonnet20250219_low_1748660152_UPLOAD.zip",
+        "size": 14244347
+      },
+      {
+        "path": "assistantbench_hal_generalist_agent_claudeopus4120250514_1754545969_UPLOAD.zip",
+        "size": 31213735
+      },
+      {
+        "path": "assistantbench_hal_generalist_agent_claudeopus4120250514_high_1754543029_UPLOAD.zip",
+        "size": 31228900
+      },
+      {
+        "path": "assistantbench_hal_generalist_agent_claudeopus41_high_1754936482_UPLOAD.zip",
+        "size": 39412748
+      },
+      {
+        "path": "assistantbench_hal_generalist_agent_deepseekaideepseekr1_1748900721_UPLOAD.zip",
+        "size": 39751142
+      },
+      {
+        "path": "assistantbench_hal_generalist_agent_deepseekaideepseekv3_1746221486_UPLOAD.zip",
+        "size": 17267554
+      },
+      {
+        "path": "assistantbench_hal_generalist_agent_gemini20flash_1746220438_UPLOAD.zip",
+        "size": 60390574
+      },
+      {
+        "path": "assistantbench_hal_generalist_agent_gpt4120250414_1746216493_UPLOAD.zip",
+        "size": 28341565
+      },
+      {
+        "path": "assistantbench_hal_generalist_agent_o320250416_1746219524_UPLOAD.zip",
+        "size": 12978156
+      },
+      {
+        "path": "assistantbench_hal_generalist_agent_o4mini20250416_1746216959_UPLOAD.zip",
+        "size": 20413942
+      },
+      {
+        "path": "assistantbench_hal_generalist_agent_o4mini20250416_high_1746217844_UPLOAD.zip",
+        "size": 17611647
+      },
+      {
+        "path": "assistantbench_hal_generalist_agent_o4mini20250416_low_1746217634_UPLOAD.zip",
+        "size": 9637532
+      }
+    ]
+  },
+  {
+    "benchmark": "browser-use",
+    "presumed": "online_mind2web",
+    "n_files": 19,
+    "total_gb": 2.45,
+    "min_mb": 57.8,
+    "median_mb": 136.4,
+    "max_mb": 165.9,
+    "files": [
+      {
+        "path": "browser-use_DeepSeek-R1_UPLOAD.zip",
+        "size": 57829135
+      },
+      {
+        "path": "browser-use_DeepSeek-V3_UPLOAD.zip",
+        "size": 101480268
+      },
+      {
+        "path": "browser-use_claude-3-7-sonnet-20250219_UPLOAD.zip",
+        "size": 126499834
+      },
+      {
+        "path": "browser-use_claude-3-7-sonnet-20250219_thinking_high_4096_UPLOAD.zip",
+        "size": 136445185
+      },
+      {
+        "path": "browser-use_claude-haiku-4-5-20251001_UPLOAD.zip",
+        "size": 158992467
+      },
+      {
+        "path": "browser-use_claude-haiku-4-5-20251001_thinking_high_4096_UPLOAD.zip",
+        "size": 165931852
+      },
+      {
+        "path": "browser-use_claude-sonnet-4-20250514_UPLOAD.zip",
+        "size": 128305477
+      },
+      {
+        "path": "browser-use_claude-sonnet-4-20250514_thinking_high_4096_UPLOAD.zip",
+        "size": 137523877
+      },
+      {
+        "path": "browser-use_claude-sonnet-4-5-20250929_UPLOAD.zip",
+        "size": 150949302
+      },
+      {
+        "path": "browser-use_claude-sonnet-4-5-20250929_thinking_high_4096_UPLOAD.zip",
+        "size": 154656215
+      },
+      {
+        "path": "browser-use_gemini-2.0-flash_UPLOAD.zip",
+        "size": 91389122
+      },
+      {
+        "path": "browser-use_gemini-2.5-pro-preview-03-25_UPLOAD.zip",
+        "size": 110332472
+      },
+      {
+        "path": "browser-use_gpt-4.1-2025-04-14_UPLOAD.zip",
+        "size": 82373208
+      },
+      {
+        "path": "browser-use_gpt-5_reasoning_effort_high_UPLOAD.zip",
+        "size": 129449014
+      },
+      {
+        "path": "browser-use_gpt-5_reasoning_effort_medium_UPLOAD.zip",
+        "size": 137167394
+      },
+      {
+        "path": "browser-use_gpt-5_reasoning_effort_minimal_UPLOAD.zip",
+        "size": 133806483
+      },
+      {
+        "path": "browser-use_o3-2025-04-16_UPLOAD.zip",
+        "size": 149611067
+      },
+      {
+        "path": "browser-use_o4-mini_reasoning_effort_high_UPLOAD.zip",
+        "size": 150217531
+      },
+      {
+        "path": "browser-use_o4-mini_reasoning_effort_low_UPLOAD.zip",
+        "size": 149883933
+      }
+    ]
+  },
+  {
+    "benchmark": "colbench_backend_programming",
+    "presumed": "colbench_backend_programming",
+    "n_files": 22,
+    "total_gb": 3.3,
+    "min_mb": 5.8,
+    "median_mb": 65.9,
+    "max_mb": 656.5,
+    "files": [
+      {
+        "path": "colbench_backend_programming_colbench_backend_programming_colbench_example_agentclaude37sonnet_1758578559_UPLOAD.zip",
+        "size": 67182826
+      },
+      {
+        "path": "colbench_backend_programming_colbench_backend_programming_colbench_example_agentclaude37sonnetthinking_1758575463_UPLOAD.zip",
+        "size": 68439815
+      },
+      {
+        "path": "colbench_backend_programming_colbench_backend_programming_colbench_example_agentclaude37sonnetthinkinghigh_1758549642_UPLOAD.zip",
+        "size": 64224485
+      },
+      {
+        "path": "colbench_backend_programming_colbench_backend_programming_colbench_example_agentdeepseekchatv30324_1758584800_UPLOAD.zip",
+        "size": 26733949
+      },
+      {
+        "path": "colbench_backend_programming_colbench_backend_programming_colbench_example_agentgemini20flash_1758546469_UPLOAD.zip",
+        "size": 62208115
+      },
+      {
+        "path": "colbench_backend_programming_colbench_backend_programming_colbench_example_agentgpt5openaimedium_1758581642_UPLOAD.zip",
+        "size": 40570879
+      },
+      {
+        "path": "colbench_backend_programming_colbench_backend_programming_colbench_example_agento320250416medium_1758572310_UPLOAD.zip",
+        "size": 71199631
+      },
+      {
+        "path": "colbench_backend_programming_colbench_backend_programming_colbench_example_agento4mini20250416high_1758569130_UPLOAD.zip",
+        "size": 64637842
+      },
+      {
+        "path": "colbench_backend_programming_colbench_backend_programming_colbench_example_agento4mini20250416low_1758506687_UPLOAD.zip",
+        "size": 76476602
+      },
+      {
+        "path": "colbench_backend_programming_colbench_deepseekr1_1747811937_UPLOAD.zip",
+        "size": 467366855
+      },
+      {
+        "path": "colbench_backend_programming_colbench_deepseekv3_1747810527_UPLOAD.zip",
+        "size": 269692816
+      },
+      {
+        "path": "colbench_backend_programming_colbench_example_agent_gpt41_1758503208_UPLOAD.zip",
+        "size": 77922734
+      },
+      {
+        "path": "colbench_backend_programming_colbench_gpt41_fixed_1747800941_UPLOAD.zip",
+        "size": 385674913
+      },
+      {
+        "path": "colbench_backend_programming_colbench_o3_1747857696_UPLOAD.zip",
+        "size": 656520725
+      },
+      {
+        "path": "colbench_backend_programming_colbench_o4minihigh_1747802893_UPLOAD.zip",
+        "size": 356784741
+      },
+      {
+        "path": "colbench_backend_programming_colbench_text_deepseekr1_1744956747_UPLOAD.zip",
+        "size": 11719797
+      },
+      {
+        "path": "colbench_backend_programming_colbench_text_deepseekv3_1745366556_UPLOAD.zip",
+        "size": 5838630
+      },
+      {
+        "path": "colbench_backend_programming_colbench_text_gemmini2flash_1744930162_UPLOAD.zip",
+        "size": 43379433
+      },
+      {
+        "path": "colbench_backend_programming_colbench_text_gpt41_1745174487_UPLOAD.zip",
+        "size": 56902632
+      },
+      {
+        "path": "colbench_backend_programming_colbench_text_o4mini_1744935258_UPLOAD.zip",
+        "size": 33912092
+      },
+      {
+        "path": "colbench_backend_programming_colbench_text_sonnet37_1744920819_UPLOAD.zip",
+        "size": 41929864
+      },
+      {
+        "path": "colbench_backend_programming_halgeneralist_backend_sonnet37_1747966087_UPLOAD.zip",
+        "size": 351147247
+      }
+    ]
+  },
+  {
+    "benchmark": "colbench_frontend_design",
+    "presumed": "colbench_frontend_design",
+    "n_files": 14,
+    "total_gb": 5.39,
+    "min_mb": 120.8,
+    "median_mb": 336.4,
+    "max_mb": 1146.6,
+    "files": [
+      {
+        "path": "colbench_frontend_design_colbench_frontend_deepseekr1_1747884950_UPLOAD.zip",
+        "size": 250919350
+      },
+      {
+        "path": "colbench_frontend_design_colbench_frontend_deepseekv3_1747884571_UPLOAD.zip",
+        "size": 208604057
+      },
+      {
+        "path": "colbench_frontend_design_colbench_frontend_gpt41_1747869173_UPLOAD.zip",
+        "size": 152288070
+      },
+      {
+        "path": "colbench_frontend_design_colbench_frontend_o3mini_1747869853_UPLOAD.zip",
+        "size": 315178861
+      },
+      {
+        "path": "colbench_frontend_design_colbench_frontend_o4low_1747873396_UPLOAD.zip",
+        "size": 204971484
+      },
+      {
+        "path": "colbench_frontend_design_colbench_frontend_o4minihigh_1747871283_UPLOAD.zip",
+        "size": 423839319
+      },
+      {
+        "path": "colbench_frontend_design_colbench_text_deepseekr1_1745119917_UPLOAD.zip",
+        "size": 146536059
+      },
+      {
+        "path": "colbench_frontend_design_colbench_text_deepseekv3_1745369335_UPLOAD.zip",
+        "size": 120773288
+      },
+      {
+        "path": "colbench_frontend_design_colbench_text_gemini_1745102439_UPLOAD.zip",
+        "size": 357665146
+      },
+      {
+        "path": "colbench_frontend_design_colbench_text_o4minihigh_1745045489_UPLOAD.zip",
+        "size": 533047656
+      },
+      {
+        "path": "colbench_frontend_design_colbench_text_o4minilow_1745039195_UPLOAD.zip",
+        "size": 430436673
+      },
+      {
+        "path": "colbench_frontend_design_colbench_text_o4minimedium_1745041807_UPLOAD.zip",
+        "size": 641727026
+      },
+      {
+        "path": "colbench_frontend_design_colbench_text_sonnet_1745495233_UPLOAD.zip",
+        "size": 1146591572
+      },
+      {
+        "path": "colbench_frontend_design_halgeneralist_frontend_sonnet37_1747887984_UPLOAD.zip",
+        "size": 459422608
+      }
+    ]
+  },
+  {
+    "benchmark": "corebench_hard",
+    "presumed": "corebench_hard",
+    "n_files": 66,
+    "total_gb": 9.4,
+    "min_mb": 0.0,
+    "median_mb": 110.6,
+    "max_mb": 772.5,
+    "files": [
+      {
+        "path": "corebench_hard_claude_code_claudeopus41_1764560915_UPLOAD.zip",
+        "size": 2672
+      },
+      {
+        "path": "corebench_hard_claude_code_claudeopus45_1764537671_UPLOAD.zip",
+        "size": 2767
+      },
+      {
+        "path": "corebench_hard_claude_code_claudesonnet420250514_1764558813_UPLOAD.zip",
+        "size": 2851
+      },
+      {
+        "path": "corebench_hard_claude_code_claudesonnet4520250929_1764605733_UPLOAD.zip",
+        "size": 2911
+      },
+      {
+        "path": "corebench_hard_core_agent_1763842609_UPLOAD.zip",
+        "size": 192434141
+      },
+      {
+        "path": "corebench_hard_core_agent_opus_45_1764027531_UPLOAD.zip",
+        "size": 154225860
+      },
+      {
+        "path": "corebench_hard_core_agent_opus_45_high_1764027725_UPLOAD.zip",
+        "size": 142122778
+      },
+      {
+        "path": "corebench_hard_coreagent_1744752123_UPLOAD.zip",
+        "size": 302492468
+      },
+      {
+        "path": "corebench_hard_coreagent_1744839552_UPLOAD.zip",
+        "size": 103857453
+      },
+      {
+        "path": "corebench_hard_coreagent_1744854746_UPLOAD.zip",
+        "size": 112417497
+      },
+      {
+        "path": "corebench_hard_coreagent_1744856042_UPLOAD.zip",
+        "size": 607715905
+      },
+      {
+        "path": "corebench_hard_coreagent_1744922181_UPLOAD.zip",
+        "size": 109203661
+      },
+      {
+        "path": "corebench_hard_coreagent_1744922265_UPLOAD.zip",
+        "size": 565814803
+      },
+      {
+        "path": "corebench_hard_coreagent_1744922343_UPLOAD.zip",
+        "size": 104564031
+      },
+      {
+        "path": "corebench_hard_coreagent_1744922373_UPLOAD.zip",
+        "size": 224705938
+      },
+      {
+        "path": "corebench_hard_coreagent_1745046580_UPLOAD.zip",
+        "size": 148836959
+      },
+      {
+        "path": "corebench_hard_coreagent_1745075792_UPLOAD.zip",
+        "size": 186776637
+      },
+      {
+        "path": "corebench_hard_coreagent_1745118876_UPLOAD.zip",
+        "size": 314091857
+      },
+      {
+        "path": "corebench_hard_coreagent_1745118908_UPLOAD.zip",
+        "size": 110675868
+      },
+      {
+        "path": "corebench_hard_coreagent_1745258007_UPLOAD.zip",
+        "size": 116205170
+      },
+      {
+        "path": "corebench_hard_coreagent_1754492673_UPLOAD.zip",
+        "size": 151851508
+      },
+      {
+        "path": "corebench_hard_coreagent_1754492675_UPLOAD.zip",
+        "size": 123983157
+      },
+      {
+        "path": "corebench_hard_coreagent_1754539776_UPLOAD.zip",
+        "size": 148111434
+      },
+      {
+        "path": "corebench_hard_coreagent_1754539779_UPLOAD.zip",
+        "size": 159700523
+      },
+      {
+        "path": "corebench_hard_coreagent_1754599494_UPLOAD.zip",
+        "size": 112092836
+      },
+      {
+        "path": "corebench_hard_coreagentclaudehaiku45_1760647306_UPLOAD.zip",
+        "size": 210160867
+      },
+      {
+        "path": "corebench_hard_coreagentclaudeopus45_1765822018_UPLOAD.zip",
+        "size": 243178586
+      },
+      {
+        "path": "corebench_hard_coreagentclaudesonnet45_1759329435_UPLOAD.zip",
+        "size": 147344379
+      },
+      {
+        "path": "corebench_hard_coreagentclaudesonnet45high_1759330487_UPLOAD.zip",
+        "size": 139155438
+      },
+      {
+        "path": "corebench_hard_coreagentclaudesonnet4_1755796611_UPLOAD.zip",
+        "size": 84733663
+      },
+      {
+        "path": "corebench_hard_coreagentclaudesonnet4high_1755814601_UPLOAD.zip",
+        "size": 157264444
+      },
+      {
+        "path": "corebench_hard_coreagentdeepseekr1_1757604883_UPLOAD.zip",
+        "size": 60308689
+      },
+      {
+        "path": "corebench_hard_coreagentdeepseekv31_1755793007_UPLOAD.zip",
+        "size": 110596172
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agent_1747200929_UPLOAD.zip",
+        "size": 141691692
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agent_1747200950_UPLOAD.zip",
+        "size": 81682473
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agent_1747200995_UPLOAD.zip",
+        "size": 945255
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agent_1747201030_UPLOAD.zip",
+        "size": 772451207
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agent_1747247482_UPLOAD.zip",
+        "size": 94112873
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agent_1747247500_UPLOAD.zip",
+        "size": 104311734
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agent_1747247518_UPLOAD.zip",
+        "size": 86351563
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agent_1747285818_UPLOAD.zip",
+        "size": 139509827
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agent_1747360523_UPLOAD.zip",
+        "size": 56947001
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agent_1748734902_UPLOAD.zip",
+        "size": 51429463
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agent_1748793241_UPLOAD.zip",
+        "size": 89940468
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agent_1748971685_UPLOAD.zip",
+        "size": 71191164
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agent_1749067899_UPLOAD.zip",
+        "size": 73269477
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agent_1754439280_UPLOAD.zip",
+        "size": 95245511
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agent_1754443772_UPLOAD.zip",
+        "size": 107592725
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agent_1754569684_UPLOAD.zip",
+        "size": 69219202
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agent_1754569694_UPLOAD.zip",
+        "size": 100044706
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agent_1763837773_UPLOAD.zip",
+        "size": 210953166
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agent_opus_45_1764046559_UPLOAD.zip",
+        "size": 108530333
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agent_opus_45_high_1764046628_UPLOAD.zip",
+        "size": 99731678
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agentdeepseekr10528_1755721934_UPLOAD.zip",
+        "size": 51918902
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agentdeepseekr1_1757615687_UPLOAD.zip",
+        "size": 23213674
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agentdeepseekv30324_1755710007_UPLOAD.zip",
+        "size": 21851770
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agentgemini20flash_1755839828_UPLOAD.zip",
+        "size": 349173316
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agentgpt41_1755644685_UPLOAD.zip",
+        "size": 151415644
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agentgpt5medium_1756137340_UPLOAD.zip",
+        "size": 53543514
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agento3medium_1755626315_UPLOAD.zip",
+        "size": 214320314
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agento4minihigh_1755580383_UPLOAD.zip",
+        "size": 115392260
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agento4minilow_1755608756_UPLOAD.zip",
+        "size": 102480263
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agentsonnet_37_1755652380_UPLOAD.zip",
+        "size": 81983296
+      },
+      {
+        "path": "corebench_hard_hal_generalist_agentsonnet_37_high_1755663010_UPLOAD.zip",
+        "size": 87794344
+      },
+      {
+        "path": "corebench_hard_halgeneralistagentclaudesonnet45_1759433359_UPLOAD.zip",
+        "size": 122975249
+      },
+      {
+        "path": "corebench_hard_halgeneralistagentclaudesonnet45high_1759423572_UPLOAD.zip",
+        "size": 123275769
+      }
+    ]
+  },
+  {
+    "benchmark": "gaia",
+    "presumed": "gaia",
+    "n_files": 37,
+    "total_gb": 16.11,
+    "min_mb": 0.1,
+    "median_mb": 290.1,
+    "max_mb": 2357.7,
+    "files": [
+      {
+        "path": "gaia_hal_generalist_agent_claude37sonnet20250219_1744772193_UPLOAD.zip",
+        "size": 257590149
+      },
+      {
+        "path": "gaia_hal_generalist_agent_claude37sonnet20250219_high_1744730242_UPLOAD.zip",
+        "size": 255169529
+      },
+      {
+        "path": "gaia_hal_generalist_agent_claudehaiku45_1760657477_UPLOAD.zip",
+        "size": 582900058
+      },
+      {
+        "path": "gaia_hal_generalist_agent_claudeopus41_1758719749_UPLOAD.zip",
+        "size": 169216714
+      },
+      {
+        "path": "gaia_hal_generalist_agent_claudeopus41_1758798743_UPLOAD.zip",
+        "size": 191200115
+      },
+      {
+        "path": "gaia_hal_generalist_agent_claudeopus420250514_1754344946_UPLOAD.zip",
+        "size": 85331687
+      },
+      {
+        "path": "gaia_hal_generalist_agent_claudeopus420250514_1754374886_UPLOAD.zip",
+        "size": 266075221
+      },
+      {
+        "path": "gaia_hal_generalist_agent_claudesonnet45_1759265643_UPLOAD.zip",
+        "size": 585777825
+      },
+      {
+        "path": "gaia_hal_generalist_agent_claudesonnet45_1759276006_UPLOAD.zip",
+        "size": 597826516
+      },
+      {
+        "path": "gaia_hal_generalist_agent_claudesonnet45_1760447287_UPLOAD.zip",
+        "size": 548416835
+      },
+      {
+        "path": "gaia_hal_generalist_agent_deepseekaideepseekr1_1744683894_UPLOAD.zip",
+        "size": 127458318
+      },
+      {
+        "path": "gaia_hal_generalist_agent_deepseekaideepseekv3_1744673872_UPLOAD.zip",
+        "size": 137771691
+      },
+      {
+        "path": "gaia_hal_generalist_agent_deepseekchatv30324_1760455632_UPLOAD.zip",
+        "size": 67971524
+      },
+      {
+        "path": "gaia_hal_generalist_agent_gemini20flash_1744828175_UPLOAD.zip",
+        "size": 365184478
+      },
+      {
+        "path": "gaia_hal_generalist_agent_gpt4120250414_1744652581_UPLOAD.zip",
+        "size": 216791706
+      },
+      {
+        "path": "gaia_hal_generalist_agent_gpt520250807_1758875386_UPLOAD.zip",
+        "size": 228962712
+      },
+      {
+        "path": "gaia_hal_generalist_agent_o320250416_1753903002slim_UPLOAD.zip",
+        "size": 74181
+      },
+      {
+        "path": "gaia_hal_generalist_agent_o3mini20250131_1744609696_UPLOAD.zip",
+        "size": 58840891
+      },
+      {
+        "path": "gaia_hal_generalist_agent_o3mini20250131_high_1744670471_UPLOAD.zip",
+        "size": 48807702
+      },
+      {
+        "path": "gaia_hal_generalist_agent_o4mini20250416_high_1745167285_UPLOAD.zip",
+        "size": 224094966
+      },
+      {
+        "path": "gaia_hal_generalist_agent_o4mini20250416_low_1745167262_UPLOAD.zip",
+        "size": 279883183
+      },
+      {
+        "path": "gaia_hf_open_deep_research_claude37sonnet20250219_1745000974_UPLOAD.zip",
+        "size": 598844870
+      },
+      {
+        "path": "gaia_hf_open_deep_research_claude37sonnet20250219_high_1745539901_UPLOAD.zip",
+        "size": 535261989
+      },
+      {
+        "path": "gaia_hf_open_deep_research_claudeopus41_1755030930_UPLOAD.zip",
+        "size": 360002437
+      },
+      {
+        "path": "gaia_hf_open_deep_research_claudeopus41_high_1755092997_UPLOAD.zip",
+        "size": 410996720
+      },
+      {
+        "path": "gaia_hf_open_deep_research_claudeopus4_1754425534_UPLOAD.zip",
+        "size": 465460146
+      },
+      {
+        "path": "gaia_hf_open_deep_research_claudesonnet45_1759261812_UPLOAD.zip",
+        "size": 2357675129
+      },
+      {
+        "path": "gaia_hf_open_deep_research_claudesonnet45_1759311826_UPLOAD.zip",
+        "size": 2017237370
+      },
+      {
+        "path": "gaia_hf_open_deep_research_deepseekaideepseekr1_1744851690_UPLOAD.zip",
+        "size": 261786511
+      },
+      {
+        "path": "gaia_hf_open_deep_research_deepseekaideepseekv3_1744851680_UPLOAD.zip",
+        "size": 337264192
+      },
+      {
+        "path": "gaia_hf_open_deep_research_gemini20flash_1744843220_UPLOAD.zip",
+        "size": 843077816
+      },
+      {
+        "path": "gaia_hf_open_deep_research_gpt4120250414_1744843595_UPLOAD.zip",
+        "size": 290057118
+      },
+      {
+        "path": "gaia_hf_open_deep_research_gpt520250807_1754605128_UPLOAD.zip",
+        "size": 917921228
+      },
+      {
+        "path": "gaia_hf_open_deep_research_o320250416_1745876880_UPLOAD.zip",
+        "size": 324182150
+      },
+      {
+        "path": "gaia_hf_open_deep_research_o3mini20250131_high_1744843485_UPLOAD.zip",
+        "size": 106877482
+      },
+      {
+        "path": "gaia_hf_open_deep_research_o4mini20250416_high_1744923206_UPLOAD.zip",
+        "size": 575451872
+      },
+      {
+        "path": "gaia_hf_open_deep_research_o4mini20250416_low_1744921254_UPLOAD.zip",
+        "size": 409451295
+      }
+    ]
+  },
+  {
+    "benchmark": "scicode",
+    "presumed": "scicode",
+    "n_files": 38,
+    "total_gb": 10.94,
+    "min_mb": 3.9,
+    "median_mb": 160.5,
+    "max_mb": 2727.2,
+    "files": [
+      {
+        "path": "scicode_hal_generalist_agent_claude37sonnet20250219_1745706693_UPLOAD.zip",
+        "size": 76167953
+      },
+      {
+        "path": "scicode_hal_generalist_agent_claude37sonnet20250219_high_1748947217_UPLOAD.zip",
+        "size": 230125528
+      },
+      {
+        "path": "scicode_hal_generalist_agent_deepseekaideepseekr1_1753777608_UPLOAD.zip",
+        "size": 1003174507
+      },
+      {
+        "path": "scicode_hal_generalist_agent_deepseekaideepseekv3_1745642054_UPLOAD.zip",
+        "size": 889448524
+      },
+      {
+        "path": "scicode_hal_generalist_agent_gemini20flash_1745628676_UPLOAD.zip",
+        "size": 2727222171
+      },
+      {
+        "path": "scicode_hal_generalist_agent_gpt4120250414_1745597325_UPLOAD.zip",
+        "size": 170523682
+      },
+      {
+        "path": "scicode_hal_generalist_agent_o320250416_1745625091_UPLOAD.zip",
+        "size": 128130183
+      },
+      {
+        "path": "scicode_hal_generalist_agent_o320250416_1750127070_UPLOAD.zip",
+        "size": 129342282
+      },
+      {
+        "path": "scicode_hal_generalist_agent_o4mini20250416_1745600817_UPLOAD.zip",
+        "size": 312529635
+      },
+      {
+        "path": "scicode_hal_generalist_agent_o4mini20250416_high_1745615438_UPLOAD.zip",
+        "size": 277984016
+      },
+      {
+        "path": "scicode_hal_generalist_agent_o4mini20250416_low_1745608137_UPLOAD.zip",
+        "size": 702083342
+      },
+      {
+        "path": "scicode_scicode-tool_calling_agent_claudeopus4120250514_1754678715_UPLOAD.zip",
+        "size": 124966284
+      },
+      {
+        "path": "scicode_scicode_tool_calling_agent_claude37sonnet20250219_1745294865_UPLOAD.zip",
+        "size": 239868221
+      },
+      {
+        "path": "scicode_scicode_tool_calling_agent_claude37sonnet20250219_high_1753770104_UPLOAD.zip",
+        "size": 263430235
+      },
+      {
+        "path": "scicode_scicode_tool_calling_agent_claudehaiku45_1760968740_UPLOAD.zip",
+        "size": 767192276
+      },
+      {
+        "path": "scicode_scicode_tool_calling_agent_claudeopus41_1755801688_UPLOAD.zip",
+        "size": 180959262
+      },
+      {
+        "path": "scicode_scicode_tool_calling_agent_claudeopus41_high_1755107101_UPLOAD.zip",
+        "size": 157070364
+      },
+      {
+        "path": "scicode_scicode_tool_calling_agent_claudesonnet4520250929_1759418654_UPLOAD.zip",
+        "size": 140826090
+      },
+      {
+        "path": "scicode_scicode_tool_calling_agent_claudesonnet45_high_1759429729_UPLOAD.zip",
+        "size": 148749943
+      },
+      {
+        "path": "scicode_scicode_tool_calling_agent_deepseekaiDeepSeekV3_1745349011_UPLOAD.zip",
+        "size": 227761669
+      },
+      {
+        "path": "scicode_scicode_tool_calling_agent_deepseekaideepseekr1_1753819405_UPLOAD.zip",
+        "size": 644071798
+      },
+      {
+        "path": "scicode_scicode_tool_calling_agent_gemini20flash_1745324545_UPLOAD.zip",
+        "size": 201273617
+      },
+      {
+        "path": "scicode_scicode_tool_calling_agent_gpt4120250414_1745260672_UPLOAD.zip",
+        "size": 154295728
+      },
+      {
+        "path": "scicode_scicode_tool_calling_agent_gpt5_1754600998_UPLOAD.zip",
+        "size": 276357663
+      },
+      {
+        "path": "scicode_scicode_tool_calling_agent_o320250416_1745276105_UPLOAD.zip",
+        "size": 219811077
+      },
+      {
+        "path": "scicode_scicode_tool_calling_agent_o4mini20250416_1745267192_UPLOAD.zip",
+        "size": 164026019
+      },
+      {
+        "path": "scicode_scicode_tool_calling_agent_o4mini20250416_high_1745414081_UPLOAD.zip",
+        "size": 153191251
+      },
+      {
+        "path": "scicode_scicode_tool_calling_agent_o4mini20250416_low_1745286980_UPLOAD.zip",
+        "size": 178175566
+      },
+      {
+        "path": "scicode_scicode_zero_shot_agent_claude37sonnet20250219_1745345545_UPLOAD.zip",
+        "size": 4626032
+      },
+      {
+        "path": "scicode_scicode_zero_shot_agent_claude37sonnet20250219_high_1748945506_UPLOAD.zip",
+        "size": 4630247
+      },
+      {
+        "path": "scicode_scicode_zero_shot_agent_deepseekaideepseekr1_1753815994_UPLOAD.zip",
+        "size": 14904147
+      },
+      {
+        "path": "scicode_scicode_zero_shot_agent_deepseekaideepseekv3_1745456160_UPLOAD.zip",
+        "size": 3882715
+      },
+      {
+        "path": "scicode_scicode_zero_shot_agent_gemini20flash_1745437512_UPLOAD.zip",
+        "size": 4062175
+      },
+      {
+        "path": "scicode_scicode_zero_shot_agent_gpt4120250414_1745265933_UPLOAD.zip",
+        "size": 4787346
+      },
+      {
+        "path": "scicode_scicode_zero_shot_agent_o320250416_1745284451_UPLOAD.zip",
+        "size": 5014815
+      },
+      {
+        "path": "scicode_scicode_zero_shot_agent_o4mini20250416_1745274271_UPLOAD.zip",
+        "size": 4093059
+      },
+      {
+        "path": "scicode_scicode_zero_shot_agent_o4mini20250416_high_1745429794_UPLOAD.zip",
+        "size": 4005414
+      },
+      {
+        "path": "scicode_scicode_zero_shot_agent_o4mini20250416_low_1745290900_UPLOAD.zip",
+        "size": 4214322
+      }
+    ]
+  },
+  {
+    "benchmark": "scienceagentbench",
+    "presumed": "scienceagentbench",
+    "n_files": 25,
+    "total_gb": 1.22,
+    "min_mb": 6.0,
+    "median_mb": 11.6,
+    "max_mb": 263.1,
+    "files": [
+      {
+        "path": "scienceagentbench_hal_generalist_agent_claude37sonnet20250219_1746110849_UPLOAD.zip",
+        "size": 48315655
+      },
+      {
+        "path": "scienceagentbench_hal_generalist_agent_claude37sonnet20250219_high_1746405109_UPLOAD.zip",
+        "size": 52996704
+      },
+      {
+        "path": "scienceagentbench_hal_generalist_agent_deepseekaideepseekv3_1746052235_UPLOAD.zip",
+        "size": 222067401
+      },
+      {
+        "path": "scienceagentbench_hal_generalist_agent_gpt4120250414_1745541259_UPLOAD.zip",
+        "size": 145953929
+      },
+      {
+        "path": "scienceagentbench_hal_generalist_agent_o320250416_1746110877_UPLOAD.zip",
+        "size": 50905311
+      },
+      {
+        "path": "scienceagentbench_hal_generalist_agent_o4mini20250416_high_1746044352_UPLOAD.zip",
+        "size": 258297246
+      },
+      {
+        "path": "scienceagentbench_hal_generalist_agent_o4mini20250416_low_1746044336_UPLOAD.zip",
+        "size": 263109681
+      },
+      {
+        "path": "scienceagentbench_sab_selfdebug_claude37_1744812715_UPLOAD.zip",
+        "size": 6815214
+      },
+      {
+        "path": "scienceagentbench_sab_selfdebug_claude37_high_1744847608_UPLOAD.zip",
+        "size": 9751241
+      },
+      {
+        "path": "scienceagentbench_sab_selfdebug_claude37_low_1744830220_UPLOAD.zip",
+        "size": 6530530
+      },
+      {
+        "path": "scienceagentbench_sab_selfdebug_claudehaiku45_1761449412_UPLOAD.zip",
+        "size": 7591828
+      },
+      {
+        "path": "scienceagentbench_sab_selfdebug_claudehaiku45_high_1761435103_UPLOAD.zip",
+        "size": 11585194
+      },
+      {
+        "path": "scienceagentbench_sab_selfdebug_claudeopus41_1755385889_UPLOAD.zip",
+        "size": 6009131
+      },
+      {
+        "path": "scienceagentbench_sab_selfdebug_claudeopus41high_1755438590_UPLOAD.zip",
+        "size": 6551157
+      },
+      {
+        "path": "scienceagentbench_sab_selfdebug_claudesonnet45_1761249283_UPLOAD.zip",
+        "size": 7039920
+      },
+      {
+        "path": "scienceagentbench_sab_selfdebug_claudesonnet45_high_1761419019_UPLOAD.zip",
+        "size": 7359044
+      },
+      {
+        "path": "scienceagentbench_sab_selfdebug_dsr1_1744769491_UPLOAD.zip",
+        "size": 20804783
+      },
+      {
+        "path": "scienceagentbench_sab_selfdebug_dsv3_1744757465_UPLOAD.zip",
+        "size": 11883701
+      },
+      {
+        "path": "scienceagentbench_sab_selfdebug_gemini20flash_1744901453_UPLOAD.zip",
+        "size": 7331055
+      },
+      {
+        "path": "scienceagentbench_sab_selfdebug_gemini25pro_1744919608_UPLOAD.zip",
+        "size": 10973022
+      },
+      {
+        "path": "scienceagentbench_sab_selfdebug_gpt5medium_1755353093_UPLOAD.zip",
+        "size": 11983906
+      },
+      {
+        "path": "scienceagentbench_sab_selfdebug_gpt_41_1744993235_UPLOAD.zip",
+        "size": 13229270
+      },
+      {
+        "path": "scienceagentbench_sab_selfdebug_o3_medium_1745186112_UPLOAD.zip",
+        "size": 12435510
+      },
+      {
+        "path": "scienceagentbench_sab_selfdebug_o4mini_high_1745253602_UPLOAD.zip",
+        "size": 9522047
+      },
+      {
+        "path": "scienceagentbench_sab_selfdebug_o4mini_low_1745199029_UPLOAD.zip",
+        "size": 10997998
+      }
+    ]
+  },
+  {
+    "benchmark": "seeact",
+    "presumed": "online_mind2web",
+    "n_files": 18,
+    "total_gb": 13.82,
+    "min_mb": 36.1,
+    "median_mb": 61.8,
+    "max_mb": 12771.6,
+    "files": [
+      {
+        "path": "seeact_claude-3-7-sonnet-20250219_UPLOAD.zip",
+        "size": 75319500
+      },
+      {
+        "path": "seeact_claude-3-7-sonnet-20250219_thinking_high_4096_UPLOAD.zip",
+        "size": 60987064
+      },
+      {
+        "path": "seeact_claude-haiku-4-5-20251001_UPLOAD.zip",
+        "size": 66215241
+      },
+      {
+        "path": "seeact_claude-haiku-4-5-20251001_thinking_high_4096_UPLOAD.zip",
+        "size": 54670984
+      },
+      {
+        "path": "seeact_claude-sonnet-4-20250514_UPLOAD.zip",
+        "size": 75853221
+      },
+      {
+        "path": "seeact_claude-sonnet-4-20250514_thinking_high_4096_UPLOAD.zip",
+        "size": 71048688
+      },
+      {
+        "path": "seeact_claude-sonnet-4-5-20250929_UPLOAD.zip",
+        "size": 68343770
+      },
+      {
+        "path": "seeact_claude-sonnet-4-5-20250929_thinking_high_4096_UPLOAD.zip",
+        "size": 62331426
+      },
+      {
+        "path": "seeact_gemini-2.0-flash_UPLOAD.zip",
+        "size": 36135802
+      },
+      {
+        "path": "seeact_gemini-2.5-pro-preview-03-25_UPLOAD.zip",
+        "size": 62316960
+      },
+      {
+        "path": "seeact_gpt-4.1-2025-04-14_UPLOAD.zip",
+        "size": 89687831
+      },
+      {
+        "path": "seeact_gpt-5_reasoning_effort_high_UPLOAD.zip",
+        "size": 47970963
+      },
+      {
+        "path": "seeact_gpt-5_reasoning_effort_high_UPLOAD_updated.zip",
+        "size": 12771633449
+      },
+      {
+        "path": "seeact_gpt-5_reasoning_effort_medium_UPLOAD.zip",
+        "size": 47103809
+      },
+      {
+        "path": "seeact_gpt-5_reasoning_effort_minimal_UPLOAD.zip",
+        "size": 60698633
+      },
+      {
+        "path": "seeact_o3-2025-04-16_UPLOAD.zip",
+        "size": 52150305
+      },
+      {
+        "path": "seeact_o4-mini_reasoning_effort_high_UPLOAD.zip",
+        "size": 57746695
+      },
+      {
+        "path": "seeact_o4-mini_reasoning_effort_low_UPLOAD.zip",
+        "size": 61224219
+      }
+    ]
+  },
+  {
+    "benchmark": "swebench_verified_mini",
+    "presumed": "swebench_verified_mini",
+    "n_files": 45,
+    "total_gb": 17.81,
+    "min_mb": 6.7,
+    "median_mb": 265.3,
+    "max_mb": 1626.6,
+    "files": [
+      {
+        "path": "swebench_verified_mini_1743738168_UPLOAD.zip",
+        "size": 827934065
+      },
+      {
+        "path": "swebench_verified_mini_1743879454_UPLOAD.zip",
+        "size": 491446533
+      },
+      {
+        "path": "swebench_verified_mini_1743903907_UPLOAD.zip",
+        "size": 126707384
+      },
+      {
+        "path": "swebench_verified_mini_1744145062_UPLOAD.zip",
+        "size": 680075737
+      },
+      {
+        "path": "swebench_verified_mini_1744313672_UPLOAD.zip",
+        "size": 294045404
+      },
+      {
+        "path": "swebench_verified_mini_1744335342_UPLOAD.zip",
+        "size": 285391915
+      },
+      {
+        "path": "swebench_verified_mini_1744384313_UPLOAD.zip",
+        "size": 348114521
+      },
+      {
+        "path": "swebench_verified_mini_1744397462_UPLOAD.zip",
+        "size": 274250803
+      },
+      {
+        "path": "swebench_verified_mini_1744505272_UPLOAD.zip",
+        "size": 257502580
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_agent_claude37sonnet20250219_1744644286_UPLOAD.zip",
+        "size": 176821372
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_agent_deepseekaideepseekr1_1744619918_UPLOAD.zip",
+        "size": 260621070
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_agent_deepseekaideepseekv3_1744610459_UPLOAD.zip",
+        "size": 133490556
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_agent_gemini20flash_1744635676_UPLOAD.zip",
+        "size": 349429720
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_agent_gpt4120250414_1744667697_UPLOAD.zip",
+        "size": 137812036
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_agent_gpt4o20241120_1744598787_UPLOAD.zip",
+        "size": 339241420
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_agent_o3mini20250131_high_1744606601_UPLOAD.zip",
+        "size": 11899229
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_agent_o3mini20250131_low_1744603516_UPLOAD.zip",
+        "size": 50505093
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_agent_o4mini20250416_high_1753778285_UPLOAD.zip",
+        "size": 83283064
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_agent_o4mini20250416_low_1753776027_UPLOAD.zip",
+        "size": 382210124
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_claude37sonnet20250219_1754345420_UPLOAD.zip",
+        "size": 108499646
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_claudehaiku4520251001_1762352878_UPLOAD.zip",
+        "size": 291832628
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_claudehaiku4520251001_1762392995_UPLOAD.zip",
+        "size": 399368125
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_claudehaiku45_1760973197_UPLOAD.zip",
+        "size": 970834732
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_claudeopus4120250805_1755656398_UPLOAD.zip",
+        "size": 118905378
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_claudeopus4120250805_1755678864_UPLOAD.zip",
+        "size": 141438644
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_claudeopus420250514_1754322422_UPLOAD.zip",
+        "size": 121709631
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_claudeopus420250514_1755353480_UPLOAD.zip",
+        "size": 111338972
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_claudesonnet4520250929_1762371616_UPLOAD.zip",
+        "size": 138330632
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_claudesonnet4520250929_1762442198_UPLOAD.zip",
+        "size": 188232345
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_gpt520250807_1755463923_UPLOAD.zip",
+        "size": 155940715
+      },
+      {
+        "path": "swebench_verified_mini_hal_generalist_o320250416_1755319917_UPLOAD.zip",
+        "size": 1626558542
+      },
+      {
+        "path": "swebench_verified_mini_my_agentclaudeopus420250514_1754199232_UPLOAD.zip",
+        "size": 202725431
+      },
+      {
+        "path": "swebench_verified_mini_my_agentgpt41_1744677207_UPLOAD.zip",
+        "size": 1060558168
+      },
+      {
+        "path": "swebench_verified_mini_my_agento320250416_1745453708_UPLOAD.zip",
+        "size": 231406341
+      },
+      {
+        "path": "swebench_verified_mini_my_agento4mini20250416_1745279519_UPLOAD.zip",
+        "size": 1148525762
+      },
+      {
+        "path": "swebench_verified_mini_my_agento4mini20250416_1745345781_UPLOAD.zip",
+        "size": 1131079328
+      },
+      {
+        "path": "swebench_verified_mini_my_agenttogether_aideepseekaideepseekr1_1745262492_UPLOAD.zip",
+        "size": 6724014
+      },
+      {
+        "path": "swebench_verified_mini_my_agenttogether_aideepseekaideepseekv3_1744923150_UPLOAD.zip",
+        "size": 48179940
+      },
+      {
+        "path": "swebench_verified_mini_sweagentclaudeopus4120250805_1754580585_UPLOAD.zip",
+        "size": 248970824
+      },
+      {
+        "path": "swebench_verified_mini_sweagentclaudeopus4120250805_1754598086_UPLOAD.zip",
+        "size": 271766567
+      },
+      {
+        "path": "swebench_verified_mini_sweagentclaudeopus4120250805_1759715672_UPLOAD.zip",
+        "size": 265288021
+      },
+      {
+        "path": "swebench_verified_mini_sweagentclaudesonnet4520250929_1761962167_UPLOAD.zip",
+        "size": 676837043
+      },
+      {
+        "path": "swebench_verified_mini_sweagentclaudesonnet4520250929_1762053095_UPLOAD.zip",
+        "size": 728969478
+      },
+      {
+        "path": "swebench_verified_mini_sweagentgpt520250807_1754592641_UPLOAD.zip",
+        "size": 607658133
+      },
+      {
+        "path": "swebench_verified_mini_sweagento320250416_1754691194_UPLOAD.zip",
+        "size": 1299882788
+      }
+    ]
+  },
+  {
+    "benchmark": "taubench_airline",
+    "presumed": "taubench_airline",
+    "n_files": 47,
+    "total_gb": 3.41,
+    "min_mb": 30.3,
+    "median_mb": 67.5,
+    "max_mb": 144.0,
+    "files": [
+      {
+        "path": "taubench_airline_1743961943_UPLOAD.zip",
+        "size": 101040124
+      },
+      {
+        "path": "taubench_airline_1743969279_UPLOAD.zip",
+        "size": 80244671
+      },
+      {
+        "path": "taubench_airline_1743970420_UPLOAD.zip",
+        "size": 90278112
+      },
+      {
+        "path": "taubench_airline_1743994890_UPLOAD.zip",
+        "size": 57056340
+      },
+      {
+        "path": "taubench_airline_1744000536_UPLOAD.zip",
+        "size": 61567254
+      },
+      {
+        "path": "taubench_airline_hal_generalist_agent_claude37sonnet20250219_1746038671_UPLOAD.zip",
+        "size": 68325254
+      },
+      {
+        "path": "taubench_airline_hal_generalist_agent_claude37sonnet20250219_high_1746060636_UPLOAD.zip",
+        "size": 53926757
+      },
+      {
+        "path": "taubench_airline_hal_generalist_agent_deepseekaideepseekr1_1744655092_UPLOAD.zip",
+        "size": 55123209
+      },
+      {
+        "path": "taubench_airline_hal_generalist_agent_deepseekaideepseekv3_1745263676_UPLOAD.zip",
+        "size": 50182470
+      },
+      {
+        "path": "taubench_airline_hal_generalist_agent_gemini20flash_1746038655_UPLOAD.zip",
+        "size": 61518803
+      },
+      {
+        "path": "taubench_airline_hal_generalist_agent_gpt4120250414_1745167124_UPLOAD.zip",
+        "size": 47854439
+      },
+      {
+        "path": "taubench_airline_hal_generalist_agent_o320250416_medium_1753774187_UPLOAD.zip",
+        "size": 110645189
+      },
+      {
+        "path": "taubench_airline_hal_generalist_agent_o4mini20250416_high_1745167079_UPLOAD.zip",
+        "size": 82751571
+      },
+      {
+        "path": "taubench_airline_hal_generalist_agent_o4mini20250416_low_1745166691_UPLOAD.zip",
+        "size": 80414058
+      },
+      {
+        "path": "taubench_airline_hal_generalist_claudeopus420250514_1754320139_UPLOAD.zip",
+        "size": 50612610
+      },
+      {
+        "path": "taubench_airline_hal_generalist_high_reasoning___gpt5_1754597451_UPLOAD.zip",
+        "size": 117172801
+      },
+      {
+        "path": "taubench_airline_hal_generalist_high_reasoning_claudeopus41_1754432004_UPLOAD.zip",
+        "size": 44659101
+      },
+      {
+        "path": "taubench_airline_hal_generalist_high_reasoning_claudeopus420250514_1754320160_UPLOAD.zip",
+        "size": 50169205
+      },
+      {
+        "path": "taubench_airline_hal_generalist_minimal_reasoning_gpt5_1754595798_UPLOAD.zip",
+        "size": 143960242
+      },
+      {
+        "path": "taubench_airline_hal_generalist_no_reasoning_claudeopus41_1754431985_UPLOAD.zip",
+        "size": 59601285
+      },
+      {
+        "path": "taubench_airline_taubench_few_shot_claudeopus420250514_1754083314_UPLOAD.zip",
+        "size": 110758593
+      },
+      {
+        "path": "taubench_airline_taubench_few_shot_high_reasoning_claudeopus420250514_1754083292_UPLOAD.zip",
+        "size": 95767748
+      },
+      {
+        "path": "taubench_airline_taubench_fewshot_deepseekaideepseekr1_1745101169_UPLOAD.zip",
+        "size": 67520267
+      },
+      {
+        "path": "taubench_airline_taubench_fewshot_deepseekaideepseekv3_1745101128_UPLOAD.zip",
+        "size": 113267199
+      },
+      {
+        "path": "taubench_airline_taubench_fewshot_gemini20flash_1750877603_UPLOAD.zip",
+        "size": 117350038
+      },
+      {
+        "path": "taubench_airline_taubench_fewshot_gpt4120250414_1745112637_UPLOAD.zip",
+        "size": 117749788
+      },
+      {
+        "path": "taubench_airline_taubench_fewshot_high_reasoning_claudeopus41_1754432663_UPLOAD.zip",
+        "size": 92532547
+      },
+      {
+        "path": "taubench_airline_taubench_fewshot_high_reasoning_gpt5_1754595988_UPLOAD.zip",
+        "size": 99823760
+      },
+      {
+        "path": "taubench_airline_taubench_fewshot_minimal_reasoning_gpt5_1754596041_UPLOAD.zip",
+        "size": 92393276
+      },
+      {
+        "path": "taubench_airline_taubench_fewshot_no_reasoning_claudeopus41_1754432664_UPLOAD.zip",
+        "size": 91614309
+      },
+      {
+        "path": "taubench_airline_taubench_fewshot_o320250403_1744728447_UPLOAD.zip",
+        "size": 87307862
+      },
+      {
+        "path": "taubench_airline_taubench_fewshot_o320250416_medium_1753770065_UPLOAD.zip",
+        "size": 90378307
+      },
+      {
+        "path": "taubench_airline_taubench_fewshot_o3mini20250131_high_1744743428_UPLOAD.zip",
+        "size": 99537446
+      },
+      {
+        "path": "taubench_airline_taubench_fewshot_o4mini20250416_high_1745112675_UPLOAD.zip",
+        "size": 82398098
+      },
+      {
+        "path": "taubench_airline_taubench_fewshot_o4mini20250416_low_1745099803_UPLOAD.zip",
+        "size": 82516923
+      },
+      {
+        "path": "taubench_airline_taubench_toolcalling_claude37sonnet_1760379497_UPLOAD.zip",
+        "size": 31401320
+      },
+      {
+        "path": "taubench_airline_taubench_toolcalling_claude37sonnet_high_1760999140_UPLOAD.zip",
+        "size": 60952769
+      },
+      {
+        "path": "taubench_airline_taubench_toolcalling_claudeopus41_1760380824_UPLOAD.zip",
+        "size": 30298732
+      },
+      {
+        "path": "taubench_airline_taubench_toolcalling_claudeopus41_high_1761000598_UPLOAD.zip",
+        "size": 56118088
+      },
+      {
+        "path": "taubench_airline_taubench_toolcalling_deepseekr1_1760382872_UPLOAD.zip",
+        "size": 38874624
+      },
+      {
+        "path": "taubench_airline_taubench_toolcalling_deepseekv3_1760385714_UPLOAD.zip",
+        "size": 30513544
+      },
+      {
+        "path": "taubench_airline_taubench_toolcalling_gemini20flash001_1760387340_UPLOAD.zip",
+        "size": 35493083
+      },
+      {
+        "path": "taubench_airline_taubench_toolcalling_gpt4120250414_1760371184_UPLOAD.zip",
+        "size": 31841929
+      },
+      {
+        "path": "taubench_airline_taubench_toolcalling_gpt520250807_1760996356_UPLOAD.zip",
+        "size": 53054636
+      },
+      {
+        "path": "taubench_airline_taubench_toolcalling_o320250416_1760994863_UPLOAD.zip",
+        "size": 45882166
+      },
+      {
+        "path": "taubench_airline_taubench_toolcalling_o4mini20250416_high_1760993011_UPLOAD.zip",
+        "size": 42164785
+      },
+      {
+        "path": "taubench_airline_taubench_toolcalling_o4mini20250416_low_1760991692_UPLOAD.zip",
+        "size": 41390810
+      }
+    ]
+  },
+  {
+    "benchmark": "usaco",
+    "presumed": "usaco",
+    "n_files": 15,
+    "total_gb": 15.26,
+    "min_mb": 92.7,
+    "median_mb": 478.6,
+    "max_mb": 3514.1,
+    "files": [
+      {
+        "path": "usaco_hal_generalist_agent_gpt4120250414_1750887884_UPLOAD.zip",
+        "size": 2794266242
+      },
+      {
+        "path": "usaco_usaco_episodic__semantic_claude37sonnet20250219_1744648510_UPLOAD.zip",
+        "size": 759569560
+      },
+      {
+        "path": "usaco_usaco_episodic__semantic_claude37sonnet20250219_high_1744655395_UPLOAD.zip",
+        "size": 3514118630
+      },
+      {
+        "path": "usaco_usaco_episodic__semantic_claudeopus4120250514_1756127006_UPLOAD.zip",
+        "size": 322138845
+      },
+      {
+        "path": "usaco_usaco_episodic__semantic_claudeopus4120250514_high_1756132384_UPLOAD.zip",
+        "size": 353731141
+      },
+      {
+        "path": "usaco_usaco_episodic__semantic_deepseekaideepseekr1_1744597968_UPLOAD.zip",
+        "size": 189520686
+      },
+      {
+        "path": "usaco_usaco_episodic__semantic_deepseekaideepseekv3_1744580934_UPLOAD.zip",
+        "size": 511390783
+      },
+      {
+        "path": "usaco_usaco_episodic__semantic_geminigemini20flash_1756136853_UPLOAD.zip",
+        "size": 3010177000
+      },
+      {
+        "path": "usaco_usaco_episodic__semantic_gpt4120250414_1744661741_UPLOAD.zip",
+        "size": 478599208
+      },
+      {
+        "path": "usaco_usaco_episodic__semantic_gpt520250807_1756136988_UPLOAD.zip",
+        "size": 92731103
+      },
+      {
+        "path": "usaco_usaco_episodic__semantic_o320250416_1745878600_UPLOAD.zip",
+        "size": 1242735199
+      },
+      {
+        "path": "usaco_usaco_episodic__semantic_o3mini20250131_high_1744751906_UPLOAD.zip",
+        "size": 218329963
+      },
+      {
+        "path": "usaco_usaco_episodic__semantic_o3mini20250131_low_1744664227_UPLOAD.zip",
+        "size": 127613034
+      },
+      {
+        "path": "usaco_usaco_episodic__semantic_o4mini20250416_high_1746405235_UPLOAD.zip",
+        "size": 106117759
+      },
+      {
+        "path": "usaco_usaco_episodic__semantic_o4mini20250416_low_1746039070_UPLOAD.zip",
+        "size": 1539026958
+      }
+    ]
+  }
+]

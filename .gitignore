@@ -1,8 +1,11 @@
-# environments
+# environments & secrets
 .venv/
 vendor/
+.env
 
-# data (never commit traces)
+# data: raw + decrypted traces + parquet cache live on scratch,
+# reached through the gitignored `data` symlink. Never in git.
+data
 data/
 
 # python
@@ -11,6 +14,9 @@ __pycache__/
 *.egg-info/
 .pytest_cache/
 .ruff_cache/
+
+# notebooks
+.ipynb_checkpoints/
 
 # os
 .DS_Store
