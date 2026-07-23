@@ -3,8 +3,11 @@
 vendor/
 .env
 
-# data: raw + decrypted traces + parquet cache live on scratch,
-# reached through the gitignored `data` symlink. Never in git.
+# raw rollout text NEVER enters git (results contract, CLAUDE.md rule 3);
+# the pre-commit guard (scripts/hooks/pre-commit) enforces this too
+**/rollouts/
+
+# legacy observational arm: gitignored data symlink on the cluster
 data
 data/
 
