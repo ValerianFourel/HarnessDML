@@ -68,8 +68,11 @@ gpt-oss-120b/20b prefetched to `$SCRATCH/hf` and revision-locked (`adb0040`).
 | 1025300 | FAILED 11 s — `libpython3.12.so.1.0` missing | venv links against module python; batch env had no modules → `scripts/hpc/env.sh`, sourced by every shell and sbatch (`ae52405`) |
 | 1025480 | doomed, cancelled — prefetch had failed silently | JUPITER has no `$SCRATCH` until jutil; only `$SCRATCH_<project>` → env.sh auto-resolves (`21e5622`) |
 | 1025599 | COMPLETED 19 min — servers healthy, 20/20 rollouts ran, **but every request 404'd**: client asked vLLM for the registry key, vLLM serves the `hf_id`; the api_error rows were persisted as *done*, blocking resume | client now resolves `served_model_name()` from the registry; api_error rollouts go to `failures.jsonl`, stay pending, retried on resume; `run` exits 3 on any api_error (`e15c6b3`) |
+| 1028919, 1029025 | COMPLETED but no-ops — ran before the poisoned store was moved aside; skipped 20 "done" rows, did nothing | store `mv`'d to `smoke_live_bad_1025599`; exactly the failure mode `e15c6b3` prevents from here on |
+| 1029055 | FAILED — first clean-store run with the 404 fix: servers healthy, **all 20 requests 500'd** `openai_harmony.HarmonyError: error downloading or loading vocab file`. vLLM renders gpt-oss chats through openai_harmony, which fetches its tiktoken vocab from the internet on *first request* (never at load, so `/health` passes) — compute nodes are offline. Guardrail worked: nothing persisted, store stayed resumable | `env.sh` exports `TIKTOKEN_RS_CACHE_DIR=$SCRATCH/hf/harmony-vocab`; `prefetch_models.py` warms it on a login node; `serve_node.sh` fail-fasts (exit 5) on a cold cache for gpt-oss instead of serving doomed servers |
 
-Current: smoke resubmission pending with the fix; expected green
+Current: warm the harmony cache on a login node, resubmit the smoke (no
+store `mv` needed — failures were never persisted); expected green
 (`ran=20 api_errors=0`), then aggregate → verify → push → local review gate.
 
 ## Next

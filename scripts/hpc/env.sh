@@ -27,3 +27,12 @@ if [ -z "${SCRATCH:-}" ]; then
          "(list projects: 'jutil user projects') or export SCRATCH manually"
   fi
 fi
+
+# gpt-oss serving: vLLM renders chats through openai_harmony, which fetches
+# its tiktoken vocab from the internet on FIRST REQUEST (not at load — the
+# server comes up healthy, then every /chat/completions 500s: run 1029055).
+# Compute nodes are offline, so the cache must be warmed on a login node
+# (prefetch_models.py does it) and shared via $SCRATCH.
+if [ -n "${SCRATCH:-}" ]; then
+  export TIKTOKEN_RS_CACHE_DIR="${TIKTOKEN_RS_CACHE_DIR:-$SCRATCH/hf/harmony-vocab}"
+fi

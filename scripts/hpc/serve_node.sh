@@ -17,14 +17,23 @@ MAXLEN=${MAXLEN:-16384}
 LOGDIR=$SCRATCH/harnesslab/serverlogs
 mkdir -p "$LOGDIR"
 
-read -r HF_ID MODE REVISION <<<"$(python - "$MODEL_ID" <<'PY'
+read -r HF_ID MODE REVISION FAMILY <<<"$(python - "$MODEL_ID" <<'PY'
 import sys
 from harnesslab.experiment import load_registry
 m = load_registry()[sys.argv[1]]
-print(m["hf_id"], m["serving_mode"], m.get("revision") or "main")
+print(m["hf_id"], m["serving_mode"], m.get("revision") or "main", m.get("family", "?"))
 PY
 )"
 echo "[serve] $MODEL_ID -> $HF_ID ($MODE, rev ${REVISION:0:12})"
+
+# gpt-oss + cold harmony vocab cache = healthy servers whose every request
+# 500s (offline nodes can't download it — run 1029055). Fail fast instead.
+if [ "$FAMILY" = "gpt-oss" ] && ! ls "${TIKTOKEN_RS_CACHE_DIR:-/nonexistent}"/* >/dev/null 2>&1; then
+  echo "[serve] FATAL: harmony vocab cache empty (TIKTOKEN_RS_CACHE_DIR=${TIKTOKEN_RS_CACHE_DIR:-unset})"
+  echo "[serve] warm it on a LOGIN node first (env.sh sets the cache dir):"
+  echo "[serve]   python -c 'from openai_harmony import load_harmony_encoding; load_harmony_encoding(\"HarmonyGptOss\")'"
+  exit 5
+fi
 
 START_TS=$(date +%s)
 PORTS=()

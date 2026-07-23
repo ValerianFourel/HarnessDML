@@ -21,6 +21,28 @@ from harnesslab.experiment import load_registry
 LOCK = Path(__file__).resolve().parents[2] / "configs" / "model_revisions.lock.yaml"
 
 
+def warm_harmony_cache() -> bool:
+    """gpt-oss serving needs openai_harmony's tiktoken vocab, which the
+    library downloads on first request — impossible on offline compute nodes
+    (run 1029055: healthy servers, every request 500 HarmonyError). Download
+    it here instead; TIKTOKEN_RS_CACHE_DIR (env.sh) shares it via $SCRATCH."""
+    cache = os.environ.get("TIKTOKEN_RS_CACHE_DIR")
+    if not cache:
+        cache = f"{os.environ['HF_HOME']}/harmony-vocab"
+        os.environ["TIKTOKEN_RS_CACHE_DIR"] = cache
+    Path(cache).mkdir(parents=True, exist_ok=True)
+    try:
+        from openai_harmony import load_harmony_encoding
+
+        load_harmony_encoding("HarmonyGptOss")
+    except Exception as exc:  # noqa: BLE001
+        print(f"[prefetch] harmony vocab warm-up failed: {exc}", file=sys.stderr)
+        return False
+    n = sum(1 for _ in Path(cache).iterdir())
+    print(f"[prefetch] harmony vocab cached -> {cache} ({n} file(s))")
+    return True
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--tier", nargs="+", default=["F", "G", "B"],
@@ -49,6 +71,10 @@ def main() -> int:
     lock: dict = yaml.safe_load(LOCK.read_text()) if LOCK.exists() else {}
     lock = lock or {}
     failures = []
+    if not args.dry_run:
+        harmony_ok = warm_harmony_cache()
+        if not harmony_ok and any(m.get("family") == "gpt-oss" for m in wanted.values()):
+            failures.append("harmony-vocab")
     for mid, m in wanted.items():
         hf_id = m["hf_id"]
         try:

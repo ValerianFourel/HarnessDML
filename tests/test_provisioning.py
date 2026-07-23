@@ -2,6 +2,7 @@
 overrides + task slicing, seeded task sampling."""
 
 import asyncio
+import os
 import sys
 from pathlib import Path
 
@@ -12,6 +13,7 @@ from harnesslab.experiment import from_yaml, load_registry
 from harnesslab.fits import check_registry, required_gb, serving_mode_for
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts" / "hpc"))
 from build_tasks import sample_indices  # noqa: E402
 
 
@@ -89,6 +91,41 @@ def test_api_errors_are_logged_not_persisted(tmp_path):
     s2 = asyncio.run(run_experiment(spec, healthy, tmp_path / "r"))
     assert s2.already_done == 0 and s2.ran == 6 and s2.api_errors == 0
     assert len(RolloutStore(tmp_path / "r")) == 6          # resume retried them all
+
+
+def test_harmony_warmup_populates_scratch_cache(tmp_path, monkeypatch):
+    """Offline gpt-oss serving needs the harmony vocab pre-cached (run 1029055)."""
+    import types
+
+    import prefetch_models
+
+    loaded = []
+    fake = types.ModuleType("openai_harmony")
+    fake.load_harmony_encoding = loaded.append
+    monkeypatch.setitem(sys.modules, "openai_harmony", fake)
+    monkeypatch.setenv("HF_HOME", str(tmp_path / "hf"))
+    monkeypatch.delenv("TIKTOKEN_RS_CACHE_DIR", raising=False)
+
+    assert prefetch_models.warm_harmony_cache() is True
+    assert loaded == ["HarmonyGptOss"]
+    cache = Path(tmp_path / "hf" / "harmony-vocab")
+    assert os.environ["TIKTOKEN_RS_CACHE_DIR"] == str(cache) and cache.is_dir()
+
+
+def test_harmony_warmup_failure_is_reported_not_raised(tmp_path, monkeypatch):
+    import types
+
+    import prefetch_models
+
+    fake = types.ModuleType("openai_harmony")
+
+    def boom(_name):
+        raise RuntimeError("no internet")
+
+    fake.load_harmony_encoding = boom
+    monkeypatch.setitem(sys.modules, "openai_harmony", fake)
+    monkeypatch.setenv("TIKTOKEN_RS_CACHE_DIR", str(tmp_path / "cache"))
+    assert prefetch_models.warm_harmony_cache() is False
 
 
 def test_sample_indices_deterministic_sorted():
