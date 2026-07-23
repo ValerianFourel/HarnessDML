@@ -94,6 +94,25 @@ python -c "import halcausal, doubleml, lightgbm, polars; print('halcausal OK')"
 Then open `notebooks/00_hpc_setup.ipynb` (kernel: `halcausal`) and Run All —
 it re-checks all of the above and fails loudly on anything missing.
 
+### This cluster (jpbl, `/e/project1/scifi/fourel1`)
+
+Layout: wrapper `/e/project1/scifi/fourel1/HarnessDML/` holds the repo
+(`HarnessDML/`), `vendor/`, and the data dir (`Data/`). Instead of
+`$HAL_DATA_DIR` (env vars don't reach Jupyter kernels reliably), the repo's
+gitignored `data` symlink points at `Data/` — `halcausal.paths.data_dir()`
+falls back to it, so notebooks need no environment setup at all:
+
+```sh
+BASE=/e/project1/scifi/fourel1/HarnessDML
+cd "$BASE/HarnessDML"
+ln -sfn "$BASE/Data" data          # data location, kernel-proof
+mv "$BASE/vendor" vendor 2>/dev/null || true   # vendor lives inside the repo
+```
+
+Then follow steps 1 and 4–7 above unchanged (skip step 3's HAL_DATA_DIR/.env).
+`00_hpc_setup` printing `HAL_DATA_DIR: None` is fine — the `data dir :` line
+must show `$BASE/Data`.
+
 ## Workflow loop
 
 1. LOCAL: write code → `pytest` green → commit code paths → push.
