@@ -44,7 +44,13 @@ from .io import decrypt as dec
 from .io import hf
 from .io.manifest import new_run_id, write_manifest
 
-_SECRET_RE = re.compile(r"api|key|token|secret|password|credential", re.I)
+# Deliberately narrow: must NOT match token-count fields like prompt_tokens /
+# cache_read_input_tokens (bug found in run 20260723T085732Z: '…_tokens' counts
+# were redacted). Matches credential-shaped keys only.
+_SECRET_RE = re.compile(
+    r"api[_-]?key|apikey|secret|password|credential|(?:^|_)(?:auth|access|api|bearer)[_-]?token(?:s)?$",
+    re.I,
+)
 _SCALAR = (str, int, float, bool, type(None))
 
 

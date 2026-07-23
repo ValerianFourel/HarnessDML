@@ -20,6 +20,8 @@ def test_summarize_run_file(tmp_path):
             "agent_args": {"reasoning_effort": "high"},
         },
         "results": {"accuracy": 0.42},
+        "total_usage": {"prompt_tokens": 545032, "completion_tokens": 1234,
+                        "access_token": "sk-x"},
         "raw_logging_results": [{"a": 1}, {"a": 2}, {"a": 3}],
         "raw_eval_results": {f"task_{i}": {} for i in range(300)},
     }
@@ -32,6 +34,10 @@ def test_summarize_run_file(tmp_path):
     assert len(rec["small_blocks"]["config"]["prompt_template"]) == 201
     assert rec["small_blocks"]["config"]["agent_args"] == {"reasoning_effort": "high"}
     assert rec["small_blocks"]["results"] == {"accuracy": 0.42}
+    # token COUNTS must survive redaction; credential-shaped keys must not
+    assert rec["small_blocks"]["total_usage"]["prompt_tokens"] == 545032
+    assert rec["small_blocks"]["total_usage"]["completion_tokens"] == 1234
+    assert rec["small_blocks"]["total_usage"]["access_token"] == "«redacted»"
     assert rec["collection_sizes"] == {"raw_logging_results": 3, "raw_eval_results": 300}
 
 

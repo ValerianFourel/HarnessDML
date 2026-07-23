@@ -1,0 +1,82 @@
+# CURATED field mapping — panel column -> extraction rule.
+# Curated 2026-07-23 from schema/SCHEMA.md + results/explore/taubench_airline/
+# (47 runs, 50 tasks, 2,350 rollouts). STATUS: DRAFT pending user sign-off;
+# Phase-2 ETL reads THIS file (never field_mapping.suggested.yaml).
+#
+# Trace anatomy (100% consistent across 47 files):
+#   config{run_id, benchmark_name, agent_name, date, run_command,
+#          agent_args{model_name, reasoning_effort?, budget?, temperature?, provider?}}
+#   results{accuracy, total_cost, successful_tasks[], latencies{task->times}}
+#   raw_eval_results{ "<task 0..49>": {reward, taken_actions[], task{instruction,...}}
+#                     OR "ERROR: <traceback>" string on harness failure }
+#   raw_logging_results[ {"<call-id>": {model, usage{...}, choices[], weave{...},
+#                         weave_task_id, reasoning_effort?, temperature?}} ]  # one per LLM call
+#   total_usage{ "<model>": {prompt_tokens, completion_tokens, ...} }  # incl. USER-SIM model
+#   git_info{commit, branch, ...}  # 42/47
+
+unit: "rollout = (run_id, task_key); 50 tasks per run, shared across ALL runs"
+
+columns:
+  rollout_id:
+    rule: "config.run_id + ':' + task_key"
+  benchmark:
+    path: $.config.benchmark_name
+  task_id:
+    rule: "task_key = dict key of raw_eval_results ('0'..'49'); same task set in every run -> within-task contrasts fully supported"
+  task_prompt_len:
+    rule: "len($.raw_eval_results.{task}.task.instruction); on harness-error entries: null"
+  model:
+    path: $.config.agent_args.model_name
+    note: "canonicalize via model_canonical map below (provider prefixes differ across scaffolds, never within a contrast pair)"
+  scaffold:
+    rule: "regex 'agent_dir agents/([a-z_]+)/' over $.config.run_command; fallback: prefix of $.config.agent_name"
+    values: [hal_generalist_agent, taubench_few_shot, taubench_tool_calling]
+  reasoning_effort:
+    path: $.config.agent_args.reasoning_effort
+    rule: "missing -> 'default' (provider-default arm). Uniform across providers: Anthropic extended thinking is also recorded here as 'high'."
+    caution: "some runs annotate effort only in the FILENAME (e.g. *_o320250416_medium_* with no config field) — treat config as truth, filename as annotation; see reports/discrepancies.md"
+  temperature:
+    path: $.config.agent_args.temperature
+    note: "present in 4/47 runs only; per-call realized temperature exists at raw_logging_results[].{*}.temperature"
+  success:
+    rule: "int($.raw_eval_results.{task}.reward == 1); reward is float|int (cast). If the task entry is an ERROR string: success=0 AND termination_reason='harness_error' (validate vs results.accuracy*50 and results.successful_tasks)"
+  total_cost_usd:
+    path: $.results.total_cost
+    note: "RUN-level only. Per-rollout cost is DERIVED: allocate by per-task token usage x model price, or report run-level. May include user-simulator usage — verify in ETL."
+  prompt_tokens: &per_task_usage
+    rule: "sum over calls where call.weave_task_id == task_key of usage.prompt_tokens (DIRECT scalar fields only — the per-model sub-dicts inside usage are cumulative/simulator accounting, excluded)"
+  completion_tokens: *per_task_usage
+  reasoning_tokens:
+    rule: "sum of usage.completion_tokens_details.reasoning_tokens over the task's calls (0 for non-reasoning models)"
+  sim_prompt_tokens:
+    rule: "sum of usage.<sim-model>.prompt_tokens over the task's calls, where <sim-model> is the user-simulator (gpt-4o-2024-08-06 in 40/47 runs, openai/gpt-4o in 7)"
+  n_llm_calls:
+    rule: "count of raw_logging_results entries with weave_task_id == task_key"
+  wall_clock_s:
+    path: $.results.latencies.{task}.total_time
+    note: "absent in ~1/47 early runs -> null"
+  termination_reason:
+    rule: "'harness_error' if eval entry is str; else finish_reason of the task's last call ($.raw_logging_results[].{*}.choices[].finish_reason / weave.status)"
+  harness_commit:
+    path: $.git_info.commit
+    note: "10 distinct commits across 2 repos; missing in 5 early runs"
+  run_date:
+    path: $.config.date
+
+model_canonical:
+  # canonical <- observed variants (never mix within a contrast pair — verified)
+  claude-3-7-sonnet: [claude-3-7-sonnet-20250219, anthropic/claude-3.7-sonnet]
+  claude-opus-4: [claude-opus-4-20250514]
+  claude-opus-4.1: [openrouter/anthropic/claude-opus-4.1, anthropic/claude-opus-4.1]
+  gpt-4.1: [gpt-4.1-2025-04-14, openai/gpt-4.1-2025-04-14]
+  gpt-4o: [gpt-4o-2024-11-20]
+  gpt-5: [gpt-5, openai/gpt-5-2025-08-07]
+  o3: [o3-2025-04-16, openai/o3-2025-04-16]
+  o3-preview-0403: [o3-2025-04-03]   # KEEP SEPARATE from o3 — different checkpoint
+  o3-mini: [o3-mini-2025-01-31]
+  o4-mini: [o4-mini-2025-04-16, openai/o4-mini-2025-04-16]
+  deepseek-r1: [together_ai/deepseek-ai/DeepSeek-R1, deepseek/deepseek-r1]
+  deepseek-v3: [together_ai/deepseek-ai/DeepSeek-V3, deepseek/deepseek-chat]
+  gemini-2.0-flash: [gemini/gemini-2.0-flash, gemini-2.0-flash, google/gemini-2.0-flash-001]
+
+user_simulator_models: [gpt-4o-2024-08-06, openai/gpt-4o]

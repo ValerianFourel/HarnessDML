@@ -79,3 +79,21 @@ task_prompt_len:
 task_difficulty:
   role: pre_treatment
   notes: leave-one-config-out mean success; computed inside cross-fitting folds ONLY (leakage guard, Phase 3)
+
+# added after taubench_airline exploration (2026-07-23)
+
+harness_commit:
+  role: pre_treatment
+  notes: hal-harness git commit of the run; 10 distinct, confounded with scaffold era
+
+run_date:
+  role: pre_treatment
+  notes: config.date of the run
+
+sim_prompt_tokens:
+  role: post_treatment
+  notes: user-simulator (gpt-4o) tokens for the rollout — never a control
+
+sim_completion_tokens:
+  role: post_treatment
+  notes: user-simulator (gpt-4o) tokens for the rollout — never a control
