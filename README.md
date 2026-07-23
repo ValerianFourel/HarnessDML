@@ -54,7 +54,7 @@ python3 --version   # need ≥ 3.11. If the module system has none:
 #   micromamba activate halcausal
 
 # ── 2. Clone and enter ──────────────────────────────────────────────────────
-git clone <REPO_URL> halcausal && cd halcausal
+git clone https://github.com/ValerianFourel/HarnessDML.git halcausal && cd halcausal
 
 # ── 3. Scratch layout + env vars ────────────────────────────────────────────
 export HAL_DATA_DIR="/scratch/$USER/hal_data"      # adjust to your cluster
