@@ -9,10 +9,10 @@ I am an experienced DoubleML user — do not simplify the econometrics. Follow C
 ## Architecture — three environments, GitHub is the bus
 
 1. **LOCAL (this machine, Claude Code):** writes all code, reviews results, writes analysis. Never downloads traces, never runs estimation. Commits only code (`src/`, `notebooks/`, `configs/`, `scripts/`).
-2. **HPC (JupyterHub on the cluster):** clones the repo, downloads and decrypts data to scratch, runs ETL + estimation inside Jupyter notebooks, commits **only small computed artifacts** under `results/`, pushes.
+2. **HPC (cluster terminal):** clones the repo, downloads and decrypts data to project storage, runs one phase script per step (`python -m halcausal.<phase>`) that computes raw numbers into **small JSON artifacts** under `results/`, commits those, pushes. Notebooks in `notebooks/` are an optional convenience, never the source of truth.
 3. **GITHUB:** single repo, single `main` branch. Path discipline instead of branches: local commits touch code paths, HPC commits touch `results/` only. Both sides `git pull --rebase` before pushing. Raw data never enters git.
 
-Everything the HPC runs must be executable as: `git pull` → open notebook → Run All. Everything analyzed locally must be reproducible from `results/` alone, without cluster access.
+Everything the HPC runs must be executable as: `git pull` → one script command. Everything analyzed locally must be reproducible from `results/` alone, without cluster access.
 
 ## Data source (HPC-side only)
 
@@ -76,7 +76,7 @@ Everything in `results/` must be small, final, and self-describing:
 
 **Phase 0 — skeleton (LOCAL, now).** Scaffold the repo, package, configs, guards, size-check, .gitignore, README with the exact HPC bootstrap sequence (module load / micromamba fallback, `uv` or venv, `pip install -e .`, hal-harness install), and the six thin notebooks as stubs. Deps: `huggingface_hub, cryptography, polars, pyarrow, doubleml>=0.9, lightgbm, scikit-learn, statsmodels, matplotlib, pytest, pyyaml, papermill(optional)`. Push. Stop and show the tree before writing any ETL.
 
-**Phase 1 — schema discovery (HPC runs, LOCAL writes).** `01_download_decrypt` pulls ONE slice, decrypts to scratch. `discover_schema()` walks N traces, emits `schema/SCHEMA.md` (key paths, types, presence rates) → HPC commits it under results-contract exception (schema/ is HPC-writable too). Schema is reviewed locally before ETL. **No field names hardcoded anywhere until SCHEMA.md exists; if reality contradicts this prompt, we update the prompt, not silently the code.**
+**Phase 1 — exploration + schema discovery (HPC runs, LOCAL writes).** `python -m halcausal.explore --slice <s> --push` pulls ONE slice, decrypts idempotently, walks N traces into `schema/SCHEMA.md` (key paths, types, presence rates), and computes raw-number JSONs `results/explore/<slice>/{runs,aggregate}.json` (per-run structure and sizes, config blocks verbatim, cross-run distinct-value counts) → HPC commits under the results-contract exception (schema/ is HPC-writable too). Exploration + schema are reviewed locally before ETL. **No field names hardcoded anywhere until SCHEMA.md exists; if reality contradicts this prompt, we update the prompt, not silently the code.**
 
 **Phase 2 — ETL (HPC).** `build_panel()` → one row per rollout: `rollout_id, benchmark, domain, task_id, model, model_family, reasoning_effort, scaffold, temperature?, success, total_cost_usd, prompt_tokens, completion_tokens, reasoning_tokens?, n_llm_calls, n_tool_calls, wall_clock_s, termination_reason`. Reconciliation tests vs. paper counts (→ ~21,730 across slices); missingness + duplicate reports into `results/diagnostics/`. Keep trace-parsing in one module — it may be ported to doubleml-pyspark for the full corpus later; design for that, don't build it.
 

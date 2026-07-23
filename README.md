@@ -125,6 +125,9 @@ vendor/.hal-venv/bin/hal-decrypt --help        # must print usage
 
 python -c "import halcausal, doubleml, lightgbm, polars; print('halcausal OK')"
 python -c "from halcausal import paths; print(paths.data_dir())"   # -> $BASE/Data
+
+# Phase 1 exploration: download -> decrypt -> schema -> raw-number JSONs -> push
+python -m halcausal.explore --slice taubench_airline --push
 ```
 
 Fallbacks: if `uv sync` hits a package with no aarch64 wheel, retry with
@@ -136,9 +139,10 @@ and create a python=3.12 env from conda-forge. `00_hpc_setup` printing
 ## Workflow loop
 
 1. LOCAL: write code → `pytest` green → commit code paths → push.
-2. HPC: `git pull --rebase` → open next notebook → Run All → `05_export_results`
-   writes `results/manifests/<run_id>.json`, runs the size guard, commits
-   `results/` (+ `schema/` in Phase 1), pushes.
+2. HPC: `git pull --rebase` → one script per phase, currently
+   `python -m halcausal.explore --slice taubench_airline --push` — computes
+   raw-number JSONs + `results/manifests/<run_id>.json`, runs the size guard,
+   commits `results/` (+ `schema/`), pushes. Notebooks are optional mirrors.
 3. LOCAL: "pull and analyze `<run_id>`" → analysis strictly from `results/`
    and the manifest; findings to `reports/`.
 

@@ -41,3 +41,26 @@ def decrypt_dir(directory: Path, binary: Path | None = None) -> list[Path]:
     binary = binary or hal_decrypt_bin()
     subprocess.run([str(binary), "-D", str(directory)], check=True)
     return sorted(p for p in directory.glob("*.json") if p.is_file())
+
+
+def expected_outputs(zip_path: Path) -> list[Path]:
+    """Files hal-decrypt would produce for this zip (member names minus .encrypted)."""
+    from zipfile import ZipFile
+
+    with ZipFile(zip_path) as z:
+        return [zip_path.parent / n.replace(".encrypted", "") for n in z.namelist()]
+
+
+def decrypt_missing(directory: Path, binary: Path | None = None) -> tuple[list[Path], int]:
+    """Idempotent decrypt: only zips whose outputs are absent. PBKDF2 at 480k
+    iterations makes re-decryption slow, so reruns must skip completed work.
+
+    Returns (all decrypted json files present, number of zips decrypted now).
+    """
+    todo = [z for z in sorted(directory.glob("*.zip"))
+            if not all(p.exists() for p in expected_outputs(z))]
+    if todo:
+        binary = binary or hal_decrypt_bin()  # resolved lazily: no-op needs no CLI
+        for z in todo:
+            decrypt_zip(z, binary)
+    return sorted(p for p in directory.glob("*.json") if p.is_file()), len(todo)
