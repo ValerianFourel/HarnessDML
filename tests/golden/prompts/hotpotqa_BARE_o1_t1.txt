@@ -1,0 +1,4 @@
+You are solving a question-answering task. Work step by step and answer the question exactly and concisely.
+
+When you know the final answer, finish with a single line in exactly this form:
+Answer: <your final answer>

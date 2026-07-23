@@ -1,0 +1,12 @@
+exp_id: smoke_mock_qa
+benchmark: hotpotqa
+model_id: mock
+k_seeds: 2
+temp: 0.1
+top_p: 0.9
+schedule_seed: 7
+tasks_file: tests/fixtures/tasks_qa.jsonl
+concurrency: 3
+configs:
+  - components: []
+  - components: [T, SR, R]

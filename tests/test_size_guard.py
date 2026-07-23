@@ -32,3 +32,28 @@ def test_total_over_20mb_rejected():
 def test_both_rules_report_independently():
     problems = guard.violations([("x/rollouts/a.jsonl", guard.MAX_TOTAL_BYTES + 1)])
     assert len(problems) == 2
+
+
+def test_git_end_to_end_rejects_oversized_commit(tmp_path):
+    """§8.8 — a real `git commit` with 21 MB staged is rejected by the hook."""
+    import subprocess
+
+    def git(*args):
+        return subprocess.run(
+            ["git", *args], cwd=tmp_path, capture_output=True, text=True
+        )
+
+    git("init", "-b", "main")
+    git("config", "user.email", "t@t")
+    git("config", "user.name", "t")
+    git("config", "core.hooksPath", str(_HOOK.parent))
+
+    (tmp_path / "big.bin").write_bytes(b"\0" * (21 * 2**20))
+    git("add", "big.bin")
+    res = git("commit", "-m", "should fail")
+    assert res.returncode != 0 and "SIZE GUARD" in res.stderr
+
+    git("reset")
+    (tmp_path / "small.txt").write_text("ok")
+    git("add", "small.txt")
+    assert git("commit", "-m", "fine").returncode == 0
