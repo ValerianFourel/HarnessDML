@@ -1,0 +1,28 @@
+# Estimand 1 — DRAFT v0. Field values are provisional until schema/SCHEMA.md
+# and results/diagnostics/design_notes.md exist; the structure is the contract.
+estimand_id: reasoning_taubench_v0
+benchmark: taubench_airline
+treatment: reasoning_effort
+contrast:
+  treated: high            # verify actual levels against SCHEMA.md
+  control: default         # i.e. no explicit reasoning-effort setting
+strata: [model]            # binary contrast estimated within model strata
+outcome: success
+covariates:                # every entry must pass guards.validate_covariates()
+  - model
+  - task_prompt_len
+  - task_difficulty
+cluster: task_id
+estimator:
+  name: DoubleMLIRM
+  learners: { ml_g: lightgbm, ml_m: lightgbm }
+  n_folds: 5
+  n_rep: 3
+  trimming: [0.02, 0.98]
+seeds:
+  global: 20260723
+multiplicity:
+  simultaneous: multiplier_bootstrap
+  p_adjust: romano_wolf
+sensitivity:
+  benchmark_covariate: model   # strongest measured confounder to calibrate against

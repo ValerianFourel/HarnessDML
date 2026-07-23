@@ -1,0 +1,81 @@
+# Column registry — single source of truth for causal roles (CLAUDE.md).
+# role ∈ treatment | outcome | pre_treatment | post_treatment | id
+#
+# guards.validate_covariates() hard-errors if X contains any column with role
+# post_treatment, outcome, or id, any unregistered column, or the active
+# treatment itself. Extend this file (never ad-hoc code) when SCHEMA.md or the
+# panel adds columns.
+
+rollout_id:
+  role: id
+
+task_id:
+  role: id
+  notes: cluster key for ALL inference; task FEs enter via within-task transforms only
+
+benchmark:
+  role: pre_treatment
+
+domain:
+  role: pre_treatment
+  notes: coding / web / science / customer_service
+
+model:
+  role: treatment
+  notes: treatment only in estimand 3 (method sanity check); otherwise a pre-treatment covariate
+
+model_family:
+  role: pre_treatment
+
+reasoning_effort:
+  role: treatment
+  notes: "estimand 1; levels observed in filenames so far: minimal/low/medium/high/absent"
+
+scaffold:
+  role: treatment
+  notes: estimand 2; multi-valued, pairwise contrasts vs. reference within model
+
+temperature:
+  role: treatment
+  notes: config knob; expect heavy missingness — verify against SCHEMA.md
+
+success:
+  role: outcome
+  notes: primary Y (binary)
+
+total_cost_usd:
+  role: outcome
+  notes: secondary Y, analyzed as log(y + eps)
+
+wall_clock_s:
+  role: outcome
+  notes: secondary Y
+
+completion_tokens:
+  role: outcome
+  notes: secondary Y; realized quantity — an outcome tag already bars it from X
+
+prompt_tokens:
+  role: post_treatment
+  notes: cumulative over the trajectory (context growth) — never a control
+
+reasoning_tokens:
+  role: post_treatment
+  notes: REALIZED reasoning tokens; a CONFIGURED budget recovered from config would be a separate treatment-dose column
+
+n_llm_calls:
+  role: post_treatment
+
+n_tool_calls:
+  role: post_treatment
+
+termination_reason:
+  role: post_treatment
+
+task_prompt_len:
+  role: pre_treatment
+  notes: length of the task definition/prompt as given, NOT trajectory tokens; built in ETL
+
+task_difficulty:
+  role: pre_treatment
+  notes: leave-one-config-out mean success; computed inside cross-fitting folds ONLY (leakage guard, Phase 3)
