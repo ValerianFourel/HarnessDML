@@ -59,7 +59,11 @@ class OpenAICompatClient:
                     tokens_in=int(usage.get("prompt_tokens", 0)),
                     tokens_out=int(usage.get("completion_tokens", 0)),
                     latency_ms=(time.monotonic() - t0) * 1000.0,
-                    reasoning_chars=len(message.get("reasoning_content") or ""),
+                    # vLLM renamed reasoning_content -> reasoning (RFC #27755,
+                    # OpenAI's gpt-oss guidance); read both for compatibility
+                    reasoning_chars=len(
+                        message.get("reasoning") or message.get("reasoning_content") or ""
+                    ),
                 )
             except (httpx.TransportError, httpx.HTTPStatusError) as exc:
                 last_exc = exc
