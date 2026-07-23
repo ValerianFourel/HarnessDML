@@ -1,0 +1,14 @@
+{
+  "dataset_id": "HuggingFaceH4/MATH-500",
+  "config": null,
+  "split": "test",
+  "seed": 20260723,
+  "n_requested": 100,
+  "n_built": 100,
+  "n_skipped": 0,
+  "filters": {
+    "level": ">=4"
+  },
+  "pool_size": 262,
+  "built_utc": "2026-07-23T12:26:14+00:00"
+}

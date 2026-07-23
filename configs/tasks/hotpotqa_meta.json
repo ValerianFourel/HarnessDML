@@ -1,0 +1,12 @@
+{
+  "dataset_id": "hotpotqa/hotpot_qa",
+  "config": "distractor",
+  "split": "validation",
+  "seed": 20260723,
+  "n_requested": 100,
+  "n_built": 100,
+  "n_skipped": 0,
+  "filters": {},
+  "pool_size": 7405,
+  "built_utc": "2026-07-23T12:26:12+00:00"
+}
