@@ -1,0 +1,3 @@
+# pinned by scripts/hpc/prefetch_models.py — commit this file
+gpt_oss_120b: b5c939de8f754692c1647ca79fbf85e8c1e70f8a
+gpt_oss_20b: 6cee5e81ee83917806bbde320786a8fb61efebee
