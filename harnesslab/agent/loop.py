@@ -55,6 +55,7 @@ class RolloutTrace:
     tokens_out: int = 0
     chars_in: int = 0
     chars_out: int = 0
+    chars_out_reasoning: int = 0
     latencies_ms: list[float] = field(default_factory=list)
     action_seq: list[str] = field(default_factory=list)
     confidence: float | None = None
@@ -114,6 +115,7 @@ async def run_rollout(
         tr.tokens_in += res.tokens_in
         tr.tokens_out += res.tokens_out
         tr.chars_out += len(res.text)
+        tr.chars_out_reasoning += res.reasoning_chars
         tr.latencies_ms.append(res.latency_ms)
         return res.text
 

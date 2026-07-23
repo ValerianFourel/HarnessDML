@@ -16,6 +16,10 @@ class ChatResult:
     tokens_in: int
     tokens_out: int
     latency_ms: float
+    # reasoning-channel characters (vLLM `reasoning_content`, e.g. gpt-oss
+    # harmony): hidden text is real cost — tokens_out already includes it,
+    # this makes it visible in the char accounting too. 0 where absent.
+    reasoning_chars: int = 0
 
 
 class ChatClient(Protocol):

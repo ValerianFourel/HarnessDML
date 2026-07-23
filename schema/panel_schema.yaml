@@ -59,6 +59,7 @@ panel:
   tokens_out:       {dtype: int64,   nullable: false, desc: "completion tokens summed over calls (cost outcome)"}
   chars_in:         {dtype: int64,   nullable: false, desc: "prompt characters (tokenizer-invariant cost unit)"}
   chars_out:        {dtype: int64,   nullable: false, desc: "completion characters (tokenizer-invariant cost unit)"}
+  chars_out_reasoning: {dtype: int64, nullable: false, desc: "hidden reasoning-channel characters (vLLM reasoning_content; 0 where the family exposes none). tokens_out already includes them; chars_out stays visible-only"}
   wall_s:           {dtype: float64, nullable: false, desc: "rollout wall-clock seconds (diagnostic only, §4.3.2)"}
   gpu_seconds:      {dtype: float64, nullable: false, desc: "attributed GPU-seconds (cost outcome)"}
   latency_ms_mean:  {dtype: float64, nullable: false, desc: "mean per-call latency"}
@@ -88,4 +89,5 @@ cell_metrics:
     brier:          {dtype: float64, desc: "Brier score"}
     tokens_out_mean: {dtype: float64, desc: "cost aggregate"}
     chars_out_mean: {dtype: float64, desc: "cost aggregate (tokenizer-invariant)"}
+    chars_out_reasoning_mean: {dtype: float64, desc: "hidden-channel cost aggregate"}
     gpu_s_mean:     {dtype: float64, desc: "cost aggregate"}

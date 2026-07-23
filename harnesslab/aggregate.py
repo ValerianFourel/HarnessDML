@@ -22,7 +22,7 @@ _DTYPES = {
     "seed": pl.Int64, "step_cap": pl.Int64, "max_new_tokens_step": pl.Int64,
     "n_turns": pl.Int64, "n_tool_calls": pl.Int64, "n_parse_failures": pl.Int64,
     "tokens_in": pl.Int64, "tokens_out": pl.Int64,
-    "chars_in": pl.Int64, "chars_out": pl.Int64,
+    "chars_in": pl.Int64, "chars_out": pl.Int64, "chars_out_reasoning": pl.Int64,
     "model_scale_b": pl.Float64, "temp": pl.Float64, "top_p": pl.Float64,
     "task_difficulty_calib": pl.Float64, "y": pl.Float64, "confidence": pl.Float64,
     "server_uptime_s": pl.Float64, "wall_s": pl.Float64, "gpu_seconds": pl.Float64,
@@ -85,6 +85,7 @@ def cell_metrics_row(rows: list[dict]) -> dict:
         "brier": calibration.brier(conf01, corr) if conf01 else float("nan"),
         "tokens_out_mean": _mean(r["tokens_out"] for r in rows),
         "chars_out_mean": _mean(r["chars_out"] for r in rows),
+        "chars_out_reasoning_mean": _mean(r["chars_out_reasoning"] for r in rows),
         "gpu_s_mean": _mean(r["gpu_seconds"] for r in rows),
     })
     return out

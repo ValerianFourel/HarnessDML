@@ -44,6 +44,17 @@ def _server_uptime_s() -> float:
     return max(0.0, time.time() - float(start)) if start else 0.0
 
 
+def _vllm_version() -> str | None:
+    """Serving-stack provenance (§1.4). On JUPITER the client venv is the
+    serving venv; None on mock/dev environments without vLLM installed."""
+    try:
+        from importlib.metadata import version
+
+        return version("vllm")
+    except Exception:  # noqa: BLE001
+        return None
+
+
 def _toolbox_for(spec: ExperimentSpec, cfg: CellConfig, task: dict) -> ToolBox | None:
     if "T" not in cfg.components:
         return None  # no tools without T; QA becomes closed-book (§4.2 note)
@@ -111,6 +122,7 @@ def build_row(
         "tokens_out": trace.tokens_out,
         "chars_in": trace.chars_in,
         "chars_out": trace.chars_out,
+        "chars_out_reasoning": trace.chars_out_reasoning,
         "wall_s": trace.wall_s,
         "gpu_seconds": trace.wall_s * float(os.environ.get("HARNESSLAB_GPU_PER_ROLLOUT", "0")),
         "latency_ms_mean": statistics.mean(trace.latencies_ms) if trace.latencies_ms else 0.0,
@@ -155,11 +167,12 @@ async def run_experiment(
             "temp": spec.temp, "top_p": spec.top_p, "schedule_seed": spec.schedule_seed,
             "coupled_submission": spec.coupled_submission,
         },
-        model={"model_id": spec.model_id, "family": spec.model_family},
+        model={"model_id": spec.model_id, "family": spec.model_family,
+               "hf_id": spec.model_hf_id, "revision": spec.model_revision},
         sampling={"temperature": spec.temp, "top_p": spec.top_p,
                   "max_new_tokens_step": spec.max_new_tokens_step, "seeds": spec.seeds},
         template_hashes=template_hashes,
-        client_info={"type": type(client).__name__},
+        client_info={"type": type(client).__name__, "vllm_version": _vllm_version()},
         extra={"run_id": run_id},
     )
     manifest_ref = manifest_path.name

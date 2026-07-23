@@ -72,9 +72,35 @@ gpt-oss-120b/20b prefetched to `$SCRATCH/hf` and revision-locked (`adb0040`).
 | 1029055 | FAILED — first clean-store run with the 404 fix: servers healthy, **all 20 requests 500'd** `openai_harmony.HarmonyError: error downloading or loading vocab file`. vLLM renders gpt-oss chats through openai_harmony, which fetches its tiktoken vocab from the internet on *first request* (never at load, so `/health` passes) — compute nodes are offline. Guardrail worked: nothing persisted, store stayed resumable | first fix (`fdba039`): warm a `TIKTOKEN_RS_CACHE_DIR` cache on a login node — **superseded below**, the warm-up itself failed |
 | (login shell) + 1029364 | the cache warm-up threw the same HarmonyError **on the login node** — harmony's Rust downloader can't reach the Azure blob from JUPITER at all (the same URL took ~3 min to download from a laptop; harmony gives up). 1029364 then died fast on the new exit-5 guard — the guard doing its job | the vocab (3.6 MB) is now **vendored in-repo** at `assets/harmony-vocab/o200k_base.tiktoken`, sha256-verified against harmony's own pin (`446a9538…`); `env.sh` exports `TIKTOKEN_ENCODINGS_BASE` at it, so harmony reads disk and never touches the network on any node; `prefetch_models.py` verifies existence+hash; guard now checks the file |
 
-Current: `git pull` on the login node delivers the vocab; resubmit the smoke
-(no store `mv` needed — failures were never persisted); expected green
-(`ran=20 api_errors=0`), then aggregate → verify → push → local review gate.
+**Job 1029480: GREEN** — `ran=20 api_errors=0`, 0 corrupt lines, resume
+machinery proven on the exact 20 rollouts 1029055 had quarantined.
+
+## Phase 2 — review verdict (STOP passed)
+
+The panel told a real story on first contact: BARE answered 8/10 vs T 5/10,
+with success|answered = 100 % for both — the whole gap is P(answered). All 7
+`no_answer` rows had `chars_out = 0`: gpt-oss emits its reasoning into the
+hidden harmony channel and (4/7 at exactly the 2×256-token ceiling) died
+there without one visible character. Y-decomposition working as designed;
+grader, metrics, REPORT all correct.
+
+Review found three gaps, fixed pre-pilot (approved: "all 3 fixes, then
+pilot"):
+1. `git.sha=unknown` in the manifest (no git binary on compute nodes; also
+   silently claimed `dirty=false`) → pure-Python `.git/HEAD` fallback,
+   `dirty=null` when unverifiable.
+2. Manifest lacked `hf_id`, pinned revision, vLLM version (§1.4 requires
+   all three) → spec carries hf_id+revision from the registry; client_info
+   records the venv's vLLM version.
+3. Hidden-channel cost was invisible → new panel column
+   `chars_out_reasoning` (48 columns now) + `chars_out_reasoning_mean` in
+   cell metrics; `chars_out` stays visible-only. NOTE: stores written
+   before this change (the smoke store on `$SCRATCH`) will fail aggregate's
+   schema check — committed smoke results stay valid; don't re-aggregate
+   the old store; pilot stores are fresh.
+
+Next: `bash scripts/hpc/submit_pilot.sh` (2 nodes, gpt-oss-120b/20b × all
+four bands) → difficulty gate + throughput constants.
 
 ## Next
 

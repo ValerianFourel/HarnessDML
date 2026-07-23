@@ -60,6 +60,8 @@ class ExperimentSpec:
     coupled_submission: bool = False  # bridge arm only (§4.2.1)
     model_family: str = ""
     model_scale_b: float = 0.0
+    model_hf_id: str = ""      # manifest provenance (§1.4: hf repo + revision)
+    model_revision: str = ""
     throughput_rollouts_per_node_hour: float | None = None  # set from pilot (§7)
     extra: dict = field(default_factory=dict)
 
@@ -126,11 +128,14 @@ def resolve_model(spec: ExperimentSpec, registry: dict[str, dict] | None = None)
     """Fill model_family/model_scale_b from the registry ('mock' is special)."""
     if spec.model_id == "mock":
         spec.model_family = spec.model_family or "mock"
+        spec.model_hf_id = spec.model_hf_id or "mock"
         return
     reg = registry if registry is not None else load_registry()
     entry = reg[spec.model_id]
     spec.model_family = entry["family"]
     spec.model_scale_b = float(entry.get("params_b_total") or 0.0)
+    spec.model_hf_id = entry["hf_id"]
+    spec.model_revision = entry.get("revision") or "main"
 
 
 def from_yaml(

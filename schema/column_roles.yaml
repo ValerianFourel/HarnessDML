@@ -64,6 +64,7 @@ tokens_in:         {role: post_treatment, notes: "cost outcome; allowed as Y, ne
 tokens_out:        {role: post_treatment, notes: "cost outcome; allowed as Y, never as X"}
 chars_in:          {role: post_treatment, notes: "tokenizer-invariant cost outcome"}
 chars_out:         {role: post_treatment, notes: "tokenizer-invariant cost outcome"}
+chars_out_reasoning: {role: post_treatment, notes: "hidden-channel cost outcome; 0 where family exposes none"}
 wall_s:            {role: post_treatment, notes: "diagnostic only (§4.3.2)"}
 gpu_seconds:       {role: post_treatment, notes: "cost outcome"}
 latency_ms_mean:   {role: post_treatment}

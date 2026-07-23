@@ -115,6 +115,24 @@ def test_harmony_vocab_missing_or_corrupt_is_reported_not_raised(tmp_path, monke
     assert prefetch_models.verify_harmony_vocab() is False  # sha256 mismatch
 
 
+def test_git_state_survives_missing_git_binary(monkeypatch):
+    """Compute nodes have no `git` (smoke 1029480 wrote sha=unknown): the
+    fallback reads .git/HEAD and never fabricates dirty=False."""
+    import subprocess
+
+    from harnesslab import manifest
+
+    real = manifest._git_state(Path(__file__).resolve().parents[1])
+    assert real["sha"] != "unknown"
+
+    def no_git(*a, **k):
+        raise FileNotFoundError("git")
+
+    monkeypatch.setattr(subprocess, "run", no_git)
+    fallback = manifest._git_state(Path(__file__).resolve().parents[1])
+    assert fallback["sha"] == real["sha"] and fallback["dirty"] is None
+
+
 def test_sample_indices_deterministic_sorted():
     a = sample_indices(1000, 100, 20260723)
     assert a == sample_indices(1000, 100, 20260723)

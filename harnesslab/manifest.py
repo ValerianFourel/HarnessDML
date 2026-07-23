@@ -18,8 +18,29 @@ def _git_state(root: Path) -> dict:
             ).stdout.strip()
 
         return {"sha": g("rev-parse", "HEAD"), "dirty": bool(g("status", "--porcelain"))}
-    except Exception:  # noqa: BLE001 — non-repo contexts still get a manifest
-        return {"sha": "unknown", "dirty": False}
+    except Exception:  # noqa: BLE001
+        # Compute nodes may lack the git binary (smoke 1029480 wrote
+        # sha=unknown): read .git/HEAD directly. Dirtiness is unverifiable
+        # without git — record None, never a fabricated False.
+        try:
+            git_dir = root / ".git"
+            head = (git_dir / "HEAD").read_text().strip()
+            if head.startswith("ref:"):
+                ref = head.split(None, 1)[1]
+                ref_file = git_dir / ref
+                if ref_file.exists():
+                    sha = ref_file.read_text().strip()
+                else:
+                    sha = next(
+                        line.split()[0]
+                        for line in (git_dir / "packed-refs").read_text().splitlines()
+                        if line.split()[-1:] == [ref]
+                    )
+            else:
+                sha = head  # detached HEAD
+            return {"sha": sha, "dirty": None}
+        except Exception:  # noqa: BLE001 — non-repo contexts still get a manifest
+            return {"sha": "unknown", "dirty": None}
 
 
 def write_manifest(

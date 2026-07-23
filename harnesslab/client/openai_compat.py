@@ -53,11 +53,13 @@ class OpenAICompatClient:
                 resp.raise_for_status()
                 data = resp.json()
                 usage = data.get("usage") or {}
+                message = data["choices"][0]["message"]
                 return ChatResult(
-                    text=data["choices"][0]["message"]["content"] or "",
+                    text=message.get("content") or "",
                     tokens_in=int(usage.get("prompt_tokens", 0)),
                     tokens_out=int(usage.get("completion_tokens", 0)),
                     latency_ms=(time.monotonic() - t0) * 1000.0,
+                    reasoning_chars=len(message.get("reasoning_content") or ""),
                 )
             except (httpx.TransportError, httpx.HTTPStatusError) as exc:
                 last_exc = exc
