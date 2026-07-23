@@ -18,7 +18,7 @@ set -euo pipefail
 : "${MODEL_ID:?export MODEL_ID=<registry key>}"
 : "${BENCH:?export BENCH=hotpotqa|musique|gsm8k|math}"
 
-source .venv/bin/activate
+source scripts/hpc/env.sh   # modules + venv — batch nodes self-provision
 export HF_HOME=${HF_HOME:-$SCRATCH/hf}
 export HF_HUB_OFFLINE=1
 

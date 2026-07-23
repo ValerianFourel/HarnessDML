@@ -3,5 +3,5 @@
 #   export HF_TOKEN=hf_...   # needed for gated models (Llama, Gemma)
 #   bash scripts/hpc/prefetch_models.sh --tier F G B
 set -euo pipefail
-source .venv/bin/activate
+source scripts/hpc/env.sh
 exec python scripts/hpc/prefetch_models.py "$@"

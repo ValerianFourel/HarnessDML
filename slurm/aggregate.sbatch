@@ -8,7 +8,7 @@
 #SBATCH --output=slurm-agg-%j.out
 set -euo pipefail
 : "${ROLLOUTS:?}" ; : "${EXP_ID:?}"
-source .venv/bin/activate
+source scripts/hpc/env.sh   # modules + venv — batch nodes self-provision
 srun --ntasks=1 python -m harnesslab.cli aggregate --rollouts "$ROLLOUTS" --out "results/$EXP_ID"
 python -m harnesslab.cli verify --panel "results/$EXP_ID/panel.parquet"
 echo "[aggregate] commit results/$EXP_ID from a LOGIN node (size guard active)"
