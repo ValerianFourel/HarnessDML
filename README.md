@@ -94,24 +94,44 @@ python -c "import halcausal, doubleml, lightgbm, polars; print('halcausal OK')"
 Then open `notebooks/00_hpc_setup.ipynb` (kernel: `halcausal`) and Run All —
 it re-checks all of the above and fails loudly on anything missing.
 
-### This cluster (jpbl, `/e/project1/scifi/fourel1`)
+### This cluster (jpbl, `/e/project1/scifi/fourel1`, linux-aarch64)
 
-Layout: wrapper `/e/project1/scifi/fourel1/HarnessDML/` holds the repo
-(`HarnessDML/`), `vendor/`, and the data dir (`Data/`). Instead of
-`$HAL_DATA_DIR` (env vars don't reach Jupyter kernels reliably), the repo's
-gitignored `data` symlink points at `Data/` — `halcausal.paths.data_dir()`
-falls back to it, so notebooks need no environment setup at all:
+Module python tops out at **3.9** — too old for halcausal AND hal-harness
+(both need ≥ 3.11) — so `uv` provisions CPython 3.12 in user space (static
+aarch64 binary, no admin). Layout: wrapper `/e/project1/scifi/fourel1/HarnessDML/`
+holds the repo (`HarnessDML/`), `vendor/`, and the data dir (`Data/`). Data is
+reached via the repo's gitignored `data` symlink, NOT `$HAL_DATA_DIR` — env
+vars don't reach Jupyter kernels reliably; `halcausal.paths.data_dir()` falls
+back to the symlink, so notebooks need zero environment setup:
 
 ```sh
 BASE=/e/project1/scifi/fourel1/HarnessDML
 cd "$BASE/HarnessDML"
-ln -sfn "$BASE/Data" data          # data location, kernel-proof
-mv "$BASE/vendor" vendor 2>/dev/null || true   # vendor lives inside the repo
+git pull --rebase
+ln -sfn "$BASE/Data" data
+[ -d vendor/hal-harness ] || git clone --depth 1 https://github.com/princeton-pli/hal-harness vendor/hal-harness
+
+curl -LsSf https://astral.sh/uv/install.sh | sh
+export PATH="$HOME/.local/bin:$PATH"           # add to ~/.bashrc for future sessions
+
+uv sync --extra hpc                            # downloads CPython 3.12 (aarch64) + locked deps
+source .venv/bin/activate
+python -m ipykernel install --user --name halcausal --display-name "halcausal"
+
+uv venv vendor/.hal-venv --python 3.12
+uv pip install --python vendor/.hal-venv/bin/python click python-dotenv cryptography rich
+uv pip install --python vendor/.hal-venv/bin/python --no-deps -e vendor/hal-harness
+vendor/.hal-venv/bin/hal-decrypt --help        # must print usage
+
+python -c "import halcausal, doubleml, lightgbm, polars; print('halcausal OK')"
+python -c "from halcausal import paths; print(paths.data_dir())"   # -> $BASE/Data
 ```
 
-Then follow steps 1 and 4–7 above unchanged (skip step 3's HAL_DATA_DIR/.env).
-`00_hpc_setup` printing `HAL_DATA_DIR: None` is fine — the `data dir :` line
-must show `$BASE/Data`.
+Fallbacks: if `uv sync` hits a package with no aarch64 wheel, retry with
+`uv pip install -e ".[hpc]"`; if astral.sh is blocked, get micromamba instead
+(`curl -Ls https://micro.mamba.pm/api/micromamba/linux-aarch64/latest | tar -xj bin/micromamba`)
+and create a python=3.12 env from conda-forge. `00_hpc_setup` printing
+`HAL_DATA_DIR: None` is fine — the `data dir :` line must show `$BASE/Data`.
 
 ## Workflow loop
 
