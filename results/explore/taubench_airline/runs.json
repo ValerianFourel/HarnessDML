@@ -1,0 +1,10514 @@
+[
+ {
+  "file": "taubench_airline_1743961943_UPLOAD.json",
+  "size_mb": 94.73,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 4
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 2098
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "TAU-bench FewShot (gpt-4o-2024-11-20)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-04-06",
+    "run_id": "taubench_airline_1743961943",
+    "agent_args": {
+     "model_name": "gpt-4o-2024-11-20",
+     "provider": "openai",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.4,
+    "total_cost": 46.468065
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 0.0
+    },
+    "5": {
+     "reward": 0.0
+    },
+    "6": {
+     "reward": 0.0
+    },
+    "7": {
+     "reward": 0.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 0.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 0.0
+    },
+    "14": {
+     "reward": 0.0
+    },
+    "15": {
+     "reward": 1.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 0.0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 0.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 1.0
+    },
+    "27": {
+     "reward": 1.0
+    },
+    "28": {
+     "reward": 1.0
+    },
+    "29": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 1.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 1.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 0.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0.0
+    },
+    "40": {
+     "reward": 0.0
+    },
+    "41": {
+     "reward": 0.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 0.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 1.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "gpt-4o-2024-11-20": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 2098
+  }
+ },
+ {
+  "file": "taubench_airline_1743969279_UPLOAD.json",
+  "size_mb": 75.52,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1812
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "TAU-bench FewShot (o3-mini-2025-01-31)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-04-06",
+    "run_id": "taubench_airline_1743969279",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_few_shot/ --agent_function few_shot.run --agent_name TAU-bench FewShot (o3-mini-2025-01-31) -A model_name=o3-mini-2025-01-31 -A provid\u2026",
+    "agent_args": {
+     "model_name": "o3-mini-2025-01-31",
+     "provider": "openai",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.48,
+    "total_cost": 20.560539199999997
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 0.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 0.0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 1.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 0.0
+    },
+    "15": {
+     "reward": 0.0
+    },
+    "16": {
+     "reward": 1.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 1.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 0.0
+    },
+    "31": {
+     "reward": 1.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 1.0
+    },
+    "34": {
+     "reward": 1.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 0.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0.0
+    },
+    "40": {
+     "reward": 0.0
+    },
+    "41": {
+     "reward": 0.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 0.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 1.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "o3-mini-2025-01-31": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1812
+  }
+ },
+ {
+  "file": "taubench_airline_1743970420_UPLOAD.json",
+  "size_mb": 85.31,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 2070
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "TAU-bench FewShot (o3-mini-2025-01-31 low)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-04-06",
+    "run_id": "taubench_airline_1743970420",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_few_shot/ --agent_function few_shot.run --agent_name TAU-bench FewShot (o3-mini-2025-01-31) -A model_name=o3-mini-2025-01-31 -A provid\u2026",
+    "agent_args": {
+     "model_name": "o3-mini-2025-01-31",
+     "provider": "openai",
+     "reasoning_effort": "low",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.4,
+    "total_cost": 20.054093199999997
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 0.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 0.0
+    },
+    "5": {
+     "reward": 0.0
+    },
+    "6": {
+     "reward": 0.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 1.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 0.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 0.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 0.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0.0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 0.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "o3-mini-2025-01-31": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 2070
+  }
+ },
+ {
+  "file": "taubench_airline_1743994890_UPLOAD.json",
+  "size_mb": 53.83,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1472
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "TAU-bench FewShot (claude-3-7-sonnet-20250219)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-04-07",
+    "run_id": "taubench_airline_1743994890",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_few_shot/ --agent_function few_shot.run --agent_name TAU-bench FewShot (claude-3-7-sonnet-20250219) -A model_name=claude-3-7-sonnet-20\u2026",
+    "agent_args": {
+     "model_name": "claude-3-7-sonnet-20250219",
+     "provider": "anthropic",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.34,
+    "total_cost": 36.453386
+   },
+   "raw_eval_results": {
+    "30": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "35": {
+     "reward": 0.0
+    },
+    "49": {
+     "reward": 0.0
+    },
+    "0": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 0.0
+    },
+    "5": {
+     "reward": 0.0
+    },
+    "6": {
+     "reward": 0.0
+    },
+    "7": {
+     "reward": 0.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 1.0
+    },
+    "10": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 0.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 0.0
+    },
+    "14": {
+     "reward": 0.0
+    },
+    "15": {
+     "reward": 1.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 0.0
+    },
+    "21": {
+     "reward": 0.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 0.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 1.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 0.0
+    },
+    "31": {
+     "reward": 1.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0.0
+    },
+    "40": {
+     "reward": 0.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "claude-3-7-sonnet-20250219": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1472
+  }
+ },
+ {
+  "file": "taubench_airline_1744000536_UPLOAD.json",
+  "size_mb": 57.39,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1474
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "TAU-bench FewShot (claude-3-7-sonnet-20250219)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-04-07",
+    "run_id": "taubench_airline_1744000536",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_few_shot/ --agent_function few_shot.run --agent_name TAU-bench FewShot (claude-3-7-sonnet-20250219) -A model_name=claude-3-7-sonnet-20\u2026",
+    "agent_args": {
+     "model_name": "claude-3-7-sonnet-20250219",
+     "provider": "anthropic",
+     "reasoning_effort": "high",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.6,
+    "total_cost": 37.233971000000004
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 0.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 1.0
+    },
+    "11": {
+     "reward": 1.0
+    },
+    "12": {
+     "reward": 0.0
+    },
+    "13": {
+     "reward": 0.0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 1.0
+    },
+    "16": {
+     "reward": 1.0
+    },
+    "17": {
+     "reward": 1.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 0.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 0.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 1.0
+    },
+    "27": {
+     "reward": 1.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 1.0
+    },
+    "32": {
+     "reward": 1.0
+    },
+    "33": {
+     "reward": 1.0
+    },
+    "34": {
+     "reward": 1.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0.0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 0.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "claude-3-7-sonnet-20250219": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1474
+  }
+ },
+ {
+  "file": "taubench_airline_hal_generalist_agent_claude37sonnet20250219_1746038671_UPLOAD.json",
+  "size_mb": 58.56,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1870
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "HAL Generalist Agent (claude-3-7-sonnet-20250219)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-04-30",
+    "run_id": "taubench_airline_hal_generalist_agent_claude37sonnet20250219_1746038671",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/hal_generalist_agent/ --agent_function main.run --agent_name HAL Generalist Agent (claude-3-7-sonnet-20250219) -A model_name=claude-3-7-sonnet-\u2026",
+    "agent_args": {
+     "model_name": "claude-3-7-sonnet-20250219",
+     "budget": 9999999,
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.56,
+    "total_cost": 42.105320999999996
+   },
+   "raw_eval_results": {
+    "13": "ERROR: Traceback (most recent call last):\n  File \"/home/azureuser/miniconda3/envs/hal/lib/python3.12/site-packages/litellm/llms/anthropic/chat/handler.py\", line 421, in completion\n    response = clien\u2026",
+    "32": "ERROR: Traceback (most recent call last):\n  File \"/home/azureuser/miniconda3/envs/hal/lib/python3.12/site-packages/litellm/llms/anthropic/chat/handler.py\", line 421, in completion\n    response = clien\u2026",
+    "0": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 1.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0
+    },
+    "9": {
+     "reward": 0
+    },
+    "10": {
+     "reward": 1.0
+    },
+    "11": {
+     "reward": 0
+    },
+    "12": {
+     "reward": 0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 0.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 1.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 0
+    },
+    "21": {
+     "reward": 0
+    },
+    "22": {
+     "reward": 1.0
+    },
+    "23": {
+     "reward": 1.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0
+    },
+    "26": {
+     "reward": 1.0
+    },
+    "27": {
+     "reward": 1.0
+    },
+    "28": {
+     "reward": 0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "30": {
+     "reward": 0
+    },
+    "31": {
+     "reward": 1.0
+    },
+    "33": {
+     "reward": 1.0
+    },
+    "34": {
+     "reward": 1.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 0
+    },
+    "37": {
+     "reward": 0
+    },
+    "38": {
+     "reward": 0
+    },
+    "39": {
+     "reward": 1.0
+    },
+    "40": {
+     "reward": 0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 1.0
+    },
+    "47": {
+     "reward": 0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "claude-3-7-sonnet-20250219": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "be234e3cfa2ac374739389ea4db8498f88e4268f",
+    "repository_url": "https://github.com/benediktstroebl/hal-harness.git",
+    "branch": "main",
+    "commit_timestamp": "2025-04-24 16:17:46 -0400",
+    "commit_url": "https://github.com/benediktstroebl/hal-harness/tree/be234e3cfa2ac374739389ea4db8498f88e4268f"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1870
+  }
+ },
+ {
+  "file": "taubench_airline_hal_generalist_agent_claude37sonnet20250219_high_1746060636_UPLOAD.json",
+  "size_mb": 46.48,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1609
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "HAL Generalist Agent (claude-3-7-sonnet-20250219 high)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-05-01",
+    "run_id": "taubench_airline_hal_generalist_agent_claude37sonnet20250219_high_1746060636",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/hal_generalist_agent/ --agent_function main.run --agent_name HAL Generalist Agent (claude-3-7-sonnet-20250219 high) -A model_name=claude-3-7-so\u2026",
+    "agent_args": {
+     "model_name": "claude-3-7-sonnet-20250219",
+     "reasoning_effort": "high",
+     "budget": 9999999,
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.44,
+    "total_cost": 34.581165000000006
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0
+    },
+    "9": {
+     "reward": 0
+    },
+    "10": {
+     "reward": 0
+    },
+    "11": {
+     "reward": 1.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 0.0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 0.0
+    },
+    "16": {
+     "reward": 0
+    },
+    "17": {
+     "reward": 0
+    },
+    "18": {
+     "reward": 0
+    },
+    "19": {
+     "reward": 0
+    },
+    "20": {
+     "reward": 0.0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 0
+    },
+    "23": {
+     "reward": 1.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 1.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0
+    },
+    "29": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 0
+    },
+    "31": {
+     "reward": 1.0
+    },
+    "32": {
+     "reward": 1.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 1.0
+    },
+    "35": {
+     "reward": 0
+    },
+    "36": {
+     "reward": 0
+    },
+    "37": {
+     "reward": 0
+    },
+    "38": {
+     "reward": 0
+    },
+    "39": {
+     "reward": 0.0
+    },
+    "40": {
+     "reward": 0
+    },
+    "41": {
+     "reward": 0.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 1.0
+    },
+    "47": {
+     "reward": 1.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "claude-3-7-sonnet-20250219": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "be234e3cfa2ac374739389ea4db8498f88e4268f",
+    "repository_url": "https://github.com/benediktstroebl/hal-harness.git",
+    "branch": "main",
+    "commit_timestamp": "2025-04-24 16:17:46 -0400",
+    "commit_url": "https://github.com/benediktstroebl/hal-harness/tree/be234e3cfa2ac374739389ea4db8498f88e4268f"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1609
+  }
+ },
+ {
+  "file": "taubench_airline_hal_generalist_agent_deepseekaideepseekr1_1744655092_UPLOAD.json",
+  "size_mb": 46.96,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1590
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "HAL Generalist Agent (deepseek-ai/DeepSeek-R1)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-04-14",
+    "run_id": "taubench_airline_hal_generalist_agent_deepseekaideepseekr1_1744655092",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/hal_generalist_agent/ --agent_function main.run --agent_name HAL Generalist Agent (deepseek-ai/DeepSeek-R1) -A model_name=together_ai/deepseek-\u2026",
+    "agent_args": {
+     "model_name": "together_ai/deepseek-ai/DeepSeek-R1",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.1,
+    "total_cost": 30.18291
+   },
+   "raw_eval_results": {
+    "7": {
+     "reward": 0
+    },
+    "8": {
+     "reward": 0
+    },
+    "9": {
+     "reward": 0
+    },
+    "10": {
+     "reward": 0
+    },
+    "11": {
+     "reward": 0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0
+    },
+    "33": {
+     "reward": 0
+    },
+    "40": {
+     "reward": 0
+    },
+    "44": {
+     "reward": 0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "49": {
+     "reward": 1.0
+    },
+    "0": {
+     "reward": 0
+    },
+    "1": {
+     "reward": 0.0
+    },
+    "2": {
+     "reward": 0
+    },
+    "3": {
+     "reward": 0
+    },
+    "4": {
+     "reward": 0
+    },
+    "5": {
+     "reward": 0
+    },
+    "6": {
+     "reward": 0.0
+    },
+    "12": {
+     "reward": 0
+    },
+    "13": {
+     "reward": 0
+    },
+    "14": {
+     "reward": 0
+    },
+    "15": {
+     "reward": 0
+    },
+    "16": {
+     "reward": 0
+    },
+    "17": {
+     "reward": 0
+    },
+    "18": {
+     "reward": 0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 0
+    },
+    "21": {
+     "reward": 0
+    },
+    "22": {
+     "reward": 0
+    },
+    "24": {
+     "reward": 0.0
+    },
+    "25": {
+     "reward": 0
+    },
+    "26": {
+     "reward": 0
+    },
+    "27": {
+     "reward": 0
+    },
+    "28": {
+     "reward": 0
+    },
+    "29": {
+     "reward": 0
+    },
+    "30": {
+     "reward": 0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 0
+    },
+    "37": {
+     "reward": 0.0
+    },
+    "38": {
+     "reward": 0
+    },
+    "39": {
+     "reward": 0
+    },
+    "41": {
+     "reward": 0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "46": {
+     "reward": 1.0
+    },
+    "47": {
+     "reward": 0
+    },
+    "48": {
+     "reward": 0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "deepseek-ai/DeepSeek-R1": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "3a207177582dacb1adca2df912bdc5a1ba3bf80d",
+    "repository_url": "https://github.com/benediktstroebl/hal-harness.git",
+    "branch": "main",
+    "commit_timestamp": "2025-04-14 21:44:03 +0000",
+    "commit_url": "https://github.com/benediktstroebl/hal-harness/tree/3a207177582dacb1adca2df912bdc5a1ba3bf80d"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1590
+  }
+ },
+ {
+  "file": "taubench_airline_hal_generalist_agent_deepseekaideepseekv3_1745263676_UPLOAD.json",
+  "size_mb": 42.85,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1696
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "HAL Generalist Agent (deepseek-ai/DeepSeek-V3)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-04-21",
+    "run_id": "taubench_airline_hal_generalist_agent_deepseekaideepseekv3_1745263676",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/hal_generalist_agent/ --agent_function main.run --agent_name HAL Generalist Agent (deepseek-ai/DeepSeek-V3) -A model_name=together_ai/deepseek-\u2026",
+    "agent_args": {
+     "model_name": "together_ai/deepseek-ai/DeepSeek-V3",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.18,
+    "total_cost": 10.7299175
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0
+    },
+    "3": {
+     "reward": 0
+    },
+    "4": {
+     "reward": 0
+    },
+    "5": {
+     "reward": 0
+    },
+    "6": {
+     "reward": 0.0
+    },
+    "7": {
+     "reward": 0
+    },
+    "8": {
+     "reward": 0
+    },
+    "9": {
+     "reward": 0
+    },
+    "10": {
+     "reward": 0
+    },
+    "11": {
+     "reward": 0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 0
+    },
+    "14": {
+     "reward": 0.0
+    },
+    "15": {
+     "reward": 1.0
+    },
+    "16": {
+     "reward": 0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 0
+    },
+    "19": {
+     "reward": 0
+    },
+    "20": {
+     "reward": 0
+    },
+    "21": {
+     "reward": 0.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 0
+    },
+    "25": {
+     "reward": 0
+    },
+    "26": {
+     "reward": 0
+    },
+    "27": {
+     "reward": 0
+    },
+    "28": {
+     "reward": 0
+    },
+    "29": {
+     "reward": 0
+    },
+    "30": {
+     "reward": 0
+    },
+    "31": {
+     "reward": 0
+    },
+    "32": {
+     "reward": 0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 1.0
+    },
+    "35": {
+     "reward": 0
+    },
+    "36": {
+     "reward": 0
+    },
+    "37": {
+     "reward": 0
+    },
+    "38": {
+     "reward": 0
+    },
+    "39": {
+     "reward": 0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 0.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 0
+    },
+    "45": {
+     "reward": 0
+    },
+    "46": {
+     "reward": 1.0
+    },
+    "47": {
+     "reward": 0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "deepseek-ai/DeepSeek-V3": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "798e6deda95e708eab887474f076294e1d5f8bb2",
+    "repository_url": "https://github.com/benediktstroebl/hal-harness.git",
+    "branch": "main",
+    "commit_timestamp": "2025-04-20 16:30:20 +0000",
+    "commit_url": "https://github.com/benediktstroebl/hal-harness/tree/798e6deda95e708eab887474f076294e1d5f8bb2"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1696
+  }
+ },
+ {
+  "file": "taubench_airline_hal_generalist_agent_gemini20flash_1746038655_UPLOAD.json",
+  "size_mb": 52.81,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1936
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "HAL Generalist Agent (gemini-2.0-flash)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-04-30",
+    "run_id": "taubench_airline_hal_generalist_agent_gemini20flash_1746038655",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/hal_generalist_agent/ --agent_function main.run --agent_name HAL Generalist Agent (gemini-2.0-flash) -A model_name=gemini/gemini-2.0-flash --ma\u2026",
+    "agent_args": {
+     "model_name": "gemini/gemini-2.0-flash",
+     "budget": 999999,
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.22,
+    "total_cost": 2.003067
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 0
+    },
+    "1": {
+     "reward": 0.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0
+    },
+    "4": {
+     "reward": 0.0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 0.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0
+    },
+    "9": {
+     "reward": 0
+    },
+    "10": {
+     "reward": 0
+    },
+    "11": {
+     "reward": 0
+    },
+    "12": {
+     "reward": 0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 0
+    },
+    "15": {
+     "reward": 0
+    },
+    "16": {
+     "reward": 0
+    },
+    "17": {
+     "reward": 0
+    },
+    "18": {
+     "reward": 0
+    },
+    "19": {
+     "reward": 0
+    },
+    "20": {
+     "reward": 0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0
+    },
+    "26": {
+     "reward": 0
+    },
+    "27": {
+     "reward": 0
+    },
+    "28": {
+     "reward": 0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "30": {
+     "reward": 0
+    },
+    "31": {
+     "reward": 0
+    },
+    "32": {
+     "reward": 1.0
+    },
+    "33": {
+     "reward": 0
+    },
+    "34": {
+     "reward": 0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 0
+    },
+    "39": {
+     "reward": 0
+    },
+    "40": {
+     "reward": 0
+    },
+    "41": {
+     "reward": 0
+    },
+    "42": {
+     "reward": 0
+    },
+    "43": {
+     "reward": 0
+    },
+    "44": {
+     "reward": 0.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 1.0
+    },
+    "47": {
+     "reward": 1.0
+    },
+    "48": {
+     "reward": 0
+    },
+    "49": {
+     "reward": 0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "gemini-2.0-flash": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "be234e3cfa2ac374739389ea4db8498f88e4268f",
+    "repository_url": "https://github.com/benediktstroebl/hal-harness.git",
+    "branch": "main",
+    "commit_timestamp": "2025-04-24 16:17:46 -0400",
+    "commit_url": "https://github.com/benediktstroebl/hal-harness/tree/be234e3cfa2ac374739389ea4db8498f88e4268f"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1936
+  }
+ },
+ {
+  "file": "taubench_airline_hal_generalist_agent_gpt4120250414_1745167124_UPLOAD.json",
+  "size_mb": 40.7,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1532
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "HAL Generalist Agent (gpt-4.1-2025-04-14)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-04-20",
+    "run_id": "taubench_airline_hal_generalist_agent_gpt4120250414_1745167124",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/hal_generalist_agent/ --agent_function main.run --agent_name HAL Generalist Agent (gpt-4.1-2025-04-14) -A model_name=gpt-4.1-2025-04-14 -A prov\u2026",
+    "agent_args": {
+     "model_name": "gpt-4.1-2025-04-14",
+     "provider": "openai",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.16,
+    "total_cost": 17.84996
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 0.0
+    },
+    "1": {
+     "reward": 0
+    },
+    "2": {
+     "reward": 0
+    },
+    "3": {
+     "reward": 0
+    },
+    "4": {
+     "reward": 0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0
+    },
+    "9": {
+     "reward": 0
+    },
+    "10": {
+     "reward": 0
+    },
+    "11": {
+     "reward": 0
+    },
+    "12": {
+     "reward": 0
+    },
+    "13": {
+     "reward": 0
+    },
+    "14": {
+     "reward": 0
+    },
+    "15": {
+     "reward": 0
+    },
+    "16": {
+     "reward": 0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 0
+    },
+    "21": {
+     "reward": 0.0
+    },
+    "22": {
+     "reward": 0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 0.0
+    },
+    "25": {
+     "reward": 0
+    },
+    "26": {
+     "reward": 0
+    },
+    "27": {
+     "reward": 1.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 0
+    },
+    "31": {
+     "reward": 0
+    },
+    "32": {
+     "reward": 0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 0
+    },
+    "39": {
+     "reward": 1.0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 0
+    },
+    "42": {
+     "reward": 0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 0
+    },
+    "49": {
+     "reward": 0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "gpt-4.1-2025-04-14": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "798e6deda95e708eab887474f076294e1d5f8bb2",
+    "repository_url": "https://github.com/benediktstroebl/hal-harness.git",
+    "branch": "main",
+    "commit_timestamp": "2025-04-20 16:30:20 +0000",
+    "commit_url": "https://github.com/benediktstroebl/hal-harness/tree/798e6deda95e708eab887474f076294e1d5f8bb2"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1532
+  }
+ },
+ {
+  "file": "taubench_airline_hal_generalist_agent_o320250416_medium_1753774187_UPLOAD.json",
+  "size_mb": 94.31,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 2410
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "HAL Generalist Agent (o3-2025-04-16 medium)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-07-29",
+    "run_id": "taubench_airline_hal_generalist_agent_o320250416_medium_1753774187",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/hal_generalist_agent/ --agent_function main.run --agent_name HAL Generalist Agent (o3-2025-04-16 medium) -A model_name=o3-2025-04-16 -A provide\u2026",
+    "agent_args": {
+     "model_name": "o3-2025-04-16",
+     "provider": "openai",
+     "budget": 99999,
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.2,
+    "total_cost": 221.59176000000002
+   },
+   "raw_eval_results": {
+    "18": "ERROR: Traceback (most recent call last):\n  File \"/home/azureuser/miniconda3/envs/hal/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 725, in completion\n    raise e\n  File \"/home/azu\u2026",
+    "27": "ERROR: Traceback (most recent call last):\n  File \"/home/azureuser/miniconda3/envs/hal/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 725, in completion\n    raise e\n  File \"/home/azu\u2026",
+    "0": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 0
+    },
+    "2": {
+     "reward": 0
+    },
+    "3": {
+     "reward": 0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 0.0
+    },
+    "8": {
+     "reward": 0
+    },
+    "9": {
+     "reward": 0
+    },
+    "10": {
+     "reward": 0
+    },
+    "11": {
+     "reward": 0
+    },
+    "12": {
+     "reward": 0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 0
+    },
+    "15": {
+     "reward": 0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 0
+    },
+    "22": {
+     "reward": 0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 0.0
+    },
+    "25": {
+     "reward": 0
+    },
+    "26": {
+     "reward": 0
+    },
+    "28": {
+     "reward": 0
+    },
+    "29": {
+     "reward": 0
+    },
+    "30": {
+     "reward": 0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0
+    },
+    "34": {
+     "reward": 0
+    },
+    "35": {
+     "reward": 0
+    },
+    "36": {
+     "reward": 0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 0
+    },
+    "39": {
+     "reward": 1.0
+    },
+    "40": {
+     "reward": 0
+    },
+    "41": {
+     "reward": 0
+    },
+    "42": {
+     "reward": 0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 0
+    },
+    "45": {
+     "reward": 0
+    },
+    "46": {
+     "reward": 1.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 0
+    },
+    "49": {
+     "reward": 0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "o3-2025-04-16": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "6a44aedf5ca8bfc81f9354658a4f66553eee730d",
+    "repository_url": "https://github.com/benediktstroebl/hal-harness.git",
+    "branch": "main",
+    "commit_timestamp": "2025-05-12 21:08:21 +0000",
+    "commit_url": "https://github.com/benediktstroebl/hal-harness/tree/6a44aedf5ca8bfc81f9354658a4f66553eee730d"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 2410
+  }
+ },
+ {
+  "file": "taubench_airline_hal_generalist_agent_o4mini20250416_high_1745167079_UPLOAD.json",
+  "size_mb": 70.94,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 2158
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "HAL Generalist Agent (o4-mini-2025-04-16 high)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-04-20",
+    "run_id": "taubench_airline_hal_generalist_agent_o4mini20250416_high_1745167079",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/hal_generalist_agent/ --agent_function main.run --agent_name HAL Generalist Agent (o4-mini-2025-04-16 high) -A model_name=o4-mini-2025-04-16 -A\u2026",
+    "agent_args": {
+     "model_name": "o4-mini-2025-04-16",
+     "reasoning_effort": "high",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.18,
+    "total_cost": 20.5748856
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 0
+    },
+    "1": {
+     "reward": 0.0
+    },
+    "2": {
+     "reward": 0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0
+    },
+    "9": {
+     "reward": 0
+    },
+    "10": {
+     "reward": 0
+    },
+    "11": {
+     "reward": 0
+    },
+    "12": {
+     "reward": 0
+    },
+    "13": {
+     "reward": 0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 0.0
+    },
+    "19": {
+     "reward": 0
+    },
+    "20": {
+     "reward": 0
+    },
+    "21": {
+     "reward": 0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0
+    },
+    "26": {
+     "reward": 0
+    },
+    "27": {
+     "reward": 0
+    },
+    "28": {
+     "reward": 0
+    },
+    "29": {
+     "reward": 0
+    },
+    "30": {
+     "reward": 0
+    },
+    "31": {
+     "reward": 1.0
+    },
+    "32": {
+     "reward": 0
+    },
+    "33": {
+     "reward": 0
+    },
+    "34": {
+     "reward": 0
+    },
+    "35": {
+     "reward": 0
+    },
+    "36": {
+     "reward": 0
+    },
+    "37": {
+     "reward": 0
+    },
+    "38": {
+     "reward": 0
+    },
+    "39": {
+     "reward": 0
+    },
+    "40": {
+     "reward": 0.0
+    },
+    "41": {
+     "reward": 0
+    },
+    "42": {
+     "reward": 0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 1.0
+    },
+    "47": {
+     "reward": 1.0
+    },
+    "48": {
+     "reward": 0
+    },
+    "49": {
+     "reward": 0.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "o4-mini-2025-04-16": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "798e6deda95e708eab887474f076294e1d5f8bb2",
+    "repository_url": "https://github.com/benediktstroebl/hal-harness.git",
+    "branch": "main",
+    "commit_timestamp": "2025-04-20 16:30:20 +0000",
+    "commit_url": "https://github.com/benediktstroebl/hal-harness/tree/798e6deda95e708eab887474f076294e1d5f8bb2"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 2158
+  }
+ },
+ {
+  "file": "taubench_airline_hal_generalist_agent_o4mini20250416_low_1745166691_UPLOAD.json",
+  "size_mb": 69.01,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 2176
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "HAL Generalist Agent (o4-mini-2025-04-16 low)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-04-20",
+    "run_id": "taubench_airline_hal_generalist_agent_o4mini20250416_low_1745166691",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/hal_generalist_agent/ --agent_function main.run --agent_name HAL Generalist Agent (o4-mini-2025-04-16 low) -A model_name=o4-mini-2025-04-16 -A \u2026",
+    "agent_args": {
+     "model_name": "o4-mini-2025-04-16",
+     "reasoning_effort": "low",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.22,
+    "total_cost": 20.156134400000003
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 0
+    },
+    "1": {
+     "reward": 0
+    },
+    "2": {
+     "reward": 0
+    },
+    "3": {
+     "reward": 0
+    },
+    "4": {
+     "reward": 0
+    },
+    "5": {
+     "reward": 0
+    },
+    "6": {
+     "reward": 0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0
+    },
+    "9": {
+     "reward": 0
+    },
+    "10": {
+     "reward": 0
+    },
+    "11": {
+     "reward": 0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 0
+    },
+    "15": {
+     "reward": 0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 1.0
+    },
+    "20": {
+     "reward": 0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0
+    },
+    "24": {
+     "reward": 0
+    },
+    "25": {
+     "reward": 0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0
+    },
+    "28": {
+     "reward": 0
+    },
+    "29": {
+     "reward": 0
+    },
+    "30": {
+     "reward": 0
+    },
+    "31": {
+     "reward": 0
+    },
+    "32": {
+     "reward": 0
+    },
+    "33": {
+     "reward": 0
+    },
+    "34": {
+     "reward": 0
+    },
+    "35": {
+     "reward": 0
+    },
+    "36": {
+     "reward": 0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 0
+    },
+    "39": {
+     "reward": 0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 1.0
+    },
+    "47": {
+     "reward": 0
+    },
+    "48": {
+     "reward": 0
+    },
+    "49": {
+     "reward": 0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "o4-mini-2025-04-16": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "798e6deda95e708eab887474f076294e1d5f8bb2",
+    "repository_url": "https://github.com/benediktstroebl/hal-harness.git",
+    "branch": "main",
+    "commit_timestamp": "2025-04-20 16:30:20 +0000",
+    "commit_url": "https://github.com/benediktstroebl/hal-harness/tree/798e6deda95e708eab887474f076294e1d5f8bb2"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 2176
+  }
+ },
+ {
+  "file": "taubench_airline_hal_generalist_claudeopus420250514_1754320139_UPLOAD.json",
+  "size_mb": 43.51,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1572
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "HAL Generalist (claude-opus-4-20250514)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-08-04",
+    "run_id": "taubench_airline_hal_generalist_claudeopus420250514_1754320139",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/hal_generalist_agent/ --agent_function main.run --agent_name HAL Generalist (claude-opus-4-20250514) -A model_name=claude-opus-4-20250514 -A pr\u2026",
+    "agent_args": {
+     "model_name": "claude-opus-4-20250514",
+     "provider": "anthropic",
+     "budget": 9999,
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.44,
+    "total_cost": 150.15452000000002
+   },
+   "raw_eval_results": {
+    "32": {
+     "reward": 1.0
+    },
+    "0": {
+     "reward": 0.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0
+    },
+    "9": {
+     "reward": 0
+    },
+    "10": {
+     "reward": 0
+    },
+    "11": {
+     "reward": 0.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 0
+    },
+    "15": {
+     "reward": 1.0
+    },
+    "16": {
+     "reward": 0
+    },
+    "17": {
+     "reward": 0
+    },
+    "18": {
+     "reward": 0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0
+    },
+    "26": {
+     "reward": 0
+    },
+    "27": {
+     "reward": 1.0
+    },
+    "28": {
+     "reward": 1.0
+    },
+    "29": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 0
+    },
+    "31": {
+     "reward": 0
+    },
+    "33": {
+     "reward": 1.0
+    },
+    "34": {
+     "reward": 0
+    },
+    "35": {
+     "reward": 0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 0
+    },
+    "39": {
+     "reward": 1.0
+    },
+    "40": {
+     "reward": 0.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 1.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "claude-opus-4-20250514": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "edf9077b03c20b1c01b324c93a710e787e0f2938",
+    "repository_url": "https://github.com/princeton-pli/hal-harness.git",
+    "branch": "update-tau-bench-commit",
+    "commit_timestamp": "2025-08-03 08:44:04 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/edf9077b03c20b1c01b324c93a710e787e0f2938"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1572
+  }
+ },
+ {
+  "file": "taubench_airline_hal_generalist_high_reasoning___gpt5_1754597451_UPLOAD.json",
+  "size_mb": 98.41,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 2276
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "HAL Generalist High Reasoning \n  (gpt-5)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-08-07",
+    "run_id": "taubench_airline_hal_generalist_high_reasoning___gpt5_1754597451",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/hal_generalist_agent/ --agent_function main.run --agent_name HAL Generalist High Reasoning \n  (gpt-5) -A model_name=gpt-5 -A provider=openai -A\u2026",
+    "agent_args": {
+     "model_name": "gpt-5",
+     "provider": "openai",
+     "reasoning_effort": "high",
+     "budget": 9999,
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.3,
+    "total_cost": 52.778650000000006
+   },
+   "raw_eval_results": {
+    "46": {
+     "reward": 1.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0
+    },
+    "8": {
+     "reward": 0
+    },
+    "10": {
+     "reward": 0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "11": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "20": {
+     "reward": 0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "1": {
+     "reward": 0.0
+    },
+    "5": {
+     "reward": 0.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "26": {
+     "reward": 0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "0": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 0.0
+    },
+    "39": {
+     "reward": 0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "28": {
+     "reward": 0
+    },
+    "15": {
+     "reward": 0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "43": {
+     "reward": 0
+    },
+    "40": {
+     "reward": 0
+    },
+    "24": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 0
+    },
+    "44": {
+     "reward": 0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "31": {
+     "reward": 0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "49": {
+     "reward": 0
+    },
+    "29": {
+     "reward": 0.0
+    },
+    "36": {
+     "reward": 0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "47": {
+     "reward": 0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 1.0
+    },
+    "48": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "gpt-5-2025-08-07": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "99efdbf19230efe8de75aeab40cf3e0d8595590b",
+    "repository_url": "https://github.com/princeton-pli/hal-harness.git",
+    "branch": "update-tau-bench-commit",
+    "commit_timestamp": "2025-08-07 15:55:21 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/99efdbf19230efe8de75aeab40cf3e0d8595590b"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 2276
+  }
+ },
+ {
+  "file": "taubench_airline_hal_generalist_high_reasoning_claudeopus41_1754432004_UPLOAD.json",
+  "size_mb": 38.21,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1408
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "HAL Generalist High Reasoning (claude-opus-4.1)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-08-05",
+    "run_id": "taubench_airline_hal_generalist_high_reasoning_claudeopus41_1754432004",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/hal_generalist_agent/ --agent_function main.run --agent_name HAL Generalist High Reasoning (claude-opus-4.1) -A model_name=openrouter/anthropic\u2026",
+    "agent_args": {
+     "model_name": "openrouter/anthropic/claude-opus-4.1",
+     "provider": "openrouter",
+     "reasoning_effort": "high",
+     "budget": 9999,
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.32,
+    "total_cost": 140.28165
+   },
+   "raw_eval_results": {
+    "7": {
+     "reward": 0
+    },
+    "8": {
+     "reward": 0
+    },
+    "9": {
+     "reward": 0
+    },
+    "0": {
+     "reward": 0.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0
+    },
+    "3": {
+     "reward": 0
+    },
+    "4": {
+     "reward": 0.0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "10": {
+     "reward": 0
+    },
+    "11": {
+     "reward": 0.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 1.0
+    },
+    "16": {
+     "reward": 0
+    },
+    "17": {
+     "reward": 1.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0
+    },
+    "20": {
+     "reward": 0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "30": {
+     "reward": 0
+    },
+    "31": {
+     "reward": 0
+    },
+    "32": {
+     "reward": 0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 0.0
+    },
+    "35": {
+     "reward": 0.0
+    },
+    "36": {
+     "reward": 0
+    },
+    "37": {
+     "reward": 0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0
+    },
+    "40": {
+     "reward": 0.0
+    },
+    "41": {
+     "reward": 0
+    },
+    "42": {
+     "reward": 0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 1.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "anthropic/claude-opus-4.1": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "edf9077b03c20b1c01b324c93a710e787e0f2938",
+    "repository_url": "https://github.com/princeton-pli/hal-harness.git",
+    "branch": "update-tau-bench-commit",
+    "commit_timestamp": "2025-08-03 08:44:04 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/edf9077b03c20b1c01b324c93a710e787e0f2938"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1408
+  }
+ },
+ {
+  "file": "taubench_airline_hal_generalist_high_reasoning_claudeopus420250514_1754320160_UPLOAD.json",
+  "size_mb": 43.13,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1503
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "HAL Generalist High Reasoning (claude-opus-4-20250514)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-08-04",
+    "run_id": "taubench_airline_hal_generalist_high_reasoning_claudeopus420250514_1754320160",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/hal_generalist_agent/ --agent_function main.run --agent_name HAL Generalist High Reasoning (claude-opus-4-20250514) -A model_name=claude-opus-4\u2026",
+    "agent_args": {
+     "model_name": "claude-opus-4-20250514",
+     "provider": "anthropic",
+     "reasoning_effort": "high",
+     "budget": 9999,
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.44,
+    "total_cost": 150.292275
+   },
+   "raw_eval_results": {
+    "27": {
+     "reward": 0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "0": {
+     "reward": 0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0
+    },
+    "3": {
+     "reward": 1.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 0.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 0.0
+    },
+    "8": {
+     "reward": 0
+    },
+    "9": {
+     "reward": 0
+    },
+    "10": {
+     "reward": 0
+    },
+    "11": {
+     "reward": 0.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 0
+    },
+    "16": {
+     "reward": 1.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 0
+    },
+    "22": {
+     "reward": 1.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 0
+    },
+    "31": {
+     "reward": 1.0
+    },
+    "32": {
+     "reward": 1.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 0
+    },
+    "35": {
+     "reward": 0.0
+    },
+    "36": {
+     "reward": 0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 1.0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 1.0
+    },
+    "47": {
+     "reward": 0
+    },
+    "48": {
+     "reward": 0.0
+    },
+    "49": {
+     "reward": 0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "claude-opus-4-20250514": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "edf9077b03c20b1c01b324c93a710e787e0f2938",
+    "repository_url": "https://github.com/princeton-pli/hal-harness.git",
+    "branch": "update-tau-bench-commit",
+    "commit_timestamp": "2025-08-03 08:44:04 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/edf9077b03c20b1c01b324c93a710e787e0f2938"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1503
+  }
+ },
+ {
+  "file": "taubench_airline_hal_generalist_minimal_reasoning_gpt5_1754595798_UPLOAD.json",
+  "size_mb": 121.28,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 2554
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "HAL Generalist Minimal Reasoning (gpt-5)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-08-07",
+    "run_id": "taubench_airline_hal_generalist_minimal_reasoning_gpt5_1754595798",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/hal_generalist_agent/ --agent_function main.run --agent_name HAL Generalist Minimal Reasoning (gpt-5) -A model_name=gpt-5 -A provider=openai -A\u2026",
+    "agent_args": {
+     "model_name": "gpt-5",
+     "provider": "openai",
+     "reasoning_effort": "minimal",
+     "budget": 9999,
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.38,
+    "total_cost": 62.1096525
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 1.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "1": {
+     "reward": 0.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "16": {
+     "reward": 0
+    },
+    "8": {
+     "reward": 0
+    },
+    "9": {
+     "reward": 0
+    },
+    "18": {
+     "reward": 0
+    },
+    "20": {
+     "reward": 0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "21": {
+     "reward": 0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "36": {
+     "reward": 0
+    },
+    "7": {
+     "reward": 0
+    },
+    "10": {
+     "reward": 0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 0.0
+    },
+    "38": {
+     "reward": 0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "34": {
+     "reward": 0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "47": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 0.0
+    },
+    "45": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "33": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "32": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "gpt-5-2025-08-07": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "99efdbf19230efe8de75aeab40cf3e0d8595590b",
+    "repository_url": "https://github.com/princeton-pli/hal-harness.git",
+    "branch": "update-tau-bench-commit",
+    "commit_timestamp": "2025-08-07 15:55:21 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/99efdbf19230efe8de75aeab40cf3e0d8595590b"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 2554
+  }
+ },
+ {
+  "file": "taubench_airline_hal_generalist_no_reasoning_claudeopus41_1754431985_UPLOAD.json",
+  "size_mb": 50.86,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1650
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "HAL Generalist No Reasoning (claude-opus-4.1)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-08-05",
+    "run_id": "taubench_airline_hal_generalist_no_reasoning_claudeopus41_1754431985",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/hal_generalist_agent/ --agent_function main.run --agent_name HAL Generalist No Reasoning (claude-opus-4.1) -A model_name=openrouter/anthropic/c\u2026",
+    "agent_args": {
+     "model_name": "openrouter/anthropic/claude-opus-4.1",
+     "provider": "openrouter",
+     "budget": 9999,
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.54,
+    "total_cost": 180.487335
+   },
+   "raw_eval_results": {
+    "9": {
+     "reward": 0
+    },
+    "8": {
+     "reward": 0
+    },
+    "0": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 0.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 1.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 0
+    },
+    "10": {
+     "reward": 0
+    },
+    "15": {
+     "reward": 0
+    },
+    "16": {
+     "reward": 0
+    },
+    "20": {
+     "reward": 0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 0.0
+    },
+    "22": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 1.0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "26": {
+     "reward": 1.0
+    },
+    "35": {
+     "reward": 0
+    },
+    "31": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 0
+    },
+    "39": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "34": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "32": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "47": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 1.0
+    },
+    "33": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "anthropic/claude-opus-4.1": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "edf9077b03c20b1c01b324c93a710e787e0f2938",
+    "repository_url": "https://github.com/princeton-pli/hal-harness.git",
+    "branch": "update-tau-bench-commit",
+    "commit_timestamp": "2025-08-03 08:44:04 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/edf9077b03c20b1c01b324c93a710e787e0f2938"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1650
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_few_shot_claudeopus420250514_1754083314_UPLOAD.json",
+  "size_mb": 103.12,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 2116
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "TauBench Few Shot (claude-opus-4-20250514)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-08-01",
+    "run_id": "taubench_airline_taubench_few_shot_claudeopus420250514_1754083314",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_few_shot/ --agent_function few_shot.run --agent_name TauBench Few Shot (claude-opus-4-20250514) -A model_name=claude-opus-4-20250514 -\u2026",
+    "agent_args": {
+     "model_name": "claude-opus-4-20250514",
+     "provider": "anthropic",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.56,
+    "total_cost": 363.302375
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 0.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 1.0
+    },
+    "11": {
+     "reward": 1.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 0.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 0.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 1.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 1.0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "30": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 1.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 1.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0.0
+    },
+    "40": {
+     "reward": 0.0
+    },
+    "41": {
+     "reward": 0.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 0.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 1.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "claude-opus-4-20250514": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "17091c46ca602303243ad2c13dd20b1b9ec0888b",
+    "repository_url": "https://github.com/princeton-pli/hal-harness.git",
+    "branch": "main",
+    "commit_timestamp": "2025-08-01 12:10:26 -0600",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/17091c46ca602303243ad2c13dd20b1b9ec0888b"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 2116
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_few_shot_high_reasoning_claudeopus420250514_1754083292_UPLOAD.json",
+  "size_mb": 89.08,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1904
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "TauBench Few Shot High Reasoning (claude-opus-4-20250514)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-08-01",
+    "run_id": "taubench_airline_taubench_few_shot_high_reasoning_claudeopus420250514_1754083292",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_few_shot/ --agent_function few_shot.run --agent_name TauBench Few Shot High Reasoning (claude-opus-4-20250514) -A model_name=claude-op\u2026",
+    "agent_args": {
+     "model_name": "claude-opus-4-20250514",
+     "provider": "anthropic",
+     "reasoning_effort": "high",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.66,
+    "total_cost": 313.83406499999995
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 0.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 0.0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 0.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 0.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 1.0
+    },
+    "16": {
+     "reward": 1.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 1.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 1.0
+    },
+    "27": {
+     "reward": 1.0
+    },
+    "28": {
+     "reward": 1.0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "30": {
+     "reward": 0.0
+    },
+    "31": {
+     "reward": 1.0
+    },
+    "32": {
+     "reward": 1.0
+    },
+    "33": {
+     "reward": 1.0
+    },
+    "34": {
+     "reward": 1.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0.0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 1.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "claude-opus-4-20250514": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "17091c46ca602303243ad2c13dd20b1b9ec0888b",
+    "repository_url": "https://github.com/princeton-pli/hal-harness.git",
+    "branch": "main",
+    "commit_timestamp": "2025-08-01 12:10:26 -0600",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/17091c46ca602303243ad2c13dd20b1b9ec0888b"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1904
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_fewshot_deepseekaideepseekr1_1745101169_UPLOAD.json",
+  "size_mb": 61.27,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1536
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "TAU-bench FewShot (deepseek-ai/DeepSeek-R1)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-04-19",
+    "run_id": "taubench_airline_taubench_fewshot_deepseekaideepseekr1_1745101169",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_few_shot/ --agent_function few_shot.run --agent_name TAU-bench FewShot (deepseek-ai/DeepSeek-R1) -A model_name=together_ai/deepseek-ai\u2026",
+    "agent_args": {
+     "model_name": "together_ai/deepseek-ai/DeepSeek-R1",
+     "provider": "openai",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.36,
+    "total_cost": 31.749418000000002
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 0.0
+    },
+    "1": {
+     "reward": 0.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 0.0
+    },
+    "5": {
+     "reward": 0.0
+    },
+    "6": {
+     "reward": 0.0
+    },
+    "7": {
+     "reward": 0.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 0.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 0
+    },
+    "14": {
+     "reward": 0.0
+    },
+    "15": {
+     "reward": 1.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 1.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 0.0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "30": {
+     "reward": 0.0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 0.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 1.0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 0.0
+    },
+    "44": {
+     "reward": 0.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 1.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "deepseek-ai/DeepSeek-R1": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "657bdb935b7bb0ead8e73a1a060fb8316c2584d5",
+    "repository_url": "https://github.com/benediktstroebl/hal-harness.git",
+    "branch": "main",
+    "commit_timestamp": "2025-04-18 21:20:24 +0000",
+    "commit_url": "https://github.com/benediktstroebl/hal-harness/tree/657bdb935b7bb0ead8e73a1a060fb8316c2584d5"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1536
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_fewshot_deepseekaideepseekv3_1745101128_UPLOAD.json",
+  "size_mb": 105.85,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 2652
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "TAU-bench FewShot (deepseek-ai/DeepSeek-V3)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-04-19",
+    "run_id": "taubench_airline_taubench_fewshot_deepseekaideepseekv3_1745101128",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_few_shot/ --agent_function few_shot.run --agent_name TAU-bench FewShot (deepseek-ai/DeepSeek-V3) -A model_name=together_ai/deepseek-ai\u2026",
+    "agent_args": {
+     "model_name": "together_ai/deepseek-ai/DeepSeek-V3",
+     "provider": "openai",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.34,
+    "total_cost": 30.604145000000003
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 0.0
+    },
+    "1": {
+     "reward": 0.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 0.0
+    },
+    "5": {
+     "reward": 0.0
+    },
+    "6": {
+     "reward": 0.0
+    },
+    "7": {
+     "reward": 0.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0
+    },
+    "10": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 0.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 0.0
+    },
+    "15": {
+     "reward": 1.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 1.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 0
+    },
+    "21": {
+     "reward": 0.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "30": {
+     "reward": 0.0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0
+    },
+    "34": {
+     "reward": 0.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0.0
+    },
+    "40": {
+     "reward": 0.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 0.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 1.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "deepseek-ai/DeepSeek-V3": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "657bdb935b7bb0ead8e73a1a060fb8316c2584d5",
+    "repository_url": "https://github.com/benediktstroebl/hal-harness.git",
+    "branch": "main",
+    "commit_timestamp": "2025-04-18 21:20:24 +0000",
+    "commit_url": "https://github.com/benediktstroebl/hal-harness/tree/657bdb935b7bb0ead8e73a1a060fb8316c2584d5"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 2652
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_fewshot_gemini20flash_1750877603_UPLOAD.json",
+  "size_mb": 110.03,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 2468
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "TAU-bench FewShot (gemini-2.0-flash)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-06-25",
+    "run_id": "taubench_airline_taubench_fewshot_gemini20flash_1750877603",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_few_shot/ --agent_function few_shot.run --agent_name TAU-bench FewShot (gemini-2.0-flash) -A model_name=gemini-2.0-flash -A provider=o\u2026",
+    "agent_args": {
+     "model_name": "gemini-2.0-flash",
+     "provider": "openai",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.44,
+    "total_cost": 4.4434902
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 0.0
+    },
+    "1": {
+     "reward": 0.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 1.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 0.0
+    },
+    "6": {
+     "reward": 0.0
+    },
+    "7": {
+     "reward": 0.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 0
+    },
+    "11": {
+     "reward": 1.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 0.0
+    },
+    "15": {
+     "reward": 1.0
+    },
+    "16": {
+     "reward": 1.0
+    },
+    "17": {
+     "reward": 1.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 0.0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 1.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "30": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 1.0
+    },
+    "34": {
+     "reward": 0.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 0.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0.0
+    },
+    "40": {
+     "reward": 0.0
+    },
+    "41": {
+     "reward": 0.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 0.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "gemini-2.0-flash": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "6a44aedf5ca8bfc81f9354658a4f66553eee730d",
+    "repository_url": "https://github.com/benediktstroebl/hal-harness.git",
+    "branch": "main",
+    "commit_timestamp": "2025-05-12 21:08:21 +0000",
+    "commit_url": "https://github.com/benediktstroebl/hal-harness/tree/6a44aedf5ca8bfc81f9354658a4f66553eee730d"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 2468
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_fewshot_gpt4120250414_1745112637_UPLOAD.json",
+  "size_mb": 111.25,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 2346
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "TAU-bench FewShot (gpt-4.1-2025-04-14)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-04-20",
+    "run_id": "taubench_airline_taubench_fewshot_gpt4120250414_1745112637",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_few_shot/ --agent_function few_shot.run --agent_name TAU-bench FewShot (gpt-4.1-2025-04-14) -A model_name=gpt-4.1-2025-04-14 -A provid\u2026",
+    "agent_args": {
+     "model_name": "gpt-4.1-2025-04-14",
+     "provider": "openai",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.56,
+    "total_cost": 42.576132
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 0.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 0
+    },
+    "11": {
+     "reward": 1.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 1.0
+    },
+    "16": {
+     "reward": 1.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 0.0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 1.0
+    },
+    "27": {
+     "reward": 1.0
+    },
+    "28": {
+     "reward": 1.0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "30": {
+     "reward": 0.0
+    },
+    "31": {
+     "reward": 1.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 1.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 0.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 1.0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 0.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "gpt-4.1-2025-04-14": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "657bdb935b7bb0ead8e73a1a060fb8316c2584d5",
+    "repository_url": "https://github.com/benediktstroebl/hal-harness.git",
+    "branch": "main",
+    "commit_timestamp": "2025-04-18 21:20:24 +0000",
+    "commit_url": "https://github.com/benediktstroebl/hal-harness/tree/657bdb935b7bb0ead8e73a1a060fb8316c2584d5"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 2346
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_fewshot_high_reasoning_claudeopus41_1754432663_UPLOAD.json",
+  "size_mb": 86.84,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1908
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "TauBench FewShot High Reasoning (claude-opus-4.1)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-08-05",
+    "run_id": "taubench_airline_taubench_fewshot_high_reasoning_claudeopus41_1754432663",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_few_shot/ --agent_function few_shot.run --agent_name TauBench FewShot High Reasoning (claude-opus-4.1) -A model_name=openrouter/anthro\u2026",
+    "agent_args": {
+     "model_name": "openrouter/anthropic/claude-opus-4.1",
+     "provider": "openai",
+     "reasoning_effort": "high",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.62,
+    "total_cost": 298.57644000000005
+   },
+   "raw_eval_results": {
+    "25": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0
+    },
+    "34": {
+     "reward": 1.0
+    },
+    "47": {
+     "reward": 1.0
+    },
+    "0": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 1.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "11": {
+     "reward": 1.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "16": {
+     "reward": 1.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 1.0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "48": {
+     "reward": 0.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "anthropic/claude-opus-4.1": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "edf9077b03c20b1c01b324c93a710e787e0f2938",
+    "repository_url": "https://github.com/princeton-pli/hal-harness.git",
+    "branch": "update-tau-bench-commit",
+    "commit_timestamp": "2025-08-03 08:44:04 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/edf9077b03c20b1c01b324c93a710e787e0f2938"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1908
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_fewshot_high_reasoning_gpt5_1754595988_UPLOAD.json",
+  "size_mb": 93.65,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1986
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "TauBench Few-Shot High Reasoning (gpt-5)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-08-07",
+    "run_id": "taubench_airline_taubench_fewshot_high_reasoning_gpt5_1754595988",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_few_shot/ --agent_function few_shot.run --agent_name TauBench Few-Shot High Reasoning (gpt-5) -A model_name=gpt-5 -A provider=openai -\u2026",
+    "agent_args": {
+     "model_name": "gpt-5",
+     "provider": "openai",
+     "reasoning_effort": "high",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.52,
+    "total_cost": 35.486295000000005
+   },
+   "raw_eval_results": {
+    "10": {
+     "reward": 1.0
+    },
+    "11": {
+     "reward": 1.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 0.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 0.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 0.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "30": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 0.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 1.0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 0.0
+    },
+    "49": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "0": {
+     "reward": 1.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "gpt-5-2025-08-07": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "99efdbf19230efe8de75aeab40cf3e0d8595590b",
+    "repository_url": "https://github.com/princeton-pli/hal-harness.git",
+    "branch": "update-tau-bench-commit",
+    "commit_timestamp": "2025-08-07 15:55:21 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/99efdbf19230efe8de75aeab40cf3e0d8595590b"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1986
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_fewshot_minimal_reasoning_gpt5_1754596041_UPLOAD.json",
+  "size_mb": 86.56,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1892
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "TauBench Few-Shot Minimal Reasoning (gpt-5)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-08-08",
+    "run_id": "taubench_airline_taubench_fewshot_minimal_reasoning_gpt5_1754596041",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_few_shot/ --agent_function few_shot.run --agent_name TauBench Few-Shot Minimal Reasoning (gpt-5) -A model_name=gpt-5 -A provider=opena\u2026",
+    "agent_args": {
+     "model_name": "gpt-5",
+     "provider": "openai",
+     "reasoning_effort": "minimal",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.5,
+    "total_cost": 33.051992500000004
+   },
+   "raw_eval_results": {
+    "46": {
+     "reward": 0.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "0": {
+     "reward": 1.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "3": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 0.0
+    },
+    "8": {
+     "reward": 1.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "5": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 1.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 0.0
+    },
+    "14": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "31": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "24": {
+     "reward": 0.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 0.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "35": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "49": {
+     "reward": 1.0
+    },
+    "47": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 1.0
+    },
+    "34": {
+     "reward": 0.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 0.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "gpt-5-2025-08-07": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "99efdbf19230efe8de75aeab40cf3e0d8595590b",
+    "repository_url": "https://github.com/princeton-pli/hal-harness.git",
+    "branch": "update-tau-bench-commit",
+    "commit_timestamp": "2025-08-07 15:55:21 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/99efdbf19230efe8de75aeab40cf3e0d8595590b"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1892
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_fewshot_no_reasoning_claudeopus41_1754432664_UPLOAD.json",
+  "size_mb": 85.64,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1900
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "TauBench FewShot No Reasoning (claude-opus-4.1)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-08-05",
+    "run_id": "taubench_airline_taubench_fewshot_no_reasoning_claudeopus41_1754432664",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_few_shot/ --agent_function few_shot.run --agent_name TauBench FewShot No Reasoning (claude-opus-4.1) -A model_name=openrouter/anthropi\u2026",
+    "agent_args": {
+     "model_name": "openrouter/anthropic/claude-opus-4.1",
+     "provider": "openai",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.54,
+    "total_cost": 294.16981
+   },
+   "raw_eval_results": {
+    "17": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "30": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 1.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "0": {
+     "reward": 0.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "11": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 0.0
+    },
+    "14": {
+     "reward": 0.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "16": {
+     "reward": 1.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "21": {
+     "reward": 0.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "27": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "34": {
+     "reward": 0.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "40": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "anthropic/claude-opus-4.1": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "edf9077b03c20b1c01b324c93a710e787e0f2938",
+    "repository_url": "https://github.com/princeton-pli/hal-harness.git",
+    "branch": "update-tau-bench-commit",
+    "commit_timestamp": "2025-08-03 08:44:04 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/edf9077b03c20b1c01b324c93a710e787e0f2938"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1900
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_fewshot_o320250403_1744728447_UPLOAD.json",
+  "size_mb": 82.18,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1828
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "TAU-bench FewShot (o3-2025-04-03)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-04-15",
+    "run_id": "taubench_airline_taubench_fewshot_o320250403_1744728447",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_few_shot/ --agent_function few_shot.run --agent_name TAU-bench FewShot (o3-2025-04-03) -A model_name=o3-2025-04-03 -A provider=openai \u2026",
+    "agent_args": {
+     "model_name": "o3-2025-04-03",
+     "provider": "openai",
+     "temperature": 1.0,
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.44,
+    "total_cost": 237.93406500000003
+   },
+   "raw_eval_results": {
+    "2": "ERROR: Traceback (most recent call last):\n  File \"/home/azureuser/miniconda3/envs/hal/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 724, in completion\n    raise e\n  File \"/home/azu\u2026",
+    "18": "ERROR: Traceback (most recent call last):\n  File \"/home/azureuser/miniconda3/envs/hal/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 724, in completion\n    raise e\n  File \"/home/azu\u2026",
+    "34": "ERROR: Traceback (most recent call last):\n  File \"/home/azureuser/miniconda3/envs/hal/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 724, in completion\n    raise e\n  File \"/home/azu\u2026",
+    "0": {
+     "reward": 0.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 0.0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 1.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 1.0
+    },
+    "11": {
+     "reward": 0.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 1.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 0.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 0.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "30": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 0.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 1.0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 0.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 0.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "o3-2025-04-03": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "6099bd9b15037c8362f4ce860aead16f081dd655",
+    "repository_url": "https://github.com/benediktstroebl/hal-harness.git",
+    "branch": "main",
+    "commit_timestamp": "2025-04-15 03:48:05 +0000",
+    "commit_url": "https://github.com/benediktstroebl/hal-harness/tree/6099bd9b15037c8362f4ce860aead16f081dd655"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1828
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_fewshot_o320250416_medium_1753770065_UPLOAD.json",
+  "size_mb": 84.62,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1850
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "TAU-bench FewShot (o3-2025-04-16 medium)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-07-29",
+    "run_id": "taubench_airline_taubench_fewshot_o320250416_medium_1753770065",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_few_shot/ --agent_function few_shot.run --agent_name TAU-bench FewShot (o3-2025-04-16 medium) -A model_name=o3-2025-04-16 -A provider=\u2026",
+    "agent_args": {
+     "model_name": "o3-2025-04-16",
+     "provider": "openai",
+     "temperature": 1,
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.48,
+    "total_cost": 170.281505
+   },
+   "raw_eval_results": {
+    "26": "ERROR: Traceback (most recent call last):\n  File \"/home/azureuser/miniconda3/envs/hal/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 725, in completion\n    raise e\n  File \"/home/azu\u2026",
+    "40": "ERROR: Traceback (most recent call last):\n  File \"/home/azureuser/miniconda3/envs/hal/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 725, in completion\n    raise e\n  File \"/home/azu\u2026",
+    "0": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 0.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 1.0
+    },
+    "11": {
+     "reward": 1.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 0.0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 0.0
+    },
+    "16": {
+     "reward": 1.0
+    },
+    "17": {
+     "reward": 1.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 0.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 0.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "30": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 0.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 0.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 0.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "o3-2025-04-16": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "6a44aedf5ca8bfc81f9354658a4f66553eee730d",
+    "repository_url": "https://github.com/benediktstroebl/hal-harness.git",
+    "branch": "main",
+    "commit_timestamp": "2025-05-12 21:08:21 +0000",
+    "commit_url": "https://github.com/benediktstroebl/hal-harness/tree/6a44aedf5ca8bfc81f9354658a4f66553eee730d"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1850
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_fewshot_o3mini20250131_high_1744743428_UPLOAD.json",
+  "size_mb": 93.36,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 2030
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "taubench_fewshot_o3mini20250131_high",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-04-15",
+    "run_id": "taubench_airline_taubench_fewshot_o3mini20250131_high_1744743428",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_few_shot/ --agent_function few_shot.run --agent_name TAU-bench FewShot (o3-mini-2025-01-31 high) -A model_name=o3-mini-2025-01-31 -A p\u2026",
+    "agent_args": {
+     "model_name": "o3-mini-2025-01-31",
+     "provider": "openai",
+     "reasoning_effort": "high",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.4,
+    "total_cost": 32.230364
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 0.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 1.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 0.0
+    },
+    "6": {
+     "reward": 0.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0
+    },
+    "10": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 1.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 0.0
+    },
+    "14": {
+     "reward": 0.0
+    },
+    "15": {
+     "reward": 0.0
+    },
+    "16": {
+     "reward": 1.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0
+    },
+    "20": {
+     "reward": 0.0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 1.0
+    },
+    "34": {
+     "reward": 0.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 0.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0.0
+    },
+    "40": {
+     "reward": 0.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 0.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 1.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 0.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "o3-mini-2025-01-31": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "6099bd9b15037c8362f4ce860aead16f081dd655",
+    "repository_url": "https://github.com/benediktstroebl/hal-harness.git",
+    "branch": "main",
+    "commit_timestamp": "2025-04-15 03:48:05 +0000",
+    "commit_url": "https://github.com/benediktstroebl/hal-harness/tree/6099bd9b15037c8362f4ce860aead16f081dd655"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 2030
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_fewshot_o4mini20250416_high_1745112675_UPLOAD.json",
+  "size_mb": 77.63,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1772
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "TAU-bench FewShot (o4-mini-2025-04-16 high)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-04-20",
+    "run_id": "taubench_airline_taubench_fewshot_o4mini20250416_high_1745112675",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_few_shot/ --agent_function few_shot.run --agent_name TAU-bench FewShot (o4-mini-2025-04-16 high) -A model_name=o4-mini-2025-04-16 -A p\u2026",
+    "agent_args": {
+     "model_name": "o4-mini-2025-04-16",
+     "provider": "openai",
+     "reasoning_effort": "high",
+     "temperature": 1,
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.6,
+    "total_cost": 18.921284600000003
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 1.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 0.0
+    },
+    "15": {
+     "reward": 0.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 1.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 0.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 1.0
+    },
+    "27": {
+     "reward": 1.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "30": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 1.0
+    },
+    "34": {
+     "reward": 0.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 1.0
+    },
+    "40": {
+     "reward": 0.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 1.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "o4-mini-2025-04-16": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "657bdb935b7bb0ead8e73a1a060fb8316c2584d5",
+    "repository_url": "https://github.com/benediktstroebl/hal-harness.git",
+    "branch": "main",
+    "commit_timestamp": "2025-04-18 21:20:24 +0000",
+    "commit_url": "https://github.com/benediktstroebl/hal-harness/tree/657bdb935b7bb0ead8e73a1a060fb8316c2584d5"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1772
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_fewshot_o4mini20250416_low_1745099803_UPLOAD.json",
+  "size_mb": 77.85,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1756
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "TAU-bench FewShot (o4-mini-2025-04-16 low)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-04-19",
+    "run_id": "taubench_airline_taubench_fewshot_o4mini20250416_low_1745099803",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_few_shot/ --agent_function few_shot.run --agent_name TAU-bench FewShot (o4-mini-2025-04-16 low) -A model_name=o4-mini-2025-04-16 -A pr\u2026",
+    "agent_args": {
+     "model_name": "o4-mini-2025-04-16",
+     "provider": "openai",
+     "reasoning_effort": "low",
+     "temperature": 1,
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.48,
+    "total_cost": 18.8144266
+   },
+   "raw_eval_results": {
+    "33": "ERROR: Traceback (most recent call last):\n  File \"/tmp/agent_run_49d1e51c-6834-4181-9783-bd3ca3160670/run_agent.py\", line 31, in <module>\n    result = agent_fn(input_data, **agent_args)\n             ^\u2026",
+    "0": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 0.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 0.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 1.0
+    },
+    "16": {
+     "reward": 1.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 1.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 0.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0.0
+    },
+    "40": {
+     "reward": 0.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 0.0
+    },
+    "45": {
+     "reward": 1.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 0.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    },
+    "o4-mini-2025-04-16": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "657bdb935b7bb0ead8e73a1a060fb8316c2584d5",
+    "repository_url": "https://github.com/benediktstroebl/hal-harness.git",
+    "branch": "main",
+    "commit_timestamp": "2025-04-18 21:20:24 +0000",
+    "commit_url": "https://github.com/benediktstroebl/hal-harness/tree/657bdb935b7bb0ead8e73a1a060fb8316c2584d5"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1756
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_toolcalling_claude37sonnet_1760379497_UPLOAD.json",
+  "size_mb": 33.59,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1375
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "Taubench ToolCalling (claude-3.7-sonnet)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-10-13",
+    "run_id": "taubench_airline_taubench_toolcalling_claude37sonnet_1760379497",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_tool_calling/ --agent_function tool_calling.run --agent_name Taubench ToolCalling (claude-3.7-sonnet) -A model_name=anthropic/claude-3\u2026",
+    "agent_args": {
+     "model_name": "anthropic/claude-3.7-sonnet",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.44,
+    "total_cost": 15.445473000000002
+   },
+   "raw_eval_results": {
+    "0": "ERROR: Traceback (most recent call last):\n  File \"/tmp/agent_run_82c0f402-a34a-4013-8c64-7c0e142e4bc0/run_agent.py\", line 31, in <module>\n    result = agent_fn(input_data, **agent_args)\n             ^\u2026",
+    "5": "ERROR: Traceback (most recent call last):\n  File \"/tmp/agent_run_88f01fe1-15f2-4987-b85c-edfc5f3f8203/run_agent.py\", line 31, in <module>\n    result = agent_fn(input_data, **agent_args)\n             ^\u2026",
+    "46": "ERROR: Traceback (most recent call last):\n  File \"/tmp/agent_run_a7009318-0345-4bb1-9ea2-060cce47d46e/run_agent.py\", line 31, in <module>\n    result = agent_fn(input_data, **agent_args)\n             ^\u2026",
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 1.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 0.0
+    },
+    "7": {
+     "reward": 0.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0
+    },
+    "10": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 1.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 0.0
+    },
+    "15": {
+     "reward": 0.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 0.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 0.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 1.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "30": {
+     "reward": 0.0
+    },
+    "31": {
+     "reward": 1.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0
+    },
+    "34": {
+     "reward": 1.0
+    },
+    "35": {
+     "reward": 0.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0.0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 0.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "45": {
+     "reward": 1.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "openai/gpt-4o": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    },
+    "anthropic/claude-3.7-sonnet": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b",
+    "repository_url": "https://github.com/princeton-pli/hal-harness",
+    "branch": "main",
+    "commit_timestamp": "2025-10-07 20:12:34 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1375
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_toolcalling_claude37sonnet_high_1760999140_UPLOAD.json",
+  "size_mb": 65.07,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 2160
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "Taubench ToolCalling (claude-3.7-sonnet high)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-10-20",
+    "run_id": "taubench_airline_taubench_toolcalling_claude37sonnet_high_1760999140",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_tool_calling/ --agent_function tool_calling.run --agent_name Taubench ToolCalling (claude-3.7-sonnet high) -A model_name=anthropic/cla\u2026",
+    "agent_args": {
+     "model_name": "anthropic/claude-3.7-sonnet",
+     "reasoning_effort": "high",
+     "provider": "anthropic",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.52,
+    "total_cost": 31.944552
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 0.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 1.0
+    },
+    "11": {
+     "reward": 0.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 0.0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 1.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 0.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 1.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 1.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0
+    },
+    "34": {
+     "reward": 1.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0.0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "45": {
+     "reward": 1.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 0.0
+    },
+    "49": {
+     "reward": 0.0
+    }
+   },
+   "total_usage": {
+    "openai/gpt-4o": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    },
+    "anthropic/claude-3.7-sonnet": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b",
+    "repository_url": "https://github.com/princeton-pli/hal-harness",
+    "branch": "main",
+    "commit_timestamp": "2025-10-07 20:12:34 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 2160
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_toolcalling_claudeopus41_1760380824_UPLOAD.json",
+  "size_mb": 32.31,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1414
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "Taubench ToolCalling (claude-opus-4.1)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-10-13",
+    "run_id": "taubench_airline_taubench_toolcalling_claudeopus41_1760380824",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_tool_calling/ --agent_function tool_calling.run --agent_name Taubench ToolCalling (claude-opus-4.1) -A model_name=anthropic/claude-opu\u2026",
+    "agent_args": {
+     "model_name": "anthropic/claude-opus-4.1",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.5,
+    "total_cost": 69.782865
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 0.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 0.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 0.0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 0.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 0.0
+    },
+    "22": {
+     "reward": 1.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 0.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 1.0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "30": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 1.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 0.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0.0
+    },
+    "40": {
+     "reward": 0.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0
+    },
+    "47": {
+     "reward": 1.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "openai/gpt-4o": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    },
+    "anthropic/claude-opus-4.1": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b",
+    "repository_url": "https://github.com/princeton-pli/hal-harness",
+    "branch": "main",
+    "commit_timestamp": "2025-10-07 20:12:34 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1414
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_toolcalling_claudeopus41_high_1761000598_UPLOAD.json",
+  "size_mb": 60.0,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 2028
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "Taubench ToolCalling (claude-opus-4.1 high)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-10-20",
+    "run_id": "taubench_airline_taubench_toolcalling_claudeopus41_high_1761000598",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_tool_calling/ --agent_function tool_calling.run --agent_name Taubench ToolCalling (claude-opus-4.1 high) -A model_name=anthropic/claud\u2026",
+    "agent_args": {
+     "model_name": "anthropic/claude-opus-4.1",
+     "reasoning_effort": "high",
+     "provider": "anthropic",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.52,
+    "total_cost": 149.97582
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 1.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 0.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 1.0
+    },
+    "11": {
+     "reward": 1.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 0.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 0.0
+    },
+    "21": {
+     "reward": 0.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 1.0
+    },
+    "24": {
+     "reward": 0.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "30": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 0.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 1.0
+    },
+    "40": {
+     "reward": 0.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "openai/gpt-4o": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    },
+    "anthropic/claude-opus-4.1": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b",
+    "repository_url": "https://github.com/princeton-pli/hal-harness",
+    "branch": "main",
+    "commit_timestamp": "2025-10-07 20:12:34 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 2028
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_toolcalling_deepseekr1_1760382872_UPLOAD.json",
+  "size_mb": 38.57,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1385
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "Taubench ToolCalling (deepseek-r1)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-10-13",
+    "run_id": "taubench_airline_taubench_toolcalling_deepseekr1_1760382872",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_tool_calling/ --agent_function tool_calling.run --agent_name Taubench ToolCalling (deepseek-r1) -A model_name=deepseek/deepseek-r1 --m\u2026",
+    "agent_args": {
+     "model_name": "deepseek/deepseek-r1",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.36,
+    "total_cost": 0.8956998
+   },
+   "raw_eval_results": {
+    "10": "ERROR: Traceback (most recent call last):\n  File \"/tmp/agent_run_cf901989-851a-49a0-bc8e-98aa296b0ada/run_agent.py\", line 31, in <module>\n    result = agent_fn(input_data, **agent_args)\n             ^\u2026",
+    "30": "ERROR: Traceback (most recent call last):\n  File \"/opt/conda/envs/hal/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 479, in make_sync_openai_chat_completion_request\n    response = \u2026",
+    "0": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 0.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 0.0
+    },
+    "5": {
+     "reward": 0.0
+    },
+    "6": {
+     "reward": 0.0
+    },
+    "7": {
+     "reward": 0.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 0.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 0.0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 0.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 1.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 0.0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 1.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 0.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 1.0
+    },
+    "40": {
+     "reward": 0.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 0.0
+    },
+    "44": {
+     "reward": 0.0
+    },
+    "45": {
+     "reward": 1.0
+    },
+    "46": {
+     "reward": 0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 0.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "openai/gpt-4o": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    },
+    "deepseek/deepseek-r1": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b",
+    "repository_url": "https://github.com/princeton-pli/hal-harness",
+    "branch": "main",
+    "commit_timestamp": "2025-10-07 20:12:34 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1385
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_toolcalling_deepseekv3_1760385714_UPLOAD.json",
+  "size_mb": 32.49,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1391
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "Taubench ToolCalling (deepseek-v3)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-10-13",
+    "run_id": "taubench_airline_taubench_toolcalling_deepseekv3_1760385714",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_tool_calling/ --agent_function tool_calling.run --agent_name Taubench ToolCalling (deepseek-v3) -A model_name=deepseek/deepseek-chat -\u2026",
+    "agent_args": {
+     "model_name": "deepseek/deepseek-chat",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.44,
+    "total_cost": 0.8315413199999999
+   },
+   "raw_eval_results": {
+    "0": "ERROR: Traceback (most recent call last):\n  File \"/home/codespace/.local/lib/python3.12/site-packages/requests/models.py\", line 976, in json\n    return complexjson.loads(self.text, **kwargs)\n         \u2026",
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 0.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 0.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 0.0
+    },
+    "15": {
+     "reward": 0.0
+    },
+    "16": {
+     "reward": 1.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 1.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 0.0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0
+    },
+    "34": {
+     "reward": 1.0
+    },
+    "35": {
+     "reward": 0.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0.0
+    },
+    "40": {
+     "reward": 0.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 0.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 1.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "openai/gpt-4o": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    },
+    "deepseek/deepseek-chat": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b",
+    "repository_url": "https://github.com/princeton-pli/hal-harness",
+    "branch": "main",
+    "commit_timestamp": "2025-10-07 20:12:34 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1391
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_toolcalling_gemini20flash001_1760387340_UPLOAD.json",
+  "size_mb": 38.73,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1883
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "Taubench ToolCalling (gemini-2.0-flash-001)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-10-13",
+    "run_id": "taubench_airline_taubench_toolcalling_gemini20flash001_1760387340",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_tool_calling/ --agent_function tool_calling.run --agent_name Taubench ToolCalling (gemini-2.0-flash-001) -A model_name=google/gemini-2\u2026",
+    "agent_args": {
+     "model_name": "google/gemini-2.0-flash-001",
+     "reasoning_effort": "high",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.28,
+    "total_cost": 0.3108829
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 0.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 0.0
+    },
+    "5": {
+     "reward": 0.0
+    },
+    "6": {
+     "reward": 0.0
+    },
+    "7": {
+     "reward": 0.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 0.0
+    },
+    "12": {
+     "reward": 0.0
+    },
+    "13": {
+     "reward": 0.0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 1.0
+    },
+    "16": {
+     "reward": 1.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 0.0
+    },
+    "21": {
+     "reward": 0.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 1.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 0.0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 0.0
+    },
+    "35": {
+     "reward": 0.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0.0
+    },
+    "40": {
+     "reward": 0.0
+    },
+    "41": {
+     "reward": 0.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 0.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "openai/gpt-4o": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    },
+    "google/gemini-2.0-flash-001": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b",
+    "repository_url": "https://github.com/princeton-pli/hal-harness",
+    "branch": "main",
+    "commit_timestamp": "2025-10-07 20:12:34 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1883
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_toolcalling_gpt4120250414_1760371184_UPLOAD.json",
+  "size_mb": 34.44,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1552
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "Taubench ToolCalling (gpt-4.1-2025-04-14)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-10-13",
+    "run_id": "taubench_airline_taubench_toolcalling_gpt4120250414_1760371184",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_tool_calling/ --agent_function tool_calling.run --agent_name Taubench ToolCalling (gpt-4.1-2025-04-14) -A model_name=openai/gpt-4.1-20\u2026",
+    "agent_args": {
+     "model_name": "openai/gpt-4.1-2025-04-14",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.36,
+    "total_cost": 8.17674
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 0.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 0.0
+    },
+    "5": {
+     "reward": 0.0
+    },
+    "6": {
+     "reward": 0.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 0.0
+    },
+    "12": {
+     "reward": 0.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 0.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 1.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 0.0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 0.0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 1.0
+    },
+    "34": {
+     "reward": 1.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 0.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 1.0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 0.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 0.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 0.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    },
+    "gpt-4.1-2025-04-14": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b",
+    "repository_url": "https://github.com/princeton-pli/hal-harness",
+    "branch": "main",
+    "commit_timestamp": "2025-10-07 20:12:34 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1552
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_toolcalling_gpt520250807_1760996356_UPLOAD.json",
+  "size_mb": 57.75,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 2050
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "Taubench ToolCalling (gpt-5-2025-08-07)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-10-20",
+    "run_id": "taubench_airline_taubench_toolcalling_gpt520250807_1760996356",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_tool_calling/ --agent_function tool_calling.run --agent_name Taubench ToolCalling (gpt-5-2025-08-07) -A model_name=openai/gpt-5-2025-0\u2026",
+    "agent_args": {
+     "model_name": "openai/gpt-5-2025-08-07",
+     "reasoning_effort": "medium",
+     "provider": "openai",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.48,
+    "total_cost": 18.1660035
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 1.0
+    },
+    "3": {
+     "reward": 1.0
+    },
+    "4": {
+     "reward": 0.0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 1.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 1.0
+    },
+    "11": {
+     "reward": 0.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 1.0
+    },
+    "15": {
+     "reward": 0.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 1.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 0.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 0.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 0.0
+    },
+    "35": {
+     "reward": 0.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 0.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 1.0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 0.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 0.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    },
+    "gpt-5-2025-08-07": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b",
+    "repository_url": "https://github.com/princeton-pli/hal-harness",
+    "branch": "main",
+    "commit_timestamp": "2025-10-07 20:12:34 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 2050
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_toolcalling_o320250416_1760994863_UPLOAD.json",
+  "size_mb": 50.7,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1870
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "Taubench ToolCalling (o3-2025-04-16)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-10-20",
+    "run_id": "taubench_airline_taubench_toolcalling_o320250416_1760994863",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_tool_calling/ --agent_function tool_calling.run --agent_name Taubench ToolCalling (o3-2025-04-16) -A model_name=openai/o3-2025-04-16 -\u2026",
+    "agent_args": {
+     "model_name": "openai/o3-2025-04-16",
+     "reasoning_effort": "medium",
+     "provider": "openai",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.54,
+    "total_cost": 32.235387
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 1.0
+    },
+    "4": {
+     "reward": 1.0
+    },
+    "5": {
+     "reward": 0.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 1.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 1.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 0.0
+    },
+    "15": {
+     "reward": 1.0
+    },
+    "16": {
+     "reward": 1.0
+    },
+    "17": {
+     "reward": 1.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 0.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 0.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 1.0
+    },
+    "30": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 0.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 0.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 1.0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 0.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    },
+    "o3-2025-04-16": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b",
+    "repository_url": "https://github.com/princeton-pli/hal-harness",
+    "branch": "main",
+    "commit_timestamp": "2025-10-07 20:12:34 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1870
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_toolcalling_o4mini20250416_high_1760993011_UPLOAD.json",
+  "size_mb": 46.76,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1794
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "Taubench ToolCalling (o4-mini-2025-04-16 high)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-10-20",
+    "run_id": "taubench_airline_taubench_toolcalling_o4mini20250416_high_1760993011",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_tool_calling/ --agent_function tool_calling.run --agent_name Taubench ToolCalling (o4-mini-2025-04-16 high) -A model_name=openai/o4-mi\u2026",
+    "agent_args": {
+     "model_name": "openai/o4-mini-2025-04-16",
+     "reasoning_effort": "high",
+     "provider": "openai",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.56,
+    "total_cost": 8.3796796
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 1.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 0.0
+    },
+    "5": {
+     "reward": 1.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 1.0
+    },
+    "11": {
+     "reward": 1.0
+    },
+    "12": {
+     "reward": 1.0
+    },
+    "13": {
+     "reward": 0
+    },
+    "14": {
+     "reward": 0.0
+    },
+    "15": {
+     "reward": 1.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 1.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 1.0
+    },
+    "21": {
+     "reward": 1.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 1.0
+    },
+    "29": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 1.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 1.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 1.0
+    },
+    "40": {
+     "reward": 1.0
+    },
+    "41": {
+     "reward": 1.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 0.0
+    },
+    "45": {
+     "reward": 0.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 1.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    },
+    "o4-mini-2025-04-16": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b",
+    "repository_url": "https://github.com/princeton-pli/hal-harness",
+    "branch": "main",
+    "commit_timestamp": "2025-10-07 20:12:34 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1794
+  }
+ },
+ {
+  "file": "taubench_airline_taubench_toolcalling_o4mini20250416_low_1760991692_UPLOAD.json",
+  "size_mb": 46.06,
+  "benchmark_guess": "taubench_airline",
+  "top_level": {
+   "config": {
+    "type": "dict",
+    "n_keys": 6
+   },
+   "results": {
+    "type": "dict",
+    "n_keys": 5
+   },
+   "raw_eval_results": {
+    "type": "dict",
+    "n_keys": 50
+   },
+   "raw_logging_results": {
+    "type": "list",
+    "len": 1910
+   },
+   "total_usage": {
+    "type": "dict",
+    "n_keys": 2
+   },
+   "total_cost": {
+    "type": "float"
+   },
+   "git_info": {
+    "type": "dict",
+    "n_keys": 5
+   }
+  },
+  "small_blocks": {
+   "config": {
+    "agent_name": "Taubench ToolCalling (o4-mini-2025-04-16 low)",
+    "benchmark_name": "taubench_airline",
+    "date": "2025-10-20",
+    "run_id": "taubench_airline_taubench_toolcalling_o4mini20250416_low_1760991692",
+    "run_command": "hal-eval --benchmark taubench_airline --agent_dir agents/taubench_tool_calling/ --agent_function tool_calling.run --agent_name Taubench ToolCalling (o4-mini-2025-04-16 low) -A model_name=openai/o4-min\u2026",
+    "agent_args": {
+     "model_name": "openai/o4-mini-2025-04-16",
+     "reasoning_effort": "low",
+     "provider": "openai",
+     "benchmark_name": "taubench_airline"
+    }
+   },
+   "results": {
+    "accuracy": 0.36,
+    "total_cost": 4.5136834
+   },
+   "raw_eval_results": {
+    "0": {
+     "reward": 0.0
+    },
+    "1": {
+     "reward": 1.0
+    },
+    "2": {
+     "reward": 0.0
+    },
+    "3": {
+     "reward": 0.0
+    },
+    "4": {
+     "reward": 0.0
+    },
+    "5": {
+     "reward": 0.0
+    },
+    "6": {
+     "reward": 1.0
+    },
+    "7": {
+     "reward": 1.0
+    },
+    "8": {
+     "reward": 0.0
+    },
+    "9": {
+     "reward": 0.0
+    },
+    "10": {
+     "reward": 0.0
+    },
+    "11": {
+     "reward": 1.0
+    },
+    "12": {
+     "reward": 0.0
+    },
+    "13": {
+     "reward": 1.0
+    },
+    "14": {
+     "reward": 0.0
+    },
+    "15": {
+     "reward": 1.0
+    },
+    "16": {
+     "reward": 0.0
+    },
+    "17": {
+     "reward": 0.0
+    },
+    "18": {
+     "reward": 0.0
+    },
+    "19": {
+     "reward": 0.0
+    },
+    "20": {
+     "reward": 0.0
+    },
+    "21": {
+     "reward": 0.0
+    },
+    "22": {
+     "reward": 0.0
+    },
+    "23": {
+     "reward": 0.0
+    },
+    "24": {
+     "reward": 1.0
+    },
+    "25": {
+     "reward": 0.0
+    },
+    "26": {
+     "reward": 0.0
+    },
+    "27": {
+     "reward": 0.0
+    },
+    "28": {
+     "reward": 0.0
+    },
+    "29": {
+     "reward": 0.0
+    },
+    "30": {
+     "reward": 1.0
+    },
+    "31": {
+     "reward": 0.0
+    },
+    "32": {
+     "reward": 0.0
+    },
+    "33": {
+     "reward": 0.0
+    },
+    "34": {
+     "reward": 1.0
+    },
+    "35": {
+     "reward": 1.0
+    },
+    "36": {
+     "reward": 1.0
+    },
+    "37": {
+     "reward": 1.0
+    },
+    "38": {
+     "reward": 1.0
+    },
+    "39": {
+     "reward": 0.0
+    },
+    "40": {
+     "reward": 0.0
+    },
+    "41": {
+     "reward": 0.0
+    },
+    "42": {
+     "reward": 1.0
+    },
+    "43": {
+     "reward": 1.0
+    },
+    "44": {
+     "reward": 1.0
+    },
+    "45": {
+     "reward": 1.0
+    },
+    "46": {
+     "reward": 0.0
+    },
+    "47": {
+     "reward": 0.0
+    },
+    "48": {
+     "reward": 0.0
+    },
+    "49": {
+     "reward": 1.0
+    }
+   },
+   "total_usage": {
+    "gpt-4o-2024-08-06": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    },
+    "o4-mini-2025-04-16": {
+     "prompt_tokens": "\u00abredacted\u00bb",
+     "completion_tokens": "\u00abredacted\u00bb",
+     "cache_creation_input_tokens": "\u00abredacted\u00bb",
+     "cache_read_input_tokens": "\u00abredacted\u00bb"
+    }
+   },
+   "git_info": {
+    "commit": "b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b",
+    "repository_url": "https://github.com/princeton-pli/hal-harness",
+    "branch": "main",
+    "commit_timestamp": "2025-10-07 20:12:34 -0400",
+    "commit_url": "https://github.com/princeton-pli/hal-harness/tree/b64fc7cc5c0aa7ea2fbf197d835805460bcf2e7b"
+   }
+  },
+  "collection_sizes": {
+   "raw_logging_results": 1910
+  }
+ }
+]
