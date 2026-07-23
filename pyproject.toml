@@ -1,0 +1,26 @@
+[project]
+name = "harnessdml"
+version = "0.1.0"
+description = "Causal re-analysis of HAL agent rollouts (arXiv:2510.11977) via Double Machine Learning"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "huggingface-hub>=0.30",
+    "cryptography>=42",
+    "polars>=1.20",
+    "pyarrow>=17",
+    "doubleml>=0.9",
+    "lightgbm>=4.5",
+    "scikit-learn>=1.5",
+    "statsmodels>=0.14",
+    "matplotlib>=3.9",
+    "pyyaml>=6.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
