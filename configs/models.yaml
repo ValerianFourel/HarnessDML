@@ -1,0 +1,206 @@
+# HarnessLab model registry (§6) — frontier-first.
+#
+# revision: null until pinned by scripts/hpc/prefetch_models.sh (Phase 3),
+#   which writes resolved commit SHAs back into this file.
+# verify: true ⇒ exact hf_id/params/license must be resolved on the JUPITER
+#   login node BEFORE download; if gated or absent, substitute within-family
+#   and record the substitution here — never silently.
+# serving_mode intent (fits-check in Phase 3 confirms: params × dtype vs
+#   4 × 96 GB GH200 per node): one_gpu | one_node_tp4 | multi_node.
+#
+# Rationale (preserve): Claw-roster alignment enables the composition check of
+# our component effects against their bundled-harness gaps on identical
+# backbones. Capability moderation comes from within-generation G-vs-F pairs
+# (cross-generation confounds capability with post-training vintage). Tier B
+# validates the re-implemented instrument on CCI's validated cell before
+# trusting Tier-F divergences. Tier S is out of MVP scope (enabled: false).
+
+models:
+  # ── Tier F (frontier open weights, MVP grid) ──────────────────────────────
+  glm_5_1:
+    hf_id: zai-org/GLM-5.1            # (verify) latest GLM-5.x
+    revision: null
+    verify: true
+    family: glm
+    tier: F
+    serving_mode: one_node_tp4
+    params_b_total: null
+    params_b_active: null
+    license_note: resolve on login node
+    note: Claw claw-sweep anchor
+  qwen_3_6_flash:
+    hf_id: Qwen/Qwen3.6-Flash         # (verify) or largest Qwen fitting 1 node
+    revision: null
+    verify: true
+    family: qwen
+    tier: F
+    serving_mode: one_node_tp4        # may relax to one_gpu after fits-check
+    params_b_total: null
+    params_b_active: null
+    license_note: resolve on login node
+    note: Claw anchor
+  deepseek_v4_flash:
+    hf_id: deepseek-ai/DeepSeek-V4-Flash   # (verify)
+    revision: null
+    verify: true
+    family: deepseek
+    tier: F
+    serving_mode: one_node_tp4
+    params_b_total: null
+    params_b_active: null
+    license_note: resolve on login node
+    note: Claw model-sweep backbone
+  llama_4_scout:
+    hf_id: meta-llama/Llama-4-Scout-17B-16E-Instruct
+    revision: null
+    verify: false
+    family: llama
+    tier: F
+    serving_mode: one_node_tp4        # BF16, TP=4
+    params_b_total: 109
+    params_b_active: 17
+    license_note: Llama 4 community license (gated — request access early)
+    note: current open Llama
+  mistral_medium_3_5:
+    hf_id: mistralai/Mistral-Medium-3.5    # (verify) or Small 4 — largest fitting 1 node
+    revision: null
+    verify: true
+    family: mistral
+    tier: F
+    serving_mode: one_node_tp4
+    params_b_total: null
+    params_b_active: null
+    license_note: resolve on login node
+    note: current open Mistral
+  gpt_oss_120b:
+    hf_id: openai/gpt-oss-120b
+    revision: null
+    verify: false
+    family: gpt-oss
+    tier: F
+    serving_mode: one_node_tp4
+    params_b_total: 117
+    params_b_active: 5.1
+    license_note: Apache-2.0
+    note: distinct post-training lineage
+  gemma_latest:
+    hf_id: google/gemma-3-27b-it      # (verify) latest Gemma at run time
+    revision: null
+    verify: true
+    family: gemma
+    tier: F                            # optional F/G slot
+    serving_mode: one_gpu
+    params_b_total: 27
+    params_b_active: 27
+    license_note: Gemma license (gated)
+    note: optional; exercises the no-system-role prepended fallback
+    optional: true
+
+  # ── Tier G (weak pole + within-family gradient pairs) ─────────────────────
+  seed_2_0_mini:
+    hf_id: ByteDance-Seed/Seed-2.0-mini    # (verify)
+    revision: null
+    verify: true
+    family: seed
+    tier: G
+    serving_mode: one_gpu
+    params_b_total: null
+    params_b_active: null
+    license_note: resolve on login node
+    note: weak pole
+  gpt_oss_20b:
+    hf_id: openai/gpt-oss-20b
+    revision: null
+    verify: false
+    family: gpt-oss
+    tier: G
+    serving_mode: one_gpu
+    params_b_total: 21
+    params_b_active: 3.6
+    license_note: Apache-2.0
+    note: within-family gradient pair with gpt_oss_120b
+  qwen_small:
+    hf_id: Qwen/Qwen3.6-4B             # (verify) smallest current Qwen instruct
+    revision: null
+    verify: true
+    family: qwen
+    tier: G
+    serving_mode: one_gpu
+    params_b_total: null
+    params_b_active: null
+    license_note: resolve on login node
+    note: within-family gradient pair with qwen_3_6_flash
+  mistral_small_min:
+    hf_id: mistralai/Ministral-8B-Instruct   # (verify) smallest current Mistral
+    revision: null
+    verify: true
+    family: mistral
+    tier: G
+    serving_mode: one_gpu
+    params_b_total: null
+    params_b_active: null
+    license_note: resolve on login node
+    note: within-family gradient pair with mistral_medium_3_5
+
+  # ── Tier B (bridge arm ONLY — CCI's validated cell) ───────────────────────
+  llama_3_1_8b:
+    hf_id: meta-llama/Llama-3.1-8B-Instruct
+    revision: null
+    verify: false
+    family: llama
+    tier: B
+    serving_mode: one_gpu
+    params_b_total: 8
+    params_b_active: 8
+    license_note: Llama 3.1 community license (gated)
+    note: bridge arm only — validates the re-implemented instrument against CCI
+
+  # ── Tier S (multi-node giants — OUT OF MVP SCOPE) ─────────────────────────
+  deepseek_v4_pro:
+    hf_id: deepseek-ai/DeepSeek-V4-Pro     # (verify)
+    revision: null
+    verify: true
+    family: deepseek
+    tier: S
+    serving_mode: multi_node
+    params_b_total: null
+    params_b_active: null
+    license_note: resolve on login node
+    note: headline cells only, post-MVP
+    enabled: false
+  mistral_large_3:
+    hf_id: mistralai/Mistral-Large-3       # (verify)
+    revision: null
+    verify: true
+    family: mistral
+    tier: S
+    serving_mode: multi_node
+    params_b_total: null
+    params_b_active: null
+    license_note: resolve on login node
+    note: headline cells only, post-MVP
+    enabled: false
+  llama_4_maverick:
+    hf_id: meta-llama/Llama-4-Maverick-17B-128E-Instruct
+    revision: null
+    verify: true
+    family: llama
+    tier: S
+    serving_mode: multi_node
+    params_b_total: 400
+    params_b_active: 17
+    license_note: Llama 4 community license (gated)
+    note: headline cells only, post-MVP
+    enabled: false
+  kimi_k2_6:
+    hf_id: moonshotai/Kimi-K2.6            # (verify)
+    revision: null
+    verify: true
+    family: kimi
+    tier: S
+    serving_mode: multi_node
+    params_b_total: null
+    params_b_active: null
+    license_note: resolve on login node
+    note: headline cells only, post-MVP
+    enabled: false

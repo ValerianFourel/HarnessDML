@@ -1,0 +1,91 @@
+# Rollout-level panel schema — results/<exp_id>/panel.parquet (NO raw text).
+# One row per rollout = (cell, task, seed); cell = (model, benchmark-band,
+# component vector S, ordering_id, template_id, temp).
+# Causal roles live ONLY in schema/column_roles.yaml (tests enforce 1:1
+# coverage between the two files). dtype vocabulary: str | int64 | float64 | bool.
+
+panel:
+  # ── identity & provenance ────────────────────────────────────────────────
+  rollout_key:      {dtype: str,     nullable: false, desc: "hash(cell, task_id, seed) — resume/idempotency key of the rollout store"}
+  run_id:           {dtype: str,     nullable: false, desc: "Slurm job / execution batch id"}
+  exp_id:           {dtype: str,     nullable: false, desc: "experiment config id (configs/experiments/*.yaml)"}
+  manifest_ref:     {dtype: str,     nullable: false, desc: "path/id of manifest.json; a row that cannot resolve to a manifest is a bug"}
+  node:             {dtype: str,     nullable: false, desc: "compute node hostname"}
+  ts_start:         {dtype: str,     nullable: false, desc: "rollout start, ISO8601 UTC"}
+  ts_end:           {dtype: str,     nullable: false, desc: "rollout end, ISO8601 UTC"}
+  server_uptime_s:  {dtype: float64, nullable: false, desc: "vLLM server uptime at rollout start (drift diagnostic)"}
+  grader_path:      {dtype: str,     nullable: false, desc: "qa_f1 | numeric | sympy | sympy_string_fallback"}
+  seed:             {dtype: int64,   nullable: false, desc: "per-request sampling seed (repetition index k)"}
+  confidence_source: {dtype: str,    nullable: true,  desc: "elicited | fallback"}
+
+  # ── treatments (randomized by design) ────────────────────────────────────
+  comp_P:           {dtype: bool,    nullable: false, desc: "Planning component on"}
+  comp_T:           {dtype: bool,    nullable: false, desc: "Tool Use component on"}
+  comp_M:           {dtype: bool,    nullable: false, desc: "Memory component on"}
+  comp_SR:          {dtype: bool,    nullable: false, desc: "Structured Reasoning component on"}
+  comp_R:           {dtype: bool,    nullable: false, desc: "Reflection component on"}
+  config_id:        {dtype: str,     nullable: false, desc: "canonical encoding of S, e.g. BARE, T, P+T+SR (derived from comp_*)"}
+  ordering_id:      {dtype: str,     nullable: false, desc: "component ordering variant o1|o2|o3 (secondary arm; o1 default)"}
+  template_id:      {dtype: str,     nullable: false, desc: "paraphrase variant t1|t2|t3 (secondary arm; t1 default)"}
+
+  # ── context (fixed factors; design descriptors) ──────────────────────────
+  model_id:         {dtype: str,     nullable: false, desc: "registry key in configs/models.yaml"}
+  model_family:     {dtype: str,     nullable: false, desc: "glm | qwen | deepseek | llama | mistral | gpt-oss | gemma | seed"}
+  model_scale_b:    {dtype: float64, nullable: false, desc: "total params (B); MoE active params recorded in registry"}
+  benchmark:        {dtype: str,     nullable: false, desc: "hotpotqa | musique | gsm8k | math"}
+  band:             {dtype: str,     nullable: false, desc: "easy | hard"}
+  temp:             {dtype: float64, nullable: false, desc: "sampling temperature (0.1 primary; 0.0 sensitivity arm)"}
+  top_p:            {dtype: float64, nullable: false, desc: "nucleus sampling parameter (0.9)"}
+  system_role_mode: {dtype: str,     nullable: false, desc: "native | prepended (chat-template fallback, §4.2.4)"}
+  step_cap:         {dtype: int64,   nullable: false, desc: "max agent turns (4 easy / 6 hard)"}
+  max_new_tokens_step: {dtype: int64, nullable: false, desc: "per-step generation cap (256 easy / 512 hard)"}
+
+  # ── pre-treatment ────────────────────────────────────────────────────────
+  task_id:          {dtype: str,     nullable: false, desc: "committed task id (configs/tasks/); the cluster unit for all SEs"}
+  task_difficulty_calib: {dtype: float64, nullable: true, desc: "held-out item difficulty from the DISJOINT calibration slice only; null until that slice exists"}
+
+  # ── outcomes ─────────────────────────────────────────────────────────────
+  y:                {dtype: float64, nullable: false, desc: "primary score: token-F1 (QA) or EM (math); unanswered ⇒ 0"}
+  em:               {dtype: bool,    nullable: false, desc: "exact match after normalization"}
+  answered:         {dtype: bool,    nullable: false, desc: "was a parseable `Answer:` line produced (grader-interface channel)"}
+  finish_reason:    {dtype: str,     nullable: false, desc: "answered | no_answer | step_cap | timeout | parse_loop | api_error"}
+  confidence:       {dtype: float64, nullable: true,  desc: "elicited 0–100 (calibration outcomes consume this)"}
+
+  # ── post-treatment (mediators / cost measures; NEVER covariates) ─────────
+  n_turns:          {dtype: int64,   nullable: false, desc: "agent turns used"}
+  n_tool_calls:     {dtype: int64,   nullable: false, desc: "parsed tool invocations"}
+  n_parse_failures: {dtype: int64,   nullable: false, desc: "malformed actions (each retried once, §4.2.2)"}
+  tokens_in:        {dtype: int64,   nullable: false, desc: "prompt tokens summed over calls (cost outcome)"}
+  tokens_out:       {dtype: int64,   nullable: false, desc: "completion tokens summed over calls (cost outcome)"}
+  chars_in:         {dtype: int64,   nullable: false, desc: "prompt characters (tokenizer-invariant cost unit)"}
+  chars_out:        {dtype: int64,   nullable: false, desc: "completion characters (tokenizer-invariant cost unit)"}
+  wall_s:           {dtype: float64, nullable: false, desc: "rollout wall-clock seconds (diagnostic only, §4.3.2)"}
+  gpu_seconds:      {dtype: float64, nullable: false, desc: "attributed GPU-seconds (cost outcome)"}
+  latency_ms_mean:  {dtype: float64, nullable: false, desc: "mean per-call latency"}
+  action_seq:       {dtype: str,     nullable: false, desc: "compact action-type codes in order, e.g. 'S>L>C>A' — no raw text"}
+
+# Cell-level metrics — results/<exp_id>/cell_metrics.parquet.
+# One row per cell; functionals over the K-seed × task distribution (§5).
+# Not covered by column_roles.yaml (cell-level outcomes; never covariates).
+cell_metrics:
+  key: [exp_id, model_id, benchmark, band, config_id, ordering_id, template_id, temp]
+  columns:
+    n_rollouts:     {dtype: int64,   desc: "rows aggregated"}
+    n_tasks:        {dtype: int64,   desc: "distinct tasks"}
+    k_seeds:        {dtype: int64,   desc: "seeds per task (K)"}
+    y_mean:         {dtype: float64, desc: "mean primary score"}
+    em_mean:        {dtype: float64, desc: "mean exact match"}
+    answered_rate:  {dtype: float64, desc: "P(answered)"}
+    pass_at_k:      {dtype: float64, desc: "mean_t 1[any seed correct]"}
+    pass_all_k:     {dtype: float64, desc: "mean_t 1[all seeds correct] (pass∧k)"}
+    c_out:          {dtype: float64, desc: "outcome consistency mean_t (2·p̂_t − 1)²"}
+    c_traj_d:       {dtype: float64, desc: "1 − mean pairwise JSD over action-type distributions"}
+    c_traj_s:       {dtype: float64, desc: "1 − mean normalized Levenshtein over action sequences"}
+    c_res_uncond:   {dtype: float64, desc: "exp(−mean CV) over {tokens_out, wall_s, tool_calls}, all rollouts"}
+    c_res_cond:     {dtype: float64, desc: "same, conditional on success"}
+    ece_10bin:      {dtype: float64, desc: "expected calibration error, 10 bins"}
+    auroc:          {dtype: float64, desc: "confidence AUROC vs correctness"}
+    brier:          {dtype: float64, desc: "Brier score"}
+    tokens_out_mean: {dtype: float64, desc: "cost aggregate"}
+    chars_out_mean: {dtype: float64, desc: "cost aggregate (tokenizer-invariant)"}
+    gpu_s_mean:     {dtype: float64, desc: "cost aggregate"}

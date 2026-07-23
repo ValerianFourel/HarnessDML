@@ -1,0 +1,70 @@
+# Causal-role registry for the rollout panel (single source of truth).
+# Roles (§5): treatment | context | pre_treatment | outcome | post_treatment,
+# plus `meta` (bookkeeping/provenance — never enters any model on either side).
+#
+# Loader contract (implemented in Phase 1, tested in §8.9):
+# load_panel(covariates=...) may draw covariates ONLY from
+# {treatment, context, pre_treatment}; requesting an outcome, post_treatment,
+# or meta column as a covariate is a HARD ERROR. Post-treatment columns
+# (turns, tokens, tool_calls, parse_failures, trajectory features) are
+# mediators and cost outcomes — analyzable as Y, never as X.
+# Tests enforce exact 1:1 coverage with schema/panel_schema.yaml.
+
+# ── meta ────────────────────────────────────────────────────────────────────
+rollout_key:       {role: meta}
+run_id:            {role: meta}
+exp_id:            {role: meta}
+manifest_ref:      {role: meta, notes: "a panel row that cannot resolve to a manifest is a bug"}
+node:              {role: meta, notes: "drift diagnostic; schedule randomization makes it ignorable by design"}
+ts_start:          {role: meta}
+ts_end:            {role: meta}
+server_uptime_s:   {role: meta, notes: "drift diagnostic"}
+grader_path:       {role: meta, notes: "which grader branch scored the row; sympy_string_fallback rows get sensitivity checks"}
+seed:              {role: meta, notes: "repetition index k; grouping variable for reliability functionals, never a covariate"}
+confidence_source: {role: meta, notes: "elicited vs fallback; calibration analyses may filter on it"}
+
+# ── treatments (randomized by design; the ONLY thing varying within (model, band)) ──
+comp_P:            {role: treatment, notes: "Planning"}
+comp_T:            {role: treatment, notes: "Tool Use"}
+comp_M:            {role: treatment, notes: "Memory"}
+comp_SR:           {role: treatment, notes: "Structured Reasoning"}
+comp_R:            {role: treatment, notes: "Reflection"}
+config_id:         {role: treatment, notes: "derived encoding of (comp_P..comp_R); redundant with the five booleans"}
+ordering_id:       {role: treatment, notes: "secondary arm, not fully crossed"}
+template_id:       {role: treatment, notes: "secondary arm, not fully crossed"}
+
+# ── context (fixed factors; conditioning strata, never targets of causal claims) ──
+model_id:          {role: context}
+model_family:      {role: context, notes: "cross-family contrasts are observational bundle comparisons (§4.3.6)"}
+model_scale_b:     {role: context, notes: "same caveat as family"}
+benchmark:         {role: context}
+band:              {role: context}
+temp:              {role: context, notes: "design constant per arm (0.1 primary, 0.0 sensitivity)"}
+top_p:             {role: context}
+system_role_mode:  {role: context, notes: "native vs prepended chat-template fallback"}
+step_cap:          {role: context, notes: "band-determined cap; logged per rollout"}
+max_new_tokens_step: {role: context, notes: "band-determined cap; logged per rollout"}
+
+# ── pre-treatment ───────────────────────────────────────────────────────────
+task_id:           {role: pre_treatment, notes: "cluster unit for ALL standard errors; task FEs via within transforms"}
+task_difficulty_calib: {role: pre_treatment, notes: "valid ONLY from a disjoint calibration slice; leakage guard applies"}
+
+# ── outcomes ────────────────────────────────────────────────────────────────
+y:                 {role: outcome, notes: "primary; unconditional (unanswered ⇒ 0)"}
+em:                {role: outcome}
+answered:          {role: outcome, notes: "P(answered) — grader-interface channel of the Y-decomposition"}
+finish_reason:     {role: outcome, notes: "terminal status; no_answer distinguishable from wrong"}
+confidence:        {role: outcome, notes: "input to calibration outcomes (ECE/AUROC/Brier)"}
+
+# ── post-treatment (mediators / cost measures — NEVER covariates) ───────────
+n_turns:           {role: post_treatment}
+n_tool_calls:      {role: post_treatment}
+n_parse_failures:  {role: post_treatment}
+tokens_in:         {role: post_treatment, notes: "cost outcome; allowed as Y, never as X"}
+tokens_out:        {role: post_treatment, notes: "cost outcome; allowed as Y, never as X"}
+chars_in:          {role: post_treatment, notes: "tokenizer-invariant cost outcome"}
+chars_out:         {role: post_treatment, notes: "tokenizer-invariant cost outcome"}
+wall_s:            {role: post_treatment, notes: "diagnostic only (§4.3.2)"}
+gpu_seconds:       {role: post_treatment, notes: "cost outcome"}
+latency_ms_mean:   {role: post_treatment}
+action_seq:        {role: post_treatment, notes: "trajectory feature; mediation analyses only"}
