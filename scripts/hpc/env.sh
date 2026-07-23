@@ -28,11 +28,11 @@ if [ -z "${SCRATCH:-}" ]; then
   fi
 fi
 
-# gpt-oss serving: vLLM renders chats through openai_harmony, which fetches
-# its tiktoken vocab from the internet on FIRST REQUEST (not at load — the
-# server comes up healthy, then every /chat/completions 500s: run 1029055).
-# Compute nodes are offline, so the cache must be warmed on a login node
-# (prefetch_models.py does it) and shared via $SCRATCH.
-if [ -n "${SCRATCH:-}" ]; then
-  export TIKTOKEN_RS_CACHE_DIR="${TIKTOKEN_RS_CACHE_DIR:-$SCRATCH/hf/harmony-vocab}"
-fi
+# gpt-oss serving: vLLM renders chats through openai_harmony, which needs the
+# o200k_base tiktoken vocab. Its downloader fetches it on FIRST REQUEST (not
+# at load — servers come up healthy, then every /chat/completions 500s: run
+# 1029055) and can't reach the Azure blob from JUPITER even on login nodes
+# (run 1029364). The vocab is therefore VENDORED in-repo, sha256-pinned to
+# harmony's own expected hash; this env var makes harmony read it from disk
+# and never touch the network.
+export TIKTOKEN_ENCODINGS_BASE="${TIKTOKEN_ENCODINGS_BASE:-$_HL_ROOT/assets/harmony-vocab}"

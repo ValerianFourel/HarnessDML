@@ -53,3 +53,11 @@ Each entry: what we decided, and why. Reversals get a new entry, never an edit.
     Characters are the tokenizer-invariant unit required for cross-family
     comparisons; vLLM prefix caching stays ON (legitimate incremental
     decoding), cache stats are billing diagnostics, never capability.
+15. **The harmony tokenizer vocab is vendored in git, sha256-pinned.**
+    openai_harmony (vLLM's gpt-oss chat renderer) downloads
+    `o200k_base.tiktoken` on first request; the download is impossible on
+    compute nodes and fails on JUPITER login nodes too. A 3.6 MB asset whose
+    hash harmony itself pins (`446a9538…`) is committed at
+    `assets/harmony-vocab/` and served via `TIKTOKEN_ENCODINGS_BASE` — the
+    hermetic-benchmarks rule (§4.2.3) extended to tokenizer assets: nothing
+    a rollout needs may depend on the network.

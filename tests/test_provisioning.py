@@ -93,39 +93,26 @@ def test_api_errors_are_logged_not_persisted(tmp_path):
     assert len(RolloutStore(tmp_path / "r")) == 6          # resume retried them all
 
 
-def test_harmony_warmup_populates_scratch_cache(tmp_path, monkeypatch):
-    """Offline gpt-oss serving needs the harmony vocab pre-cached (run 1029055)."""
-    import types
-
+def test_harmony_vocab_vendored_and_pinned(monkeypatch):
+    """Offline gpt-oss serving reads the vendored vocab — it must exist in
+    the repo and match harmony's own sha256 pin (runs 1029055/1029364)."""
     import prefetch_models
 
-    loaded = []
-    fake = types.ModuleType("openai_harmony")
-    fake.load_harmony_encoding = loaded.append
-    monkeypatch.setitem(sys.modules, "openai_harmony", fake)
-    monkeypatch.setenv("HF_HOME", str(tmp_path / "hf"))
-    monkeypatch.delenv("TIKTOKEN_RS_CACHE_DIR", raising=False)
-
-    assert prefetch_models.warm_harmony_cache() is True
-    assert loaded == ["HarmonyGptOss"]
-    cache = Path(tmp_path / "hf" / "harmony-vocab")
-    assert os.environ["TIKTOKEN_RS_CACHE_DIR"] == str(cache) and cache.is_dir()
+    monkeypatch.setitem(sys.modules, "openai_harmony", None)  # force sha256-only path
+    monkeypatch.delenv("TIKTOKEN_ENCODINGS_BASE", raising=False)
+    assert prefetch_models.verify_harmony_vocab() is True
+    base = Path(os.environ["TIKTOKEN_ENCODINGS_BASE"])
+    assert base == prefetch_models.VENDORED_VOCAB_DIR
+    assert (base / "o200k_base.tiktoken").is_file()
 
 
-def test_harmony_warmup_failure_is_reported_not_raised(tmp_path, monkeypatch):
-    import types
-
+def test_harmony_vocab_missing_or_corrupt_is_reported_not_raised(tmp_path, monkeypatch):
     import prefetch_models
 
-    fake = types.ModuleType("openai_harmony")
-
-    def boom(_name):
-        raise RuntimeError("no internet")
-
-    fake.load_harmony_encoding = boom
-    monkeypatch.setitem(sys.modules, "openai_harmony", fake)
-    monkeypatch.setenv("TIKTOKEN_RS_CACHE_DIR", str(tmp_path / "cache"))
-    assert prefetch_models.warm_harmony_cache() is False
+    monkeypatch.setenv("TIKTOKEN_ENCODINGS_BASE", str(tmp_path))
+    assert prefetch_models.verify_harmony_vocab() is False  # missing
+    (tmp_path / "o200k_base.tiktoken").write_text("junk")
+    assert prefetch_models.verify_harmony_vocab() is False  # sha256 mismatch
 
 
 def test_sample_indices_deterministic_sorted():

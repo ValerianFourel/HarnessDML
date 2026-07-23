@@ -21,25 +21,42 @@ from harnesslab.experiment import load_registry
 LOCK = Path(__file__).resolve().parents[2] / "configs" / "model_revisions.lock.yaml"
 
 
-def warm_harmony_cache() -> bool:
-    """gpt-oss serving needs openai_harmony's tiktoken vocab, which the
-    library downloads on first request — impossible on offline compute nodes
-    (run 1029055: healthy servers, every request 500 HarmonyError). Download
-    it here instead; TIKTOKEN_RS_CACHE_DIR (env.sh) shares it via $SCRATCH."""
-    cache = os.environ.get("TIKTOKEN_RS_CACHE_DIR")
-    if not cache:
-        cache = f"{os.environ['HF_HOME']}/harmony-vocab"
-        os.environ["TIKTOKEN_RS_CACHE_DIR"] = cache
-    Path(cache).mkdir(parents=True, exist_ok=True)
+# harmony's own pin for o200k_base.tiktoken (src/tiktoken_ext/public_encodings.rs)
+HARMONY_VOCAB_SHA256 = "446a9538cb6c348e3516120d7c08b09f57c36495e2acfffe59a5bf8b0cfb1a2d"
+VENDORED_VOCAB_DIR = Path(__file__).resolve().parents[2] / "assets" / "harmony-vocab"
+
+
+def verify_harmony_vocab() -> bool:
+    """gpt-oss serving reads the o200k_base tiktoken vocab through
+    openai_harmony, whose downloader fetches it on FIRST REQUEST (servers
+    pass /health, then every chat 500s — run 1029055) and cannot reach the
+    Azure blob from JUPITER at all (run 1029364). The vocab is vendored
+    in-repo instead, sha256-pinned to harmony's expected hash;
+    TIKTOKEN_ENCODINGS_BASE (env.sh) points harmony at it — no network."""
+    base = Path(os.environ.setdefault("TIKTOKEN_ENCODINGS_BASE", str(VENDORED_VOCAB_DIR)))
+    vocab = base / "o200k_base.tiktoken"
+    if not vocab.is_file():
+        print(f"[prefetch] harmony vocab MISSING: {vocab} — git pull / restore assets/",
+              file=sys.stderr)
+        return False
+    import hashlib
+
+    digest = hashlib.sha256(vocab.read_bytes()).hexdigest()
+    if digest != HARMONY_VOCAB_SHA256:
+        print(f"[prefetch] harmony vocab CORRUPT: sha256={digest}, "
+              f"expected {HARMONY_VOCAB_SHA256}", file=sys.stderr)
+        return False
     try:
         from openai_harmony import load_harmony_encoding
 
         load_harmony_encoding("HarmonyGptOss")
+        print(f"[prefetch] harmony vocab OK (load-verified) <- {vocab}")
+    except ImportError:
+        print(f"[prefetch] harmony vocab OK (sha256-verified; openai_harmony "
+              f"not installed in this env) <- {vocab}")
     except Exception as exc:  # noqa: BLE001
-        print(f"[prefetch] harmony vocab warm-up failed: {exc}", file=sys.stderr)
+        print(f"[prefetch] harmony vocab load FAILED: {exc}", file=sys.stderr)
         return False
-    n = sum(1 for _ in Path(cache).iterdir())
-    print(f"[prefetch] harmony vocab cached -> {cache} ({n} file(s))")
     return True
 
 
@@ -71,10 +88,10 @@ def main() -> int:
     lock: dict = yaml.safe_load(LOCK.read_text()) if LOCK.exists() else {}
     lock = lock or {}
     failures = []
-    if not args.dry_run:
-        harmony_ok = warm_harmony_cache()
-        if not harmony_ok and any(m.get("family") == "gpt-oss" for m in wanted.values()):
-            failures.append("harmony-vocab")
+    if not verify_harmony_vocab() and any(
+        m.get("family") == "gpt-oss" for m in wanted.values()
+    ):
+        failures.append("harmony-vocab")
     for mid, m in wanted.items():
         hf_id = m["hf_id"]
         try:

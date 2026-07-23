@@ -26,12 +26,13 @@ PY
 )"
 echo "[serve] $MODEL_ID -> $HF_ID ($MODE, rev ${REVISION:0:12})"
 
-# gpt-oss + cold harmony vocab cache = healthy servers whose every request
-# 500s (offline nodes can't download it — run 1029055). Fail fast instead.
-if [ "$FAMILY" = "gpt-oss" ] && ! ls "${TIKTOKEN_RS_CACHE_DIR:-/nonexistent}"/* >/dev/null 2>&1; then
-  echo "[serve] FATAL: harmony vocab cache empty (TIKTOKEN_RS_CACHE_DIR=${TIKTOKEN_RS_CACHE_DIR:-unset})"
-  echo "[serve] warm it on a LOGIN node first (env.sh sets the cache dir):"
-  echo "[serve]   python -c 'from openai_harmony import load_harmony_encoding; load_harmony_encoding(\"HarmonyGptOss\")'"
+# gpt-oss + missing harmony vocab = healthy servers whose every request 500s
+# (harmony can't download it on JUPITER — runs 1029055/1029364). The vocab is
+# vendored in-repo and exposed via TIKTOKEN_ENCODINGS_BASE (env.sh); fail
+# fast if it's not there instead of serving doomed servers.
+if [ "$FAMILY" = "gpt-oss" ] && [ ! -f "${TIKTOKEN_ENCODINGS_BASE:-}/o200k_base.tiktoken" ]; then
+  echo "[serve] FATAL: harmony vocab missing (TIKTOKEN_ENCODINGS_BASE=${TIKTOKEN_ENCODINGS_BASE:-unset})"
+  echo "[serve] it is vendored in-repo: git pull, then source scripts/hpc/env.sh"
   exit 5
 fi
 
