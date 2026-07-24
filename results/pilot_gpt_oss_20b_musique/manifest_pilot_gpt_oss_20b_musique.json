@@ -1,0 +1,59 @@
+{
+  "client": {
+    "type": "MultiEndpointClient",
+    "vllm_version": "0.25.1"
+  },
+  "component_template_hashes": {
+    "BARE": {
+      "base": "4e571b272ebb",
+      "submission": "8c80436087cc"
+    },
+    "P+T+M+SR+R": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "d31f0c8af38c",
+      "base": "4e571b272ebb",
+      "submission": "8c80436087cc"
+    },
+    "T": {
+      "T:t1": "d31f0c8af38c",
+      "base": "4e571b272ebb",
+      "submission": "8c80436087cc"
+    },
+    "T+SR+R": {
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "d31f0c8af38c",
+      "base": "4e571b272ebb",
+      "submission": "8c80436087cc"
+    }
+  },
+  "created_utc": "2026-07-23T19:53:13+00:00",
+  "exp_config_sha256": "73b53b9abfcf4d8964e17e1fd48008ac25621d1944b2069da78ae6769322c9e5",
+  "exp_id": "pilot_gpt_oss_20b_musique",
+  "extra": {
+    "run_id": "1029938"
+  },
+  "git": {
+    "dirty": null,
+    "sha": "6a0fdb5419e339659a20e13509545bd4ee074d10"
+  },
+  "model": {
+    "family": "gpt-oss",
+    "hf_id": "openai/gpt-oss-20b",
+    "model_id": "gpt_oss_20b",
+    "revision": "6cee5e81ee83917806bbde320786a8fb61efebee"
+  },
+  "node": "jpbo-052-34.jupiter.internal",
+  "sampling": {
+    "max_new_tokens_step": 512,
+    "seeds": [
+      0,
+      1
+    ],
+    "temperature": 0.1,
+    "top_p": 0.9
+  }
+}

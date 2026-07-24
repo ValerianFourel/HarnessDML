@@ -1,0 +1,59 @@
+{
+  "client": {
+    "type": "MultiEndpointClient",
+    "vllm_version": "0.25.1"
+  },
+  "component_template_hashes": {
+    "BARE": {
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T+M+SR+R": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T": {
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T+SR+R": {
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    }
+  },
+  "created_utc": "2026-07-23T19:53:38+00:00",
+  "exp_config_sha256": "aef455afdde0ee4413ce1e003217ffe9f451f5f2fd94ee3fbd3e2423fb4e28b6",
+  "exp_id": "pilot_gpt_oss_20b_gsm8k",
+  "extra": {
+    "run_id": "1029938"
+  },
+  "git": {
+    "dirty": null,
+    "sha": "6a0fdb5419e339659a20e13509545bd4ee074d10"
+  },
+  "model": {
+    "family": "gpt-oss",
+    "hf_id": "openai/gpt-oss-20b",
+    "model_id": "gpt_oss_20b",
+    "revision": "6cee5e81ee83917806bbde320786a8fb61efebee"
+  },
+  "node": "jpbo-052-34.jupiter.internal",
+  "sampling": {
+    "max_new_tokens_step": 256,
+    "seeds": [
+      0,
+      1
+    ],
+    "temperature": 0.1,
+    "top_p": 0.9
+  }
+}
