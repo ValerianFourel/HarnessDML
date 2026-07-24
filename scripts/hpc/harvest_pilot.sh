@@ -26,14 +26,18 @@ if grep "\[run\]" "$LOG" | grep -qv "api_errors=0"; then
 fi
 
 shopt -s nullglob
-DIRS=("$SCRATCH"/harnesslab/pilot/rollouts_"${MODEL_ID}"_*)
-[ ${#DIRS[@]} -gt 0 ] || { echo "[harvest] no rollout dirs for $MODEL_ID on \$SCRATCH"; exit 1; }
-for d in "${DIRS[@]}"; do
+HARVESTED=0
+for d in "$SCRATCH"/harnesslab/pilot/rollouts_"${MODEL_ID}"_*; do
+  # skip junk dirs (e.g. a literal 'rollouts_..._*' created by an earlier
+  # aggregate against an unexpanded glob) — real stores have rollouts.jsonl
+  [ -f "$d/rollouts.jsonl" ] || { echo "[harvest] skipping $d (no rollouts.jsonl)"; continue; }
   n=$(basename "$d"); n=${n#rollouts_}
   python -m harnesslab.cli aggregate --rollouts "$d" --out "results/pilot_$n"
   python -m harnesslab.cli verify --panel "results/pilot_$n/panel.parquet"
+  HARVESTED=$((HARVESTED + 1))
 done
+[ "$HARVESTED" -gt 0 ] || { echo "[harvest] no rollout stores for $MODEL_ID on \$SCRATCH"; exit 1; }
 git add results/
 git commit -m "results: pilot ${MODEL_ID} (job ${JOBID})" || echo "[harvest] nothing new to commit"
 git push
-echo "[harvest] done — ${#DIRS[@]} slice(s) pushed"
+echo "[harvest] done — ${HARVESTED} slice(s) pushed"

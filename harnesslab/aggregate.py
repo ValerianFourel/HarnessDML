@@ -123,6 +123,11 @@ def _failures_note(store: RolloutStore) -> str:
 
 def aggregate(rollouts_dir: Path | str, results_dir: Path | str) -> dict[str, Path]:
     rollouts_dir, results_dir = Path(rollouts_dir), Path(results_dir)
+    # Check BEFORE opening the store: RolloutStore auto-mkdirs its directory,
+    # so aggregating a typo'd/unexpanded path used to CREATE a junk dir (a
+    # literal 'rollouts_*' on $SCRATCH once poisoned every later glob).
+    if not (rollouts_dir / "rollouts.jsonl").exists():
+        raise ValueError(f"no rollout store at {rollouts_dir} (rollouts.jsonl missing)")
     store = RolloutStore(rollouts_dir)
     rows = list(store.records())
     if not rows:
