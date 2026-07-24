@@ -17,14 +17,15 @@ MAXLEN=${MAXLEN:-16384}
 LOGDIR=$SCRATCH/harnesslab/serverlogs
 mkdir -p "$LOGDIR"
 
-read -r HF_ID MODE REVISION FAMILY <<<"$(python - "$MODEL_ID" <<'PY'
+{ read -r HF_ID MODE REVISION FAMILY; read -r MODEL_VLLM_ARGS; } <<<"$(python - "$MODEL_ID" <<'PY'
 import sys
 from harnesslab.experiment import load_registry
 m = load_registry()[sys.argv[1]]
 print(m["hf_id"], m["serving_mode"], m.get("revision") or "main", m.get("family", "?"))
+print(m.get("extra_vllm_args") or "")
 PY
 )"
-echo "[serve] $MODEL_ID -> $HF_ID ($MODE, rev ${REVISION:0:12})"
+echo "[serve] $MODEL_ID -> $HF_ID ($MODE, rev ${REVISION:0:12})${MODEL_VLLM_ARGS:+ extra: $MODEL_VLLM_ARGS}"
 
 # gpt-oss + missing harmony vocab = healthy servers whose every request 500s
 # (harmony can't download it on JUPITER — runs 1029055/1029364). The vocab is
@@ -48,7 +49,8 @@ if [ "$MODE" = "one_node_tp4" ]; then
   # killed both 120b jobs (1029740/1029939). PYNCCL fallback is stable.
   vllm serve "$HF_ID" --revision "$REVISION" --served-model-name "$HF_ID" \
     --tensor-parallel-size 4 --disable-custom-all-reduce \
-    --port 8001 --max-model-len "$MAXLEN" --seed 0 ${EXTRA_VLLM_ARGS:-} \
+    --port 8001 --max-model-len "$MAXLEN" --seed 0 \
+    ${MODEL_VLLM_ARGS:-} ${EXTRA_VLLM_ARGS:-} \
     >"$LOGDIR/${SLURM_JOB_ID:-$$}_8001.log" 2>&1 &
 elif [ "$MODE" = "one_gpu" ]; then
   for i in 0 1 2 3; do
@@ -56,7 +58,8 @@ elif [ "$MODE" = "one_gpu" ]; then
     PORTS+=("$port")
     CUDA_VISIBLE_DEVICES=$i vllm serve "$HF_ID" --revision "$REVISION" \
       --served-model-name "$HF_ID" \
-      --port "$port" --max-model-len "$MAXLEN" --seed 0 ${EXTRA_VLLM_ARGS:-} \
+      --port "$port" --max-model-len "$MAXLEN" --seed 0 \
+      ${MODEL_VLLM_ARGS:-} ${EXTRA_VLLM_ARGS:-} \
       >"$LOGDIR/${SLURM_JOB_ID:-$$}_${port}.log" 2>&1 &
   done
 else

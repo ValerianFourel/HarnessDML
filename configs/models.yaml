@@ -35,6 +35,7 @@
 models:
   # ── Tier F (frontier open weights, MVP grid) ──────────────────────────────
   deepseek_v4_flash:
+    extra_vllm_args: "--kv-cache-dtype fp8"   # fp8_ds_mla layout rejects kv auto (probe 1034815)
     hf_id: deepseek-ai/DeepSeek-V4-Flash
     revision: null
     verify: false
@@ -88,6 +89,7 @@ models:
     params_b_total: 27.8
     params_b_active: 27.8
     license_note: Apache-2.0; ungated
+    extra_vllm_args: "--max-num-seqs 256"   # hybrid Mamba arch: default 1024 seqs > 715 cache blocks (probe 1034811)
     chat_template_kwargs: {enable_thinking: false}   # hybrid thinking floods content past any step cap (probe 1034288 on 3.5-9B); pending probe confirmation on this model
     note: Claw anchor; largest Qwen fitting one GPU (35B-A3B is 97GB w/ overhead — borderline, skipped)
   llama_4_scout:
