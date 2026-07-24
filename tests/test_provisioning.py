@@ -71,7 +71,8 @@ def test_served_model_name_resolves_hf_id():
     from harnesslab.experiment import served_model_name
 
     pilot = from_yaml("configs/experiments/pilot.yaml")
-    assert served_model_name(pilot) == "openai/gpt-oss-20b"  # never the registry key
+    # never the registry key
+    assert served_model_name(pilot) == "mistralai/Mistral-Small-3.2-24B-Instruct-2506"
     mock = from_yaml("tests/fixtures/exp_mock_qa.yaml")
     assert served_model_name(mock) == "mock"
 

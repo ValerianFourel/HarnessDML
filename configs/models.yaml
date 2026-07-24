@@ -89,7 +89,14 @@ models:
     params_b_total: 117
     params_b_active: 5.1
     license_note: Apache-2.0; ungated
-    note: distinct post-training lineage; PREFETCHED
+    enabled: false
+    note: >-
+      DROPPED from the MVP factorial (probes 1033971/1034289, ADR 17): the
+      family cannot deliver component T — tool prompts trigger native harmony
+      tool calls (<|call|>, stop_reason 200012) instead of textual Action
+      lines, and the retry nudge does not convert it. BARE is rescuable only
+      with reasoning_effort=low + ~2048 budget. Revisit post-MVP as a
+      native-interface arm. PREFETCHED.
   gemma_4_26b_a4b:
     hf_id: google/gemma-4-26B-A4B-it
     revision: null
@@ -114,7 +121,11 @@ models:
     params_b_total: 21
     params_b_active: 3.6
     license_note: Apache-2.0; ungated
-    note: within-family gradient pair with gpt_oss_120b; PREFETCHED
+    enabled: false
+    note: >-
+      DROPPED from the MVP factorial with gpt_oss_120b (ADR 17: component T
+      undeliverable via the textual protocol). Its pilot slices are kept as
+      the documented incompatibility record. PREFETCHED.
   qwen_3_5_9b:
     hf_id: Qwen/Qwen3.5-9B
     revision: null

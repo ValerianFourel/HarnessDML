@@ -73,3 +73,15 @@ Each entry: what we decided, and why. Reversals get a new entry, never an edit.
     incompatibility no local test could catch. The probe is the onboarding
     step that separates "model can't do the task" from "interface can't
     carry the model" before the difficulty gate consumes either.
+17. **gpt-oss dropped from the MVP factorial: component T is undeliverable.**
+    Probes 1033971/1034289: any prompt mentioning tools makes gpt-oss emit a
+    native harmony tool call (`<|call|>`, stop_reason 200012) instead of the
+    textual `Action:` line — at 92/1024 tokens, unconverted by the loop's
+    retry nudge. A model that cannot receive the T treatment cannot occupy
+    the 16 of 32 cells containing T. BARE was rescuable
+    (reasoning_effort=low + ~2048 budget → clean `Answer:` line), so this is
+    interface, not capability — recorded as a family×interface finding for
+    the DATASHEET, with the 20b pilot slices kept as evidence. Suppressing
+    token 200012 via logit_bias was considered and rejected: it edits the
+    sampling distribution in a treatment-correlated way. Revisit post-MVP as
+    an explicit native-interface arm.

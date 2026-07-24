@@ -140,6 +140,23 @@ drop; (3) extract the 120b engine-init root cause. Also fixed: vLLM renamed
 `reasoning_content`→`reasoning`, so `chars_out_reasoning` was silently 0 —
 client reads both now.
 
+## 2026-07-24 — probe round 2: verdicts all in
+
+- **120b root cause found:** worker 3 died on `custom_all_reduce.cuh:455
+  'illegal memory access'` — vLLM's custom all-reduce kernel on GH200 TP=4.
+  Fix: `--disable-custom-all-reduce` in the tp4 serve path (PYNCCL
+  fallback); benefits every TP=4 model. Also caught in the same config
+  dump: vLLM had registered the 120b under its local snapshot path — every
+  request would have 404'd; `--served-model-name` now pinned to hf_id.
+- **Mistral-Small-3.2-24B passes clean:** BARE → prose + stop; T → exactly
+  `Action: Search[...]` at 13 tokens. Pilot-ready.
+- **gpt-oss: dropped (ADR 17).** BARE is rescuable (low effort + 2048 →
+  proper `Answer:` line), but T is terminal: every variant *including the
+  retry nudge* re-emits the native `<|call|>` token. T undeliverable ⇒ no
+  place in a 2⁵ factorial. Registry entries disabled with the evidence in
+  their notes; 20b pilot slices retained as the incompatibility record.
+- Qwen3.5-9B probe pending (was still loading).
+
 ## Next
 
 1. Green smoke → "pull and review smoke" (Phase-2 STOP).

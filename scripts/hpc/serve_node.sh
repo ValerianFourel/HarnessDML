@@ -43,8 +43,11 @@ PORTS=()
 # (seen on gpt-oss-120b job 1029740), which would 404 every client request.
 if [ "$MODE" = "one_node_tp4" ]; then
   PORTS=(8001)
+  # --disable-custom-all-reduce: vLLM's custom all-reduce kernel hits
+  # "illegal memory access" (custom_all_reduce.cuh:455) on GH200 TP=4 —
+  # killed both 120b jobs (1029740/1029939). PYNCCL fallback is stable.
   vllm serve "$HF_ID" --revision "$REVISION" --served-model-name "$HF_ID" \
-    --tensor-parallel-size 4 \
+    --tensor-parallel-size 4 --disable-custom-all-reduce \
     --port 8001 --max-model-len "$MAXLEN" --seed 0 ${EXTRA_VLLM_ARGS:-} \
     >"$LOGDIR/${SLURM_JOB_ID:-$$}_8001.log" 2>&1 &
 elif [ "$MODE" = "one_gpu" ]; then

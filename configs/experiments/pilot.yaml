@@ -4,7 +4,7 @@
 # Bare- and T-config accuracy decide which band each model enters.
 exp_id: pilot            # overridden per slice
 benchmark: gsm8k         # overridden per slice
-model_id: gpt_oss_20b    # overridden per slice
+model_id: mistral_small_3_2_24b   # overridden per slice
 tasks_file: configs/tasks/gsm8k.jsonl   # overridden per slice
 n_tasks: 20
 k_seeds: 2
