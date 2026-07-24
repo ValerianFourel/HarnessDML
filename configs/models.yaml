@@ -47,6 +47,21 @@ models:
     params_b_active: null
     license_note: open (MIT-style DeepSeek license); ungated
     note: Claw model-sweep backbone; native-FP8 weights (fits node only as FP8)
+  kimi_linear_48b:
+    hf_id: moonshotai/Kimi-Linear-48B-A3B-Instruct
+    revision: null
+    verify: false
+    family: kimi
+    tier: F
+    serving_mode: one_node_tp4
+    params_b_total: 49.1
+    params_b_active: 3
+    license_note: open; ungated (hub-verified 2026-07-24)
+    note: >-
+      largest Moonshot below the 1T K2 line (K2.5/K2.6 = 1.06T, multi-node
+      Tier S post-MVP). Hybrid Kimi Delta Attention — vLLM 0.25.1 lists
+      kda_attention natively. Distinct post-training lineage; probe decides
+      accommodations (ADR 16).
   minimax_m2_5:
     hf_id: MiniMaxAI/MiniMax-M2.5
     revision: null
