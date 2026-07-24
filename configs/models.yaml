@@ -46,6 +46,38 @@ models:
     params_b_active: null
     license_note: open (MIT-style DeepSeek license); ungated
     note: Claw model-sweep backbone; native-FP8 weights (fits node only as FP8)
+  minimax_m2_5:
+    hf_id: MiniMaxAI/MiniMax-M2.5
+    revision: null
+    verify: false
+    family: minimax
+    tier: F
+    serving_mode: one_node_tp4
+    dtype: fp8            # native F8_E4M3 in the main repo (hub-verified 2026-07-24)
+    params_b_total: 228.7
+    params_b_active: 10
+    license_note: MiniMax open license (license:other); ungated
+    note: >-
+      strongest open model fitting one node (228.7B MoE, FP8 ~309 GB of 345
+      usable; SWE-bench-Verified 80.2 per Feb-2026 release). Interleaved-
+      thinking agentic post-training — probe before pilot (ADR 16) decides
+      whether a template accommodation is needed.
+  qwen_3_5_122b:
+    hf_id: Qwen/Qwen3.5-122B-A10B
+    revision: null
+    verify: false
+    family: qwen
+    tier: F
+    serving_mode: one_node_tp4
+    params_b_total: 125.1
+    params_b_active: 10
+    license_note: Apache-2.0; ungated
+    chat_template_kwargs: {enable_thinking: false}   # same hybrid-thinking family fix as 3.5-9B (probe 1034288)
+    note: >-
+      largest Qwen fitting one node (BF16 ~338 GB of 345 usable — tight, KV
+      capped by MAXLEN). SAME-VINTAGE scale pair with qwen_3_5_9b (9B vs
+      122B, both 3.5): the clean within-family capability gradient the
+      cross-vintage 3.6-27B pair cannot give.
   qwen_3_6_27b:
     hf_id: Qwen/Qwen3.6-27B
     revision: null
