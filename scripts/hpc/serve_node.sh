@@ -38,9 +38,13 @@ fi
 
 START_TS=$(date +%s)
 PORTS=()
+# --served-model-name pins the API name to the hf_id: vLLM sometimes
+# registers the model under its resolved local snapshot path instead
+# (seen on gpt-oss-120b job 1029740), which would 404 every client request.
 if [ "$MODE" = "one_node_tp4" ]; then
   PORTS=(8001)
-  vllm serve "$HF_ID" --revision "$REVISION" --tensor-parallel-size 4 \
+  vllm serve "$HF_ID" --revision "$REVISION" --served-model-name "$HF_ID" \
+    --tensor-parallel-size 4 \
     --port 8001 --max-model-len "$MAXLEN" --seed 0 ${EXTRA_VLLM_ARGS:-} \
     >"$LOGDIR/${SLURM_JOB_ID:-$$}_8001.log" 2>&1 &
 elif [ "$MODE" = "one_gpu" ]; then
@@ -48,6 +52,7 @@ elif [ "$MODE" = "one_gpu" ]; then
     port=$((8001 + i))
     PORTS+=("$port")
     CUDA_VISIBLE_DEVICES=$i vllm serve "$HF_ID" --revision "$REVISION" \
+      --served-model-name "$HF_ID" \
       --port "$port" --max-model-len "$MAXLEN" --seed 0 ${EXTRA_VLLM_ARGS:-} \
       >"$LOGDIR/${SLURM_JOB_ID:-$$}_${port}.log" 2>&1 &
   done
