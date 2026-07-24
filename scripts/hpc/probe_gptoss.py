@@ -37,6 +37,10 @@ VARIANTS = [
     ("max1024", {"max_tokens": 1024}),
     ("effort_low", {"reasoning_effort": "low"}),
     ("max2048_low", {"max_tokens": 2048, "reasoning_effort": "low"}),
+    # Qwen3.x hybrid thinking (probe 1034288): visible, unterminated
+    # "Thinking Process:" in content at every budget. The documented off
+    # switch is a chat-template kwarg.
+    ("no_think", {"chat_template_kwargs": {"enable_thinking": False}}),
 ]
 
 

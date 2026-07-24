@@ -51,7 +51,11 @@ def _cmd_run(args) -> int:
         api_key = os.environ.get(args.api_key_env, "EMPTY")
         served = args.model or experiment.served_model_name(spec)
         urls = [u.strip() for u in args.base_url.split(",") if u.strip()]
-        endpoints = [OpenAICompatClient(u, served, api_key) for u in urls]
+        endpoints = [
+            OpenAICompatClient(u, served, api_key,
+                               chat_template_kwargs=spec.chat_template_kwargs)
+            for u in urls
+        ]
         client = endpoints[0] if len(endpoints) == 1 else MultiEndpointClient(endpoints)
     from .agent.runner import run_experiment
 

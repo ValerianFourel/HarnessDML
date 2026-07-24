@@ -62,6 +62,10 @@ class ExperimentSpec:
     model_scale_b: float = 0.0
     model_hf_id: str = ""      # manifest provenance (§1.4: hf repo + revision)
     model_revision: str = ""
+    # Per-family chat-template accommodation from the registry (constant
+    # within a model, recorded in the manifest) — e.g. Qwen3.x
+    # {"enable_thinking": false}.
+    chat_template_kwargs: dict = field(default_factory=dict)
     throughput_rollouts_per_node_hour: float | None = None  # set from pilot (§7)
     extra: dict = field(default_factory=dict)
 
@@ -136,6 +140,7 @@ def resolve_model(spec: ExperimentSpec, registry: dict[str, dict] | None = None)
     spec.model_scale_b = float(entry.get("params_b_total") or 0.0)
     spec.model_hf_id = entry["hf_id"]
     spec.model_revision = entry.get("revision") or "main"
+    spec.chat_template_kwargs = entry.get("chat_template_kwargs") or {}
 
 
 def from_yaml(

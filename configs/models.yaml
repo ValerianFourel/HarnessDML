@@ -56,6 +56,7 @@ models:
     params_b_total: 27.8
     params_b_active: 27.8
     license_note: Apache-2.0; ungated
+    chat_template_kwargs: {enable_thinking: false}   # hybrid thinking floods content past any step cap (probe 1034288 on 3.5-9B); pending probe confirmation on this model
     note: Claw anchor; largest Qwen fitting one GPU (35B-A3B is 97GB w/ overhead — borderline, skipped)
   llama_4_scout:
     hf_id: meta-llama/Llama-4-Scout-17B-16E-Instruct
@@ -136,6 +137,7 @@ models:
     params_b_total: 9
     params_b_active: 9
     license_note: Apache-2.0; ungated
+    chat_template_kwargs: {enable_thinking: false}   # probe 1034288: visible unterminated "Thinking Process:" at 256/1024/2048 tokens; off switch pending probe-3 confirmation
     note: G pole for qwen — CROSS-VINTAGE pair (3.5 vs 3.6), caveat in DATASHEET
   ministral_3_3b:
     hf_id: mistralai/Ministral-3-3B-Instruct-2512

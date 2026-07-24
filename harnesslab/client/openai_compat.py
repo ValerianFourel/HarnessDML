@@ -23,9 +23,14 @@ class OpenAICompatClient:
         api_key: str = "EMPTY",
         timeout_s: float = 180.0,
         max_retries: int = 3,
+        chat_template_kwargs: dict | None = None,
     ):
         self.model = model
         self.max_retries = max_retries
+        # Per-family template accommodation (constant within a model, like
+        # system_role_mode): e.g. {"enable_thinking": false} for Qwen3.x,
+        # whose hybrid thinking otherwise floods content past any step cap.
+        self.chat_template_kwargs = chat_template_kwargs or {}
         self._http = httpx.AsyncClient(
             base_url=base_url.rstrip("/"),
             headers={"Authorization": f"Bearer {api_key}"},
@@ -41,6 +46,8 @@ class OpenAICompatClient:
             "max_tokens": max_tokens,
             "seed": seed,
         }
+        if self.chat_template_kwargs:
+            payload["chat_template_kwargs"] = self.chat_template_kwargs
         last_exc: Exception | None = None
         for attempt in range(self.max_retries + 1):
             t0 = time.monotonic()

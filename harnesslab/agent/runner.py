@@ -172,7 +172,8 @@ async def run_experiment(
         sampling={"temperature": spec.temp, "top_p": spec.top_p,
                   "max_new_tokens_step": spec.max_new_tokens_step, "seeds": spec.seeds},
         template_hashes=template_hashes,
-        client_info={"type": type(client).__name__, "vllm_version": _vllm_version()},
+        client_info={"type": type(client).__name__, "vllm_version": _vllm_version(),
+                     "chat_template_kwargs": spec.chat_template_kwargs},
         extra={"run_id": run_id},
     )
     manifest_ref = manifest_path.name

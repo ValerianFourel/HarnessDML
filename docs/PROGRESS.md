@@ -155,7 +155,16 @@ client reads both now.
   retry nudge* re-emits the native `<|call|>` token. T undeliverable ⇒ no
   place in a 2⁵ factorial. Registry entries disabled with the evidence in
   their notes; 20b pilot slices retained as the incompatibility record.
-- Qwen3.5-9B probe pending (was still loading).
+- **Qwen3.5-9B: a third pathology, likely switchable.** All 8 variants
+  `finish_reason=length` — the CoT is *visible* (content, not a hidden
+  channel) but it's an unterminated "Thinking Process:" that outruns 256,
+  1024, and 2048 tokens without ever reaching `Action:`/`Answer:`. That's
+  Qwen3.x hybrid thinking rendered inline. Remedy wired end-to-end:
+  registry `chat_template_kwargs: {enable_thinking: false}` → spec →
+  request payload → manifest (per-family accommodation, constant within a
+  model, like `system_role_mode`). Probe gained a `no_think` variant;
+  probe-3 on qwen_3_5_9b decides. Mistral pilot can launch immediately —
+  it needs no accommodation.
 
 ## Next
 

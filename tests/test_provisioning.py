@@ -116,6 +116,24 @@ def test_harmony_vocab_missing_or_corrupt_is_reported_not_raised(tmp_path, monke
     assert prefetch_models.verify_harmony_vocab() is False  # sha256 mismatch
 
 
+def test_chat_template_kwargs_resolve_and_reach_payload():
+    """Per-family template accommodations (Qwen enable_thinking=false, probe
+    1034288) flow registry -> spec -> request payload."""
+    from harnesslab.client.openai_compat import OpenAICompatClient
+
+    spec = from_yaml(
+        "configs/experiments/pilot.yaml", overrides={"model_id": "qwen_3_5_9b"}
+    )
+    assert spec.chat_template_kwargs == {"enable_thinking": False}
+    mistral = from_yaml("configs/experiments/pilot.yaml")
+    assert mistral.chat_template_kwargs == {}
+
+    client = OpenAICompatClient(
+        "http://x/v1", "m", chat_template_kwargs=spec.chat_template_kwargs
+    )
+    assert client.chat_template_kwargs == {"enable_thinking": False}
+
+
 def test_git_state_survives_missing_git_binary(monkeypatch):
     """Compute nodes have no `git` (smoke 1029480 wrote sha=unknown): the
     fallback reads .git/HEAD and never fabricates dirty=False."""
