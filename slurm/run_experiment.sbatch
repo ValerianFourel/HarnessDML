@@ -35,10 +35,14 @@ source "$SCRATCH/harnesslab/serving_${SLURM_JOB_ID}.env"
 trap 'pkill -P $$ || true' EXIT   # stop the vLLM servers when the job ends
 
 EXP_BASE=$(basename "$EXP" .yaml)
+FAILED_BENCHES=""
 for B in ${BENCH//[+,]/ }; do
   EXP_ID="${EXP_BASE}_${MODEL_ID}_${B}"
   OUT="$SCRATCH/harnesslab/$EXP_BASE/rollouts_${MODEL_ID}_${B}"
-  srun --ntasks=1 --overlap python -m harnesslab.cli run \
+  # A failing benchmark must NOT abort the remaining ones (job 1029938: two
+  # transient gsm8k api_errors exited 3 under set -e and math never ran).
+  # Failed rollouts stay pending; resume retries them for free.
+  if srun --ntasks=1 --overlap python -m harnesslab.cli run \
     --exp "$EXP" \
     --set exp_id="$EXP_ID" \
     --set model_id="$MODEL_ID" \
@@ -46,8 +50,15 @@ for B in ${BENCH//[+,]/ }; do
     --set tasks_file="configs/tasks/${B}.jsonl" \
     --backend openai \
     --base-url "$BASE_URLS" \
-    --out "$OUT"
+    --out "$OUT"; then :; else
+    echo "[sbatch] $B exited rc=$? — continuing to next benchmark (resume retries pending rollouts)"
+    FAILED_BENCHES="$FAILED_BENCHES $B"
+  fi
   python -m harnesslab.cli status --rollouts "$OUT"
   echo "[sbatch] aggregate on a login node:"
   echo "  python -m harnesslab.cli aggregate --rollouts $OUT --out results/$EXP_ID"
 done
+if [ -n "$FAILED_BENCHES" ]; then
+  echo "[sbatch] benches with failures:$FAILED_BENCHES — resubmit same command to resume"
+  exit 3
+fi
