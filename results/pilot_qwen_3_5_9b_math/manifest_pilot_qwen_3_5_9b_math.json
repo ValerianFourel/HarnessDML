@@ -1,0 +1,62 @@
+{
+  "client": {
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "type": "MultiEndpointClient",
+    "vllm_version": "0.25.1"
+  },
+  "component_template_hashes": {
+    "BARE": {
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T+M+SR+R": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T": {
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T+SR+R": {
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    }
+  },
+  "created_utc": "2026-07-24T09:57:18+00:00",
+  "exp_config_sha256": "4682450c2167f5a94e4307ed92a73f76800a28c4a9442c7f7c4a80fdde971ff3",
+  "exp_id": "pilot_qwen_3_5_9b_math",
+  "extra": {
+    "run_id": "1034587"
+  },
+  "git": {
+    "dirty": null,
+    "sha": "6fb65d9b6184645ac54647c44766f8fc463ad496"
+  },
+  "model": {
+    "family": "qwen",
+    "hf_id": "Qwen/Qwen3.5-9B",
+    "model_id": "qwen_3_5_9b",
+    "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a"
+  },
+  "node": "jpbo-122-19.jupiter.internal",
+  "sampling": {
+    "max_new_tokens_step": 512,
+    "seeds": [
+      0,
+      1
+    ],
+    "temperature": 0.1,
+    "top_p": 0.9
+  }
+}
