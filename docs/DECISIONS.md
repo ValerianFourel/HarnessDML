@@ -85,3 +85,17 @@ Each entry: what we decided, and why. Reversals get a new entry, never an edit.
     token 200012 via logit_bias was considered and rejected: it edits the
     sampling distribution in a treatment-correlated way. Revisit post-MVP as
     an explicit native-interface arm.
+18. **Phase-4 difficulty-gate rulings** (pilot jobs 1034331/1034587, N=20
+    tasks x 2 seeds, window [0.15, 0.85] on BARE/T accuracy):
+    mistral x {hotpotqa .204/.183, musique .460/.469, math .400/.300} and
+    qwen x {musique .436/.397, gsm8k .725/.575, math .325/.225} enter the
+    full 32-config grid. mistral x gsm8k: BARE .875 saturates -> retained
+    only as the 4-config thin arm (§4.4's saturation-adjudication
+    provision). qwen x hotpotqa: BARE .144 is within sampling noise of the
+    floor (SE≈.055 at n=40) with T=.385 mid-window -> admitted, flagged.
+    Recorded anomaly for the DATASHEET: musique (hard) outscores hotpotqa
+    (easy) on BOTH models' BARE — alias-max F1 generosity and/or
+    contamination; the bands are labels, not a verified difficulty
+    ordering. Throughput constant set to 4000 rollouts/node-hour — the
+    conservative floor of measured steady-state (4.3k mistral-math to 20k
+    qwen-easy) — so budget over-estimates.

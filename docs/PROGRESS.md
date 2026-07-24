@@ -177,3 +177,32 @@ client reads both now.
 4. Phase 5 MVP grid: per gated (model, band) 32 configs × 100 tasks × 5 seeds
    (+K=10 headline top-ups) + bridge/padding/ordering/template/temp-0 arms.
 5. Phase 6: panel v1.0, DATASHEET.md, tag `mvp-v1.0`.
+
+## Phase 4 — gate analysis (STOP)
+
+Both pilots complete and green: mistral 4x160 (job 1034331, 7:37 total),
+qwen 4x160 (job 1034587). Instrument healthy on both: tools used in every
+band (mistral 2.4-4.5, qwen 0.7-3.6 calls/T-rollout — qwen barely touches
+the gsm8k calculator, itself a finding), confidence elicited 62-81 %.
+
+Gate table (BARE/T accuracy, window [0.15,0.85], ADR 18):
+
+| model | hotpotqa | musique | gsm8k | math |
+|---|---|---|---|---|
+| mistral-24B | .204/.183 ✓ | .460/.469 ✓ | .875/.575 → thin arm | .400/.300 ✓ |
+| qwen3.5-9B | .144/.385 ✓(flag) | .436/.397 ✓ | .725/.575 ✓ | .325/.225 ✓ |
+
+Cross-family sign-flips already visible at pilot N: tools HURT mistral on
+hotpotqa (.18 vs .20 BARE) but HELP qwen (+.24, .385 vs .144); math-hard
+is a monotone scaffold tax for mistral (BARE .40 → All-In .15) but
+non-monotone for qwen (T .225 < BARE .325 < T+SR+R .500). Exactly the
+τ_s(C, Z) heterogeneity the platform exists to measure.
+
+Grid authored: `mvp_grid.yaml` (32 configs x 100 tasks x 5 seeds = 16k
+rollouts/slice), `mvp_thin_gsm8k.yaml` (saturation arm),
+`mvp_headline_topup.yaml` (K=10 via resume into the same store),
+`submit_grid.sh` (gated matrix: 7 full slices + thin; topup mode).
+Budget at the 4000/node-hr floor: ~31 node-hours worst case, ~15
+realistic — well inside the 30-70 anchor. Remaining Phase-5 arms
+(padding, ordering, template, temp-0, bridge) to be authored at launch;
+bridge needs meta-llama hub access (request pending).

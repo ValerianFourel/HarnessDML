@@ -1,0 +1,20 @@
+# Saturation thin arm (§4.4, ADR 18): mistral_small_3_2_24b x gsm8k.
+# BARE = 0.875 sits above the [0.15, 0.85] difficulty window, so the full
+# factorial would be ceiling-compressed; the 4 headline configs are retained
+# to adjudicate capability-saturation vs task-ceiling.
+exp_id: mvp_thin            # overridden per slice
+benchmark: gsm8k
+model_id: mistral_small_3_2_24b
+tasks_file: configs/tasks/gsm8k.jsonl
+n_tasks: null
+k_seeds: 5
+temp: 0.1
+top_p: 0.9
+schedule_seed: 20260724
+concurrency: 16
+throughput_rollouts_per_node_hour: 4000
+configs:
+  - components: []                      # BARE
+  - components: [T]
+  - components: [T, SR, R]
+  - components: [P, T, M, SR, R]        # All-In

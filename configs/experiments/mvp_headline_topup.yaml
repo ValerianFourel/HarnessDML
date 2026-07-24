@@ -1,0 +1,21 @@
+# K=10 headline top-up (§4.6): extra seeds 5-9 for the 4 headline configs on
+# the Tier-F backbone (mistral). Submit with the SAME --out directory as the
+# corresponding mvp_grid slice: rollout keys for seeds 0-4 are already done
+# there, so resume-by-construction runs exactly the 5 new seeds per (config,
+# task). exp_id must also match the grid slice for one coherent store.
+exp_id: mvp_grid            # MUST match the grid slice (same store, same exp_id)
+benchmark: gsm8k            # overridden per slice
+model_id: mistral_small_3_2_24b
+tasks_file: configs/tasks/gsm8k.jsonl   # overridden per slice
+n_tasks: null
+k_seeds: 10
+temp: 0.1
+top_p: 0.9
+schedule_seed: 20260724
+concurrency: 16
+throughput_rollouts_per_node_hour: 4000
+configs:
+  - components: []                      # BARE
+  - components: [T]
+  - components: [T, SR, R]
+  - components: [P, T, M, SR, R]        # All-In

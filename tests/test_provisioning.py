@@ -67,6 +67,19 @@ def test_pilot_and_smoke_specs_parse():
     assert smoke.n_tasks == 5 and len(smoke.configs) == 2
 
 
+def test_mvp_grid_specs_parse():
+    grid = from_yaml("configs/experiments/mvp_grid.yaml")
+    ids = [c.config_id for c in grid.configs]
+    assert len(ids) == 32 and len(set(ids)) == 32          # full factorial, no dupes
+    assert grid.k_seeds == 5 and grid.n_tasks is None
+    assert grid.throughput_rollouts_per_node_hour == 4000  # budget unlocked
+    thin = from_yaml("configs/experiments/mvp_thin_gsm8k.yaml")
+    assert len(thin.configs) == 4 and thin.benchmark == "gsm8k"
+    topup = from_yaml("configs/experiments/mvp_headline_topup.yaml")
+    assert topup.k_seeds == 10 and topup.exp_id == "mvp_grid"  # same store as grid
+    assert {c.config_id for c in topup.configs} == {c.config_id for c in thin.configs}
+
+
 def test_served_model_name_resolves_hf_id():
     from harnesslab.experiment import served_model_name
 

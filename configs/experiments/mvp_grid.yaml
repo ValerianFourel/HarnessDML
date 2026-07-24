@@ -1,0 +1,59 @@
+# Phase-5 MVP grid (§9): the full 2^5 factorial per gated (model, band).
+# model_id / benchmark / exp_id / tasks_file injected by the sbatch template
+# via --set; one job per (model, benchmark-list) — see scripts/hpc/submit_grid.sh.
+#
+# Gated matrix (Phase-4 pilot, jobs 1034331/1034587 — ADR 18):
+#   mistral_small_3_2_24b : hotpotqa, musique, math   (full 32 configs)
+#                           gsm8k -> thin arm ONLY (mvp_thin_gsm8k.yaml;
+#                           BARE 0.875 saturates the [0.15,0.85] window)
+#   qwen_3_5_9b           : hotpotqa, musique, gsm8k, math (full 32)
+#                           (hotpotqa BARE 0.144 admitted: within noise of
+#                           the 0.15 floor, T=0.385 mid-window)
+#
+# Throughput constant: measured steady-state 4.3k (mistral math, slowest) to
+# 20k (qwen easy) rollouts/node-hour; 4000 is the conservative planning floor
+# so budget over-estimates. One slice = 32x100x5 = 16,000 rollouts ~ <=4 h/node.
+exp_id: mvp_grid            # overridden per slice
+benchmark: gsm8k            # overridden per slice
+model_id: mistral_small_3_2_24b   # overridden per slice
+tasks_file: configs/tasks/gsm8k.jsonl   # overridden per slice
+n_tasks: null               # full committed 100-task list
+k_seeds: 5
+temp: 0.1
+top_p: 0.9
+schedule_seed: 20260724
+concurrency: 16
+throughput_rollouts_per_node_hour: 4000
+configs:                    # all 32 subsets of {P,T,M,SR,R}, canonical order
+  - components: []
+  - components: [P]
+  - components: [T]
+  - components: [M]
+  - components: [SR]
+  - components: [R]
+  - components: [P, T]
+  - components: [P, M]
+  - components: [P, SR]
+  - components: [P, R]
+  - components: [T, M]
+  - components: [T, SR]
+  - components: [T, R]
+  - components: [M, SR]
+  - components: [M, R]
+  - components: [SR, R]
+  - components: [P, T, M]
+  - components: [P, T, SR]
+  - components: [P, T, R]
+  - components: [P, M, SR]
+  - components: [P, M, R]
+  - components: [P, SR, R]
+  - components: [T, M, SR]
+  - components: [T, M, R]
+  - components: [T, SR, R]
+  - components: [M, SR, R]
+  - components: [P, T, M, SR]
+  - components: [P, T, M, R]
+  - components: [P, T, SR, R]
+  - components: [P, M, SR, R]
+  - components: [T, M, SR, R]
+  - components: [P, T, M, SR, R]
