@@ -61,3 +61,15 @@ Each entry: what we decided, and why. Reversals get a new entry, never an edit.
     `assets/harmony-vocab/` and served via `TIKTOKEN_ENCODINGS_BASE` — the
     hermetic-benchmarks rule (§4.2.3) extended to tokenizer assets: nothing
     a rollout needs may depend on the network.
+16. **Probe before pilot, per family.** One raw-response probe job
+    (`slurm/probe.sbatch`) runs the instrument's exact BARE and T prompts
+    against a freshly served model and dumps the complete message
+    (content/reasoning/tool_calls/stop reasons) BEFORE any pilot rollouts.
+    Adopted after gpt-oss-20b: 90 % no_answer on hotpotqa traced to (a) all
+    tokens flowing into the hidden harmony reasoning channel with
+    `content=null` (`finish_reason=length` even at 1024), and (b) tool
+    prompts triggering NATIVE harmony tool calls (`stop_reason=200012`,
+    `<|call|>`) instead of textual `Action:` lines — a family×interface
+    incompatibility no local test could catch. The probe is the onboarding
+    step that separates "model can't do the task" from "interface can't
+    carry the model" before the difficulty gate consumes either.

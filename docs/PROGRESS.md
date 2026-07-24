@@ -114,6 +114,32 @@ as separate jobs — per-slice stores make that safe.
 
 Then: difficulty gate + throughput constants from the 8 slices.
 
+## 2026-07-24 — probe verdict: gpt-oss × textual protocol incompatibility
+
+20b slices landed green (hotpotqa 160, musique 160, gsm8k 158+2 pending);
+20b math never ran (a transient-api-error exit aborted the job under
+`set -e` — sbatch loop now continues past a failing bench). Both 120b jobs
+died at the 40-min health ceiling: vLLM **engine core failed at init**
+(root cause still to extract from the server log).
+
+Probe job 1033971 (raw responses, instrument's exact prompts) explained the
+hotpotqa disaster: **BARE** ends `finish_reason=length` with `content=null`
+at 256 AND 1024 tokens — everything goes to the hidden harmony reasoning
+channel, the visible final message never starts; **T** ends
+`stop_reason=200012` (harmony `<|call|>`) — the model attempts a *native*
+tool call instead of the textual `Action:` line, at just 92/1024 tokens.
+`include_reasoning=false` hides the channel without producing content.
+`reasoning_effort=low` shortens reasoning but doesn't rescue either mode.
+Not a code bug: a family×interface incompatibility (ADR 16 institutes
+probe-before-pilot per family).
+
+Decision (user): parallel-track. (1) Prefetch + probe Mistral-Small-3.2-24B
+(F) and Qwen3.5-9B (G), pilot on what passes; (2) one gpt-oss rescue probe
+(2048 budget + low effort + the loop's exact retry nudge) decides keep vs
+drop; (3) extract the 120b engine-init root cause. Also fixed: vLLM renamed
+`reasoning_content`→`reasoning`, so `chars_out_reasoning` was silently 0 —
+client reads both now.
+
 ## Next
 
 1. Green smoke → "pull and review smoke" (Phase-2 STOP).
