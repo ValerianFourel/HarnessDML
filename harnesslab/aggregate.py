@@ -132,6 +132,10 @@ def aggregate(rollouts_dir: Path | str, results_dir: Path | str) -> dict[str, Pa
     rows = list(store.records())
     if not rows:
         raise ValueError(f"no rollouts in {rollouts_dir}")
+    for r in rows:
+        # rows written before the padding arm existed (grid wave 1, early
+        # pilots) predate this column; '' is its exact meaning there
+        r.setdefault("padded_components", "")
 
     problems: list[str] = []
     for i, r in enumerate(rows):
