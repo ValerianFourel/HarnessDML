@@ -40,6 +40,11 @@ if [ -n "${SCRATCH:-}" ]; then
   export VLLM_CACHE_ROOT="${VLLM_CACHE_ROOT:-$SCRATCH/cache/vllm}"
   export DG_JIT_CACHE_DIR="${DG_JIT_CACHE_DIR:-$SCRATCH/cache/deepgemm}"
   export DG_CACHE_DIR="${DG_CACHE_DIR:-$SCRATCH/cache/deepgemm}"   # older DeepGEMM name
+  # pip/uv too: ~/.cache/pip alone reached 15 GB and pushed $HOME past its
+  # 20 GB soft quota — which silently killed EVERY batch job at startup for
+  # ~24 h (0-byte logs, exit 1 in seconds; jobs 1042417-1042853)
+  export PIP_CACHE_DIR="${PIP_CACHE_DIR:-$SCRATCH/cache/pip}"
+  export UV_CACHE_DIR="${UV_CACHE_DIR:-$SCRATCH/cache/uv}"
   mkdir -p "$XDG_CACHE_HOME" "$TRITON_CACHE_DIR" "$TORCHINDUCTOR_CACHE_DIR" \
            "$VLLM_CACHE_ROOT" "$DG_JIT_CACHE_DIR" 2>/dev/null || true
 fi
