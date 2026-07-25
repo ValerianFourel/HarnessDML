@@ -28,6 +28,22 @@ if [ -z "${SCRATCH:-}" ]; then
   fi
 fi
 
+# Compile/JIT caches must NOT live in $HOME (tiny quota on JUPITER):
+# torch-inductor, triton, vLLM, and DeepGEMM's nvcc JIT filled it during
+# concurrent serves — 'Disk quota exceeded' killed qwen-122b/27b probes and
+# 'NVCC compilation failed' (DeepGEMM JIT unable to write) killed the FP8
+# MoE probes (jobs 1034966/67, 1035023/24). SCRATCH has room; caches rebuild.
+if [ -n "${SCRATCH:-}" ]; then
+  export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$SCRATCH/cache}"
+  export TRITON_CACHE_DIR="${TRITON_CACHE_DIR:-$SCRATCH/cache/triton}"
+  export TORCHINDUCTOR_CACHE_DIR="${TORCHINDUCTOR_CACHE_DIR:-$SCRATCH/cache/torchinductor}"
+  export VLLM_CACHE_ROOT="${VLLM_CACHE_ROOT:-$SCRATCH/cache/vllm}"
+  export DG_JIT_CACHE_DIR="${DG_JIT_CACHE_DIR:-$SCRATCH/cache/deepgemm}"
+  export DG_CACHE_DIR="${DG_CACHE_DIR:-$SCRATCH/cache/deepgemm}"   # older DeepGEMM name
+  mkdir -p "$XDG_CACHE_HOME" "$TRITON_CACHE_DIR" "$TORCHINDUCTOR_CACHE_DIR" \
+           "$VLLM_CACHE_ROOT" "$DG_JIT_CACHE_DIR" 2>/dev/null || true
+fi
+
 # gpt-oss serving: vLLM renders chats through openai_harmony, which needs the
 # o200k_base tiktoken vocab. Its downloader fetches it on FIRST REQUEST (not
 # at load — servers come up healthy, then every /chat/completions 500s: run
