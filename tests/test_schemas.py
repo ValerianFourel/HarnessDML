@@ -36,7 +36,7 @@ def test_treatments_are_exactly_the_design():
     treatments = {c for c, s in ROLES.items() if s["role"] == "treatment"}
     assert treatments == {
         "comp_P", "comp_T", "comp_M", "comp_SR", "comp_R",
-        "config_id", "ordering_id", "template_id",
+        "config_id", "ordering_id", "template_id", "padded_components",
     }
 
 

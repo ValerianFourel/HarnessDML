@@ -16,7 +16,7 @@ from .panel import validate_record
 from .store import RolloutStore
 
 CELL_KEY = ("exp_id", "model_id", "benchmark", "band", "config_id",
-            "ordering_id", "template_id", "temp")
+            "ordering_id", "template_id", "padded_components", "temp")
 
 _DTYPES = {
     "seed": pl.Int64, "step_cap": pl.Int64, "max_new_tokens_step": pl.Int64,

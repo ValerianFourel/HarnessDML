@@ -32,6 +32,7 @@ comp_R:            {role: treatment, notes: "Reflection"}
 config_id:         {role: treatment, notes: "derived encoding of (comp_P..comp_R); redundant with the five booleans"}
 ordering_id:       {role: treatment, notes: "secondary arm, not fully crossed"}
 template_id:       {role: treatment, notes: "secondary arm, not fully crossed"}
+padded_components: {role: treatment, notes: "padding control arm (§4.3.3); '' everywhere outside it"}
 
 # ── context (fixed factors; conditioning strata, never targets of causal claims) ──
 model_id:          {role: context}

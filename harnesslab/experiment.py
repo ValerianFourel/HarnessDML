@@ -102,6 +102,10 @@ class ExperimentSpec:
             "config_id": cfg.config_id,
             "ordering_id": cfg.ordering_id,
             "template_id": cfg.template_id,
+            # padded pseudo-components share config_id with their real
+            # counterpart (padded-P is still components={P}); without this
+            # the padding arm would collide with real cells (§4.3.3)
+            "padded_components": "+".join(sorted(cfg.padding_components)),
             "temp": self.temp,
         }
 

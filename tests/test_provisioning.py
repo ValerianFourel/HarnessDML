@@ -67,6 +67,27 @@ def test_pilot_and_smoke_specs_parse():
     assert smoke.n_tasks == 5 and len(smoke.configs) == 2
 
 
+def test_arm_specs_parse_and_padding_gets_distinct_cells():
+    pad = from_yaml("configs/experiments/arms/padding.yaml")
+    assert all(c.padding_components == c.components for c in pad.configs)
+    padded_p = next(c for c in pad.configs if c.components == frozenset({"P"}))
+    grid = from_yaml("configs/experiments/mvp_grid.yaml")
+    real_p = next(c for c in grid.configs if c.components == frozenset({"P"}))
+    # same config_id, DIFFERENT cell identity — the §4.3.3 collision guard
+    assert padded_p.config_id == real_p.config_id == "P"
+    assert pad.cell_dict(padded_p)["padded_components"] == "P"
+    assert grid.cell_dict(real_p)["padded_components"] == ""
+
+    order = from_yaml("configs/experiments/arms/ordering.yaml")
+    assert {c.ordering_id for c in order.configs} == {"o2", "o3"}
+    templ = from_yaml("configs/experiments/arms/template.yaml")
+    assert {c.template_id for c in templ.configs} == {"t2", "t3"} and templ.n_tasks == 50
+    t0 = from_yaml("configs/experiments/arms/temp0.yaml")
+    assert t0.temp == 0.0 and t0.k_seeds == 3
+    bridge = from_yaml("configs/experiments/arms/bridge_coupled.yaml")
+    assert bridge.coupled_submission and len(bridge.configs) == 32 and bridge.k_seeds == 2
+
+
 def test_mvp_grid_specs_parse():
     grid = from_yaml("configs/experiments/mvp_grid.yaml")
     ids = [c.config_id for c in grid.configs]

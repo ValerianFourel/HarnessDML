@@ -98,6 +98,7 @@ def build_row(
         "config_id": cfg.config_id,
         "ordering_id": cfg.ordering_id,
         "template_id": cfg.template_id,
+        "padded_components": "+".join(sorted(cfg.padding_components)),
         "model_id": spec.model_id,
         "model_family": spec.model_family,
         "model_scale_b": spec.model_scale_b,

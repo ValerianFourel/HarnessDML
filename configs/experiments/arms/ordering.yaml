@@ -1,0 +1,21 @@
+# Ordering arm (§4.1): the 4 headline configs under orderings o2/o3
+# (o1 is the grid default) — is the component effect the content or its
+# position in the prompt? One model x one QA bench.
+exp_id: arm_ordering
+benchmark: hotpotqa
+model_id: mistral_small_3_2_24b
+tasks_file: configs/tasks/hotpotqa.jsonl
+n_tasks: 100
+k_seeds: 5
+temp: 0.1
+top_p: 0.9
+schedule_seed: 20260725
+concurrency: 16
+throughput_rollouts_per_node_hour: 4000
+configs:
+  - {components: [T],               ordering_id: o2}
+  - {components: [T, SR, R],        ordering_id: o2}
+  - {components: [P, T, M, SR, R],  ordering_id: o2}
+  - {components: [T],               ordering_id: o3}
+  - {components: [T, SR, R],        ordering_id: o3}
+  - {components: [P, T, M, SR, R],  ordering_id: o3}

@@ -36,5 +36,5 @@ def test_load_panel_validates_before_touching_the_file():
 
 def test_panel_columns_ordered_and_complete():
     cols = panel_columns()
-    assert len(cols) == 48
+    assert len(cols) == 49
     assert cols[0] == "rollout_key"

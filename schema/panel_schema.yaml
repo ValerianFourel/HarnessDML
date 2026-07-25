@@ -27,6 +27,7 @@ panel:
   config_id:        {dtype: str,     nullable: false, desc: "canonical encoding of S, e.g. BARE, T, P+T+SR (derived from comp_*)"}
   ordering_id:      {dtype: str,     nullable: false, desc: "component ordering variant o1|o2|o3 (secondary arm; o1 default)"}
   template_id:      {dtype: str,     nullable: false, desc: "paraphrase variant t1|t2|t3 (secondary arm; t1 default)"}
+  padded_components: {dtype: str,    nullable: false, desc: "components rendered as length-matched padding, '+'-joined ('' = all real; §4.3.3 control arm). Part of the cell identity — padded-P is a different cell than real P"}
 
   # ── context (fixed factors; design descriptors) ──────────────────────────
   model_id:         {dtype: str,     nullable: false, desc: "registry key in configs/models.yaml"}
