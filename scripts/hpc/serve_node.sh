@@ -22,15 +22,17 @@ mkdir -p "$LOGDIR"
 # script before its first echo for every model WITHOUT extra args (the
 # 07-24/25 mass failure, jobs 1035452..1042938: 0-byte logs, exit 1 in 8 s).
 # The '|| true' makes the empty case legal; read still assigns "".
-{ read -r HF_ID MODE REVISION FAMILY; read -r MODEL_VLLM_ARGS || true; } <<<"$(python - "$MODEL_ID" <<'PY'
+{ read -r HF_ID MODE REVISION FAMILY; read -r MODEL_VLLM_ARGS || true; read -r MODEL_ENV || true; } <<<"$(python - "$MODEL_ID" <<'PY'
 import sys
 from harnesslab.experiment import load_registry
 m = load_registry()[sys.argv[1]]
 print(m["hf_id"], m["serving_mode"], m.get("revision") or "main", m.get("family", "?"))
 print(m.get("extra_vllm_args") or "")
+print(" ".join(f"{k}={v}" for k, v in (m.get("extra_env") or {}).items()))
 PY
 )"
 MODEL_VLLM_ARGS=${MODEL_VLLM_ARGS:-}
+MODEL_ENV=${MODEL_ENV:-}   # e.g. VLLM_USE_DEEP_GEMM=0 — DeepGEMM's nvcc JIT fails on GH200
 echo "[serve] $MODEL_ID -> $HF_ID ($MODE, rev ${REVISION:0:12})${MODEL_VLLM_ARGS:+ extra: $MODEL_VLLM_ARGS}"
 
 # gpt-oss + missing harmony vocab = healthy servers whose every request 500s
@@ -53,7 +55,7 @@ if [ "$MODE" = "one_node_tp4" ]; then
   # --disable-custom-all-reduce: vLLM's custom all-reduce kernel hits
   # "illegal memory access" (custom_all_reduce.cuh:455) on GH200 TP=4 —
   # killed both 120b jobs (1029740/1029939). PYNCCL fallback is stable.
-  vllm serve "$HF_ID" --revision "$REVISION" --served-model-name "$HF_ID" \
+  env $MODEL_ENV vllm serve "$HF_ID" --revision "$REVISION" --served-model-name "$HF_ID" \
     --tensor-parallel-size 4 --disable-custom-all-reduce \
     --port 8001 --max-model-len "$MAXLEN" --seed 0 \
     ${MODEL_VLLM_ARGS:-} ${EXTRA_VLLM_ARGS:-} \
@@ -62,7 +64,7 @@ elif [ "$MODE" = "one_gpu" ]; then
   for i in 0 1 2 3; do
     port=$((8001 + i))
     PORTS+=("$port")
-    CUDA_VISIBLE_DEVICES=$i vllm serve "$HF_ID" --revision "$REVISION" \
+    env CUDA_VISIBLE_DEVICES=$i $MODEL_ENV vllm serve "$HF_ID" --revision "$REVISION" \
       --served-model-name "$HF_ID" \
       --port "$port" --max-model-len "$MAXLEN" --seed 0 \
       ${MODEL_VLLM_ARGS:-} ${EXTRA_VLLM_ARGS:-} \

@@ -36,6 +36,7 @@ models:
   # ── Tier F (frontier open weights, MVP grid) ──────────────────────────────
   deepseek_v4_flash:
     extra_vllm_args: "--kv-cache-dtype fp8"   # fp8_ds_mla layout rejects kv auto (probe 1034815)
+    extra_env: {VLLM_USE_DEEP_GEMM: "0"}      # DeepGEMM nvcc JIT fails on GH200/aarch64 (probes 1034966/1042929) — Triton FP8 fallback
     hf_id: deepseek-ai/DeepSeek-V4-Flash
     revision: null
     verify: false
@@ -63,6 +64,7 @@ models:
       kda_attention natively. Distinct post-training lineage; probe decides
       accommodations (ADR 16).
   minimax_m2_5:
+    extra_env: {VLLM_USE_DEEP_GEMM: "0"}      # same DeepGEMM/GH200 failure as deepseek (probe 1034966)
     hf_id: MiniMaxAI/MiniMax-M2.5
     revision: null
     verify: false
