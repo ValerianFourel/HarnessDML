@@ -206,3 +206,33 @@ Budget at the 4000/node-hr floor: ~31 node-hours worst case, ~15
 realistic — well inside the 30-70 anchor. Remaining Phase-5 arms
 (padding, ordering, template, temp-0, bridge) to be authored at launch;
 bridge needs meta-llama hub access (request pending).
+
+## 2026-07-25 — grid wave 1 harvested: first factorial results (98k rollouts)
+
+7 of 8 slices landed (mistral math tops off its 1 pending rollout
+separately). Descriptive ladder (`analysis/descriptive_ladder.py`,
+task-clustered) headline findings:
+
+1. **T dominance replicates — through the success channel.** Tools are
+   positive on accuracy nearly everywhere (+.05 to +.19) and strongly
+   positive on success|answered in ALL six slices (+.19 to +.34, all
+   t>3), while *negative* on P(answered) (−.08 to −.54): tools make
+   answers better but risk producing none. CCI could not see this split;
+   the Y-decomposition is the mechanism.
+2. **T×M synergy, robust across families.** The tools×memory interaction
+   is positive on QA everywhere it's estimable (+.20 t=7.8 mistral
+   hotpotqa; +.10 t=3.3 qwen hotpotqa; +.07/+.05 musique both) and T+M is
+   the best naive cell on hotpotqa for BOTH families (.44, .48).
+3. **Sign flips confirmed with real inference.** SR: +.15 (t=4.5) for
+   qwen on gsm8k, T+SR +.35 (t=7.7) on math — vs −.10 (t=−3.4) for
+   mistral on hotpotqa. P×SR interaction: +.07 (t=4.2) mistral vs −.19
+   (t=−8.3) qwen. The CCI sign-flip phenomenon on real benchmarks,
+   task-clustered t>4 on both sides.
+4. **All-In loss is universal**: −.32 to −.57 against the per-task best
+   cell in every slice; on gsm8k All-In (.41) sits far below BARE (.72).
+5. **M is a risk trade like T**: −.29/−.32 on answered for qwen math
+   bands but +.10/+.16 on success|answered.
+
+Grid task-sample note: 100-task cell means differ from the 20-task pilot
+(mistral hotpotqa BARE .375 vs .204) — the gate was a screen, not an
+estimate; fixed-factor scope unchanged.
