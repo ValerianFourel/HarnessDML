@@ -17,7 +17,12 @@ MAXLEN=${MAXLEN:-16384}
 LOGDIR=$SCRATCH/harnesslab/serverlogs
 mkdir -p "$LOGDIR"
 
-{ read -r HF_ID MODE REVISION FAMILY; read -r MODEL_VLLM_ARGS; } <<<"$(python - "$MODEL_ID" <<'PY'
+# NOTE: $(...) strips trailing newlines, so an EMPTY extra_vllm_args line
+# vanishes and the second read hits EOF -> nonzero -> set -e killed this
+# script before its first echo for every model WITHOUT extra args (the
+# 07-24/25 mass failure, jobs 1035452..1042938: 0-byte logs, exit 1 in 8 s).
+# The '|| true' makes the empty case legal; read still assigns "".
+{ read -r HF_ID MODE REVISION FAMILY; read -r MODEL_VLLM_ARGS || true; } <<<"$(python - "$MODEL_ID" <<'PY'
 import sys
 from harnesslab.experiment import load_registry
 m = load_registry()[sys.argv[1]]
@@ -25,6 +30,7 @@ print(m["hf_id"], m["serving_mode"], m.get("revision") or "main", m.get("family"
 print(m.get("extra_vllm_args") or "")
 PY
 )"
+MODEL_VLLM_ARGS=${MODEL_VLLM_ARGS:-}
 echo "[serve] $MODEL_ID -> $HF_ID ($MODE, rev ${REVISION:0:12})${MODEL_VLLM_ARGS:+ extra: $MODEL_VLLM_ARGS}"
 
 # gpt-oss + missing harmony vocab = healthy servers whose every request 500s
