@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import sys
 from glob import glob
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -61,7 +62,10 @@ def two_way_interactions(df: pd.DataFrame, y: str = "y") -> pd.DataFrame:
 
 
 def slice_summary(path: str) -> dict:
-    p = pd.read_parquet(path)
+    """path: a slice dir, or any panel*.parquet inside one (parts are merged)."""
+    d = Path(path) if Path(path).is_dir() else Path(path).parent
+    parts = sorted(d.glob("panel*.parquet"))
+    p = pd.concat([pd.read_parquet(f) for f in parts], ignore_index=True)
     ident = p.iloc[0]
     cells = p.groupby("config_id").agg(y=("y", "mean"), answered=("answered", "mean"))
     answered = p[p.answered]
@@ -84,11 +88,12 @@ def slice_summary(path: str) -> dict:
 
 
 def main(patterns: list[str]) -> int:
-    paths = sorted(set(sum((glob(g) for g in patterns), [])))
-    if not paths:
+    hits = sum((glob(g.replace("panel.parquet", "panel*.parquet")) for g in patterns), [])
+    dirs = sorted({str(Path(h).parent) for h in hits})   # one summary per slice dir
+    if not dirs:
         print("no panels matched", file=sys.stderr)
         return 2
-    summaries = [slice_summary(p) for p in paths]
+    summaries = [slice_summary(d) for d in dirs]
 
     print("=" * 78)
     print("CELL EXTREMES (naive means — argmax is winner's-cursed, see ESTIMANDS)")

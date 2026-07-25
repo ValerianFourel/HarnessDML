@@ -109,3 +109,13 @@ Each entry: what we decided, and why. Reversals get a new entry, never an edit.
     zero). Manifests now hash the task-list content (`tasks_sha256`) so
     every run pins which population it saw. Estimand scope unchanged:
     fixed factors, conditional on the committed lists.
+20. **Census slices ship as sharded parquet chains.** Full-benchmark
+    coverage (hotpotqa 7405, musique 2417, gsm8k 1319, math 262) makes a
+    slice ~1.18M rollouts: (a) one store has one writer, so a census slice
+    runs as a Slurm dependency CHAIN (afterany) of walltime windows, each
+    resuming the store — `submit_census.sh`; (b) its panel exceeds git
+    limits as one file, so aggregate shards into `panel_partNN.parquet`
+    (~300k rows, zstd) and every reader globs `panel*.parquet`; the size
+    guard exempts results parquet from the 20 MB pool but caps files at
+    95 MB (GitHub hard limit). Budget: ~3.65M rollouts, ~250-300
+    node-hours, 8 parallel chains, wall-clock ~3-5 days.

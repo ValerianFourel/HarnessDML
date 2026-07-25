@@ -19,8 +19,11 @@ import subprocess
 import sys
 from pathlib import Path
 
-MAX_TOTAL_BYTES = 20 * 2**20  # 20 MB
+MAX_TOTAL_BYTES = 20 * 2**20     # 20 MB — everything except results parquet
+MAX_PARQUET_BYTES = 95 * 2**20   # per-file, under GitHub's 100 MB hard limit;
+                                 # census panels are sharded by aggregate anyway
 ROLLOUT_RE = re.compile(r"(^|/)rollouts/[^/]+\.jsonl$")
+PARQUET_RE = re.compile(r"^results/.+\.parquet$")
 
 
 def violations(entries: list[tuple[str, int]]) -> list[str]:
@@ -30,10 +33,18 @@ def violations(entries: list[tuple[str, int]]) -> list[str]:
         for path, _ in entries
         if ROLLOUT_RE.search(path)
     ]
-    total = sum(size for _, size in entries)
+    # contract-compliant panels (no raw text) are exempt from the 20 MB pool
+    # but individually capped below GitHub's file limit
+    problems += [
+        f"{path}: {size / 2**20:.0f} MB parquet exceeds the 95 MB per-file cap "
+        "— shard it (aggregate does this automatically)"
+        for path, size in entries
+        if PARQUET_RE.match(path) and size > MAX_PARQUET_BYTES
+    ]
+    total = sum(size for path, size in entries if not PARQUET_RE.match(path))
     if total > MAX_TOTAL_BYTES:
         problems.append(
-            f"staged additions total {total / 2**20:.1f} MB > 20 MB — "
+            f"staged non-parquet additions total {total / 2**20:.1f} MB > 20 MB — "
             "aggregates only; raw data stays on $SCRATCH"
         )
     return problems

@@ -25,8 +25,16 @@ def test_non_rollout_artifacts_pass():
 
 
 def test_total_over_20mb_rejected():
-    problems = guard.violations([("results/a.parquet", guard.MAX_TOTAL_BYTES + 1)])
+    problems = guard.violations([("docs/big.bin", guard.MAX_TOTAL_BYTES + 1)])
     assert len(problems) == 1 and "20 MB" in problems[0]
+
+
+def test_results_parquet_exempt_from_pool_but_capped_per_file():
+    # a 60 MB census panel part is fine (sharded under GitHub's limit)…
+    assert guard.violations([("results/x/panel_part00.parquet", 60 * 2**20)]) == []
+    # …an unsharded 100 MB one is not
+    problems = guard.violations([("results/x/panel.parquet", 100 * 2**20)])
+    assert len(problems) == 1 and "95 MB" in problems[0]
 
 
 def test_both_rules_report_independently():

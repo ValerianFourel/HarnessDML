@@ -18,6 +18,10 @@ from .store import RolloutStore
 CELL_KEY = ("exp_id", "model_id", "benchmark", "band", "config_id",
             "ordering_id", "template_id", "padded_components", "temp")
 
+# max rows per committed panel parquet part (~300k rows ≈ 30-60 MB zstd,
+# safely under GitHub's 100 MB hard limit even for census slices)
+PANEL_PART_ROWS = 300_000
+
 _DTYPES = {
     "seed": pl.Int64, "step_cap": pl.Int64, "max_new_tokens_step": pl.Int64,
     "n_turns": pl.Int64, "n_tool_calls": pl.Int64, "n_parse_failures": pl.Int64,
@@ -146,8 +150,18 @@ def aggregate(rollouts_dir: Path | str, results_dir: Path | str) -> dict[str, Pa
 
     results_dir.mkdir(parents=True, exist_ok=True)
     df = pl.DataFrame(rows, schema_overrides=_DTYPES)
-    panel_path = results_dir / "panel.parquet"
-    df.write_parquet(panel_path)
+    # census slices exceed git/GitHub file limits as one parquet — shard into
+    # parts; every reader (load_panel, ladder, verify) globs panel*.parquet
+    if len(df) <= PANEL_PART_ROWS:
+        panel_path = results_dir / "panel.parquet"
+        df.write_parquet(panel_path, compression="zstd")
+    else:
+        for old in results_dir.glob("panel*.parquet"):
+            old.unlink()  # re-aggregation must not leave stale parts behind
+        for k, start in enumerate(range(0, len(df), PANEL_PART_ROWS)):
+            df.slice(start, PANEL_PART_ROWS).write_parquet(
+                results_dir / f"panel_part{k:02d}.parquet", compression="zstd")
+        panel_path = results_dir / "panel_part00.parquet"
 
     by_cell: dict[tuple, list[dict]] = defaultdict(list)
     for r in rows:
