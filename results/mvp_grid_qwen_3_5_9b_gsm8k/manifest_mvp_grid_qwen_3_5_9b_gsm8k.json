@@ -1,0 +1,248 @@
+{
+  "client": {
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "type": "MultiEndpointClient",
+    "vllm_version": "0.25.1"
+  },
+  "component_template_hashes": {
+    "BARE": {
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "M": {
+      "M:t1": "cbb6961712c6",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "M+R": {
+      "M:t1": "cbb6961712c6",
+      "R:t1": "40afefce84f8",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "M+SR": {
+      "M:t1": "cbb6961712c6",
+      "SR:t1": "52161397e707",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "M+SR+R": {
+      "M:t1": "cbb6961712c6",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P": {
+      "P:t1": "58b2cac86201",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+M": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+M+R": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+M+SR": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "SR:t1": "52161397e707",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+M+SR+R": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+R": {
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+SR": {
+      "P:t1": "58b2cac86201",
+      "SR:t1": "52161397e707",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+SR+R": {
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T": {
+      "P:t1": "58b2cac86201",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T+M": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T+M+R": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T+M+SR": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T+M+SR+R": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T+R": {
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T+SR": {
+      "P:t1": "58b2cac86201",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T+SR+R": {
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "R": {
+      "R:t1": "40afefce84f8",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "SR": {
+      "SR:t1": "52161397e707",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "SR+R": {
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T": {
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T+M": {
+      "M:t1": "cbb6961712c6",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T+M+R": {
+      "M:t1": "cbb6961712c6",
+      "R:t1": "40afefce84f8",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T+M+SR": {
+      "M:t1": "cbb6961712c6",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T+M+SR+R": {
+      "M:t1": "cbb6961712c6",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T+R": {
+      "R:t1": "40afefce84f8",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T+SR": {
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T+SR+R": {
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    }
+  },
+  "created_utc": "2026-07-24T12:20:39+00:00",
+  "exp_config_sha256": "0aff4c76dbedccf65d78494fa2c3941d080fe459d97c44ef980d6c9ccde060cb",
+  "exp_id": "mvp_grid_qwen_3_5_9b_gsm8k",
+  "extra": {
+    "run_id": "1034799"
+  },
+  "git": {
+    "dirty": null,
+    "sha": "4a08693b2677d30cee69b0ccceddefe01ae3cfcb"
+  },
+  "model": {
+    "family": "qwen",
+    "hf_id": "Qwen/Qwen3.5-9B",
+    "model_id": "qwen_3_5_9b",
+    "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a"
+  },
+  "node": "jpbo-016-39.jupiter.internal",
+  "sampling": {
+    "max_new_tokens_step": 256,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "temperature": 0.1,
+    "top_p": 0.9
+  }
+}
