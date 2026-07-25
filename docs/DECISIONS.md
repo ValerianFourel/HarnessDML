@@ -99,3 +99,13 @@ Each entry: what we decided, and why. Reversals get a new entry, never an edit.
     ordering. Throughput constant set to 4000 rollouts/node-hour — the
     conservative floor of measured steady-state (4.3k mistral-math to 20k
     qwen-easy) — so budget over-estimates.
+19. **Deep eval by superset extension, not resampling.** Task lists grow
+    only by APPENDING a seeded sample of unused pool entries
+    (`build_tasks.py --extend`; the prefix is asserted byte-identical), so
+    every completed rollout keeps resuming and deep-eval jobs pay only the
+    increment. Targets: QA bands to 500 sampled tasks (SEs shrink ~2.2x);
+    gsm8k and MATH L4-5 to CENSUS (all 1319 / all 262 pool tasks — task-
+    sampling uncertainty within those benchmarks becomes finite-population
+    zero). Manifests now hash the task-list content (`tasks_sha256`) so
+    every run pins which population it saw. Estimand scope unchanged:
+    fixed factors, conditional on the committed lists.

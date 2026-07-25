@@ -7,6 +7,7 @@ Randomized interleaving per §4.3.1; resume by construction via the store.
 from __future__ import annotations
 
 import asyncio
+import hashlib
 import os
 import socket
 import statistics
@@ -175,7 +176,11 @@ async def run_experiment(
         template_hashes=template_hashes,
         client_info={"type": type(client).__name__, "vllm_version": _vllm_version(),
                      "chat_template_kwargs": spec.chat_template_kwargs},
-        extra={"run_id": run_id},
+        extra={"run_id": run_id, "tasks_file": spec.tasks_file,
+               # the task list can now grow (deep-eval extensions §4.4);
+               # its content hash pins which population each run saw
+               "tasks_sha256": hashlib.sha256(
+                   Path(spec.tasks_file).read_bytes()).hexdigest()},
     )
     manifest_ref = manifest_path.name
 

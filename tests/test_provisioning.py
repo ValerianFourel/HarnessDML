@@ -186,6 +186,19 @@ def test_git_state_survives_missing_git_binary(monkeypatch):
     assert fallback["sha"] == real["sha"] and fallback["dirty"] is None
 
 
+def test_extension_indices_superset_and_deterministic():
+    """Deep-eval task growth (§4.4): the extension samples only NEW pool
+    entries, deterministically — the committed prefix stays untouched."""
+    from build_tasks import extension_indices
+
+    pool = list(range(50))
+    prior = set(sample_indices(50, 10, 1))
+    ext = extension_indices(pool, prior, 15, 2)
+    assert len(ext) == 15 and not (set(ext) & prior)
+    assert ext == extension_indices(pool, prior, 15, 2)      # deterministic
+    assert set(extension_indices(pool, prior, 100, 2)) == set(pool) - prior  # census caps
+
+
 def test_sample_indices_deterministic_sorted():
     a = sample_indices(1000, 100, 20260723)
     assert a == sample_indices(1000, 100, 20260723)

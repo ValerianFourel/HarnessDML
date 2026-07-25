@@ -44,6 +44,13 @@ def sample_indices(n_total: int, n: int, seed: int) -> list[int]:
     return sorted(random.Random(seed).sample(range(n_total), min(n, n_total)))
 
 
+def extension_indices(pool: list[int], prior: set[int], n_extra: int, seed: int) -> list[int]:
+    """Seeded sample of n_extra NEW pool indices, excluding prior — the
+    committed list stays a strict superset (existing rollouts keep resuming)."""
+    remaining = [i for i in pool if i not in prior]
+    return [remaining[j] for j in sample_indices(len(remaining), n_extra, seed)]
+
+
 def _load_first(benchmark: str):
     from datasets import load_dataset
 
@@ -142,12 +149,65 @@ def build(benchmark: str, n: int, seed: int) -> dict:
     return meta
 
 
+def extend(benchmark: str, target_n: int, ext_seed: int) -> dict:
+    """Grow the committed list to target_n by APPENDING a seeded sample of
+    unused pool tasks. The existing prefix is byte-identical afterwards, so
+    every completed rollout keeps resuming; deep-eval jobs pay only the
+    increment. Census: target_n >= pool size takes the whole remainder."""
+    meta_path = OUT_DIR / f"{benchmark}_meta.json"
+    jsonl_path = OUT_DIR / f"{benchmark}.jsonl"
+    meta = json.loads(meta_path.read_text())
+    existing_lines = jsonl_path.read_text(encoding="utf-8").splitlines()
+    n_existing = len(existing_lines)
+    if target_n <= n_existing:
+        return {**meta, "n_added": 0, "n_total": n_existing}
+
+    ds, source = _load_first(benchmark)
+    assert source["dataset_id"] == meta["dataset_id"], \
+        f"{benchmark}: source drifted ({source['dataset_id']} != {meta['dataset_id']})"
+    indices = list(range(len(ds)))
+    if benchmark == "math":
+        indices = [i for i in indices if (_math_level(ds[i]) or 0) >= 4]
+    # the original chosen set is reproducible from the committed meta
+    prior = {indices[j] for j in
+             sample_indices(meta["pool_size"], meta["n_requested"], meta["seed"])}
+    for ext in meta.get("extensions", []):  # prior extensions too
+        prior |= set(ext["chosen_pool_indices"])
+
+    chosen = extension_indices(indices, prior, target_n - n_existing, ext_seed)
+    added, skipped = [], 0
+    for idx in chosen:
+        try:
+            added.append(NORMALIZERS[benchmark](ds[idx], idx))
+        except (KeyError, ValueError):
+            skipped += 1
+    with open(jsonl_path, "a", encoding="utf-8") as f:
+        for t in added:
+            f.write(json.dumps(t, ensure_ascii=False) + "\n")
+    # superset guarantee: the prefix must be untouched
+    now_lines = jsonl_path.read_text(encoding="utf-8").splitlines()
+    assert now_lines[:n_existing] == existing_lines, "prefix changed — abort"
+
+    ids = json.loads((OUT_DIR / f"{benchmark}_ids.json").read_text())
+    ids += [t["task_id"] for t in added]
+    (OUT_DIR / f"{benchmark}_ids.json").write_text(json.dumps(ids, indent=1))
+    meta.setdefault("extensions", []).append({
+        "seed": ext_seed, "target_n": target_n, "n_added": len(added),
+        "n_skipped": skipped, "chosen_pool_indices": chosen,
+        "built_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+    })
+    meta_path.write_text(json.dumps(meta, indent=2))
+    return {**meta, "n_added": len(added), "n_total": n_existing + len(added)}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--benchmark", choices=sorted(SOURCES), default=None)
     ap.add_argument("--all", action="store_true")
     ap.add_argument("--n", type=int, default=DEFAULT_N)
     ap.add_argument("--seed", type=int, default=DEFAULT_SEED)
+    ap.add_argument("--extend", action="store_true",
+                    help="grow the committed list to --n by appending (superset)")
     args = ap.parse_args()
 
     benchmarks = sorted(SOURCES) if args.all else [args.benchmark]
@@ -156,9 +216,14 @@ def main() -> int:
     failures = 0
     for b in benchmarks:
         try:
-            meta = build(b, args.n, args.seed)
-            print(f"[tasks] {b}: {meta['n_built']} tasks from {meta['dataset_id']} "
-                  f"(pool {meta['pool_size']}, skipped {meta['n_skipped']})")
+            if args.extend:
+                meta = extend(b, args.n, args.seed)
+                print(f"[tasks] {b}: +{meta['n_added']} -> {meta['n_total']} tasks "
+                      f"(pool {meta['pool_size']})")
+            else:
+                meta = build(b, args.n, args.seed)
+                print(f"[tasks] {b}: {meta['n_built']} tasks from {meta['dataset_id']} "
+                      f"(pool {meta['pool_size']}, skipped {meta['n_skipped']})")
         except Exception as exc:  # noqa: BLE001 — build the rest, fail at exit
             failures += 1
             print(f"[tasks] {b}: FAILED — {exc}")
