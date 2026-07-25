@@ -186,6 +186,18 @@ def test_git_state_survives_missing_git_binary(monkeypatch):
     assert fallback["sha"] == real["sha"] and fallback["dirty"] is None
 
 
+def test_hf_dataset_card_carries_the_load_bearing_warnings():
+    """The dataset card must ship the rules that make reuse valid."""
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+    from publish_hf_dataset import build_card
+
+    card = build_card("u/harnesslab-panels", 7, 114000, "abc123")
+    assert "never covariates" in card and "Fixed-factor scope" in card
+    assert "no LLM judge" in card.lower() or "deterministic" in card
+    assert "114,000" in card and "abc123" in card
+    assert card.startswith("---\nlicense:")  # valid card frontmatter
+
+
 def test_extension_indices_superset_and_deterministic():
     """Deep-eval task growth (§4.4): the extension samples only NEW pool
     entries, deterministically — the committed prefix stays untouched."""
