@@ -25,13 +25,14 @@ for j in $(squeue -u "$USER" -h -t R -o %i); do
 done
 
 echo; echo "===== 4. ALL STORES + census total ====="
-tot=0
+tot=0; lines=""
 for d in "$SCRATCH"/harnesslab/*/rollouts_*; do
   [ -f "$d/rollouts.jsonl" ] || continue
   n=$(wc -l < "$d/rollouts.jsonl")
   case "$d" in *mvp_grid/*|*mvp_thin*) tot=$((tot+n));; esac
-  printf "  %9d  %s\n" "$n" "${d#"$SCRATCH"/harnesslab/}"
-done | sort -rn
+  lines+="$(printf "%9d  %s" "$n" "${d#"$SCRATCH"/harnesslab/}")"$'\n'
+done
+printf "%s" "$lines" | sort -rn | sed 's/^/  /'
 echo "  --------- census total (mvp_grid + thin): $tot ---------"
 
 echo; echo "===== 5. MODELS with data ====="
