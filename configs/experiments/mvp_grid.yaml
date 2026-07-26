@@ -17,7 +17,11 @@ exp_id: mvp_grid            # overridden per slice
 benchmark: gsm8k            # overridden per slice
 model_id: mistral_small_3_2_24b   # overridden per slice
 tasks_file: configs/tasks/gsm8k.jsonl   # overridden per slice
-n_tasks: null               # full committed 100-task list
+n_tasks: 3000               # cap per (benchmark, slice) to the first 3000 tasks.
+                            # Only HotpotQA (7405) is capped; musique/gsm8k/math
+                            # pools are all < 3000, so this is a no-op for them.
+                            # HotpotQA census would be 7405 (68% of the whole run);
+                            # 3000 keeps tight per-cell CIs at ~half the compute.
 k_seeds: 5
 temp: 0.1
 top_p: 0.9

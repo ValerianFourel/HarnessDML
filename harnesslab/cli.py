@@ -74,7 +74,14 @@ def _cmd_run(args) -> int:
 
 
 def _cmd_aggregate(args) -> int:
-    paths = agg.aggregate(args.rollouts, args.out)
+    keep = None
+    if args.tasks:
+        from harnesslab.tasks import load_tasks
+        ids = [t["task_id"] for t in load_tasks(args.tasks)]
+        if args.n_tasks is not None:
+            ids = ids[: args.n_tasks]
+        keep = set(ids)
+    paths = agg.aggregate(args.rollouts, args.out, keep_task_ids=keep)
     for name, p in paths.items():
         print(f"[aggregate] {name}: {p}")
     return 0
@@ -152,6 +159,11 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("aggregate", help="rollouts.jsonl -> results/<exp_id>/")
     p.add_argument("--rollouts", required=True)
     p.add_argument("--out", required=True)
+    p.add_argument("--tasks", default=None,
+                   help="committed task list; drop rollouts whose task_id is outside "
+                        "the first --n-tasks of it (cleans orphans from a capped slice)")
+    p.add_argument("--n-tasks", type=int, default=None,
+                   help="with --tasks, keep only the first N task_ids (e.g. 3000 for HotpotQA)")
     p.set_defaults(fn=_cmd_aggregate)
 
     p = sub.add_parser("status", help="completed-rollout count for a store")

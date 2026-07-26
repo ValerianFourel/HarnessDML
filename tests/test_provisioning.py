@@ -92,7 +92,7 @@ def test_mvp_grid_specs_parse():
     grid = from_yaml("configs/experiments/mvp_grid.yaml")
     ids = [c.config_id for c in grid.configs]
     assert len(ids) == 32 and len(set(ids)) == 32          # full factorial, no dupes
-    assert grid.k_seeds == 5 and grid.n_tasks is None
+    assert grid.k_seeds == 5 and grid.n_tasks == 3000      # HotpotQA capped 7405->3000; no-op for smaller pools
     assert grid.throughput_rollouts_per_node_hour == 4000  # budget unlocked
     thin = from_yaml("configs/experiments/mvp_thin_gsm8k.yaml")
     assert len(thin.configs) == 4 and thin.benchmark == "gsm8k"

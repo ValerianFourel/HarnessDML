@@ -125,7 +125,11 @@ def _failures_note(store: RolloutStore) -> str:
             if n else "")
 
 
-def aggregate(rollouts_dir: Path | str, results_dir: Path | str) -> dict[str, Path]:
+def aggregate(
+    rollouts_dir: Path | str,
+    results_dir: Path | str,
+    keep_task_ids: set[str] | None = None,
+) -> dict[str, Path]:
     rollouts_dir, results_dir = Path(rollouts_dir), Path(results_dir)
     # Check BEFORE opening the store: RolloutStore auto-mkdirs its directory,
     # so aggregating a typo'd/unexpanded path used to CREATE a junk dir (a
@@ -136,6 +140,26 @@ def aggregate(rollouts_dir: Path | str, results_dir: Path | str) -> dict[str, Pa
     rows = list(store.records())
     if not rows:
         raise ValueError(f"no rollouts in {rollouts_dir}")
+    # Optional task-scope filter: drop rollouts on tasks outside the in-scope
+    # set. Needed when a slice's task list was capped (e.g. HotpotQA 7405->3000
+    # via n_tasks) AFTER the schedule had already shuffled work across the full
+    # pool — those out-of-scope tasks are partially-covered orphans that would
+    # otherwise pollute the panel with incomplete cells.
+    if keep_task_ids is not None:
+        kept = [r for r in rows if r["task_id"] in keep_task_ids]
+        dropped = len(rows) - len(kept)
+        if dropped:
+            n_before = len({r["task_id"] for r in rows})
+            n_after = len({r["task_id"] for r in kept})
+            print(f"[aggregate] task-scope filter: dropped {dropped} of {len(rows)} "
+                  f"rollouts on {n_before - n_after} out-of-scope tasks "
+                  f"({n_after} in-scope tasks kept)")
+        rows = kept
+        if not rows:
+            raise ValueError(
+                f"task-scope filter removed every rollout in {rollouts_dir} — "
+                "wrong --tasks list for this slice?"
+            )
     for r in rows:
         # rows written before the padding arm existed (grid wave 1, early
         # pilots) predate this column; '' is its exact meaning there
