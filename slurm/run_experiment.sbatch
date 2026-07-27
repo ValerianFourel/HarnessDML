@@ -26,6 +26,11 @@ set -euo pipefail
 : "${MODEL_ID:?export MODEL_ID=<registry key>}"
 : "${BENCH:?export BENCH=hotpotqa|musique|gsm8k|math}"
 
+# Every job is submitted from the same file, so squeue shows 30 identical
+# "run_experiment.sbatch" rows and nothing says which slice is where. Rename
+# self at start (submitters can also pass --job-name for pending visibility).
+scontrol update "JobId=$SLURM_JOB_ID" "JobName=hl-${MODEL_ID}-${BENCH//[+,]/_}" 2>/dev/null || true
+
 source scripts/hpc/env.sh   # modules + venv — batch nodes self-provision
 export HF_HOME=${HF_HOME:-$SCRATCH/hf}
 export HF_HUB_OFFLINE=1

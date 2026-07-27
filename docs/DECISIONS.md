@@ -141,3 +141,33 @@ Each entry: what we decided, and why. Reversals get a new entry, never an edit.
     was a pure version skew. Fix confirmed: census resumed 1,110,391 ->
     1,118,301 within minutes. Never `uv pip install -U` in this venv
     without `--no-deps` or a torch constraint.
+22. **Duplicate units of work exist in the pre-padding stores; `verify`
+    cannot see them.** Adding `padded_components` to the cell identity
+    (§4.3.3, so padded-P would not collide with real P) changed every
+    `rollout_key`, so each slice that had already run under the old schema
+    re-ran its wave-1 tasks once: exactly 16,000 rows (32 configs x 100
+    tasks x 5 seeds) on top of gsm8k and math, and the same volume mixed
+    into the QA scatter. The rows are real rollouts with unique keys — key
+    uniqueness is what `verify` checks, so it passes — but they duplicate
+    `(cell, task, seed)`, giving those 100 tasks k=10 where the rest have
+    k=5. Decisions: (a) `aggregate` always reports the duplicate count and
+    drops them only under `--dedupe`, since silently changing already-
+    shipped panels is worse than a loud number; (b) progress is measured on
+    unique `(cell, task, seed)`, never on line counts; (c) a future cell-
+    identity change is a breaking change — bump the store directory, do not
+    re-key in place.
+23. **Gate rulings and slice targets are machine-readable, not prose.**
+    Which (model, band) slices belong in the census lived only in comments
+    across `mvp_grid.yaml`, `submit_census*.sh` and ADR 18, so "what is
+    still missing" could not be answered mechanically — wave 2 sat
+    unsubmitted for a day behind a green-looking dashboard. `configs/
+    gates.yaml` now holds the rulings (`census|thin|dropped|bridge_only|
+    pending_gate|unprobed|blocked` + the pilot BARE/T numbers), and
+    `harnesslab progress` computes each slice's target from its OWN spec
+    (configs x in-scope tasks x seeds) and lists gated slices with no store
+    or an unfinished one. This kills the two dashboard lies: a complete
+    4-config thin arm reading 13% against the 32-config denominator, and a
+    capped slice reading 147% because pre-cap orphans inflate the count.
+    `gate_report.sh <model>` reads a finished pilot and prints the ruling
+    in ADR 18's order (BARE saturation first, then either-arm-in-window,
+    then floor) so onboarding a model is mechanical.

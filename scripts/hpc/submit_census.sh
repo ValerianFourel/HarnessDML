@@ -22,7 +22,8 @@ chain() {  # chain <n_links> <exp> <model> <bench>
   local n=$1 exp=$2 model=$3 bench=$4 dep="" id
   for _ in $(seq 1 "$n"); do
     id=$(EXP="$exp" MODEL_ID="$model" BENCH="$bench" \
-         sbatch --parsable ${dep:+--dependency=afterany:$dep} slurm/run_experiment.sbatch)
+         sbatch --parsable --job-name "hl-$model-$bench" \
+                ${dep:+--dependency=afterany:$dep} slurm/run_experiment.sbatch)
     dep=$id
   done
   echo "[census] $model x $bench: $n-link chain, tail job $dep"

@@ -1,0 +1,168 @@
+"""Per-slice progress: each spec's own denominator, in-scope numerator.
+
+The bugs these pin down are the ones that made a raw `wc -l` dashboard lie:
+a complete 4-config thin arm reading "13%" against the 32-config grid target,
+and a census store reading "147%" because pre-cap orphans inflate the count.
+"""
+
+import json
+
+import pytest
+
+from harnesslab import experiment, progress
+
+
+def _spec(name, bench="gsm8k"):
+    return experiment.from_yaml(
+        progress.spec_path(name),
+        overrides={"benchmark": bench, "tasks_file": f"configs/tasks/{bench}.jsonl"},
+    )
+
+
+def test_target_uses_the_specs_own_config_count():
+    """32-config grid and 4-config thin arm share a benchmark, not a target."""
+    grid, thin = _spec("mvp_grid"), _spec("mvp_thin_gsm8k")
+    n_tasks = len(progress.in_scope_ids(grid, "gsm8k"))
+    assert progress.slice_target(grid, "gsm8k") == 32 * n_tasks * 5
+    assert progress.slice_target(thin, "gsm8k") == 4 * n_tasks * 5
+
+
+def test_n_tasks_caps_the_denominator():
+    """HotpotQA's 7405-task pool is capped to 3000 by mvp_grid's n_tasks."""
+    grid = _spec("mvp_grid", "hotpotqa")
+    assert grid.n_tasks == 3000
+    assert len(progress.in_scope_ids(grid, "hotpotqa")) == 3000
+    assert progress.slice_target(grid, "hotpotqa") == 32 * 3000 * 5
+
+
+def _row(task_id, seed, config_id="T", padded=""):
+    return {"task_id": task_id, "seed": seed, "config_id": config_id,
+            "ordering_id": "o1", "template_id": "t1", "padded_components": padded,
+            "temp": 0.1, "rollout_key": f"{config_id}-{task_id}-{seed}-{padded}"}
+
+
+def test_scan_separates_orphans_and_duplicates(tmp_path):
+    store = tmp_path / "rollouts.jsonl"
+    rows = [
+        _row("in-1", 0),
+        _row("in-1", 1),
+        _row("in-1", 0, padded=""),          # same (cell, task, seed) -> duplicate
+        _row("out-9", 0),                    # task outside the capped list
+    ]
+    store.write_text("".join(json.dumps(r) + "\n" for r in rows) + "{bad json\n")
+    s = progress.scan_store(store, keep={"in-1"})
+    assert s == {"lines": 5, "in_scope": 3, "unique": 2,
+                 "orphans": 1, "dupes": 1, "corrupt": 1}
+
+
+def test_scan_without_a_task_filter_keeps_everything(tmp_path):
+    store = tmp_path / "rollouts.jsonl"
+    store.write_text(json.dumps(_row("a", 0)) + "\n" + json.dumps(_row("b", 0)) + "\n")
+    s = progress.scan_store(store, keep=None)
+    assert (s["in_scope"], s["unique"], s["orphans"]) == (2, 2, 0)
+
+
+def test_walk_reads_target_from_the_store_path(tmp_path):
+    d = tmp_path / "mvp_thin_gsm8k" / "rollouts_mistral_small_3_2_24b_gsm8k"
+    d.mkdir(parents=True)
+    (d / "rollouts.jsonl").write_text(json.dumps(_row("a", 0)) + "\n")
+    (d / "failures.jsonl").write_text('{"api_error": 1}\n')
+    [row] = progress.walk(tmp_path)
+    assert (row.exp, row.model, row.bench) == (
+        "mvp_thin_gsm8k", "mistral_small_3_2_24b", "gsm8k")
+    assert row.target == progress.slice_target(_spec("mvp_thin_gsm8k"), "gsm8k")
+    assert row.lines == 1 and row.failures == 1 and row.status == "PARTIAL"
+
+
+def test_unknown_experiment_dir_has_no_target_but_still_counts(tmp_path):
+    d = tmp_path / "not_an_experiment" / "rollouts_m_gsm8k"
+    d.mkdir(parents=True)
+    (d / "rollouts.jsonl").write_text(json.dumps(_row("a", 0)) + "\n")
+    [row] = progress.walk(tmp_path)
+    assert row.target is None and row.status == "no-spec" and row.lines == 1
+
+
+def test_orphans_make_a_shallow_count_claim_a_slice_is_finished(tmp_path):
+    """The 147%-of-target lie: raw lines run past the target while real work
+    is still pending, because out-of-scope tasks inflate the count."""
+    thin = _spec("mvp_thin_gsm8k")
+    ids = sorted(progress.in_scope_ids(thin, "gsm8k"))
+    target = progress.slice_target(thin, "gsm8k")
+    rows = [_row(t, s, c) for c in ("BARE", "T", "T+SR+R", "P+T+M+SR+R")
+            for t in ids for s in range(5)]
+    assert len(rows) == target
+    rows.pop()                                          # one in-scope rollout short
+    rows += [_row(f"orphan-{i}", 0) for i in range(3)]   # out of scope: must not count
+
+    d = tmp_path / "mvp_thin_gsm8k" / "rollouts_m_gsm8k"
+    d.mkdir(parents=True)
+    (d / "rollouts.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
+
+    [shallow] = progress.walk(tmp_path)
+    assert shallow.lines == target + 2 and shallow.status == "DONE?"
+
+    [deep] = progress.walk(tmp_path, deep=True)
+    assert deep.unique == target - 1 and deep.orphans == 3
+    assert deep.status == "ORPHANS?" and deep.remaining == 1
+
+
+def test_deep_walk_marks_a_genuinely_finished_slice_done(tmp_path):
+    thin = _spec("mvp_thin_gsm8k")
+    ids = sorted(progress.in_scope_ids(thin, "gsm8k"))
+    rows = [_row(t, s, c) for c in ("BARE", "T", "T+SR+R", "P+T+M+SR+R")
+            for t in ids for s in range(5)]
+    d = tmp_path / "mvp_thin_gsm8k" / "rollouts_m_gsm8k"
+    d.mkdir(parents=True)
+    (d / "rollouts.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
+
+    [deep] = progress.walk(tmp_path, deep=True)
+    assert deep.status == "DONE" and deep.remaining == 0 and deep.orphans == 0
+
+
+def test_auto_scope_reads_the_cap_from_the_store_path(tmp_path):
+    """Harvesting HotpotQA unfiltered ships 4405 tasks' worth of orphans; the
+    cap must come from the path, not from the operator remembering it."""
+    store = tmp_path / "mvp_grid" / "rollouts_qwen_3_5_9b_hotpotqa"
+    ids, why = progress.auto_scope(store)
+    assert len(ids) == 3000 and "n_tasks=3000" in why
+
+    store = tmp_path / "mvp_grid" / "rollouts_qwen_3_5_9b_math"
+    ids, _ = progress.auto_scope(store)          # pool below the cap: no-op
+    assert len(ids) == len(progress.load_tasks(progress.ROOT / "configs/tasks/math.jsonl"))
+
+    ids, why = progress.auto_scope(tmp_path / "nope" / "rollouts_m_gsm8k")
+    assert ids is None and "no spec" in why
+
+
+def test_gaps_lists_gated_slices_with_no_store():
+    gates = {"models": {
+        "m_done": {"gsm8k": {"status": "census"}},
+        "m_missing": {"math": {"status": "census"}},
+        "m_dropped": {"math": {"status": "dropped"}},
+    }}
+    thin = _spec("mvp_thin_gsm8k")
+    row = progress.SliceProgress(exp="mvp_grid", model="m_done", bench="gsm8k",
+                                 path=None, lines=1,
+                                 target=progress.slice_target(thin, "gsm8k"), unique=1)
+    out = progress.gaps([row], gates)
+    assert {(g["model"], g["bench"], g["state"]) for g in out} == {
+        ("m_missing", "math", "NO STORE"), ("m_done", "gsm8k", "PARTIAL")}
+
+
+def test_committed_gates_file_is_valid():
+    gates = progress.load_gates()
+    known = set(experiment.load_registry())
+    allowed = {"census", "thin", "dropped", "bridge_only", "pending_gate",
+               "unprobed", "blocked"}
+    for model, benches in gates["models"].items():
+        assert model in known, f"{model} is not in configs/models.yaml"
+        for bench, ruling in benches.items():
+            assert bench in ("hotpotqa", "musique", "gsm8k", "math")
+            assert ruling["status"] in allowed, f"{model}/{bench}: {ruling['status']}"
+
+
+@pytest.mark.parametrize("bench", ["hotpotqa", "musique", "gsm8k", "math"])
+def test_every_census_ruling_has_a_reachable_target(bench):
+    """A gate ruling nobody can turn into a job is a documentation bug."""
+    grid = _spec("mvp_grid", bench)
+    assert progress.slice_target(grid, bench) > 0

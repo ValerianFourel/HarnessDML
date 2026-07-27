@@ -73,15 +73,26 @@ def _cmd_run(args) -> int:
     return 0
 
 
+def _keep_ids(tasks: str | None, n_tasks: int | None) -> set[str] | None:
+    if not tasks:
+        return None
+    from harnesslab.tasks import load_tasks
+    ids = [t["task_id"] for t in load_tasks(tasks)]
+    if n_tasks is not None:
+        ids = ids[:n_tasks]
+    return set(ids)
+
+
 def _cmd_aggregate(args) -> int:
-    keep = None
-    if args.tasks:
-        from harnesslab.tasks import load_tasks
-        ids = [t["task_id"] for t in load_tasks(args.tasks)]
-        if args.n_tasks is not None:
-            ids = ids[: args.n_tasks]
-        keep = set(ids)
-    paths = agg.aggregate(args.rollouts, args.out, keep_task_ids=keep)
+    keep = _keep_ids(args.tasks, args.n_tasks)
+    if keep is None and args.task_scope == "auto":
+        from pathlib import Path
+
+        from . import progress as prog
+
+        keep, why = prog.auto_scope(Path(args.rollouts))
+        print(f"[aggregate] task-scope auto — {why}")
+    paths = agg.aggregate(args.rollouts, args.out, keep_task_ids=keep, dedupe=args.dedupe)
     for name, p in paths.items():
         print(f"[aggregate] {name}: {p}")
     return 0
@@ -91,6 +102,47 @@ def _cmd_status(args) -> int:
     store = RolloutStore(args.rollouts)
     print(f"[status] {len(store)} rollouts complete in {args.rollouts} "
           f"({store.n_corrupt} corrupt lines ignored)")
+    keep = _keep_ids(args.tasks, args.n_tasks)
+    if keep is not None:
+        from pathlib import Path
+
+        from . import progress as prog
+
+        s = prog.scan_store(Path(args.rollouts) / "rollouts.jsonl", keep)
+        print(f"[status] in scope: {s['unique']} unique (cell, task, seed) of "
+              f"{s['in_scope']} in-scope rows; {s['orphans']} out-of-scope "
+              f"(dropped at harvest), {s['dupes']} duplicate")
+    return 0
+
+
+def _cmd_progress(args) -> int:
+    from pathlib import Path
+
+    from . import progress as prog
+
+    root = Path(args.root or os.path.join(os.environ.get("SCRATCH", ""), "harnesslab"))
+    if not root.is_dir():
+        print(f"[progress] no such rollout root: {root} (pass --root)", file=sys.stderr)
+        return 2
+    rows = prog.walk(root, deep=args.deep, only=args.only)
+    if not rows:
+        print(f"[progress] no rollout stores under {root}")
+        return 0
+    print(prog.format_table(rows, deep=args.deep))
+    print()
+    print(prog.summarize(rows))
+    if not args.deep:
+        print("\n(counts are raw lines; --deep reads the stores for in-scope, "
+              "de-duplicated progress — DONE? and ORPHANS? resolve only there)")
+    missing = prog.gaps(rows, prog.load_gates())
+    if missing:
+        print("\nGATED BUT NOT FINISHED (configs/gates.yaml):")
+        for g in missing:
+            tgt = f"{g['have']}/{g['target']}" if g["target"] else "-"
+            print(f"  {g['model']:22.22} {g['bench']:9.9} {g['state']:9} {tgt:>18}  {g['note']}")
+        print("\n  each is one chain link:  " + missing[0]["submit"])
+        print("  (a slice too big for one 11.5 h window runs as a chain — "
+              "see scripts/hpc/submit_census*.sh)")
     return 0
 
 
@@ -164,11 +216,29 @@ def main(argv: list[str] | None = None) -> int:
                         "the first --n-tasks of it (cleans orphans from a capped slice)")
     p.add_argument("--n-tasks", type=int, default=None,
                    help="with --tasks, keep only the first N task_ids (e.g. 3000 for HotpotQA)")
+    p.add_argument("--task-scope", choices=("none", "auto"), default="none",
+                   help="'auto' derives the task list and cap from the store path's "
+                        "own experiment spec (what harvest_all.sh uses)")
+    p.add_argument("--dedupe", action="store_true",
+                   help="keep the first row per (cell, task, seed); use when a rollout-key "
+                        "schema change re-ran finished work (ADR 22)")
     p.set_defaults(fn=_cmd_aggregate)
 
     p = sub.add_parser("status", help="completed-rollout count for a store")
     p.add_argument("--rollouts", required=True)
+    p.add_argument("--tasks", default=None,
+                   help="committed task list; also report in-scope/orphan/duplicate counts")
+    p.add_argument("--n-tasks", type=int, default=None,
+                   help="with --tasks, in-scope means the first N task_ids")
     p.set_defaults(fn=_cmd_status)
+
+    p = sub.add_parser("progress", help="per-slice progress vs each spec's own target")
+    p.add_argument("--root", default=None,
+                   help="rollout root (default $SCRATCH/harnesslab)")
+    p.add_argument("--deep", action="store_true",
+                   help="read the stores: in-scope, de-duplicated counts (minutes on a census)")
+    p.add_argument("--only", default=None, help="substring filter on <exp>/rollouts_<model>_<bench>")
+    p.set_defaults(fn=_cmd_progress)
 
     p = sub.add_parser("budget", help="node-hour estimate (refuses without pilot constant)")
     p.add_argument("--exp", required=True)

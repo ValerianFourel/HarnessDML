@@ -129,6 +129,7 @@ def aggregate(
     rollouts_dir: Path | str,
     results_dir: Path | str,
     keep_task_ids: set[str] | None = None,
+    dedupe: bool = False,
 ) -> dict[str, Path]:
     rollouts_dir, results_dir = Path(rollouts_dir), Path(results_dir)
     # Check BEFORE opening the store: RolloutStore auto-mkdirs its directory,
@@ -164,6 +165,24 @@ def aggregate(
         # rows written before the padding arm existed (grid wave 1, early
         # pilots) predate this column; '' is its exact meaning there
         r.setdefault("padded_components", "")
+
+    # Duplicate units of work: adding `padded_components` to the cell identity
+    # changed every rollout_key, so pre-padding rollouts re-ran once under the
+    # new key (ADR 22). rollout_key stays unique — only (cell, task, seed)
+    # repeats — so `verify` cannot see this. Always report; drop only on ask.
+    seen: set[tuple] = set()
+    unique_rows, dup_rows = [], []
+    for r in rows:
+        key = tuple(r.get(c) for c in (*CELL_KEY, "task_id", "seed"))
+        (dup_rows if key in seen else unique_rows).append(r)
+        seen.add(key)
+    if dup_rows:
+        print(f"[aggregate] {len(dup_rows)} of {len(rows)} rows duplicate an existing "
+              f"(cell, task, seed) — re-runs under a changed rollout_key schema (ADR 22). "
+              + ("dropping them (--dedupe)." if dedupe else
+                 "KEPT: those cells carry extra seeds. Pass --dedupe to drop."))
+        if dedupe:
+            rows = unique_rows
 
     problems: list[str] = []
     for i, r in enumerate(rows):

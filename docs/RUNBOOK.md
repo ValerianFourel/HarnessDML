@@ -64,6 +64,15 @@ slices in parallel; exactly one model per node; never run the *same*
 Re-submitting a finished or crashed slice is always safe — the store resumes
 and completed rollouts are skipped.
 
+Onboarding a model (§6, ADR 16): probe → pilot → gate → census.
+
+```sh
+EXP=configs/experiments/pilot.yaml MODEL_ID=<model> BENCH=hotpotqa,musique,gsm8k,math \
+  sbatch slurm/run_experiment.sbatch
+bash scripts/hpc/gate_report.sh <model>     # BARE/T per band + IN/OUT verdict
+# record the ruling in configs/gates.yaml, then chain the bands that came back IN
+```
+
 ## Monitoring
 
 Two one-shot reports, both read-only and safe mid-census:
@@ -71,10 +80,25 @@ Two one-shot reports, both read-only and safe mid-census:
 ```sh
 bash scripts/hpc/status.sh              # fast pulse: jobs, stores, census total
 bash scripts/hpc/overview.sh            # full view: + code version, quotas, 24h
-                                        #   outcomes, per-slice census %, server
-                                        #   health, harvested results, venv check
-RATE=1 bash scripts/hpc/overview.sh     # ... and measure throughput over 60 s
+                                        #   outcomes, per-slice progress, gaps,
+                                        #   server health, results, venv check
+DEEP=1 bash scripts/hpc/overview.sh     # ... reading the stores (minutes)
+RATE=1 bash scripts/hpc/overview.sh     # ... and 60 s of measured throughput
 ```
+
+Progress alone, with each slice scored against its own spec's target
+(configs x in-scope tasks x seeds) and the gate matrix in `configs/gates.yaml`
+telling you what is still missing:
+
+```sh
+python -m harnesslab.cli progress                 # raw line counts, seconds
+python -m harnesslab.cli progress --deep          # in-scope, de-duplicated
+python -m harnesslab.cli progress --deep --only qwen_3_5_9b_hotpotqa
+```
+
+`--deep` is the one that tells the truth: raw lines include out-of-scope tasks
+from before a cap (HotpotQA 7405 -> 3000) and duplicate `(cell, task, seed)`
+rows from the ADR 22 re-key, so a store can read past 100% with work pending.
 
 Drilling in:
 
@@ -88,9 +112,22 @@ python -m harnesslab.cli status --rollouts $SCRATCH/harnesslab/<exp>/rollouts_<m
 
 ## Shipping results (login node)
 
+Everything at once — aggregate every store, verify each panel, commit, push.
+Idempotent, so it is the safe "make git match the cluster" button:
+
+```sh
+bash scripts/hpc/harvest_all.sh                 # all of it
+ONLY=padding bash scripts/hpc/harvest_all.sh    # one arm
+NO_COMMIT=1 bash scripts/hpc/harvest_all.sh     # aggregate + verify only
+```
+
+It passes `--task-scope auto`, which derives the task list and cap from each
+store's own spec — harvesting a capped slice by hand without `--tasks` ships
+its out-of-scope orphans into the panel. One slice at a time:
+
 ```sh
 python -m harnesslab.cli aggregate --rollouts $SCRATCH/harnesslab/<exp>/rollouts_<m>_<b> \
-  --out results/<exp>_<m>_<b>
+  --out results/<exp>_<m>_<b> --task-scope auto
 python -m harnesslab.cli verify --panel results/<exp>_<m>_<b>/panel.parquet
 git add results/ && git commit -m "results: ..." && git push
 ```

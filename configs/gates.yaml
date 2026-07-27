@@ -1,0 +1,84 @@
+# Difficulty-gate rulings (§4.4) — the committed source of truth for which
+# (model, band) slices belong in the census. Until now these lived only in
+# comments across mvp_grid.yaml / submit_census*.sh and in ADR 18, so nothing
+# could answer "what is still missing" mechanically. `harnesslab progress`
+# reads this file and reports gated slices with no store or an unfinished one.
+#
+# status vocabulary
+#   census       full 32-config factorial over the whole benchmark pool
+#   thin         4 headline configs only (band saturates the [0.15,0.85] window)
+#   dropped      gate failed — outside the window on BOTH BARE and T
+#   bridge_only  reserved for the CCI reconciliation arm, not the general grid
+#   pending_gate pilot has run; BARE/T not read yet -> no census until it is
+#   unprobed     no probe/pilot yet
+#   blocked      cannot serve on this stack (reason in note)
+#
+# bare/t are pilot BARE and T accuracy (N=20 tasks x 2 seeds unless noted);
+# null means "not measured / not applicable". Window: [0.15, 0.85].
+
+window: [0.15, 0.85]
+
+models:
+
+  # --- ADR 18, pilot jobs 1034331 / 1034587 ------------------------------
+  mistral_small_3_2_24b:
+    hotpotqa: {status: census, bare: 0.204, t: 0.183}
+    musique:  {status: census, bare: 0.460, t: 0.469}
+    math:     {status: census, bare: 0.400, t: 0.300}
+    gsm8k:    {status: thin,   bare: 0.875, t: null,
+               note: "BARE saturates the window -> 4-config thin arm (mvp_thin_gsm8k.yaml)"}
+  qwen_3_5_9b:
+    hotpotqa: {status: census, bare: 0.144, t: 0.385,
+               note: "BARE within sampling noise of the 0.15 floor (SE~.055) -> admitted, flagged"}
+    musique:  {status: census, bare: 0.436, t: 0.397}
+    gsm8k:    {status: census, bare: 0.725, t: 0.575}
+    math:     {status: census, bare: 0.325, t: 0.225}
+
+  # --- wave-2 onboarding (2026-07-26/27) ---------------------------------
+  ministral_3_3b:
+    musique:  {status: census, bare: null, t: null}
+    gsm8k:    {status: census, bare: null, t: null}
+    hotpotqa: {status: dropped, bare: null, t: 0.03, note: "T at the floor"}
+    math:     {status: dropped, bare: null, t: 0.0}
+  gemma_4_e4b:
+    hotpotqa: {status: census, bare: 0.178, t: null,
+               note: "floor-marginal (BARE .178) — included, flag in the DATASHEET"}
+    musique:  {status: census, bare: null, t: null}
+    gsm8k:    {status: census, bare: null, t: null}
+    math:     {status: census, bare: null, t: null}
+  gemma_4_26b_a4b:
+    hotpotqa: {status: census, bare: null, t: 0.149, note: "T weak; BARE in-band"}
+    musique:  {status: census, bare: null, t: null}
+    gsm8k:    {status: census, bare: null, t: null}
+    math:     {status: census, bare: null, t: null}
+    # the clean within-generation capability pair with gemma_4_e4b (§6)
+  qwen_3_6_27b:
+    hotpotqa: {status: census, bare: null, t: null}
+    musique:  {status: census, bare: null, t: null}
+    gsm8k:    {status: census, bare: null, t: null}
+    math:     {status: census, bare: null, t: null}
+    # probe PASS, T positive on all four bands — strongest Tier-F add
+
+  # --- pilots ran, gate NOT read yet (aggregate them, then set status) ----
+  qwen_3_5_122b:   {hotpotqa: {status: pending_gate}, musique: {status: pending_gate},
+                    gsm8k: {status: pending_gate}, math: {status: pending_gate}}
+  llama_4_scout:   {hotpotqa: {status: pending_gate}, musique: {status: pending_gate},
+                    gsm8k: {status: pending_gate}, math: {status: pending_gate}}
+  kimi_linear_48b: {hotpotqa: {status: pending_gate}, musique: {status: pending_gate},
+                    gsm8k: {status: pending_gate}, math: {status: pending_gate}}
+
+  # --- not in the general grid -------------------------------------------
+  llama_3_1_8b:
+    hotpotqa: {status: bridge_only,
+               note: "CCI-coupled bridge arm (arms/bridge_coupled.yaml); pilot T y=0.000 on QA
+                      — hallucinates the Observation and never answers, so not a general cell"}
+  gpt_oss_20b:
+    hotpotqa: {status: dropped, note: "ADR 17: T undeliverable (native harmony tool calls)"}
+  minimax_m2_5:
+    hotpotqa: {status: unprobed,
+               note: "serves healthy with --enforce-eager but only pre-Action reasoning seen;
+                      confirm textual Action: delivery before piloting"}
+  deepseek_v4_flash:
+    hotpotqa: {status: blocked,
+               note: "UE8M0 fp8 microscaling needs CUDA >= 12.8 (tilelang
+                      __nv_cvt_float_to_e8m0 undefined); module stack is 12.x"}
