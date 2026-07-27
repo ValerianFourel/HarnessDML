@@ -66,6 +66,18 @@ and completed rollouts are skipped.
 
 ## Monitoring
 
+Two one-shot reports, both read-only and safe mid-census:
+
+```sh
+bash scripts/hpc/status.sh              # fast pulse: jobs, stores, census total
+bash scripts/hpc/overview.sh            # full view: + code version, quotas, 24h
+                                        #   outcomes, per-slice census %, server
+                                        #   health, harvested results, venv check
+RATE=1 bash scripts/hpc/overview.sh     # ... and measure throughput over 60 s
+```
+
+Drilling in:
+
 ```sh
 squeue -u $USER
 sacct -j <jobid> -X --format=JobID,State,Elapsed
