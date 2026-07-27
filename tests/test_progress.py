@@ -205,12 +205,27 @@ def test_committed_gates_file_is_valid():
     gates = progress.load_gates()
     known = set(experiment.load_registry())
     allowed = {"census", "thin", "dropped", "bridge_only", "pending_gate",
-               "unprobed", "blocked"}
+               "unprobed", "blocked", "out_of_scope"}
     for model, benches in gates["models"].items():
         assert model in known, f"{model} is not in configs/models.yaml"
         for bench, ruling in benches.items():
             assert bench in ("hotpotqa", "musique", "gsm8k", "math")
             assert ruling["status"] in allowed, f"{model}/{bench}: {ruling['status']}"
+    # a registry model with no ruling is an undecided model, not a documented one
+    assert set(known) == set(gates["models"]), \
+        f"no gate ruling for: {set(known) - set(gates['models'])}"
+
+
+def test_an_unfinished_slice_nobody_is_writing_reads_as_stalled():
+    """The ministral/gsm8k failure: the chain ran out, the slice sat at 62.7%
+    for hours, and every view called it PARTIAL — same as healthy progress."""
+    live = progress.SliceProgress(exp="mvp_grid", model="m", bench="gsm8k", path=None,
+                                  lines=100, target=1000, age_s=60)
+    idle = progress.SliceProgress(exp="mvp_grid", model="m", bench="gsm8k", path=None,
+                                  lines=100, target=1000, age_s=9 * 3600)
+    assert live.status == "PARTIAL" and idle.status == "STALL?"
+    [gap] = progress.gaps([idle], {"models": {"m": {"gsm8k": {"status": "census"}}}})
+    assert "chain exhausted?" in gap["note"]
 
 
 @pytest.mark.parametrize("bench", ["hotpotqa", "musique", "gsm8k", "math"])

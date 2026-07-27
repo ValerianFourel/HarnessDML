@@ -84,12 +84,19 @@ class SliceProgress:
             return None
         return max(0, self.target - self.done)
 
+    # a chain link can sit queued for a while, so idleness is only suspicious
+    # after several hours — but an exhausted chain looks exactly like this and
+    # cost a day on ministral/gsm8k before anything noticed
+    STALL_AFTER_S = 4 * 3600
+
     @property
     def status(self) -> str:
         if self.target is None:
             return "no-spec"
         if self.done >= self.target:
             return "DONE" if self.unique is not None else "DONE?"
+        if self.age_s is not None and self.age_s > self.STALL_AFTER_S:
+            return "STALL?"      # unfinished and nothing has written it for hours
         if self.lines >= self.target:  # raw count past target, in-scope unknown
             return "ORPHANS?"
         return "PARTIAL"
@@ -261,10 +268,15 @@ def gaps(rows: list[SliceProgress], gates: dict) -> list[dict]:
                             "have": 0, "target": None, "submit": submit,
                             "note": (ruling or {}).get("note", "")})
             elif r.status != "DONE" and r.remaining:
+                note = f"{r.remaining} rollouts left"
+                if r.status == "STALL?":
+                    note += f" — nothing has written it for {r.age_s / 3600:.0f} h; " \
+                            "chain exhausted?"
                 out.append({"model": model, "bench": bench, "state": r.status,
                             "have": r.done, "target": r.target, "submit": submit,
-                            "note": f"{r.remaining} rollouts left"})
-    return out
+                            "note": note})
+    # stalled slices first: they need a resubmission, the others need patience
+    return sorted(out, key=lambda g: (g["state"] != "STALL?", g["model"], g["bench"]))
 
 
 CENSUS_EXPS = ("mvp_grid", "mvp_thin_gsm8k")
@@ -281,7 +293,8 @@ def _age(seconds: float | None) -> str:
 
 BANDS = ("hotpotqa", "musique", "gsm8k", "math")
 STATUS_ABBR = {"census": "CEN", "thin": "THIN", "dropped": "DROP", "bridge_only": "BRDG",
-               "pending_gate": "GATE?", "unprobed": "PRB?", "blocked": "BLK"}
+               "pending_gate": "GATE?", "unprobed": "PRB?", "blocked": "BLK",
+               "out_of_scope": "OOS"}
 TIER_ORDER = {"F": 0, "G": 1, "B": 2, "S": 3}
 
 

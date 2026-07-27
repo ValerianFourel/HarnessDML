@@ -7,7 +7,13 @@ exp_id: mvp_grid            # MUST match the grid slice (same store, same exp_id
 benchmark: gsm8k            # overridden per slice
 model_id: mistral_small_3_2_24b
 tasks_file: configs/tasks/gsm8k.jsonl   # overridden per slice
-n_tasks: null
+# 100, NOT the census pool: this arm buys SEEDS (K=10 for the consistency and
+# pass@k estimands, §4.6), not tasks. Written when every list was 100 long;
+# once the lists grew to census size (ADR 19) a null cap silently meant
+# 4 x 7405 x 10 = 296k rollouts on hotpotqa alone — 5 extra seeds on the whole
+# capped pool would be ~113k per model, against 6k for the headline 100.
+# Raise it deliberately if the consistency SEs need it, never by leaving it null.
+n_tasks: 100
 k_seeds: 10
 temp: 0.1
 top_p: 0.9

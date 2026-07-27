@@ -1,0 +1,52 @@
+# Bridge arm, DECOUPLED half (§4.2.1). Identical to bridge_coupled.yaml in
+# every way except the one treatment under study: here the universal
+# `Answer: <answer>` instruction is present in all 32 configs (our design),
+# there it lives inside the T block (CCI's). Two files rather than one flag so
+# the pair writes to two stores and the comparison is a diff of one field in
+# two committed specs.
+#
+# Run both: bash scripts/hpc/submit_arms.sh bridge
+exp_id: arm_bridge_decoupled
+benchmark: hotpotqa
+model_id: llama_3_1_8b
+tasks_file: configs/tasks/hotpotqa.jsonl
+n_tasks: 100
+k_seeds: 2                    # small by design (§4.2.1) — 32x100x2 = 6400
+temp: 0.1
+top_p: 0.9
+schedule_seed: 20260725
+concurrency: 16
+throughput_rollouts_per_node_hour: 4000
+configs:
+  - components: []
+  - components: [P]
+  - components: [T]
+  - components: [M]
+  - components: [SR]
+  - components: [R]
+  - components: [P, T]
+  - components: [P, M]
+  - components: [P, SR]
+  - components: [P, R]
+  - components: [T, M]
+  - components: [T, SR]
+  - components: [T, R]
+  - components: [M, SR]
+  - components: [M, R]
+  - components: [SR, R]
+  - components: [P, T, M]
+  - components: [P, T, SR]
+  - components: [P, T, R]
+  - components: [P, M, SR]
+  - components: [P, M, R]
+  - components: [P, SR, R]
+  - components: [T, M, SR]
+  - components: [T, M, R]
+  - components: [T, SR, R]
+  - components: [M, SR, R]
+  - components: [P, T, M, SR]
+  - components: [P, T, M, R]
+  - components: [P, T, SR, R]
+  - components: [P, M, SR, R]
+  - components: [T, M, SR, R]
+  - components: [P, T, M, SR, R]

@@ -91,6 +91,18 @@ models:
                       — hallucinates the Observation and never answers, so not a general cell"}
   gpt_oss_20b:
     hotpotqa: {status: dropped, note: "ADR 17: T undeliverable (native harmony tool calls)"}
+  gpt_oss_120b:
+    hotpotqa: {status: dropped,
+               note: "ADR 17 is a FAMILY finding — harmony renders any tool prompt as a
+                      native call — so 120b inherits it; never probed separately"}
+  seed_oss_36b:
+    hotpotqa: {status: unprobed, note: "registry entry, no probe run"}
+
+  # --- Tier S: out of MVP scope by design (§6, 'headline cells only') -----
+  deepseek_v4_pro:  {hotpotqa: {status: out_of_scope, note: "multi-node serving"}}
+  glm_5_2:          {hotpotqa: {status: out_of_scope, note: "multi-node serving"}}
+  kimi_k2_6:        {hotpotqa: {status: out_of_scope, note: "multi-node serving"}}
+  llama_4_maverick: {hotpotqa: {status: out_of_scope, note: "multi-node serving"}}
   minimax_m2_5:
     hotpotqa: {status: unprobed,
                note: "serves healthy with --enforce-eager but only pre-Action reasoning seen;
