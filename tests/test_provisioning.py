@@ -97,7 +97,12 @@ def test_mvp_grid_specs_parse():
     thin = from_yaml("configs/experiments/mvp_thin_gsm8k.yaml")
     assert len(thin.configs) == 4 and thin.benchmark == "gsm8k"
     topup = from_yaml("configs/experiments/mvp_headline_topup.yaml")
-    assert topup.k_seeds == 10 and topup.exp_id == "mvp_grid"  # same store as grid
+    # its own store, not a resume into the grid's: run_experiment.sbatch derives
+    # the store dir from the spec filename, so the k=10 cells are self-contained
+    # and the grid's target stays exactly 32 x tasks x 5 (verified on JUPITER
+    # 2026-07-27: 4,000/4,000 per band)
+    assert topup.k_seeds == 10 and topup.exp_id == "mvp_headline_topup"
+    assert topup.n_tasks == 100 and len(topup.configs) == 4
     assert {c.config_id for c in topup.configs} == {c.config_id for c in thin.configs}
 
 

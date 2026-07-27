@@ -1,9 +1,14 @@
-# K=10 headline top-up (§4.6): extra seeds 5-9 for the 4 headline configs on
-# the Tier-F backbone (mistral). Submit with the SAME --out directory as the
-# corresponding mvp_grid slice: rollout keys for seeds 0-4 are already done
-# there, so resume-by-construction runs exactly the 5 new seeds per (config,
-# task). exp_id must also match the grid slice for one coherent store.
-exp_id: mvp_grid            # MUST match the grid slice (same store, same exp_id)
+# K=10 headline arm (§4.6): the 4 headline configs at 10 seeds, for the
+# consistency and pass@k estimands that k=5 estimates too noisily.
+#
+# It writes its OWN store — run_experiment.sbatch derives the store directory
+# from the spec filename, so this lands in
+# $SCRATCH/harnesslab/mvp_headline_topup/ rather than resuming into the grid's
+# seeds 0-4. That costs re-running seeds 0-4 for these 4x100 cells (~2k
+# rollouts per band) and buys a self-contained k=10 store: no cross-store join
+# is needed to compute C_out or pass@k, and the grid's targets stay exactly
+# 32 x tasks x 5. Verified 2026-07-27: 4,000/4,000 per band, three bands.
+exp_id: mvp_headline_topup
 benchmark: gsm8k            # overridden per slice
 model_id: mistral_small_3_2_24b
 tasks_file: configs/tasks/gsm8k.jsonl   # overridden per slice

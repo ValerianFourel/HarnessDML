@@ -116,15 +116,30 @@ else
   echo "[serve] serving_mode=$MODE is out of MVP scope"; exit 3
 fi
 
+# Health ceiling. 40 min was sized when ~4 jobs ran at once; at 20-30 jobs all
+# streaming weights off the same $SCRATCH GPFS cache, cold loads of the 26B+
+# models miss it and the link dies at exit 4 having produced nothing — on
+# 2026-07-27 whole chains burned two links in a row this way (gemma-e4b
+# hotpotqa, scout gsm8k, kimi gsm8k, qwen-122b musique) while the SAME model
+# came up fine on a less contended node. A link that waits longer costs
+# minutes; a link that dies costs 40 min AND a chain slot. Overridable per
+# submission with HEALTH_WAIT_S.
+HEALTH_WAIT_S=${HEALTH_WAIT_S:-5400}          # 90 min
+_health_tries=$((HEALTH_WAIT_S / 10))
 for port in "${PORTS[@]}"; do
-  echo -n "[serve] waiting for :$port "
-  for _ in $(seq 1 240); do  # up to 40 min for big model loads
+  echo -n "[serve] waiting for :$port (up to $((HEALTH_WAIT_S / 60)) min) "
+  for _ in $(seq 1 "$_health_tries"); do
     if curl -sf "http://localhost:$port/health" >/dev/null 2>&1; then
       echo "healthy"; break
     fi
     sleep 10; echo -n "."
   done
-  curl -sf "http://localhost:$port/health" >/dev/null || { echo " FAILED"; exit 4; }
+  curl -sf "http://localhost:$port/health" >/dev/null || {
+    echo " FAILED after $((HEALTH_WAIT_S / 60)) min"
+    echo "[serve] last 5 lines of $LOGDIR/${SLURM_JOB_ID:-$$}_${port}.log:"
+    tail -5 "$LOGDIR/${SLURM_JOB_ID:-$$}_${port}.log" 2>/dev/null | sed 's/^/   /'
+    exit 4
+  }
 done
 
 URLS=$(printf "http://localhost:%s/v1," "${PORTS[@]}")

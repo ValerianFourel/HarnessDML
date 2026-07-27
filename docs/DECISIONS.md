@@ -195,3 +195,16 @@ Each entry: what we decided, and why. Reversals get a new entry, never an edit.
     the login-node check passed while the fleet failed. Chains are
     resume-safe, so the recovery is to fix the venv and let the pending links
     heal themselves; resubmitting instead would put two writers on one store.
+25. **Health ceiling raised to 90 min; it was sized for a quarter of the
+    fleet.** The 40-min wait in `serve_node.sh` dates from ~4 concurrent jobs.
+    At 20-30 jobs all streaming weights off the same `$SCRATCH` GPFS cache,
+    cold loads of the 26B+ models miss it: on 2026-07-27 four chains burned
+    TWO links each back to back (gemma-e4b hotpotqa, scout gsm8k, kimi gsm8k,
+    qwen-122b musique) while the same models came up fine on less contended
+    nodes — 58 FAILED in 24 h, nearly all exit 4, and the affected slices show
+    NO STORE because no link ever reached the rollout loop. The asymmetry
+    decides it: a link that waits longer costs minutes off an 11.5 h window; a
+    link that dies costs 40 min AND a chain slot, and a chain that runs out
+    leaves a slice stalled indefinitely. `HEALTH_WAIT_S` (default 5400)
+    overrides it per submission, and the failure path now prints the last 5
+    lines of the server log so exit 4 says WHY instead of just "FAILED".
