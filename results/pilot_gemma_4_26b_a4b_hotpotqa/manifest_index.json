@@ -1,0 +1,64 @@
+{
+  "manifest_pilot_gemma_4_26b_a4b_hotpotqa.json": {
+    "client": {
+      "chat_template_kwargs": {},
+      "type": "MultiEndpointClient",
+      "vllm_version": "0.25.1"
+    },
+    "component_template_hashes": {
+      "BARE": {
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T+M+SR+R": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T": {
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T+SR+R": {
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      }
+    },
+    "created_utc": "2026-07-26T13:44:44+00:00",
+    "exp_config_sha256": "ef3df222f55dfefb7b09a897e114506ce771bf4055b19fcce8214cdeaaa5502c",
+    "exp_id": "pilot_gemma_4_26b_a4b_hotpotqa",
+    "extra": {
+      "run_id": "1047530",
+      "tasks_file": "configs/tasks/hotpotqa.jsonl",
+      "tasks_sha256": "0b1caa878780e1c3396c5715d4e4dbb5b0223cd4525a1aa295d345eba9d3826c"
+    },
+    "git": {
+      "dirty": null,
+      "sha": "0b1173e9d32ed3405c362ca27102fe4e348480d4"
+    },
+    "model": {
+      "family": "gemma",
+      "hf_id": "google/gemma-4-26B-A4B-it",
+      "model_id": "gemma_4_26b_a4b",
+      "revision": "4d7ae4984b7db7de8f8457170b3f1a419ee76d52"
+    },
+    "node": "jpbo-025-08.jupiter.internal",
+    "sampling": {
+      "max_new_tokens_step": 256,
+      "seeds": [
+        0,
+        1
+      ],
+      "temperature": 0.1,
+      "top_p": 0.9
+    }
+  }
+}

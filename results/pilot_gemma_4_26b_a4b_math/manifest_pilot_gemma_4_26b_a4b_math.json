@@ -1,0 +1,62 @@
+{
+  "client": {
+    "chat_template_kwargs": {},
+    "type": "MultiEndpointClient",
+    "vllm_version": "0.25.1"
+  },
+  "component_template_hashes": {
+    "BARE": {
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T+M+SR+R": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T": {
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T+SR+R": {
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    }
+  },
+  "created_utc": "2026-07-26T13:44:51+00:00",
+  "exp_config_sha256": "80cda4bc1a7e156bcc8870dee1dd17ce03d8a4f417cb07ca039b52f186226a19",
+  "exp_id": "pilot_gemma_4_26b_a4b_math",
+  "extra": {
+    "run_id": "1047530",
+    "tasks_file": "configs/tasks/math.jsonl",
+    "tasks_sha256": "a091e82d66efb9d3ded3019129aeaadfc77a1bb7b7370c0c230e0023cfac5582"
+  },
+  "git": {
+    "dirty": null,
+    "sha": "0b1173e9d32ed3405c362ca27102fe4e348480d4"
+  },
+  "model": {
+    "family": "gemma",
+    "hf_id": "google/gemma-4-26B-A4B-it",
+    "model_id": "gemma_4_26b_a4b",
+    "revision": "4d7ae4984b7db7de8f8457170b3f1a419ee76d52"
+  },
+  "node": "jpbo-025-08.jupiter.internal",
+  "sampling": {
+    "max_new_tokens_step": 512,
+    "seeds": [
+      0,
+      1
+    ],
+    "temperature": 0.1,
+    "top_p": 0.9
+  }
+}

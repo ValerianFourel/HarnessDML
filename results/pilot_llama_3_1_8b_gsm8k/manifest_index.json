@@ -1,0 +1,64 @@
+{
+  "manifest_pilot_llama_3_1_8b_gsm8k.json": {
+    "client": {
+      "chat_template_kwargs": {},
+      "type": "MultiEndpointClient",
+      "vllm_version": "0.25.1"
+    },
+    "component_template_hashes": {
+      "BARE": {
+        "base": "39c51dee47fc",
+        "submission": "8c80436087cc"
+      },
+      "P+T+M+SR+R": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "575ee6e6653f",
+        "base": "39c51dee47fc",
+        "submission": "8c80436087cc"
+      },
+      "T": {
+        "T:t1": "575ee6e6653f",
+        "base": "39c51dee47fc",
+        "submission": "8c80436087cc"
+      },
+      "T+SR+R": {
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "575ee6e6653f",
+        "base": "39c51dee47fc",
+        "submission": "8c80436087cc"
+      }
+    },
+    "created_utc": "2026-07-26T21:55:18+00:00",
+    "exp_config_sha256": "2263bd3c51c4c5464f1f3841f5c5fa2825196379cd721402c759382e1844b962",
+    "exp_id": "pilot_llama_3_1_8b_gsm8k",
+    "extra": {
+      "run_id": "1048799",
+      "tasks_file": "configs/tasks/gsm8k.jsonl",
+      "tasks_sha256": "e9b9c4830139cd7b868db92d1965c752c96402d015794772b978b58b04ee92bd"
+    },
+    "git": {
+      "dirty": null,
+      "sha": "65a1aad9204f96374b01b0c1f380d5ffab81a9bf"
+    },
+    "model": {
+      "family": "llama",
+      "hf_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "model_id": "llama_3_1_8b",
+      "revision": "0e9e39f249a16976918f6564b8830bc894c89659"
+    },
+    "node": "jpbo-001-41.jupiter.internal",
+    "sampling": {
+      "max_new_tokens_step": 256,
+      "seeds": [
+        0,
+        1
+      ],
+      "temperature": 0.1,
+      "top_p": 0.9
+    }
+  }
+}

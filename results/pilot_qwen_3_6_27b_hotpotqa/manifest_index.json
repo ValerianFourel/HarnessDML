@@ -1,0 +1,66 @@
+{
+  "manifest_pilot_qwen_3_6_27b_hotpotqa.json": {
+    "client": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "type": "MultiEndpointClient",
+      "vllm_version": "0.25.1"
+    },
+    "component_template_hashes": {
+      "BARE": {
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T+M+SR+R": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T": {
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T+SR+R": {
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      }
+    },
+    "created_utc": "2026-07-26T21:55:45+00:00",
+    "exp_config_sha256": "d2475dbdc87aefa5c2c8b457a8fbcb641f87fc6804f1db2399d7b1ce6e7b5a45",
+    "exp_id": "pilot_qwen_3_6_27b_hotpotqa",
+    "extra": {
+      "run_id": "1048798",
+      "tasks_file": "configs/tasks/hotpotqa.jsonl",
+      "tasks_sha256": "0b1caa878780e1c3396c5715d4e4dbb5b0223cd4525a1aa295d345eba9d3826c"
+    },
+    "git": {
+      "dirty": null,
+      "sha": "65a1aad9204f96374b01b0c1f380d5ffab81a9bf"
+    },
+    "model": {
+      "family": "qwen",
+      "hf_id": "Qwen/Qwen3.6-27B",
+      "model_id": "qwen_3_6_27b",
+      "revision": "6a9e13bd6fc8f0983b9b99948120bc37f49c13e9"
+    },
+    "node": "jpbo-001-16.jupiter.internal",
+    "sampling": {
+      "max_new_tokens_step": 256,
+      "seeds": [
+        0,
+        1
+      ],
+      "temperature": 0.1,
+      "top_p": 0.9
+    }
+  }
+}

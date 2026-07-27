@@ -1,0 +1,64 @@
+{
+  "manifest_pilot_gemma_4_e4b_musique.json": {
+    "client": {
+      "chat_template_kwargs": {},
+      "type": "MultiEndpointClient",
+      "vllm_version": "0.25.1"
+    },
+    "component_template_hashes": {
+      "BARE": {
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T+M+SR+R": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T": {
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T+SR+R": {
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      }
+    },
+    "created_utc": "2026-07-26T13:43:57+00:00",
+    "exp_config_sha256": "d3a4124d87603beee370e57f2f23b28a574143af3fac7309c9f737379310909f",
+    "exp_id": "pilot_gemma_4_e4b_musique",
+    "extra": {
+      "run_id": "1047529",
+      "tasks_file": "configs/tasks/musique.jsonl",
+      "tasks_sha256": "b4a6cefee3af06ec2f280b727d4b9b73bd51851adaf17a2dd52167ef102217e8"
+    },
+    "git": {
+      "dirty": null,
+      "sha": "0b1173e9d32ed3405c362ca27102fe4e348480d4"
+    },
+    "model": {
+      "family": "gemma",
+      "hf_id": "google/gemma-4-E4B-it",
+      "model_id": "gemma_4_e4b",
+      "revision": "ee0ef6023621cff504d758262d4e04895a5af4a2"
+    },
+    "node": "jpbo-007-27.jupiter.internal",
+    "sampling": {
+      "max_new_tokens_step": 512,
+      "seeds": [
+        0,
+        1
+      ],
+      "temperature": 0.1,
+      "top_p": 0.9
+    }
+  }
+}
