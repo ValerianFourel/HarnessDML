@@ -37,6 +37,19 @@ CELL_TASK_SEED = ("config_id", "ordering_id", "template_id", "padded_components"
                   "temp", "task_id", "seed")
 
 
+def unit_key(rec: dict) -> int:
+    """Hash of the (cell, task, seed) unit of work, normalized like aggregate.
+
+    Rows written before the padding arm existed have NO `padded_components`
+    key; `aggregate` setdefaults it to '' because that is its exact meaning
+    there. Skipping that normalization here made a row and its re-keyed twin
+    look like two different units — duplicates read as 0 and unique counts ran
+    past the target (qwen/musique: 394,460 "unique" against a 386,720 target).
+    """
+    return hash(tuple(rec.get(c) if c != "padded_components" else (rec.get(c) or "")
+                      for c in CELL_TASK_SEED))
+
+
 @dataclass
 class SliceProgress:
     exp: str
@@ -160,7 +173,7 @@ def scan_store(path: Path, keep: set[str] | None) -> dict:
                 orphans += 1
                 continue
             in_scope += 1
-            key = hash(tuple(rec.get(c) for c in CELL_TASK_SEED))
+            key = unit_key(rec)
             if key in seen:
                 dupes += 1
             else:

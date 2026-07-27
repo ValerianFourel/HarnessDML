@@ -134,6 +134,10 @@ def _cmd_progress(args) -> int:
     if not args.deep:
         print("\n(counts are raw lines; --deep reads the stores for in-scope, "
               "de-duplicated progress — DONE? and ORPHANS? resolve only there)")
+    if args.only:
+        # gaps() would call every slice the filter hid "NO STORE"
+        print(f"\n(--only {args.only}: gate coverage not evaluated — run without it)")
+        return 0
     missing = prog.gaps(rows, prog.load_gates())
     if missing:
         print("\nGATED BUT NOT FINISHED (configs/gates.yaml):")

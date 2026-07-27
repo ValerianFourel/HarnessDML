@@ -59,13 +59,30 @@ models:
     math:     {status: census, bare: null, t: null}
     # probe PASS, T positive on all four bands — strongest Tier-F add
 
-  # --- pilots ran, gate NOT read yet (aggregate them, then set status) ----
-  qwen_3_5_122b:   {hotpotqa: {status: pending_gate}, musique: {status: pending_gate},
-                    gsm8k: {status: pending_gate}, math: {status: pending_gate}}
-  llama_4_scout:   {hotpotqa: {status: pending_gate}, musique: {status: pending_gate},
-                    gsm8k: {status: pending_gate}, math: {status: pending_gate}}
-  kimi_linear_48b: {hotpotqa: {status: pending_gate}, musique: {status: pending_gate},
-                    gsm8k: {status: pending_gate}, math: {status: pending_gate}}
+  # --- giants: gate read 2026-07-27 (gate_report.sh, pilots 160/160 per band).
+  #     All twelve bands land inside the window — no drops, no thin arms.
+  qwen_3_5_122b:
+    hotpotqa: {status: census, bare: 0.431, t: 0.453}
+    musique:  {status: census, bare: 0.646, t: 0.528}
+    gsm8k:    {status: census, bare: 0.750, t: 0.875,
+               note: "T above the ceiling (.875); BARE mid-window so the cell is
+                      still informative, but expect T-side compression"}
+    math:     {status: census, bare: 0.400, t: 0.525}
+  llama_4_scout:
+    hotpotqa: {status: census, bare: 0.314, t: 0.095,
+               note: "T COLLAPSES (.314 -> .095) — the largest negative T effect in
+                      the roster; verify it is capability, not a delivery failure,
+                      before reading it as a component effect"}
+    musique:  {status: census, bare: 0.429, t: 0.283}
+    gsm8k:    {status: census, bare: 0.825, t: 0.900,
+               note: "near ceiling — BARE .825 inside the window by .025; flag as
+                      compressed alongside mistral's thin-arm precedent"}
+    math:     {status: census, bare: 0.575, t: 0.600}
+  kimi_linear_48b:
+    hotpotqa: {status: census, bare: 0.199, t: 0.234}
+    musique:  {status: census, bare: 0.483, t: 0.449}
+    gsm8k:    {status: census, bare: 0.825, t: 0.850, note: "near ceiling — see scout"}
+    math:     {status: census, bare: 0.400, t: 0.350}
 
   # --- not in the general grid -------------------------------------------
   llama_3_1_8b:

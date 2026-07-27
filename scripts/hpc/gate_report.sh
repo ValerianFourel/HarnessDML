@@ -33,12 +33,15 @@ for d in "$SCRATCH"/harnesslab/pilot/rollouts_"${MODEL}"_*; do
   # ADR 18's ruling order: saturation is decided by BARE alone (mistral x
   # gsm8k went thin on BARE .875 even though T .60 sat mid-window), then a
   # band enters if EITHER arm is inside, then the floor drops it.
+  # awk has no line continuation inside a parenthesised expression — keep each
+  # print on one line (a wrapped ternary is a syntax error, not a style issue).
+  # SE ~ .055 at n=20x2, so a BARE just under the floor is noise, not a floor.
   verdict=$(awk -v b="$bare" -v t="$t" -v lo=$LO -v hi=$HI 'BEGIN{
     if (b > hi) { print "OUT (BARE saturates) -> status: thin"; exit }
     if ((b>=lo && b<=hi) || (t>=lo && t<=hi)) {
-      # SE ~ .055 at n=20x2, so a BARE just under the floor is noise, not a floor
-      print (b < lo ? "IN (floor-marginal BARE — flag) -> status: census"
-                    : "IN  -> status: census"); exit }
+      if (b < lo) { print "IN (floor-marginal BARE — flag) -> status: census"; exit }
+      if (b > hi-0.05 || t > hi) { print "IN (near ceiling — flag) -> status: census"; exit }
+      print "IN  -> status: census"; exit }
     print "OUT (floor) -> status: dropped" }')
   printf "%-10s %8s %8s   %s\n" "$bench" "$bare" "$t" "$verdict"
 done

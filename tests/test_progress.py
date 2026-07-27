@@ -55,6 +55,22 @@ def test_scan_separates_orphans_and_duplicates(tmp_path):
                  "orphans": 1, "dupes": 1, "corrupt": 1}
 
 
+def test_a_row_missing_padded_components_is_the_same_unit_of_work(tmp_path):
+    """The re-key duplicate (ADR 22): pre-padding rows have no
+    `padded_components` at all, post-padding rows have ''. aggregate treats
+    them as equal, so progress must too — otherwise duplicates count as 0 and
+    unique work runs past the target."""
+    old = _row("a", 0)
+    old.pop("padded_components")
+    new = _row("a", 0, padded="")
+    assert progress.unit_key(old) == progress.unit_key(new)
+
+    store = tmp_path / "rollouts.jsonl"
+    store.write_text(json.dumps(old) + "\n" + json.dumps(new) + "\n")
+    s = progress.scan_store(store, keep={"a"})
+    assert (s["in_scope"], s["unique"], s["dupes"]) == (2, 1, 1)
+
+
 def test_scan_without_a_task_filter_keeps_everything(tmp_path):
     store = tmp_path / "rollouts.jsonl"
     store.write_text(json.dumps(_row("a", 0)) + "\n" + json.dumps(_row("b", 0)) + "\n")
