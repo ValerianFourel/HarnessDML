@@ -279,6 +279,76 @@ def _age(seconds: float | None) -> str:
     return "-"
 
 
+BANDS = ("hotpotqa", "musique", "gsm8k", "math")
+STATUS_ABBR = {"census": "CEN", "thin": "THIN", "dropped": "DROP", "bridge_only": "BRDG",
+               "pending_gate": "GATE?", "unprobed": "PRB?", "blocked": "BLK"}
+TIER_ORDER = {"F": 0, "G": 1, "B": 2, "S": 3}
+
+
+_TARGET_MEMO: dict[tuple[str, str], int] = {}
+
+
+def ruling_target(status: str, bench: str) -> int:
+    """Rollouts a gate ruling implies, whether or not a store exists yet — so
+    a gated model that has never run shows its outstanding work, not a dash."""
+    exp = {"census": "mvp_grid", "thin": "mvp_thin_gsm8k"}.get(status)
+    if exp is None or not _tasks_file(bench).exists():
+        return 0
+    if (exp, bench) not in _TARGET_MEMO:
+        spec = experiment.from_yaml(
+            spec_path(exp), overrides={"benchmark": bench,
+                                       "tasks_file": str(_tasks_file(bench))})
+        _TARGET_MEMO[(exp, bench)] = slice_target(spec, bench)
+    return _TARGET_MEMO[(exp, bench)]
+
+
+def roster(rows: list[SliceProgress], gates: dict, registry: dict, deep: bool = False) -> str:
+    """One line per registry model: gate ruling and census progress per band.
+
+    The slice table answers "which stores exist"; this answers "where does
+    every model in the roster stand" — including the ones with no store at
+    all, which are exactly the ones at risk of being forgotten (a model that
+    was probed but never piloted leaves no trace in a store-driven view).
+    """
+    census = {(r.model, r.bench): r for r in rows if r.exp in CENSUS_EXPS}
+    piloted = {r.model for r in rows if r.exp == "pilot"}
+    rulings = gates.get("models") or {}
+
+    head = (f"{'model':23} {'tier':4} {'pilot':5} "
+            + " ".join(f"{b:^12.12}" for b in BANDS)
+            + f" {'census done / target':>26}")
+    out = [head, "-" * len(head)]
+    grand_done = grand_target = 0
+    for model in sorted(registry, key=lambda m: (TIER_ORDER.get(registry[m].get("tier"), 9), m)):
+        cells, done, target = [], 0, 0
+        for band in BANDS:
+            status = (rulings.get(model, {}).get(band) or {}).get("status")
+            r = census.get((model, band))
+            band_target = (r.target if r is not None and r.target
+                           else ruling_target(status, band))
+            target += band_target
+            band_done = min(r.done, band_target) if (r is not None and band_target) else 0
+            done += band_done
+            abbr = STATUS_ABBR.get(status, "-" if status is None else status)
+            pct = (f"{100.0 * band_done / band_target:5.1f}%" if band_target else "      ")
+            cells.append(f"{abbr:5}{pct:>7}")
+        totals = (f"{done:>11,} /{target:>11,}" if target else
+                  f"{'not in the census':>26}")
+        grand_done += done
+        grand_target += target
+        out.append(f"{model:23.23} {registry[model].get('tier', '?'):4} "
+                   f"{'yes' if model in piloted else '-':5} " + " ".join(cells) + f" {totals}")
+    pct = f"{100.0 * grand_done / grand_target:.1f}%" if grand_target else "-"
+    out += ["-" * len(head),
+            f"{'ALL GATED MODELS':23} {'':4} {'':5} " + " " * (13 * len(BANDS) - 1)
+            + f" {grand_done:>11,} /{grand_target:>11,}  {pct}",
+            "",
+            "CEN census · THIN 4-config thin arm · DROP gate failed · BRDG bridge arm only",
+            "GATE? pilot ran, ruling unread · PRB? not probed · BLK cannot serve · - no ruling",
+            f"progress numerator: {'unique in-scope work' if deep else 'raw lines (upper bound)'}"]
+    return "\n".join(out)
+
+
 def format_table(rows: list[SliceProgress], deep: bool) -> str:
     head = (f"{'exp':16} {'model':22} {'bench':9} {'have':>10} {'target':>10} "
             f"{'%':>6} {'status':9} {'age':>5}")

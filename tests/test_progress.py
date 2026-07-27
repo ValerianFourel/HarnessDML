@@ -165,6 +165,27 @@ def test_summary_never_counts_a_slice_past_its_target():
     assert "96.0%" in text
 
 
+def test_roster_covers_every_registry_model_including_storeless_ones():
+    """A model that was probed but never piloted leaves no store, so a
+    store-driven view drops it silently — the roster must still list it."""
+    registry = experiment.load_registry()
+    row = progress.SliceProgress(exp="mvp_grid", model="qwen_3_5_9b", bench="math",
+                                 path=None, lines=41_920, target=41_920)
+    text = progress.roster([row], progress.load_gates(), registry)
+    for model in registry:
+        assert model in text, f"{model} missing from the roster"
+    assert "BLK" in text        # deepseek_v4_flash: cannot serve on this stack
+    assert "BRDG" in text       # llama_3_1_8b: bridge arm only
+    assert "ALL GATED MODELS" in text
+
+
+def test_ruling_target_exists_without_a_store():
+    """The outstanding work of a gated-but-never-run model is knowable."""
+    assert progress.ruling_target("census", "math") == 32 * 262 * 5
+    assert progress.ruling_target("thin", "gsm8k") == 4 * 1319 * 5
+    assert progress.ruling_target("dropped", "math") == 0
+
+
 def test_gaps_lists_gated_slices_with_no_store():
     gates = {"models": {
         "m_done": {"gsm8k": {"status": "census"}},

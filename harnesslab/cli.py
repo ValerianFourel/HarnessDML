@@ -115,6 +115,19 @@ def _cmd_status(args) -> int:
     return 0
 
 
+def _cmd_roster(args) -> int:
+    from pathlib import Path
+
+    from . import progress as prog
+
+    root = Path(args.root or os.path.join(os.environ.get("SCRATCH", ""), "harnesslab"))
+    rows = prog.walk(root, deep=args.deep) if root.is_dir() else []
+    if not root.is_dir():
+        print(f"[roster] no rollout root at {root} — showing rulings only", file=sys.stderr)
+    print(prog.roster(rows, prog.load_gates(), experiment.load_registry(), deep=args.deep))
+    return 0
+
+
 def _cmd_progress(args) -> int:
     from pathlib import Path
 
@@ -128,6 +141,10 @@ def _cmd_progress(args) -> int:
     if not rows:
         print(f"[progress] no rollout stores under {root}")
         return 0
+    if args.roster:   # same walk, both views — a deep scan is minutes, do it once
+        print(prog.roster(rows, prog.load_gates(), experiment.load_registry(),
+                          deep=args.deep))
+        print()
     print(prog.format_table(rows, deep=args.deep))
     print()
     print(prog.summarize(rows, deep=args.deep))
@@ -242,7 +259,14 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--deep", action="store_true",
                    help="read the stores: in-scope, de-duplicated counts (minutes on a census)")
     p.add_argument("--only", default=None, help="substring filter on <exp>/rollouts_<model>_<bench>")
+    p.add_argument("--roster", action="store_true",
+                   help="also print the per-model roster (from the same scan)")
     p.set_defaults(fn=_cmd_progress)
+
+    p = sub.add_parser("roster", help="every registry model x band: gate ruling + progress")
+    p.add_argument("--root", default=None, help="rollout root (default $SCRATCH/harnesslab)")
+    p.add_argument("--deep", action="store_true", help="read the stores for true progress")
+    p.set_defaults(fn=_cmd_roster)
 
     p = sub.add_parser("budget", help="node-hour estimate (refuses without pilot constant)")
     p.add_argument("--exp", required=True)

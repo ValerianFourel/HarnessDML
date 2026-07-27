@@ -53,8 +53,8 @@ echo "   exit 3 = api-error resume path (rollouts stay pending, harmless)"
 echo "   exit 4 = serve never healthy by the 40-min ceiling -> check §9"
 echo "   exit 6 = serve-path preflight caught a broken compiled stack (ADR 21)"
 
-hr "5. PROGRESS — every slice against ITS OWN target (configs x tasks x seeds)"
-python -m harnesslab.cli progress ${DEEP:+--deep}
+hr "5. PROGRESS — roster by model, then every slice against ITS OWN target"
+python -m harnesslab.cli progress --roster ${DEEP:+--deep}
 
 hr "6. RUNNING SERVERS: healthy? producing? real errors?"
 # grep for the ABI break by its exact message — a transformers deprecation
