@@ -271,3 +271,37 @@ path, not the venv break (which is exit 4 at the ceiling).
 Full narrative of this session (torch fix, 3k HotpotQA cap, roster 2→~9
 "census everything", paper + 110-paper literature sweep, causal-mediation
 review) → **docs/SESSION_2026-07-26.md**.
+
+## 2026-07-27 — the dashboard was lying; the roster went out
+
+`wc -l` on a store cannot express progress: every experiment has its own
+denominator (the complete 4-config thin arm read 13% against the 32-config
+grid target), a capped slice runs past 100% on pre-cap orphans (qwen x
+hotpotqa read 150.3% with 68k rollouts left), and the `padded_components`
+re-key left duplicate `(cell, task, seed)` rows that `verify` cannot see
+(ADR 22). The worst case: **mistral x hotpotqa read 97.5%, deep says 57.1%** —
+~206k rollouts outstanding, not ~12k.
+
+Rebuilt around `harnesslab progress` (per-spec targets; `--deep` for in-scope
+de-duplicated counts; `roster` for every registry model x band including the
+storeless ones; `STALL?` for a slice nothing has written in hours) and
+`configs/gates.yaml`, which makes the difficulty-gate rulings machine-readable
+so "what is still missing" is a query rather than a memory (ADR 23).
+
+That query immediately found: wave-2 census never submitted, the three giants'
+pilots complete but ungated, four control arms finished but unharvested, and
+two spec'd arms (the bridge pair, the K=10 top-up) that nobody could run —
+the bridge had no decoupled half to compare against, and the top-up's
+`n_tasks: null` had silently become 296k rollouts after the census extension.
+All of it is now launched or shipped; 49 slices harvested into git.
+
+Then a mid-flight `huggingface_hub` change killed new servers while running
+ones stayed healthy (ADR 24): the ADR 21 preflight never touched the
+transformers/hub layer, so it green-lit every failing job. The preflight now
+walks the real `vllm serve` import chain and `scripts/hpc/check_env.sh` runs
+it on demand.
+
+Programme total at end of session: **~2.29M of 9,370,540 unique in-scope
+rollouts (24.4%)**, 30 jobs running, 106 queued.
+
+Full narrative → **docs/SESSION_2026-07-27.md**.
