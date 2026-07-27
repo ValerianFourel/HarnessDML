@@ -21,6 +21,18 @@ bash scripts/hpc/setup_env.sh        # modules + venv + harnesslab[data] + vLLM
 export HF_TOKEN=...                  # keep it in .env, not shell history
 ```
 
+## After ANY change to the venv (login node)
+
+```sh
+bash scripts/hpc/check_env.sh     # walks the real `vllm serve` import chain
+```
+
+`import vllm` is not a check: flash-attn loads lazily at serve time (ADR 21)
+and the transformers/huggingface_hub layer is never touched at all (ADR 24).
+Never `pip install` while jobs are starting — pip unlinks before it relinks,
+and a job importing during that window dies on a half-written package while
+the same import succeeds a second later on the login node.
+
 ## JUPITER: every new shell
 
 ```sh

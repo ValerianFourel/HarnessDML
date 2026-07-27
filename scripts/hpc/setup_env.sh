@@ -12,6 +12,11 @@ set -euo pipefail
 VLLM_PIN=${VLLM_PIN:-0.25.1}
 TORCH_PIN=${TORCH_PIN:-2.11.0}
 TORCHVISION_PIN=${TORCHVISION_PIN:-0.26.0}
+# huggingface_hub is part of the matched set too (ADR 24): vLLM's CLI imports
+# transformers, which imports huggingface_hub.utils — a hub version whose
+# internals transformers does not expect breaks `vllm serve` while `import
+# vllm` still passes. pyproject only says >=0.30, so pip is free to drift it.
+HF_HUB_PIN=${HF_HUB_PIN:-1.25.1}
 
 module load Stages/2025 GCC Python CUDA 2>/dev/null \
   || echo "[setup] WARNING: module load failed — check 'module avail' names and rerun"
@@ -46,13 +51,17 @@ fi
 echo "[setup] pinning torch stack: torch==$TORCH_PIN (matches vLLM $VLLM_PIN)"
 pip install --no-deps --force-reinstall \
   "torch==$TORCH_PIN" "torchvision==$TORCHVISION_PIN" "torchaudio==$TORCH_PIN"
+echo "[setup] pinning huggingface_hub==$HF_HUB_PIN (ADR 24)"
+pip install --no-deps --force-reinstall "huggingface_hub==$HF_HUB_PIN"
 
 # Verify the SERVE path, not just `import vllm`: the flash-attn C extension
 # loads lazily at serve time, so it is the real ABI canary (mirrors the
 # fast preflight in serve_node.sh).
 python - <<'PY'
 import importlib, sys
-importlib.import_module("vllm")            # torchvision::nms / core break shows here
+# the CLI entry point, not a bare `import vllm`: it pulls vllm.config ->
+# transformers -> huggingface_hub, the layer ADR 24 broke
+importlib.import_module("vllm.entrypoints.cli.main")
 ok = False
 for m in ("vllm.vllm_flash_attn._vllm_fa2_C", "vllm.vllm_flash_attn._vllm_fa3_C"):
     try:

@@ -171,3 +171,27 @@ Each entry: what we decided, and why. Reversals get a new entry, never an edit.
     `gate_report.sh <model>` reads a finished pilot and prints the ruling
     in ADR 18's order (BARE saturation first, then either-arm-in-window,
     then floor) so onboarding a model is mechanical.
+24. **huggingface_hub belongs to the pinned set; the preflight walks the CLI
+    entry point.** 2026-07-27, mid-census: new `vllm serve` processes started
+    dying with `ModuleNotFoundError: No module named
+    'huggingface_hub.utils._terminal'` while already-running servers kept
+    answering 200 OK — five jobs lost in ~2 min each (exit 1), six more to
+    the 40-min ceiling. The traceback runs `.venv/bin/vllm` ->
+    `vllm.entrypoints.cli.main` -> `vllm.config` -> `transformers` ->
+    `huggingface_hub.utils.__init__` -> `_cache_manager` -> `from ._terminal
+    import tabulate`. Two findings: (a) `pyproject` bounds the hub only at
+    `>=0.30`, so any resolve can move it under a running fleet — it is part of
+    the matched instrument set exactly like torch, and `setup_env.sh` now pins
+    it (`HF_HUB_PIN`); (b) the ADR 21 preflight imported `vllm` plus a
+    flash-attn extension, which never touches transformers, so it would have
+    green-lit every one of these jobs. The preflight now imports the CLI entry
+    point itself and reports the real exception, routing to the hub fix or the
+    torch fix by matching the message. `scripts/hpc/check_env.sh` is the same
+    check as a standalone command — run it after ANY venv change and before
+    queued jobs start into it. Operational rule, now twice-learned: never
+    `pip install` while jobs are starting. pip unlinks before it relinks, so a
+    job importing during that window dies on a half-written package while the
+    identical import succeeds a second later on the login node — which is why
+    the login-node check passed while the fleet failed. Chains are
+    resume-safe, so the recovery is to fix the venv and let the pending links
+    heal themselves; resubmitting instead would put two writers on one store.
