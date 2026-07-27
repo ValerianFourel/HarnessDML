@@ -1,0 +1,65 @@
+{
+  "manifest_temp0_mistral_small_3_2_24b_hotpotqa.json": {
+    "client": {
+      "chat_template_kwargs": {},
+      "type": "MultiEndpointClient",
+      "vllm_version": "0.25.1"
+    },
+    "component_template_hashes": {
+      "BARE": {
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T+M+SR+R": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T": {
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T+SR+R": {
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      }
+    },
+    "created_utc": "2026-07-25T18:54:34+00:00",
+    "exp_config_sha256": "70ff9cc35d7b59c76ea3ed23a40c2ade24dac81348c2026707b4c7bf60c04851",
+    "exp_id": "temp0_mistral_small_3_2_24b_hotpotqa",
+    "extra": {
+      "run_id": "1044726",
+      "tasks_file": "configs/tasks/hotpotqa.jsonl",
+      "tasks_sha256": "0b1caa878780e1c3396c5715d4e4dbb5b0223cd4525a1aa295d345eba9d3826c"
+    },
+    "git": {
+      "dirty": null,
+      "sha": "899d0d87b1c139a4b82ab335437512392d5b469e"
+    },
+    "model": {
+      "family": "mistral",
+      "hf_id": "mistralai/Mistral-Small-3.2-24B-Instruct-2506",
+      "model_id": "mistral_small_3_2_24b",
+      "revision": "95a6d26c4bfb886c58daf9d3f7332c857cb27b43"
+    },
+    "node": "jpbo-035-14.jupiter.internal",
+    "sampling": {
+      "max_new_tokens_step": 256,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "temperature": 0.0,
+      "top_p": 1.0
+    }
+  }
+}
