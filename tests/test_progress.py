@@ -165,6 +165,19 @@ def test_summary_never_counts_a_slice_past_its_target():
     assert "96.0%" in text
 
 
+def test_summary_denominator_matches_the_rulings_not_the_stores():
+    """A gated band whose chain hasn't produced a first rollout has no store;
+    counting only stores shrank the target and inflated the percentage."""
+    rows = [progress.SliceProgress(exp="mvp_grid", model="m", bench="math", path=None,
+                                   lines=41_920, target=41_920)]
+    gates = {"models": {"m": {"math": {"status": "census"},
+                              "gsm8k": {"status": "census"}}}}   # gsm8k: no store yet
+    assert "100.0%" in progress.summarize(rows)                  # store-only view
+    text = progress.summarize(rows, gates=gates)
+    assert f"{41_920 + 32 * 1319 * 5:,}" in text                 # math + unstarted gsm8k
+    assert "100.0%" not in text
+
+
 def test_roster_covers_every_registry_model_including_storeless_ones():
     """A model that was probed but never piloted leaves no store, so a
     store-driven view drops it silently — the roster must still list it."""

@@ -381,7 +381,7 @@ def format_table(rows: list[SliceProgress], deep: bool) -> str:
     return "\n".join(lines)
 
 
-def summarize(rows: list[SliceProgress], deep: bool = False) -> str:
+def summarize(rows: list[SliceProgress], deep: bool = False, gates: dict | None = None) -> str:
     """How much of the census is done, per model and overall.
 
     In shallow mode the numerator is raw lines, which overstates any slice
@@ -396,6 +396,14 @@ def summarize(rows: list[SliceProgress], deep: bool = False) -> str:
         acc = by_model.setdefault(r.model, [0, 0])
         acc[0] += min(r.done, r.target) if r.target else r.done
         acc[1] += r.target or 0
+    # Denominator from the RULINGS when we have them, not from the stores that
+    # happen to exist: a gated band whose chain has not produced a first
+    # rollout yet has no store, and counting only stores quietly shrinks the
+    # target — the same run printed 45.4% here against the roster's 39.7%.
+    for model, benches in ((gates or {}).get("models") or {}).items():
+        ruled = sum(ruling_target((r or {}).get("status"), b) for b, r in (benches or {}).items())
+        if ruled:
+            by_model.setdefault(model, [0, 0])[1] = ruled
     done = sum(a[0] for a in by_model.values())
     target = sum(a[1] for a in by_model.values())
     live = sum(1 for r in rows if r.age_s is not None and r.age_s < 600)
