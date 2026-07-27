@@ -1,0 +1,64 @@
+{
+  "manifest_pilot_llama_4_scout_hotpotqa.json": {
+    "client": {
+      "chat_template_kwargs": {},
+      "type": "OpenAICompatClient",
+      "vllm_version": "0.25.1"
+    },
+    "component_template_hashes": {
+      "BARE": {
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T+M+SR+R": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T": {
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T+SR+R": {
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      }
+    },
+    "created_utc": "2026-07-26T22:32:48+00:00",
+    "exp_config_sha256": "4fcee87a9db34063914061eaf00c766e4a57fe8f0bc7ee40e7efa8b1811df6f1",
+    "exp_id": "pilot_llama_4_scout_hotpotqa",
+    "extra": {
+      "run_id": "1048895",
+      "tasks_file": "configs/tasks/hotpotqa.jsonl",
+      "tasks_sha256": "0b1caa878780e1c3396c5715d4e4dbb5b0223cd4525a1aa295d345eba9d3826c"
+    },
+    "git": {
+      "dirty": null,
+      "sha": "2bde1110e4a20ebc23ff86c9120578df68c2199a"
+    },
+    "model": {
+      "family": "llama",
+      "hf_id": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
+      "model_id": "llama_4_scout",
+      "revision": "92f3b1597a195b523d8d9e5700e57e4fbb8f20d3"
+    },
+    "node": "jpbo-011-28.jupiter.internal",
+    "sampling": {
+      "max_new_tokens_step": 256,
+      "seeds": [
+        0,
+        1
+      ],
+      "temperature": 0.1,
+      "top_p": 0.9
+    }
+  }
+}

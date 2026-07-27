@@ -1,0 +1,62 @@
+{
+  "client": {
+    "chat_template_kwargs": {},
+    "type": "OpenAICompatClient",
+    "vllm_version": "0.25.1"
+  },
+  "component_template_hashes": {
+    "BARE": {
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T+M+SR+R": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T": {
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T+SR+R": {
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    }
+  },
+  "created_utc": "2026-07-26T22:37:01+00:00",
+  "exp_config_sha256": "f523c354ad70f304f2d28c38083598662a8a55c1f32276c936ae3537ec7b9593",
+  "exp_id": "pilot_kimi_linear_48b_gsm8k",
+  "extra": {
+    "run_id": "1048896",
+    "tasks_file": "configs/tasks/gsm8k.jsonl",
+    "tasks_sha256": "e9b9c4830139cd7b868db92d1965c752c96402d015794772b978b58b04ee92bd"
+  },
+  "git": {
+    "dirty": null,
+    "sha": "2bde1110e4a20ebc23ff86c9120578df68c2199a"
+  },
+  "model": {
+    "family": "kimi",
+    "hf_id": "moonshotai/Kimi-Linear-48B-A3B-Instruct",
+    "model_id": "kimi_linear_48b",
+    "revision": "e1df551a447157d4658b573f9a695d57658590e9"
+  },
+  "node": "jpbo-013-07.jupiter.internal",
+  "sampling": {
+    "max_new_tokens_step": 256,
+    "seeds": [
+      0,
+      1
+    ],
+    "temperature": 0.1,
+    "top_p": 0.9
+  }
+}

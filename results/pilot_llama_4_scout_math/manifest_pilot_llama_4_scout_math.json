@@ -1,0 +1,62 @@
+{
+  "client": {
+    "chat_template_kwargs": {},
+    "type": "OpenAICompatClient",
+    "vllm_version": "0.25.1"
+  },
+  "component_template_hashes": {
+    "BARE": {
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T+M+SR+R": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T": {
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T+SR+R": {
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    }
+  },
+  "created_utc": "2026-07-26T22:47:03+00:00",
+  "exp_config_sha256": "f5ef26f5dcb5ff175b00a652483457803d325a7cb73b3b3f09bd29631ca1fc4e",
+  "exp_id": "pilot_llama_4_scout_math",
+  "extra": {
+    "run_id": "1048895",
+    "tasks_file": "configs/tasks/math.jsonl",
+    "tasks_sha256": "a091e82d66efb9d3ded3019129aeaadfc77a1bb7b7370c0c230e0023cfac5582"
+  },
+  "git": {
+    "dirty": null,
+    "sha": "2bde1110e4a20ebc23ff86c9120578df68c2199a"
+  },
+  "model": {
+    "family": "llama",
+    "hf_id": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
+    "model_id": "llama_4_scout",
+    "revision": "92f3b1597a195b523d8d9e5700e57e4fbb8f20d3"
+  },
+  "node": "jpbo-011-28.jupiter.internal",
+  "sampling": {
+    "max_new_tokens_step": 512,
+    "seeds": [
+      0,
+      1
+    ],
+    "temperature": 0.1,
+    "top_p": 0.9
+  }
+}

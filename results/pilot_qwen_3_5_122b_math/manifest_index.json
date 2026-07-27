@@ -1,0 +1,66 @@
+{
+  "manifest_pilot_qwen_3_5_122b_math.json": {
+    "client": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "type": "OpenAICompatClient",
+      "vllm_version": "0.25.1"
+    },
+    "component_template_hashes": {
+      "BARE": {
+        "base": "39c51dee47fc",
+        "submission": "8c80436087cc"
+      },
+      "P+T+M+SR+R": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "575ee6e6653f",
+        "base": "39c51dee47fc",
+        "submission": "8c80436087cc"
+      },
+      "T": {
+        "T:t1": "575ee6e6653f",
+        "base": "39c51dee47fc",
+        "submission": "8c80436087cc"
+      },
+      "T+SR+R": {
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "575ee6e6653f",
+        "base": "39c51dee47fc",
+        "submission": "8c80436087cc"
+      }
+    },
+    "created_utc": "2026-07-26T22:57:38+00:00",
+    "exp_config_sha256": "cc7fa3dc0ce0ffeb4556000e728ffde63b515f90d2e7bf5edc24cafabf55e541",
+    "exp_id": "pilot_qwen_3_5_122b_math",
+    "extra": {
+      "run_id": "1048894",
+      "tasks_file": "configs/tasks/math.jsonl",
+      "tasks_sha256": "a091e82d66efb9d3ded3019129aeaadfc77a1bb7b7370c0c230e0023cfac5582"
+    },
+    "git": {
+      "dirty": null,
+      "sha": "2bde1110e4a20ebc23ff86c9120578df68c2199a"
+    },
+    "model": {
+      "family": "qwen",
+      "hf_id": "Qwen/Qwen3.5-122B-A10B",
+      "model_id": "qwen_3_5_122b",
+      "revision": "dc4d348443bc740c68e2d77492492c11606384d5"
+    },
+    "node": "jpbo-006-43.jupiter.internal",
+    "sampling": {
+      "max_new_tokens_step": 512,
+      "seeds": [
+        0,
+        1
+      ],
+      "temperature": 0.1,
+      "top_p": 0.9
+    }
+  }
+}
