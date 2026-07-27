@@ -6,6 +6,11 @@
 #   bash scripts/hpc/harvest_all.sh                 # everything, commit + push
 #   ONLY=padding bash scripts/hpc/harvest_all.sh    # substring filter on the store path
 #   NO_COMMIT=1 bash scripts/hpc/harvest_all.sh     # aggregate + verify only
+#   DEDUPE=1 bash scripts/hpc/harvest_all.sh        # drop the ADR 22 re-key duplicates
+#
+# A full census slice aggregates ~700k rows into sharded parquet — minutes and
+# tens of MB per slice. ONLY= a finished arm first; harvest census slices
+# deliberately, as they complete.
 #
 # Task scope is derived per store from its own spec (--task-scope auto), so a
 # capped slice (HotpotQA n_tasks=3000) drops its out-of-scope orphans instead
@@ -31,6 +36,7 @@ for d in "$SCRATCH"/harnesslab/*/rollouts_*; do
   # as sharded parts, ADR 20); letting the shell expand it would pass argparse
   # several --panel values and abort the harvest.
   if python -m harnesslab.cli aggregate --rollouts "$d" --out "$out" --task-scope auto \
+       ${DEDUPE:+--dedupe} \
      && python -m harnesslab.cli verify --panel "$out/panel*.parquet"; then
     ok=$((ok + 1))
   else
