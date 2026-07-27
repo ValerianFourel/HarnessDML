@@ -130,7 +130,7 @@ def _cmd_progress(args) -> int:
         return 0
     print(prog.format_table(rows, deep=args.deep))
     print()
-    print(prog.summarize(rows))
+    print(prog.summarize(rows, deep=args.deep))
     if not args.deep:
         print("\n(counts are raw lines; --deep reads the stores for in-scope, "
               "de-duplicated progress — DONE? and ORPHANS? resolve only there)")

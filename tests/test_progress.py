@@ -150,6 +150,21 @@ def test_auto_scope_reads_the_cap_from_the_store_path(tmp_path):
     assert ids is None and "no spec" in why
 
 
+def test_summary_never_counts_a_slice_past_its_target():
+    """Orphan-inflated slices must not push the census total above 100%."""
+    rows = [
+        progress.SliceProgress(exp="mvp_grid", model="m", bench="hotpotqa", path=None,
+                               lines=700_000, target=480_000),          # orphan-inflated
+        progress.SliceProgress(exp="mvp_grid", model="m", bench="math", path=None,
+                               lines=20_960, target=41_920),            # half done
+        progress.SliceProgress(exp="pilot", model="m", bench="math", path=None,
+                               lines=160, target=160),                  # not census
+    ]
+    text = progress.summarize(rows)
+    assert "500,960" in text and "521,920" in text   # 480,000 capped + 20,960
+    assert "96.0%" in text
+
+
 def test_gaps_lists_gated_slices_with_no_store():
     gates = {"models": {
         "m_done": {"gsm8k": {"status": "census"}},

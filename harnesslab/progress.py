@@ -298,14 +298,34 @@ def format_table(rows: list[SliceProgress], deep: bool) -> str:
     return "\n".join(lines)
 
 
-def summarize(rows: list[SliceProgress]) -> str:
+def summarize(rows: list[SliceProgress], deep: bool = False) -> str:
+    """How much of the census is done, per model and overall.
+
+    In shallow mode the numerator is raw lines, which overstates any slice
+    holding orphans or re-key duplicates — HotpotQA is the only band that can
+    hold orphans (its 7405-task pool is the only one above the 3000 cap), but
+    every pre-padding slice holds duplicates. --deep replaces it with unique
+    in-scope work.
+    """
     census = [r for r in rows if r.exp in CENSUS_EXPS]
-    by_model: dict[str, int] = {}
+    by_model: dict[str, list[int]] = {}
     for r in census:
-        by_model[r.model] = by_model.get(r.model, 0) + r.lines
+        acc = by_model.setdefault(r.model, [0, 0])
+        acc[0] += min(r.done, r.target) if r.target else r.done
+        acc[1] += r.target or 0
+    done = sum(a[0] for a in by_model.values())
+    target = sum(a[1] for a in by_model.values())
     live = sum(1 for r in rows if r.age_s is not None and r.age_s < 600)
-    out = [f"census rollouts (raw lines, {'+'.join(CENSUS_EXPS)}): {sum(by_model.values()):,}",
-           f"slices: {len(rows)} total, {live} written in the last 10 min"]
-    for model, n in sorted(by_model.items(), key=lambda kv: -kv[1]):
-        out.append(f"  {n:>12,}  {model}")
+    unit = "unique in-scope rollouts" if deep else "raw lines (upper bound)"
+    out = [f"CENSUS PROGRESS — {unit}",
+           f"{'model':24} {'done':>12} {'target':>12}     %"]
+    for model, (d, t) in sorted(by_model.items(), key=lambda kv: -kv[1][0]):
+        pct = f"{100.0 * d / t:5.1f}%" if t else "    -"
+        out.append(f"{model:24} {d:>12,} {t:>12,} {pct}")
+    pct = f"{100.0 * done / target:5.1f}%" if target else "    -"
+    out += [f"{'TOTAL':24} {done:>12,} {target:>12,} {pct}",
+            "",
+            f"slices: {len(rows)} total, {live} written in the last 10 min"]
+    if not deep:
+        out.append("(--deep for the real numerator: orphans and duplicates removed)")
     return "\n".join(out)
