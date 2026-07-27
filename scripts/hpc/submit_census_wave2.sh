@@ -43,18 +43,22 @@ chain 4 qwen_3_6_27b     musique
 chain 3 qwen_3_6_27b     gsm8k
 chain 1 qwen_3_6_27b     math
 
+# ministral_3_3b: musique finished (386,720 = 100% of target, idle since
+# 2026-07-27) so nothing there to resume; gsm8k stalled at 62.7% with no job
+# writing it — its chain ran out. Resume it. Verify no writer first:
+#   squeue -u $USER -o "%.11i %.30j" | grep ministral
+chain 3 ministral_3_3b   gsm8k
+
 squeue -u "$USER" -o "%.11i %.8T %.22j %.9M %R" | tail -20
-echo "[wave2] submitted. Monitor: bash scripts/hpc/status.sh"
+echo "[wave2] submitted. Monitor: bash scripts/hpc/overview.sh"
 
 # ============================ NOT YET — do these later ============================
-# ministral_3_3b (gated musique, gsm8k): a single grid job is STILL writing its
-#   musique store. Chain it ONLY after that job ends (else two writers race):
-#     chain 4 ministral_3_3b musique   # after the single job leaves the queue
-#     chain 3 ministral_3_3b gsm8k
-#
 # Giants (serve eager via registry extra_vllm_args -> ~2-3x slower, so ~2x links).
-#   ENABLE per band ONLY after each one's pilot gate lands (1048894 qwen-122b,
-#   1048895 scout, 1048896 kimi):
+#   Probes PASSED on retry (1048806 qwen-122b, 1048807 scout, 1048825 kimi: all
+#   emit textual Action:/Answer:) and all three pilots are complete (160/160 per
+#   band). So the ONLY thing left is reading the gate:
+#     bash scripts/hpc/gate_report.sh qwen_3_5_122b   # then scout, then kimi
+#   record the ruling in configs/gates.yaml, then enable the gated bands here:
 #     chain 10 qwen_3_5_122b  <gated-band>
 #     chain 10 llama_4_scout  <gated-band>
 #     chain 10 kimi_linear_48b <gated-band>
