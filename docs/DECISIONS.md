@@ -119,3 +119,25 @@ Each entry: what we decided, and why. Reversals get a new entry, never an edit.
     guard exempts results parquet from the 20 MB pool but caps files at
     95 MB (GitHub hard limit). Budget: ~3.65M rollouts, ~250-300
     node-hours, 8 parallel chains, wall-clock ~3-5 days.
+21. **Pin the torch stack; guard the serve path, not just `import vllm`.**
+    A stray `uv pip install` re-resolved deps and bumped torch 2.11.0 ->
+    2.13.0+cu130 under the wheel-installed vLLM 0.25.1 (no `vendor/vllm`
+    source tree exists — the wheel path won at setup). vLLM's compiled C
+    extensions (torchvision ops, `_vllm_fa2_C`/`_fa3_C`, `vllm._C`) are
+    ABI-linked to torch 2.11.0, so every `vllm serve` crashed —
+    `torchvision::nms does not exist`, then after removing torchvision,
+    `requires the CUDA flash attention extensions`. It killed the entire
+    census + arms fleet: each node hung to the 40-min health ceiling
+    (exit 4) producing zero rollouts, while a bare `import vllm` still
+    passed (flash-attn loads lazily at serve, not import) — so a naive
+    resubmit-gate green-lit doomed jobs. Decisions: (a) `setup_env.sh`
+    pins the matched set `vllm==0.25.1` + `torch==2.11.0` +
+    `torchvision==0.26.0` + `torchaudio==2.11.0`, the torch trio installed
+    LAST with `--no-deps` so no later resolve can drift it; (b)
+    `serve_node.sh` runs a ~5 s preflight that imports a flash-attn C
+    extension and exits 6 with the fix BEFORE spawning servers, instead of
+    burning 40 min per node; (c) recovery is a `--no-deps --force-reinstall`
+    of the torch trio — no rebuild, since torch stayed CUDA-enabled and it
+    was a pure version skew. Fix confirmed: census resumed 1,110,391 ->
+    1,118,301 within minutes. Never `uv pip install -U` in this venv
+    without `--no-deps` or a torch constraint.

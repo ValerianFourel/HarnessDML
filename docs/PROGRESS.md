@@ -236,3 +236,38 @@ task-clustered) headline findings:
 Grid task-sample note: 100-task cell means differ from the 20-task pilot
 (mistral hotpotqa BARE .375 vs .204) — the gate was a screen, not an
 estimate; fixed-factor scope unchanged.
+
+## 2026-07-26 — census fleet killed by a torch bump; venv hardened (ADR 21)
+
+**Incident.** A stray `uv pip install` re-resolved deps and bumped
+torch 2.11.0 -> 2.13.0+cu130 under the wheel-installed vLLM 0.25.1. Every
+`vllm serve` in the census/arms fleet crashed on ABI-broken compiled
+extensions — first `torchvision::nms does not exist`, then (after removing
+torchvision) `vllm.vllm_flash_attn requires the CUDA flash attention
+extensions (_vllm_fa2_C or _vllm_fa3_C)`. Each node hung to the 40-min
+health ceiling and produced nothing; the census total sat frozen at
+1,110,391. A bare `import vllm` passed the whole time (flash-attn loads
+lazily at serve), which briefly masked the problem.
+
+**Diagnosis.** torch 2.13.0 installed vs vLLM 0.25.1 requiring
+torch==2.11.0 (also torchvision 0.26.0, torchaudio 2.11.0). torch stayed
+CUDA-enabled (avail=True) -> pure version/ABI skew, not a CPU-wheel swap.
+
+**Fix (confirmed).** `pip install --no-deps --force-reinstall
+torch==2.11.0 torchvision==0.26.0 torchaudio==2.11.0`, then
+`scancel -u $USER && bash scripts/hpc/submit_census.sh`. Servers came up
+healthy on all 4 GPUs; census resumed 1,110,391 -> 1,118,301 within
+minutes.
+
+**Hardening shipped (ADR 21).** (1) `setup_env.sh` pins the matched set
+vllm==0.25.1 + torch trio, torch installed last `--no-deps`, and verifies
+the flash-attn C extension (not just `import vllm`). (2) `serve_node.sh`
+gained a ~5 s serve-path preflight that exits 6 with the fix before the
+40-min wait. (3) Watch-outs: a `transformers` deprecation warning contains
+the literal word "torchvision" (don't let a log grep false-positive on
+it); fast `FAILED ExitCode 3` links are the api_error/stay-pending resume
+path, not the venv break (which is exit 4 at the ceiling).
+
+Full narrative of this session (torch fix, 3k HotpotQA cap, roster 2→~9
+"census everything", paper + 110-paper literature sweep, causal-mediation
+review) → **docs/SESSION_2026-07-26.md**.

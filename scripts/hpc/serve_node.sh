@@ -45,6 +45,32 @@ if [ "$FAMILY" = "gpt-oss" ] && [ ! -f "${TIKTOKEN_ENCODINGS_BASE:-}/o200k_base.
   exit 5
 fi
 
+# Preflight: the compiled stack must actually LOAD before we spawn servers and
+# sink 40 min into the health wait. A stray `pip install` that bumps torch
+# ABI-breaks vLLM's C extensions (torchvision::nms, _vllm_fa2_C/_fa3_C) — but a
+# bare `import vllm` still passes because flash-attn loads lazily at serve time.
+# 2026-07-26: torch 2.11.0 -> 2.13.0 killed the whole census fleet this way,
+# each node hanging to the 40-min ceiling. This turns that into a ~5 s exit 6
+# with the fix (ADR 21). Exit codes: 3=api_errors, 4=health-timeout,
+# 5=harmony-vocab, 6=broken compiled stack.
+if ! python - <<'PY' 2>/dev/null
+import importlib, sys
+importlib.import_module("vllm")            # torchvision::nms / core ABI break shows here
+for m in ("vllm.vllm_flash_attn._vllm_fa2_C", "vllm.vllm_flash_attn._vllm_fa3_C"):
+    try:
+        importlib.import_module(m); sys.exit(0)
+    except Exception:
+        pass
+sys.exit(1)
+PY
+then
+  echo "[serve] FATAL: vLLM compiled extensions won't load (torch ABI mismatch?)."
+  echo "[serve] vLLM $(python -c 'import vllm;print(vllm.__version__)' 2>/dev/null || echo '?') needs its matched torch. On the LOGIN node:"
+  echo "        pip install --no-deps --force-reinstall torch==2.11.0 torchvision==0.26.0 torchaudio==2.11.0"
+  echo "        verify: python -c 'import vllm.vllm_flash_attn._vllm_fa2_C'"
+  exit 6
+fi
+
 START_TS=$(date +%s)
 PORTS=()
 # --served-model-name pins the API name to the hf_id: vLLM sometimes
