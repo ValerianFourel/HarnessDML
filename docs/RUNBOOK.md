@@ -144,6 +144,18 @@ python -m harnesslab.cli verify --panel results/<exp>_<m>_<b>/panel.parquet
 git add results/ && git commit -m "results: ..." && git push
 ```
 
+Publishing the panels (login node — compute nodes have no internet):
+
+```sh
+export HF_TOKEN=hf_...
+python scripts/publish_hf_dataset.py --repo <user>/harnesslab-panels --dry-run
+python scripts/publish_hf_dataset.py --repo <user>/harnesslab-panels
+```
+
+Uploads `results/` + `schema/` only, so raw text cannot leak; private unless
+`--public`. What the dataset contains, slice by slice, with the artifacts a
+reuser must know about: **docs/DATA_INVENTORY.md**.
+
 Then hand off for local review ("pull and review/analyze ..."). Aggregation
 is light — a login node is fine; `slurm/aggregate.sbatch` exists for
 `--dependency=afterok` chains if wanted.
