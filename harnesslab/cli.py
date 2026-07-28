@@ -167,6 +167,29 @@ def _cmd_progress(args) -> int:
     return 0
 
 
+def _cmd_plan(args) -> int:
+    """TSV of what to resubmit: consumed by scripts/hpc/resume_all.sh."""
+    from pathlib import Path
+
+    from . import progress as prog
+
+    root = Path(args.root or os.path.join(os.environ.get("SCRATCH", ""), "harnesslab"))
+    if not root.is_dir():
+        print(f"[plan] no such rollout root: {root}", file=sys.stderr)
+        return 2
+    rows = prog.walk(root, deep=args.deep, use_cache=not args.fresh)
+    todo = prog.plan(rows, prog.load_gates(), per_link=args.per_link)
+    for g in todo:
+        print(f"{g['model']}\t{g['bench']}\t{g['spec']}\t{g['remaining']}\t{g['links']}")
+    if not todo:
+        print("# nothing outstanding — every gated slice is DONE", file=sys.stderr)
+    else:
+        total = sum(g["remaining"] for g in todo)
+        print(f"# {len(todo)} slices, {total:,} rollouts, "
+              f"{sum(g['links'] for g in todo)} links", file=sys.stderr)
+    return 0
+
+
 def _cmd_fits_check(args) -> int:
     from .fits import check_registry
 
@@ -276,6 +299,15 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--n-tasks", type=int, default=100)
     p.add_argument("--set", action="append", metavar="KEY=VALUE")
     p.set_defaults(fn=_cmd_budget)
+
+    p = sub.add_parser("plan", help="TSV of chains to resubmit, sized from the work left")
+    p.add_argument("--root", default=None, help="rollout root (default $SCRATCH/harnesslab)")
+    p.add_argument("--deep", action="store_true",
+                   help="true remaining (in-scope, de-duplicated) — recommended")
+    p.add_argument("--fresh", action="store_true", help="ignore the deep-scan cache")
+    p.add_argument("--per-link", type=int, default=40_000,
+                   help="rollouts one 11.5 h link is assumed to produce (default 40000)")
+    p.set_defaults(fn=_cmd_plan)
 
     p = sub.add_parser("fits-check", help="params x dtype vs GH200 memory -> serving_mode")
     p.set_defaults(fn=_cmd_fits_check)

@@ -349,7 +349,9 @@ def gaps(rows: list[SliceProgress], gates: dict) -> list[dict]:
                       "sbatch slurm/run_experiment.sbatch")
             if r is None:
                 out.append({"model": model, "bench": bench, "state": "NO STORE",
-                            "have": 0, "target": None, "submit": submit,
+                            "have": 0, "target": ruling_target(status, bench),
+                            "remaining": ruling_target(status, bench),
+                            "spec": spec_file, "submit": submit,
                             "note": (ruling or {}).get("note", "")})
             elif r.status != "DONE" and r.remaining:
                 note = f"{r.remaining} rollouts left"
@@ -357,8 +359,9 @@ def gaps(rows: list[SliceProgress], gates: dict) -> list[dict]:
                     note += f" — nothing has written it for {r.age_s / 3600:.0f} h; " \
                             "chain exhausted?"
                 out.append({"model": model, "bench": bench, "state": r.status,
-                            "have": r.done, "target": r.target, "submit": submit,
-                            "note": note})
+                            "have": r.done, "target": r.target,
+                            "remaining": r.remaining, "spec": spec_file,
+                            "submit": submit, "note": note})
     # stalled slices first: they need a resubmission, the others need patience
     return sorted(out, key=lambda g: (g["state"] != "STALL?", g["model"], g["bench"]))
 
@@ -504,3 +507,26 @@ def summarize(rows: list[SliceProgress], deep: bool = False, gates: dict | None 
     if not deep:
         out.append("(--deep for the real numerator: orphans and duplicates removed)")
     return "\n".join(out)
+
+
+def plan(rows: list[SliceProgress], gates: dict, per_link: int = 40_000) -> list[dict]:
+    """Chain lengths for every unfinished gated slice, sized from the work left.
+
+    Chains draining is the recurring failure: they are submitted at a fixed
+    length, links die at the health ceiling or hit walltime, and when the last
+    one exits the slice simply stops — 18 slices stalled together this way on
+    2026-07-27/28. Sizing the resubmission from `remaining` (and over-
+    provisioning, since a surplus link finds nothing to do and exits in
+    minutes) is what makes the resume safe to run unattended.
+
+    per_link is deliberately conservative: mvp_grid's planning floor is 4000
+    rollouts/node-hour over an 11.5 h window, so 40k is under one link's worth
+    for every model measured so far.
+    """
+    out = []
+    for g in gaps(rows, gates):
+        remaining = g.get("remaining") or 0
+        if remaining <= 0:
+            continue
+        out.append({**g, "links": max(1, -(-remaining // per_link))})
+    return out

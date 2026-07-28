@@ -208,3 +208,18 @@ Each entry: what we decided, and why. Reversals get a new entry, never an edit.
     leaves a slice stalled indefinitely. `HEALTH_WAIT_S` (default 5400)
     overrides it per submission, and the failure path now prints the last 5
     lines of the server log so exit 4 says WHY instead of just "FAILED".
+26. **Resume is planned from the remaining work, not from a guessed chain
+    length.** Chains are submitted at a fixed number of links; links die at
+    the health ceiling or exit at the 11.5 h walltime, and when the last one
+    goes the slice simply stops producing — silently, because a store that is
+    not being written looks exactly like one that is between links. On
+    2026-07-27/28 all 18 in-flight slices drained within a few hours of each
+    other and the fleet sat idle. `harnesslab plan` emits, per unfinished
+    gated slice, the rollouts still owed and a chain length sized from them
+    (`--per-link`, default 40,000 — under one link at mvp_grid's conservative
+    4000/node-hour floor); `scripts/hpc/resume_all.sh` consumes it and
+    submits. Two properties make it safe to re-run unattended: a slice with a
+    link already queued is SKIPPED, so the single-writer rule cannot be
+    violated, and an over-long chain costs nothing because a surplus link
+    finds no pending rollouts and exits in minutes. Under-provisioning is the
+    only expensive error, so `plan` rounds up.

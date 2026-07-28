@@ -230,6 +230,32 @@ def test_ruling_target_exists_without_a_store():
     assert progress.ruling_target("dropped", "math") == 0
 
 
+def test_plan_sizes_chains_from_the_work_left():
+    """Chains drain and every slice stops at once; the resume has to size
+    itself, not repeat whatever length was guessed the first time."""
+    gates = {"models": {"m": {"gsm8k": {"status": "census"},
+                              "math": {"status": "census"}}}}
+    partial = progress.SliceProgress(exp="mvp_grid", model="m", bench="gsm8k",
+                                     path=None, lines=11_040, unique=11_040,
+                                     target=211_040, age_s=9 * 3600)
+    todo = {g["bench"]: g for g in progress.plan([partial], gates, per_link=40_000)}
+
+    assert todo["gsm8k"]["remaining"] == 200_000
+    assert todo["gsm8k"]["links"] == 5              # 200k / 40k
+    assert todo["gsm8k"]["state"] == "STALL?"       # stalled slices sort first
+    # a gated band with no store at all is planned from the ruling's target
+    assert todo["math"]["remaining"] == 32 * 262 * 5
+    assert todo["math"]["links"] == 2               # ceil(41,920 / 40,000)
+    assert todo["math"]["spec"].endswith("mvp_grid.yaml")
+
+
+def test_plan_skips_finished_slices():
+    gates = {"models": {"m": {"math": {"status": "census"}}}}
+    done = progress.SliceProgress(exp="mvp_grid", model="m", bench="math", path=None,
+                                  lines=41_920, unique=41_920, target=41_920)
+    assert progress.plan([done], gates) == []
+
+
 def test_gaps_lists_gated_slices_with_no_store():
     gates = {"models": {
         "m_done": {"gsm8k": {"status": "census"}},
