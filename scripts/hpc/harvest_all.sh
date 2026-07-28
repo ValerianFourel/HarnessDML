@@ -27,7 +27,12 @@ for d in "$SCRATCH"/harnesslab/*/rollouts_*; do
   [ -f "$d/rollouts.jsonl" ] || continue
   rel="${d#"$SCRATCH"/harnesslab/}"
   [ -n "$ONLY" ] && [[ "$rel" != *"$ONLY"* ]] && continue
-  case "$rel" in *_bad_*) skipped+=" $rel"; continue;; esac   # quarantined runs
+  # quarantined runs, and the Phase-2 smoke slice: its 20 rollouts predate
+  # `chars_out_reasoning` in the panel schema, so re-aggregating it fails the
+  # schema check by design. It was a connectivity test, never a deliverable —
+  # its original panel stays committed as history. Do NOT "fix" this by
+  # backfilling missing columns: the loud failure is the schema guard working.
+  case "$rel" in *_bad_*|smoke_live/*) skipped+=" $rel"; continue;; esac
   exp="${rel%%/*}"; slice="${rel#*/rollouts_}"
   out="results/${exp}_${slice}"
   echo

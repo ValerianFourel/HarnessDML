@@ -81,6 +81,15 @@ recorded in `configs/gates.yaml`, and they are the only place `gpt_oss_20b`
 `analysis/model_matrix.sh` reads them as a cross-model BARE/T/T+SR+R/All-In
 table.
 
+### Not deliverables
+
+`smoke_live` (Phase-2 connectivity test, 20 rollouts) and any `*_bad_*`
+quarantined store are skipped by `harvest_all.sh`. The smoke slice predates
+`chars_out_reasoning` in the panel schema, so re-aggregating it fails the
+schema check — correctly. Its Phase-2 panel stays committed as history; the
+fix is never to backfill missing columns, because that would turn the schema
+guard into a rubber stamp.
+
 ## 5. What one row is
 
 `schema/panel_schema.yaml` + `schema/column_roles.yaml` are the contract; the
