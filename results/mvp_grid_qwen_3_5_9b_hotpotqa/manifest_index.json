@@ -217,15 +217,17 @@
         "submission": "8c80436087cc"
       }
     },
-    "created_utc": "2026-07-24T10:20:36+00:00",
+    "created_utc": "2026-07-27T14:01:57+00:00",
     "exp_config_sha256": "83b6237c0ea85705728aea7c2de158a5974abbfaa60e98ae8c0f68f6ed68a33e",
     "exp_id": "mvp_grid_qwen_3_5_9b_hotpotqa",
     "extra": {
-      "run_id": "1034799"
+      "run_id": "1047237",
+      "tasks_file": "configs/tasks/hotpotqa.jsonl",
+      "tasks_sha256": "0b1caa878780e1c3396c5715d4e4dbb5b0223cd4525a1aa295d345eba9d3826c"
     },
     "git": {
       "dirty": null,
-      "sha": "bb94b696ab83123e5f8d8f42b77cc38f1bcf7c03"
+      "sha": "bbedf0b59f7ee4604b44affba097e6d988a8215f"
     },
     "model": {
       "family": "qwen",
@@ -233,7 +235,7 @@
       "model_id": "qwen_3_5_9b",
       "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a"
     },
-    "node": "jpbo-016-39.jupiter.internal",
+    "node": "jpbo-016-08.jupiter.internal",
     "sampling": {
       "max_new_tokens_step": 256,
       "seeds": [

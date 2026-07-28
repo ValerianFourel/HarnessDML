@@ -1,0 +1,70 @@
+{
+  "client": {
+    "chat_template_kwargs": {},
+    "type": "MultiEndpointClient",
+    "vllm_version": "0.25.1"
+  },
+  "component_template_hashes": {
+    "BARE": {
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T+M+SR+R": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T": {
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T+SR+R": {
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    }
+  },
+  "created_utc": "2026-07-27T09:43:11+00:00",
+  "exp_config_sha256": "8c5eb41a9bd32300ec2648a0e81caffa629c6b42c964ac27299f2ea0a6527ec2",
+  "exp_id": "mvp_headline_topup_mistral_small_3_2_24b_math",
+  "extra": {
+    "run_id": "1051248",
+    "tasks_file": "configs/tasks/math.jsonl",
+    "tasks_sha256": "a091e82d66efb9d3ded3019129aeaadfc77a1bb7b7370c0c230e0023cfac5582"
+  },
+  "git": {
+    "dirty": null,
+    "sha": "eda8766c5056006b353e673be410be260634871a"
+  },
+  "model": {
+    "family": "mistral",
+    "hf_id": "mistralai/Mistral-Small-3.2-24B-Instruct-2506",
+    "model_id": "mistral_small_3_2_24b",
+    "revision": "95a6d26c4bfb886c58daf9d3f7332c857cb27b43"
+  },
+  "node": "jpbo-069-47.jupiter.internal",
+  "sampling": {
+    "max_new_tokens_step": 512,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "temperature": 0.1,
+    "top_p": 0.9
+  }
+}

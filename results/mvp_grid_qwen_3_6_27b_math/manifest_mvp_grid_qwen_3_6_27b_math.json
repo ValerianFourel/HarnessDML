@@ -1,0 +1,250 @@
+{
+  "client": {
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "type": "MultiEndpointClient",
+    "vllm_version": "0.25.1"
+  },
+  "component_template_hashes": {
+    "BARE": {
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "M": {
+      "M:t1": "cbb6961712c6",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "M+R": {
+      "M:t1": "cbb6961712c6",
+      "R:t1": "40afefce84f8",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "M+SR": {
+      "M:t1": "cbb6961712c6",
+      "SR:t1": "52161397e707",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "M+SR+R": {
+      "M:t1": "cbb6961712c6",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P": {
+      "P:t1": "58b2cac86201",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+M": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+M+R": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+M+SR": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "SR:t1": "52161397e707",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+M+SR+R": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+R": {
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+SR": {
+      "P:t1": "58b2cac86201",
+      "SR:t1": "52161397e707",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+SR+R": {
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T": {
+      "P:t1": "58b2cac86201",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T+M": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T+M+R": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T+M+SR": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T+M+SR+R": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T+R": {
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T+SR": {
+      "P:t1": "58b2cac86201",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "P+T+SR+R": {
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "R": {
+      "R:t1": "40afefce84f8",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "SR": {
+      "SR:t1": "52161397e707",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "SR+R": {
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T": {
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T+M": {
+      "M:t1": "cbb6961712c6",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T+M+R": {
+      "M:t1": "cbb6961712c6",
+      "R:t1": "40afefce84f8",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T+M+SR": {
+      "M:t1": "cbb6961712c6",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T+M+SR+R": {
+      "M:t1": "cbb6961712c6",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T+R": {
+      "R:t1": "40afefce84f8",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T+SR": {
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    },
+    "T+SR+R": {
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "575ee6e6653f",
+      "base": "39c51dee47fc",
+      "submission": "8c80436087cc"
+    }
+  },
+  "created_utc": "2026-07-27T08:53:02+00:00",
+  "exp_config_sha256": "e268a6629967de5d01b6572dd94783d563d998f3fffa8ae7fc162e9a62e6f112",
+  "exp_id": "mvp_grid_qwen_3_6_27b_math",
+  "extra": {
+    "run_id": "1050583",
+    "tasks_file": "configs/tasks/math.jsonl",
+    "tasks_sha256": "a091e82d66efb9d3ded3019129aeaadfc77a1bb7b7370c0c230e0023cfac5582"
+  },
+  "git": {
+    "dirty": null,
+    "sha": "63c9eb7b900c5fe12dd3b01ccf9d0188e063e700"
+  },
+  "model": {
+    "family": "qwen",
+    "hf_id": "Qwen/Qwen3.6-27B",
+    "model_id": "qwen_3_6_27b",
+    "revision": "6a9e13bd6fc8f0983b9b99948120bc37f49c13e9"
+  },
+  "node": "jpbo-002-40.jupiter.internal",
+  "sampling": {
+    "max_new_tokens_step": 512,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "temperature": 0.1,
+    "top_p": 0.9
+  }
+}

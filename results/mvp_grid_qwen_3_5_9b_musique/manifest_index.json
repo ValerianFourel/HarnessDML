@@ -217,15 +217,17 @@
         "submission": "8c80436087cc"
       }
     },
-    "created_utc": "2026-07-24T11:02:07+00:00",
+    "created_utc": "2026-07-27T00:20:51+00:00",
     "exp_config_sha256": "ca2685271fa286b4845ad18f222aef97b089b19a31625361c8f411e74f8c9c77",
     "exp_id": "mvp_grid_qwen_3_5_9b_musique",
     "extra": {
-      "run_id": "1034799"
+      "run_id": "1047239",
+      "tasks_file": "configs/tasks/musique.jsonl",
+      "tasks_sha256": "b4a6cefee3af06ec2f280b727d4b9b73bd51851adaf17a2dd52167ef102217e8"
     },
     "git": {
       "dirty": null,
-      "sha": "14c82f66af5124414746a31467cc0dc8a721deb4"
+      "sha": "2bde1110e4a20ebc23ff86c9120578df68c2199a"
     },
     "model": {
       "family": "qwen",
@@ -233,7 +235,7 @@
       "model_id": "qwen_3_5_9b",
       "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a"
     },
-    "node": "jpbo-016-39.jupiter.internal",
+    "node": "jpbo-026-05.jupiter.internal",
     "sampling": {
       "max_new_tokens_step": 512,
       "seeds": [

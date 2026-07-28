@@ -1,0 +1,252 @@
+{
+  "manifest_mvp_grid_qwen_3_6_27b_musique.json": {
+    "client": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "type": "MultiEndpointClient",
+      "vllm_version": "0.25.1"
+    },
+    "component_template_hashes": {
+      "BARE": {
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "M": {
+        "M:t1": "cbb6961712c6",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "M+R": {
+        "M:t1": "cbb6961712c6",
+        "R:t1": "40afefce84f8",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "M+SR": {
+        "M:t1": "cbb6961712c6",
+        "SR:t1": "52161397e707",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "M+SR+R": {
+        "M:t1": "cbb6961712c6",
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P": {
+        "P:t1": "58b2cac86201",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+M": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+M+R": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+M+SR": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "SR:t1": "52161397e707",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+M+SR+R": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+R": {
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+SR": {
+        "P:t1": "58b2cac86201",
+        "SR:t1": "52161397e707",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+SR+R": {
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T": {
+        "P:t1": "58b2cac86201",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T+M": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T+M+R": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T+M+SR": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T+M+SR+R": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T+R": {
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T+SR": {
+        "P:t1": "58b2cac86201",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T+SR+R": {
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "R": {
+        "R:t1": "40afefce84f8",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "SR": {
+        "SR:t1": "52161397e707",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "SR+R": {
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T": {
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T+M": {
+        "M:t1": "cbb6961712c6",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T+M+R": {
+        "M:t1": "cbb6961712c6",
+        "R:t1": "40afefce84f8",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T+M+SR": {
+        "M:t1": "cbb6961712c6",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T+M+SR+R": {
+        "M:t1": "cbb6961712c6",
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T+R": {
+        "R:t1": "40afefce84f8",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T+SR": {
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T+SR+R": {
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      }
+    },
+    "created_utc": "2026-07-27T08:52:52+00:00",
+    "exp_config_sha256": "b80f73d9520fa4c66484ba30d980710de5caea48c4644a8db549fe902e2afcc3",
+    "exp_id": "mvp_grid_qwen_3_6_27b_musique",
+    "extra": {
+      "run_id": "1050576",
+      "tasks_file": "configs/tasks/musique.jsonl",
+      "tasks_sha256": "b4a6cefee3af06ec2f280b727d4b9b73bd51851adaf17a2dd52167ef102217e8"
+    },
+    "git": {
+      "dirty": null,
+      "sha": "63c9eb7b900c5fe12dd3b01ccf9d0188e063e700"
+    },
+    "model": {
+      "family": "qwen",
+      "hf_id": "Qwen/Qwen3.6-27B",
+      "model_id": "qwen_3_6_27b",
+      "revision": "6a9e13bd6fc8f0983b9b99948120bc37f49c13e9"
+    },
+    "node": "jpbo-122-18.jupiter.internal",
+    "sampling": {
+      "max_new_tokens_step": 512,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "temperature": 0.1,
+      "top_p": 0.9
+    }
+  }
+}

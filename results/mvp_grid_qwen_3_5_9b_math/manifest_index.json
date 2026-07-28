@@ -217,15 +217,17 @@
         "submission": "8c80436087cc"
       }
     },
-    "created_utc": "2026-07-24T13:10:40+00:00",
+    "created_utc": "2026-07-26T12:52:20+00:00",
     "exp_config_sha256": "6734bd9b2bdb061d3ecbccf7814f8c0aed9a92a5d86837b8b5e7006720df745d",
     "exp_id": "mvp_grid_qwen_3_5_9b_math",
     "extra": {
-      "run_id": "1034799"
+      "run_id": "1047244",
+      "tasks_file": "configs/tasks/math.jsonl",
+      "tasks_sha256": "a091e82d66efb9d3ded3019129aeaadfc77a1bb7b7370c0c230e0023cfac5582"
     },
     "git": {
       "dirty": null,
-      "sha": "4a08693b2677d30cee69b0ccceddefe01ae3cfcb"
+      "sha": "0b1173e9d32ed3405c362ca27102fe4e348480d4"
     },
     "model": {
       "family": "qwen",
@@ -233,7 +235,7 @@
       "model_id": "qwen_3_5_9b",
       "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a"
     },
-    "node": "jpbo-016-39.jupiter.internal",
+    "node": "jpbo-083-10.jupiter.internal",
     "sampling": {
       "max_new_tokens_step": 512,
       "seeds": [

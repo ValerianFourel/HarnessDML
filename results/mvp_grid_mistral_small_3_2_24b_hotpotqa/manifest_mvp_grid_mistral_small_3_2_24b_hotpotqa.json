@@ -214,15 +214,17 @@
       "submission": "8c80436087cc"
     }
   },
-  "created_utc": "2026-07-24T10:20:18+00:00",
+  "created_utc": "2026-07-27T11:52:03+00:00",
   "exp_config_sha256": "e29ea6cc7e118d508df4f65a30cf1010a8ef3ec344fd77eccab12a6a5a478567",
   "exp_id": "mvp_grid_mistral_small_3_2_24b_hotpotqa",
   "extra": {
-    "run_id": "1034798"
+    "run_id": "1047213",
+    "tasks_file": "configs/tasks/hotpotqa.jsonl",
+    "tasks_sha256": "0b1caa878780e1c3396c5715d4e4dbb5b0223cd4525a1aa295d345eba9d3826c"
   },
   "git": {
     "dirty": null,
-    "sha": "bb94b696ab83123e5f8d8f42b77cc38f1bcf7c03"
+    "sha": "35b75668201c94caed3322b497dd4c5fc4f90042"
   },
   "model": {
     "family": "mistral",
@@ -230,7 +232,7 @@
     "model_id": "mistral_small_3_2_24b",
     "revision": "95a6d26c4bfb886c58daf9d3f7332c857cb27b43"
   },
-  "node": "jpbo-010-26.jupiter.internal",
+  "node": "jpbo-001-26.jupiter.internal",
   "sampling": {
     "max_new_tokens_step": 256,
     "seeds": [

@@ -1,0 +1,252 @@
+{
+  "manifest_mvp_grid_qwen_3_5_122b_hotpotqa.json": {
+    "client": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "type": "OpenAICompatClient",
+      "vllm_version": "0.25.1"
+    },
+    "component_template_hashes": {
+      "BARE": {
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "M": {
+        "M:t1": "cbb6961712c6",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "M+R": {
+        "M:t1": "cbb6961712c6",
+        "R:t1": "40afefce84f8",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "M+SR": {
+        "M:t1": "cbb6961712c6",
+        "SR:t1": "52161397e707",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "M+SR+R": {
+        "M:t1": "cbb6961712c6",
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P": {
+        "P:t1": "58b2cac86201",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+M": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+M+R": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+M+SR": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "SR:t1": "52161397e707",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+M+SR+R": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+R": {
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+SR": {
+        "P:t1": "58b2cac86201",
+        "SR:t1": "52161397e707",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+SR+R": {
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T": {
+        "P:t1": "58b2cac86201",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T+M": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T+M+R": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T+M+SR": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T+M+SR+R": {
+        "M:t1": "cbb6961712c6",
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T+R": {
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T+SR": {
+        "P:t1": "58b2cac86201",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "P+T+SR+R": {
+        "P:t1": "58b2cac86201",
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "R": {
+        "R:t1": "40afefce84f8",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "SR": {
+        "SR:t1": "52161397e707",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "SR+R": {
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T": {
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T+M": {
+        "M:t1": "cbb6961712c6",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T+M+R": {
+        "M:t1": "cbb6961712c6",
+        "R:t1": "40afefce84f8",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T+M+SR": {
+        "M:t1": "cbb6961712c6",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T+M+SR+R": {
+        "M:t1": "cbb6961712c6",
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T+R": {
+        "R:t1": "40afefce84f8",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T+SR": {
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      },
+      "T+SR+R": {
+        "R:t1": "40afefce84f8",
+        "SR:t1": "52161397e707",
+        "T:t1": "d31f0c8af38c",
+        "base": "4e571b272ebb",
+        "submission": "8c80436087cc"
+      }
+    },
+    "created_utc": "2026-07-27T09:58:52+00:00",
+    "exp_config_sha256": "c67e0fe423f53dcef0d3caa54b3a2c5e3ac0fcd141f478d980e58b16fbe72dc9",
+    "exp_id": "mvp_grid_qwen_3_5_122b_hotpotqa",
+    "extra": {
+      "run_id": "1051210",
+      "tasks_file": "configs/tasks/hotpotqa.jsonl",
+      "tasks_sha256": "0b1caa878780e1c3396c5715d4e4dbb5b0223cd4525a1aa295d345eba9d3826c"
+    },
+    "git": {
+      "dirty": null,
+      "sha": "eda8766c5056006b353e673be410be260634871a"
+    },
+    "model": {
+      "family": "qwen",
+      "hf_id": "Qwen/Qwen3.5-122B-A10B",
+      "model_id": "qwen_3_5_122b",
+      "revision": "dc4d348443bc740c68e2d77492492c11606384d5"
+    },
+    "node": "jpbo-032-44.jupiter.internal",
+    "sampling": {
+      "max_new_tokens_step": 256,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "temperature": 0.1,
+      "top_p": 0.9
+    }
+  }
+}

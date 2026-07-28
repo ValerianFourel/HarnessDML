@@ -215,15 +215,17 @@
         "submission": "8c80436087cc"
       }
     },
-    "created_utc": "2026-07-24T11:26:33+00:00",
+    "created_utc": "2026-07-27T14:48:51+00:00",
     "exp_config_sha256": "91b87d1b3f7d5de8199608e7fa54e4894e4c8f1cb66976bccfcb343d5249a039",
     "exp_id": "mvp_grid_mistral_small_3_2_24b_musique",
     "extra": {
-      "run_id": "1034798"
+      "run_id": "1047227",
+      "tasks_file": "configs/tasks/musique.jsonl",
+      "tasks_sha256": "b4a6cefee3af06ec2f280b727d4b9b73bd51851adaf17a2dd52167ef102217e8"
     },
     "git": {
       "dirty": null,
-      "sha": "14c82f66af5124414746a31467cc0dc8a721deb4"
+      "sha": "bbedf0b59f7ee4604b44affba097e6d988a8215f"
     },
     "model": {
       "family": "mistral",
@@ -231,7 +233,7 @@
       "model_id": "mistral_small_3_2_24b",
       "revision": "95a6d26c4bfb886c58daf9d3f7332c857cb27b43"
     },
-    "node": "jpbo-010-26.jupiter.internal",
+    "node": "jpbo-019-34.jupiter.internal",
     "sampling": {
       "max_new_tokens_step": 512,
       "seeds": [

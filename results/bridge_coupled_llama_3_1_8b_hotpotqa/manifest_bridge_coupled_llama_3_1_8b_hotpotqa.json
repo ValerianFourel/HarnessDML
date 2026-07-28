@@ -1,0 +1,213 @@
+{
+  "client": {
+    "chat_template_kwargs": {},
+    "type": "MultiEndpointClient",
+    "vllm_version": "0.25.1"
+  },
+  "component_template_hashes": {
+    "BARE": {
+      "base": "4e571b272ebb"
+    },
+    "M": {
+      "M:t1": "cbb6961712c6",
+      "base": "4e571b272ebb"
+    },
+    "M+R": {
+      "M:t1": "cbb6961712c6",
+      "R:t1": "40afefce84f8",
+      "base": "4e571b272ebb"
+    },
+    "M+SR": {
+      "M:t1": "cbb6961712c6",
+      "SR:t1": "52161397e707",
+      "base": "4e571b272ebb"
+    },
+    "M+SR+R": {
+      "M:t1": "cbb6961712c6",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "base": "4e571b272ebb"
+    },
+    "P": {
+      "P:t1": "58b2cac86201",
+      "base": "4e571b272ebb"
+    },
+    "P+M": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "base": "4e571b272ebb"
+    },
+    "P+M+R": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "base": "4e571b272ebb"
+    },
+    "P+M+SR": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "SR:t1": "52161397e707",
+      "base": "4e571b272ebb"
+    },
+    "P+M+SR+R": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "base": "4e571b272ebb"
+    },
+    "P+R": {
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "base": "4e571b272ebb"
+    },
+    "P+SR": {
+      "P:t1": "58b2cac86201",
+      "SR:t1": "52161397e707",
+      "base": "4e571b272ebb"
+    },
+    "P+SR+R": {
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "base": "4e571b272ebb"
+    },
+    "P+T": {
+      "P:t1": "58b2cac86201",
+      "T:t1": "9727dde7c8ab",
+      "base": "4e571b272ebb"
+    },
+    "P+T+M": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "T:t1": "9727dde7c8ab",
+      "base": "4e571b272ebb"
+    },
+    "P+T+M+R": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "T:t1": "9727dde7c8ab",
+      "base": "4e571b272ebb"
+    },
+    "P+T+M+SR": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "SR:t1": "52161397e707",
+      "T:t1": "9727dde7c8ab",
+      "base": "4e571b272ebb"
+    },
+    "P+T+M+SR+R": {
+      "M:t1": "cbb6961712c6",
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "9727dde7c8ab",
+      "base": "4e571b272ebb"
+    },
+    "P+T+R": {
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "T:t1": "9727dde7c8ab",
+      "base": "4e571b272ebb"
+    },
+    "P+T+SR": {
+      "P:t1": "58b2cac86201",
+      "SR:t1": "52161397e707",
+      "T:t1": "9727dde7c8ab",
+      "base": "4e571b272ebb"
+    },
+    "P+T+SR+R": {
+      "P:t1": "58b2cac86201",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "9727dde7c8ab",
+      "base": "4e571b272ebb"
+    },
+    "R": {
+      "R:t1": "40afefce84f8",
+      "base": "4e571b272ebb"
+    },
+    "SR": {
+      "SR:t1": "52161397e707",
+      "base": "4e571b272ebb"
+    },
+    "SR+R": {
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "base": "4e571b272ebb"
+    },
+    "T": {
+      "T:t1": "9727dde7c8ab",
+      "base": "4e571b272ebb"
+    },
+    "T+M": {
+      "M:t1": "cbb6961712c6",
+      "T:t1": "9727dde7c8ab",
+      "base": "4e571b272ebb"
+    },
+    "T+M+R": {
+      "M:t1": "cbb6961712c6",
+      "R:t1": "40afefce84f8",
+      "T:t1": "9727dde7c8ab",
+      "base": "4e571b272ebb"
+    },
+    "T+M+SR": {
+      "M:t1": "cbb6961712c6",
+      "SR:t1": "52161397e707",
+      "T:t1": "9727dde7c8ab",
+      "base": "4e571b272ebb"
+    },
+    "T+M+SR+R": {
+      "M:t1": "cbb6961712c6",
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "9727dde7c8ab",
+      "base": "4e571b272ebb"
+    },
+    "T+R": {
+      "R:t1": "40afefce84f8",
+      "T:t1": "9727dde7c8ab",
+      "base": "4e571b272ebb"
+    },
+    "T+SR": {
+      "SR:t1": "52161397e707",
+      "T:t1": "9727dde7c8ab",
+      "base": "4e571b272ebb"
+    },
+    "T+SR+R": {
+      "R:t1": "40afefce84f8",
+      "SR:t1": "52161397e707",
+      "T:t1": "9727dde7c8ab",
+      "base": "4e571b272ebb"
+    }
+  },
+  "created_utc": "2026-07-27T09:43:07+00:00",
+  "exp_config_sha256": "1488d75352578570d6a0a65b64e0bb594172eb19a5377b18cb065cb4981f8291",
+  "exp_id": "bridge_coupled_llama_3_1_8b_hotpotqa",
+  "extra": {
+    "run_id": "1051244",
+    "tasks_file": "configs/tasks/hotpotqa.jsonl",
+    "tasks_sha256": "0b1caa878780e1c3396c5715d4e4dbb5b0223cd4525a1aa295d345eba9d3826c"
+  },
+  "git": {
+    "dirty": null,
+    "sha": "eda8766c5056006b353e673be410be260634871a"
+  },
+  "model": {
+    "family": "llama",
+    "hf_id": "meta-llama/Llama-3.1-8B-Instruct",
+    "model_id": "llama_3_1_8b",
+    "revision": "0e9e39f249a16976918f6564b8830bc894c89659"
+  },
+  "node": "jpbo-020-39.jupiter.internal",
+  "sampling": {
+    "max_new_tokens_step": 256,
+    "seeds": [
+      0,
+      1
+    ],
+    "temperature": 0.1,
+    "top_p": 0.9
+  }
+}
