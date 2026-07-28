@@ -41,6 +41,15 @@ done
 
 hr "3. PENDING: why  ((Dependency) = healthy resume chain)"
 squeue -u "$USER" -h -t PD -o "%R" | sort | uniq -c | sort -rn
+# running=0 with a full queue reads like a disaster and is usually just this
+if squeue -u "$USER" -h -t PD -o "%R" | grep -qi "reserv\|maint"; then
+  echo
+  echo "  >> CLUSTER MAINTENANCE RESERVATION — jobs cannot start until it lifts."
+  echo "     Nothing is broken and nothing needs resubmitting; chains resume by"
+  echo "     themselves. When does it end:"
+  scontrol show reservation 2>/dev/null | grep -E "ReservationName|StartTime|EndTime" \
+    | head -6 | sed 's/^/       /'
+fi
 
 hr "4. OUTCOMES — last 24 h  (Start included: old incidents look current without it)"
 sacct -u "$USER" --starttime now-24hours -X -n -o State%14 2>/dev/null \

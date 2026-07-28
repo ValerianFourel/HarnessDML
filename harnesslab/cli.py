@@ -187,6 +187,9 @@ def _cmd_plan(args) -> int:
         total = sum(g["remaining"] for g in todo)
         print(f"# {len(todo)} slices, {total:,} rollouts, "
               f"{sum(g['links'] for g in todo)} links", file=sys.stderr)
+        print("# this is every UNFINISHED slice, queued or not — resume_all.sh "
+              "checks squeue and skips the ones that already have a link",
+              file=sys.stderr)
     return 0
 
 
