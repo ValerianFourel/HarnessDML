@@ -21,6 +21,7 @@ comes from reading the store, counting in-scope, unique-cell-task-seed rows.
 from __future__ import annotations
 
 import json
+import os
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -189,9 +190,50 @@ def scan_store(path: Path, keep: set[str] | None) -> dict:
             "orphans": orphans, "dupes": dupes, "corrupt": corrupt}
 
 
-def walk(root: Path, deep: bool = False, only: str | None = None) -> list[SliceProgress]:
-    """Every rollout store under <root>/<exp>/rollouts_<model>_<bench>/."""
+CACHE_NAME = ".progress_cache.json"
+CACHE_FIELDS = ("lines", "in_scope", "unique", "orphans", "dupes", "corrupt")
+
+
+def _load_cache(root: Path) -> dict:
+    p = Path(root) / CACHE_NAME
+    if not p.exists():
+        return {}
+    try:
+        return json.loads(p.read_text())
+    except (json.JSONDecodeError, OSError):
+        return {}          # a corrupt cache costs a rescan, never a wrong number
+
+
+def _save_cache(root: Path, cache: dict) -> None:
+    p = Path(root) / CACHE_NAME
+    try:
+        tmp = p.with_suffix(".tmp")
+        tmp.write_text(json.dumps(cache))
+        tmp.replace(p)     # atomic: a killed run never leaves a half-written cache
+    except OSError:
+        pass               # read-only root is fine; caching is an optimization
+
+
+def _cache_key(jsonl: Path, keep: set[str] | None) -> dict:
+    """Stores are append-only, so (size, mtime) identifies their content, and
+    the scope size invalidates a cached scan taken under a different task cap."""
+    st = jsonl.stat()
+    return {"size": st.st_size, "mtime_ns": st.st_mtime_ns,
+            "scope_n": -1 if keep is None else len(keep)}
+
+
+def walk(root: Path, deep: bool = False, only: str | None = None,
+         use_cache: bool = True, workers: int | None = None) -> list[SliceProgress]:
+    """Every rollout store under <root>/<exp>/rollouts_<model>_<bench>/.
+
+    A deep walk reads every byte of every store — minutes on this dataset, and
+    most of it wasted: a finished slice has not changed in days. Unchanged
+    stores are served from a cache keyed on (size, mtime, scope), and the ones
+    that did change are scanned in parallel.
+    """
     out: list[SliceProgress] = []
+    cache = _load_cache(root) if (deep and use_cache) else {}
+    pending: list[tuple[SliceProgress, Path, set[str] | None, str]] = []
     for store in sorted(Path(root).glob("*/rollouts_*")):
         jsonl = store / "rollouts.jsonl"
         if not jsonl.exists():
@@ -223,17 +265,59 @@ def walk(root: Path, deep: bool = False, only: str | None = None) -> list[SliceP
 
         if deep:
             keep = in_scope_ids(spec, bench) if spec is not None else None
-            stats = scan_store(jsonl, keep)
-            sp.lines = stats["lines"]
-            sp.in_scope = stats["in_scope"]
-            sp.unique = stats["unique"]
-            sp.orphans = stats["orphans"]
-            sp.dupes = stats["dupes"]
-            sp.corrupt = stats["corrupt"]
+            key = _cache_key(jsonl, keep)
+            hit = cache.get(rel)
+            if hit and all(hit.get(k) == v for k, v in key.items()):
+                _apply_stats(sp, hit)
+            else:
+                pending.append((sp, jsonl, keep, rel))
         else:
             sp.lines = count_lines(jsonl)
         out.append(sp)
+
+    if pending:
+        for sp, jsonl, keep, rel in _scan_all(pending, workers):
+            cache[rel] = {**_cache_key(jsonl, keep),
+                          **{k: getattr(sp, k) for k in CACHE_FIELDS}}
+        if use_cache:
+            _save_cache(root, cache)
     return out
+
+
+def _apply_stats(sp: SliceProgress, stats: dict) -> None:
+    sp.lines = stats["lines"]
+    sp.in_scope = stats["in_scope"]
+    sp.unique = stats["unique"]
+    sp.orphans = stats["orphans"]
+    sp.dupes = stats["dupes"]
+    sp.corrupt = stats["corrupt"]
+
+
+def _scan_all(pending: list, workers: int | None):
+    """Scan the changed stores, in parallel when there is more than one.
+
+    json parsing is CPU-bound and the GIL makes threads useless here, so this
+    is processes; a failure of the pool falls back to a serial scan rather
+    than reporting nothing.
+    """
+    if workers is None:
+        workers = min(8, (os.cpu_count() or 2))
+    if len(pending) > 1 and workers > 1:
+        try:
+            from concurrent.futures import ProcessPoolExecutor
+
+            with ProcessPoolExecutor(max_workers=min(workers, len(pending))) as pool:
+                futures = {pool.submit(scan_store, jsonl, keep): (sp, jsonl, keep, rel)
+                           for sp, jsonl, keep, rel in pending}
+                for fut, item in futures.items():
+                    _apply_stats(item[0], fut.result())
+                    yield item
+            return
+        except Exception:
+            pass          # oversubscribed node, no fork, ... — do it serially
+    for sp, jsonl, keep, rel in pending:
+        _apply_stats(sp, scan_store(jsonl, keep))
+        yield sp, jsonl, keep, rel
 
 
 def load_gates(path: Path | None = None) -> dict:

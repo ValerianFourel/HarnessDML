@@ -150,6 +150,37 @@ def test_auto_scope_reads_the_cap_from_the_store_path(tmp_path):
     assert ids is None and "no spec" in why
 
 
+def test_deep_walk_caches_unchanged_stores_and_reruns_changed_ones(tmp_path):
+    """A finished slice hasn't changed in days; re-reading it every time is
+    what made --deep take minutes. Cache on (size, mtime, scope)."""
+    d = tmp_path / "mvp_thin_gsm8k" / "rollouts_m_gsm8k"
+    d.mkdir(parents=True)
+    store = d / "rollouts.jsonl"
+    ids = sorted(progress.in_scope_ids(_spec("mvp_thin_gsm8k"), "gsm8k"))[:3]
+    store.write_text("".join(json.dumps(_row(t, 0)) + "\n" for t in ids))
+
+    [first] = progress.walk(tmp_path, deep=True)
+    assert first.unique == 3
+    assert (tmp_path / progress.CACHE_NAME).exists()
+
+    # corrupt the store's CONTENT without touching size/mtime -> a cached walk
+    # must return the old numbers, proving it did not re-read
+    cache = json.loads((tmp_path / progress.CACHE_NAME).read_text())
+    key = next(iter(cache))
+    cache[key]["unique"] = 99
+    (tmp_path / progress.CACHE_NAME).write_text(json.dumps(cache))
+    [cached] = progress.walk(tmp_path, deep=True)
+    assert cached.unique == 99                     # served from cache
+    [fresh] = progress.walk(tmp_path, deep=True, use_cache=False)
+    assert fresh.unique == 3                       # --fresh bypasses it
+
+    # appending changes size -> the entry is invalid and the store is rescanned
+    with open(store, "a") as f:
+        f.write(json.dumps(_row(ids[0], 1)) + "\n")
+    [grown] = progress.walk(tmp_path, deep=True)
+    assert grown.unique == 4
+
+
 def test_summary_never_counts_a_slice_past_its_target():
     """Orphan-inflated slices must not push the census total above 100%."""
     rows = [
