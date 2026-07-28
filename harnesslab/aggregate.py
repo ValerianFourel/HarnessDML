@@ -12,7 +12,7 @@ from pathlib import Path
 import polars as pl
 
 from .metrics import calibration, consistency
-from .panel import validate_record
+from .panel import panel_columns, validate_record
 from .store import RolloutStore
 
 CELL_KEY = ("exp_id", "model_id", "benchmark", "band", "config_id",
@@ -137,7 +137,7 @@ def aggregate(
     # literal 'rollouts_*' on $SCRATCH once poisoned every later glob).
     if not (rollouts_dir / "rollouts.jsonl").exists():
         raise ValueError(f"no rollout store at {rollouts_dir} (rollouts.jsonl missing)")
-    store = RolloutStore(rollouts_dir)
+    store = RolloutStore(rollouts_dir, index=False)   # reader: skip the key pass
     rows = list(store.records())
     if not rows:
         raise ValueError(f"no rollouts in {rollouts_dir}")
@@ -185,8 +185,9 @@ def aggregate(
             rows = unique_rows
 
     problems: list[str] = []
+    expected = set(panel_columns())       # once per slice, not once per row
     for i, r in enumerate(rows):
-        for p in validate_record(r):
+        for p in validate_record(r, expected=expected):
             problems.append(f"row {i} ({r.get('rollout_key', '?')}): {p}")
     if problems:
         raise ValueError("panel-schema violations:\n  " + "\n  ".join(problems[:20]))

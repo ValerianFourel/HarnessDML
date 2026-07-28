@@ -8,6 +8,7 @@ covariates.
 
 from __future__ import annotations
 
+from functools import lru_cache
 from pathlib import Path
 from typing import Iterable, Mapping
 
@@ -22,15 +23,32 @@ class RoleError(ValueError):
     """A column was requested in a role its registry entry forbids."""
 
 
+@lru_cache(maxsize=8)
+def _read_yaml(path: str, _stamp: tuple[int, int]):
+    """Parse a schema file at most once per (path, mtime, size).
+
+    These are read per ROW by validate_record, and re-parsing a 200-line YAML
+    forty thousand times per slice is what made a harvest take twenty minutes
+    (aggregate of a 40k-row slice: >120 s before this, ~2 s after). The stamp
+    keeps it honest if a caller rewrites the file mid-process.
+    """
+    return yaml.safe_load(Path(path).read_text())
+
+
+def _stamped(p: Path) -> tuple[int, int]:
+    st = p.stat()
+    return st.st_mtime_ns, st.st_size
+
+
 def load_column_roles(path: Path | str | None = None) -> dict[str, str]:
     p = Path(path) if path else _SCHEMA_DIR / "column_roles.yaml"
-    raw = yaml.safe_load(p.read_text())
+    raw = _read_yaml(str(p), _stamped(p))
     return {col: spec["role"] for col, spec in raw.items()}
 
 
 def panel_columns(path: Path | str | None = None) -> list[str]:
     p = Path(path) if path else _SCHEMA_DIR / "panel_schema.yaml"
-    return list(yaml.safe_load(p.read_text())["panel"])
+    return list(_read_yaml(str(p), _stamped(p))["panel"])
 
 
 def validate_covariates(
@@ -50,9 +68,14 @@ def validate_covariates(
         raise RoleError("covariate validation failed:\n  - " + "\n  - ".join(problems))
 
 
-def validate_record(record: Mapping, schema_path: Path | str | None = None) -> list[str]:
-    """Missing/extra keys vs the panel schema (used by aggregate)."""
-    expected = set(panel_columns(schema_path))
+def validate_record(record: Mapping, schema_path: Path | str | None = None,
+                    expected: set[str] | None = None) -> list[str]:
+    """Missing/extra keys vs the panel schema (used by aggregate).
+
+    Pass `expected` when validating many rows: it skips even the cached
+    schema lookup, which is a stat() per call otherwise.
+    """
+    expected = expected if expected is not None else set(panel_columns(schema_path))
     got = set(record)
     problems = [f"missing column {c!r}" for c in sorted(expected - got)]
     problems += [f"unexpected column {c!r}" for c in sorted(got - expected)]

@@ -223,3 +223,15 @@ Each entry: what we decided, and why. Reversals get a new entry, never an edit.
     violated, and an over-long chain costs nothing because a surplus link
     finds no pending rollouts and exits in minutes. Under-provisioning is the
     only expensive error, so `plan` rounds up.
+27. **The schema was re-parsed once per row.** `validate_record` called
+    `panel_columns()`, which did `yaml.safe_load(read_text())` — so
+    aggregating a slice re-read and re-parsed `panel_schema.yaml` once for
+    EVERY rollout. Measured on a 40k-row slice: >120 s (did not finish) before,
+    7.6 s after caching the parse on (path, mtime, size) and hoisting the
+    expected-column set out of the loop; a 400k-row census slice goes from
+    ~20 min to ~1 min, and `harvest_all.sh` over the whole tree from hours to
+    minutes. Also: `aggregate` now opens the store with `index=False`, since a
+    reader that parses every record anyway does not need the completed-key
+    pass built first (that was the file being parsed twice); write methods
+    raise if the index was skipped, so the resume guarantee cannot be lost
+    silently.

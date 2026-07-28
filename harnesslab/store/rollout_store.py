@@ -21,17 +21,40 @@ def make_rollout_key(cell: dict, task_id: str, seed: int) -> str:
 
 
 class RolloutStore:
-    def __init__(self, directory: Path | str):
+    def __init__(self, directory: Path | str, index: bool = True):
+        """index=False skips building the completed-key set.
+
+        A reader (aggregate) parses every record anyway, so building the key
+        index first means parsing the whole file TWICE — ~1.4 s per 40k rows,
+        and these stores reach 400k. Writers need the index; readers do not,
+        and calling a write method without it raises rather than silently
+        losing idempotency.
+        """
         self.dir = Path(directory)
         self.dir.mkdir(parents=True, exist_ok=True)
         self.path = self.dir / "rollouts.jsonl"
         self.n_corrupt = 0
+        self.indexed = index
         self._done: set[str] = set()
         self._load()
+
+    def _require_index(self) -> None:
+        if not self.indexed:
+            raise RuntimeError(
+                "this RolloutStore was opened with index=False (read-only); "
+                "resume and idempotency need the completed-key set"
+            )
 
     def _load(self) -> None:
         self._needs_newline = False
         if not self.path.exists():
+            return
+        if not self.indexed:
+            with open(self.path, "rb") as fb:
+                fb.seek(0, os.SEEK_END)
+                if fb.tell() > 0:
+                    fb.seek(-1, os.SEEK_END)
+                    self._needs_newline = fb.read(1) != b"\n"
             return
         with open(self.path, encoding="utf-8") as f:
             for line in f:
@@ -50,12 +73,14 @@ class RolloutStore:
                 self._needs_newline = fb.read(1) != b"\n"
 
     def is_done(self, rollout_key: str) -> bool:
+        self._require_index()
         return rollout_key in self._done
 
     def __len__(self) -> int:
         return len(self._done)
 
     def append(self, record: dict) -> None:
+        self._require_index()
         key = record["rollout_key"]
         if key in self._done:
             return  # idempotent

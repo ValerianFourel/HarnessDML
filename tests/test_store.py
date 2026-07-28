@@ -2,6 +2,8 @@
 
 import json
 
+import pytest
+
 from harnesslab.store import RolloutStore, make_rollout_key
 
 CELL = {"model_id": "m", "benchmark": "hotpotqa", "band": "easy",
@@ -45,3 +47,20 @@ def test_partial_line_corruption_survives_resume(tmp_path):
     recovered.append(rec("b", 0))
     assert len(recovered) == 2
     assert sum(1 for _ in recovered.records()) == 2  # corrupt line skipped
+
+
+def test_read_only_store_skips_the_key_index_and_refuses_writes(tmp_path):
+    """aggregate parses every record anyway, so building the key set first
+    parses the file twice — ~1.4 s per 40k rows on stores that reach 400k."""
+    writer = RolloutStore(tmp_path)
+    writer.append(rec("a", 0))
+    writer.append(rec("b", 0))
+
+    reader = RolloutStore(tmp_path, index=False)
+    assert [r["task_id"] for r in reader.records()] == ["a", "b"]
+    assert len(reader._done) == 0            # never built
+
+    for call in (lambda: reader.append(rec("c", 0)),
+                 lambda: reader.is_done("x")):
+        with pytest.raises(RuntimeError, match="index=False"):
+            call()
